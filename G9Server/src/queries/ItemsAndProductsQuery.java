@@ -363,7 +363,6 @@ public class ItemsAndProductsQuery {
 				}
 			}
 		}
-		System.out.println(SaleCols);
 		returnMessageToClient.setObject(SaleCols);
 		return returnMessageToClient;
 	}

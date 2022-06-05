@@ -55,8 +55,6 @@ public class SurveyQuery {
 
 	public static FullMessage SetAnswersToDB(FullMessage messageFromClient)throws SQLException {
 		SurveyAnswers answerANDid = (SurveyAnswers) messageFromClient.getObject();
-		System.out.println(answerANDid.toString());
-		System.out.println("server");
 		try {
 			mainQuery.InsertOneRowIntosurveyAnswersTable(answerANDid);
 		} catch (ParseException e) {

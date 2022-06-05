@@ -83,7 +83,6 @@ public class OrderQuery {
 		}
 		returnMessageToClient.setObject(c);
 		returnMessageToClient.setResponse(Response.NOT_FIRST_COMPLAINT);
-		System.out.println("here");
 		return returnMessageToClient;
 	}
 
@@ -241,7 +240,6 @@ public class OrderQuery {
 			return returnMessageToClient;
 		}
 		while (rs.next()) {
-			System.out.println(rs.getTimestamp(6));
 			Order orderFromDB = convertToOrder(rs);
 			if (orderFromDB != null) {
 				orderList.add(orderFromDB);
@@ -367,7 +365,6 @@ public class OrderQuery {
 
 		FullMessage returnMessageToClient = messageFromClient;
 		String orderNumber = (String) returnMessageToClient.getObject();
-		System.out.println(orderNumber);
 		String condition = "OrderNumber='" + orderNumber + "'";
 		mainQuery.updateTuple("orders", "RefundStatus='" + RefundStatus.WAITING + "'", condition);
 	}

@@ -87,7 +87,6 @@ public class CartPageController extends UsersController implements Initializable
 
 			} else {
 				errorControl("");
-				System.out.println(IndexOfDeleted);
 				CatalogController.TotalPrice -= CatalogController.ItemsIncart.get(IndexOfDeleted).getPrice();
 				String ID = CatalogController.ItemsIncart.get(IndexOfDeleted).getID();
 				message = new FullMessage(Request.RESTORE_AMOUNT_FOR_ITEM, Response.Wait, ID);
