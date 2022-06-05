@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="798.0" prefWidth="1204.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CatalogController">
+   <children>
+      <Text layoutX="468.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catalog Page" wrappingWidth="237.30389404296875">
+         <font>
+            <Font name="System Bold Italic" size="32.0" />
+         </font>
+      </Text>
+      <Pane layoutX="13.0" layoutY="248.0" prefHeight="454.0" prefWidth="546.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
+         <children>
+            <Text layoutX="210.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" wrappingWidth="126.99999803118408">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </Text>
+            <TableView fx:id="ProductsTable" layoutX="10.0" layoutY="67.0" prefHeight="308.0" prefWidth="523.0">
+               <columns>
+                  <TableColumn fx:id="ProductPicCol" prefWidth="100.0" text="Picture" />
+                  <TableColumn fx:id="ProductNameCol" prefWidth="102.0" text="Name" />
+                  <TableColumn fx:id="ProductPriceCol" prefWidth="95.0" text="Price" />
+                  <TableColumn fx:id="ProductTypeCol" prefWidth="96.0" text="Type" />
+                  <TableColumn fx:id="ProductDominantColorCol" prefWidth="129.0" text="Dominant Color" />
+               </columns>
+            </TableView>
+            <Button fx:id="ReloadButton" layoutX="9.0" layoutY="389.0" mnemonicParsing="false" onAction="#ReloadCatalog" prefHeight="48.0" prefWidth="145.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Reload Catalog" textFill="WHITE" />
+            <Button fx:id="AddButton" layoutX="371.0" layoutY="389.0" mnemonicParsing="false" onAction="#AddButton" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Add" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="570.0" layoutY="118.0" prefHeight="584.0" prefWidth="546.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
+         <children>
+            <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="System Bold Italic" size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="230.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Items" wrappingWidth="82.99999797344208">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="58.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select all the flowers needed to compose a new bouquet" wrappingWidth="402.13916015625">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <Text layoutX="198.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Items Merge">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="ColorComboBox" layoutX="36.0" layoutY="106.0" onAction="#GetColor" prefHeight="33.0" prefWidth="145.0" promptText="Choose Color" style="-fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;" />
+            <ComboBox fx:id="PriceComboBox" layoutX="201.0" layoutY="106.0" onAction="#GetPrice" prefHeight="33.0" prefWidth="145.0" promptText="Choose Price" style="-fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;" />
+            <ComboBox fx:id="TypeComboBox" layoutX="371.0" layoutY="106.0" onAction="#GetType" prefHeight="33.0" prefWidth="145.0" promptText="Choose Type" style="-fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;" />
+            <TableView fx:id="ItemTable" layoutX="10.0" layoutY="198.0" prefHeight="308.0" prefWidth="523.0">
+              <columns>
+                <TableColumn fx:id="ItemPicCol" prefWidth="103.0" text="Picture" />
+                <TableColumn fx:id="ItemNameCol" prefWidth="98.0" text="Name" />
+                  <TableColumn fx:id="ItemPriceCol" prefWidth="96.0" text="Price" />
+                  <TableColumn fx:id="ItemTypeCol" prefWidth="101.0" text="Type" />
+                  <TableColumn fx:id="ItemDominantColorCol" prefWidth="123.0" text="Dominant Color" />
+              </columns>
+            </TableView>
+            <Button fx:id="ComposeButton" layoutX="191.0" layoutY="522.0" mnemonicParsing="false" onAction="#ComposeButton" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Compose" textFill="WHITE" />
+            <Text layoutX="28.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="**Press and hold CTRL + Left Mouse Click to start composing**" wrappingWidth="161.0" />
+         </children>
+      </Pane>
+      <ImageView fx:id="CartButton" fitHeight="68.0" fitWidth="71.0" layoutX="1134.0" layoutY="707.0" onMouseClicked="#CartButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/cart.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="SalesLabel" layoutX="126.0" layoutY="728.0" prefHeight="27.0" prefWidth="955.0" textFill="#2b05ff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="ErrorLabel" layoutX="454.0" layoutY="741.0" prefHeight="17.0" prefWidth="221.0" textFill="RED">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="-7.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="114.0" layoutY="102.0" stroke="#edf1f2" strokeType="INSIDE" width="1000.0" />
+      <ImageView fx:id="Back" fitHeight="61.0" fitWidth="61.0" layoutX="6.0" layoutY="727.0" onMouseClicked="#BackBtn" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ExitButton" fitHeight="61.0" fitWidth="65.0" layoutX="1153.0" layoutY="4.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/Cancel.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="1118.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/background.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="1006.0" endY="253.0" layoutX="212.0" layoutY="542.0" startX="-211.0" startY="253.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="-211.0" endY="239.0" layoutX="211.0" layoutY="554.0" startX="-211.0" startY="-552.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="1004.75732421875" endY="-542.0" layoutX="215.0" layoutY="542.0" startX="-211.0" startY="-542.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="1008.75732421875" endY="229.0" layoutX="211.0" layoutY="566.0" startX="1008.75732421875" startY="-562.0" stroke="#111411" strokeWidth="6.0" />
+      <Label fx:id="ErrorFrozenLabel" layoutX="141.0" layoutY="140.0" prefHeight="48.0" prefWidth="307.0" textFill="RED">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

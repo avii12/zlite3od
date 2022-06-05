@@ -288,22 +288,9 @@ public class OrderDetailsController extends UsersController implements Initializ
 	public void MakeDateForDB() throws ParseException {
 
 		String time = Time.getValue();
-		String time1 = Time.getValue();
-		time1 = time1 + ":00";
-		String time2 = "02:30:00";
-
-		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-		Date date1 = format.parse(time1);
-		Date date2 = format.parse(time2);
-		long millis = date1.getTime() - date2.getTime();
-		String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
-				TimeUnit.MILLISECONDS.toMinutes(millis)
-						- TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
-				TimeUnit.MILLISECONDS.toSeconds(millis)
-						- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-
+		time = time + ":00";
 		LocalDate date = Date.getValue();
-		String dateFormatted = date + " " + hms;
+		String dateFormatted = date + " " + time;
 		Timestamp dateTimeStamp = Timestamp.valueOf(dateFormatted);
 		order.setEstimatedDate(dateTimeStamp);
 

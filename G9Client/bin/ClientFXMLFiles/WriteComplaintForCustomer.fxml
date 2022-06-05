@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="169.0" prefWidth="861.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.WriteComplaintForCustomerController">
+	<children>
+		<ImageView fitHeight="133.0" fitWidth="157.0" layoutX="-5.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+			</image>
+		</ImageView>
+		<Text layoutX="233.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Write Complaint" wrappingWidth="412.00000500679016">
+			<font>
+				<Font name="System Bold Italic" size="32.0" />
+			</font>
+		</Text>
+		<Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="137.0" layoutY="100.0" stroke="#edf1f2" strokeType="INSIDE" width="603.0" />
+		<ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="9.0" layoutY="487.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@../../../G9Common/Pic/go-back-2.png" />
+			</image>
+		</ImageView>
+		<Line endX="-43.0" endY="-164.0" layoutX="45.0" layoutY="166.0" startX="-43.0" startY="387.0" stroke="#111411" strokeWidth="6.0" />
+		<Line endX="657.0" endY="24.0" layoutX="201.0" layoutY="532.0" startX="-199.0" startY="24.0" stroke="#111411" strokeWidth="6.0" />
+		<Line endX="190.0" endY="-56.0" layoutX="668.0" layoutY="56.0" startX="190.0" startY="497.0" stroke="#111411" strokeWidth="6.0" />
+		<ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="791.0" layoutY="8.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@../../../G9Common/Pic/Cancel.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="288.0" fitWidth="99.0" layoutX="756.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@../../../G9Common/Pic/background.jpg" />
+			</image>
+		</ImageView>
+		<Label fx:id="ErrorLabel" layoutX="290.0" layoutY="407.0" prefHeight="25.0" prefWidth="412.0" textFill="RED">
+			<font>
+				<Font size="16.0" />
+			</font>
+		</Label>
+		<Line endX="-51.0" endY="-175.0" layoutX="55.0" layoutY="176.0" startX="802.0" startY="-175.0" stroke="#111411" strokeWidth="6.0" />
+		<TextArea fx:id="TextAreaField" layoutX="300.0" layoutY="164.0" prefHeight="200.0" prefWidth="392.0" />
+		<Label layoutX="91.0" layoutY="234.0" prefHeight="43.0" prefWidth="199.0" text="Write Complaint Text">
+			<font>
+				<Font size="16.0" />
+			</font>
+		</Label>
+		<Button fx:id="ComplaintButton" layoutX="394.0" layoutY="476.0" mnemonicParsing="false" onAction="#FinishButton" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Finish" textFill="WHITE" />
+	</children>
+</AnchorPane>

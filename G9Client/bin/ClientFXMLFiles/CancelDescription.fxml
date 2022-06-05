@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="373.0" prefWidth="622.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="-63.0" layoutY="-93.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="130.0" fitWidth="136.0" layoutX="56.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Text layoutX="182.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel Description">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Text>
+      <Line endX="496.0" endY="-10.0" layoutX="227.0" layoutY="13.0" startX="-227.0" startY="-10.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="-227.0" endY="378.0" layoutX="227.0" layoutY="13.0" startX="-227.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="496.0" endY="380.0" layoutX="227.0" layoutY="13.0" startX="-224.0" startY="380.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="499.0" endY="380.0" layoutX="227.0" layoutY="13.0" startX="499.0" startY="-13.0" stroke="#111411" strokeWidth="6.0" />
+      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="111.0" layoutY="104.0" stroke="#edf1f2" strokeType="INSIDE" width="457.0" />
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="660.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../ZliProj/G9Common/Pic/Cancel.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="624.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/background.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

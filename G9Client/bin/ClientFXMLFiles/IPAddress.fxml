@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="428.0" prefWidth="744.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ServerIPController">
+   <children>
+      <Pane layoutX="37.0" layoutY="-7.0" prefHeight="47.0" prefWidth="101.0" />
+      <Text layoutX="242.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Zerli">
+         <font>
+            <Font name="System Bold Italic" size="32.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="134.0" fitWidth="129.0" layoutX="-4.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="157.0" layoutY="209.0" prefHeight="94.0" prefWidth="441.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
+         <children>
+            <Text layoutX="41.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP Address*:" wrappingWidth="129.4169921875">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="TextFieldLocalHost" layoutX="195.0" layoutY="24.0" prefHeight="47.0" prefWidth="198.0" style="-fx-background-radius: 15;" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="53.0" fitWidth="57.0" layoutX="11.0" layoutY="361.0" onMouseClicked="#ExitBtn" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/exit.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="286.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please insert IP Address">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="72.0" fitWidth="64.0" layoutX="672.0" layoutY="356.0" onMouseClicked="#ConnectBtn" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/circled-chevron-right.png" />
+         </image>
+      </ImageView>
+      <Line endX="512.0" endY="-11.0" layoutX="227.0" layoutY="13.0" startX="-226.0" startY="-11.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="-226.0" endY="409.0" layoutX="227.0" layoutY="16.0" startX="-226.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="515.0" endY="-11.0" layoutX="227.0" layoutY="10.0" startX="515.0" startY="415.0" stroke="#111411" strokeWidth="6.0" />
+      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="158.0" layoutY="103.0" stroke="#edf1f2" strokeType="INSIDE" width="441.0" />
+      <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="640.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/background.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="495.0" endY="402.0" layoutX="242.0" layoutY="23.0" startX="-235.0" startY="402.0" stroke="#111411" strokeWidth="6.0" />
+      <Label fx:id="ErrorLabel" layoutX="311.0" layoutY="331.0" prefHeight="21.0" prefWidth="116.0" textFill="RED">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
