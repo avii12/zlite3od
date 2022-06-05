@@ -7,6 +7,7 @@ public class survey  implements Serializable {
 	public int QuestionNumber;
 	public String QuestionForm;
 	public String SurveyID;
+	
 	public survey(survey survey) {
 		this.QuestionNumber=survey.getQuestionNumber();
 		this.QuestionForm=survey.getQuestionForm();
@@ -24,9 +25,7 @@ public class survey  implements Serializable {
 	public void setQuestionForm(String questionForm) {
 		QuestionForm = questionForm;
 	}
-	public String getSurveyID() {
-		return SurveyID;
-	}
+	
 	public void setSurveyID(String surveyID) {
 		SurveyID = surveyID;
 	}
@@ -40,6 +39,9 @@ public class survey  implements Serializable {
 		QuestionNumber = questionNumber;
 		QuestionForm = questionForm;
 		SurveyID = surveyID;
+	}
+	public String getSurveyID() {
+		return SurveyID;
 	}
 	
 	

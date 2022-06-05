@@ -1,6 +1,6 @@
 package ClientGUIControllers;
 
-import java.awt.Rectangle;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.Year;
@@ -18,29 +18,50 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.ScatterChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the complaint report 
+ *  
+ *@author Seren Hanany
+ *
+ */
 public class ComplaintReportController extends UsersController implements Initializable {
-
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
+	/**
+	 * ComboBox for report year
+	 */
 	@FXML
     private ComboBox<String> ReportYear;
+	/**
+	 * Error label
+	 */
 	@FXML
 	private Label ErrorLabel;
 	@FXML
+	/**
+	 * ComboBox for quarterly
+	 */
 	private ComboBox<String> Quarterly;
-
+	/**
+	 * Array String for save the quarterly
+	 */
 	public static String[] quarterly=new String[2];
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 */
 	public void ExitButton(MouseEvent event) throws IOException {
 
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -49,7 +70,14 @@ public class ComplaintReportController extends UsersController implements Initia
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackBtn(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
@@ -65,7 +93,14 @@ public class ComplaintReportController extends UsersController implements Initia
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 * After Clicking On View Quarterly Complaint Button 
+	 * The Function Hide The Current Window  
+	 * And Load The View Quarterly Complaint Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void ViewQuarterlyComplaint(MouseEvent event) throws IOException {
 		quarterly[0] = Quarterly.getValue().toString();
 		quarterly[1]=ReportYear.getValue().toString();
@@ -90,7 +125,12 @@ public class ComplaintReportController extends UsersController implements Initia
 		}
 	}
 
-	
+	/**
+	 *
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 *
+	 */
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

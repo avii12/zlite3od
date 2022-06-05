@@ -14,7 +14,6 @@ import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
 import ZliClient.PopUpMessage;
 import ZliClient.ZliClientUI;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -33,33 +32,67 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the change customer status by branch manager
+ *  
+ *@author Seren Hanany
+ *
+ */
 public class ChangeCustomerStatusController extends UsersController implements Initializable {
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
-	@FXML
-	private Label ErrorLabel;
+	
+	/**
+	 * Customer Table
+	 */
 	@FXML
 	private TableView<customer> CustomerTable;
-
+	/**
+	 * Customer column
+	 */
 	@FXML
 	private TableColumn<customer, String> CustomerIDcol;
-
+	/**
+	 * First name column
+	 */
 	@FXML
 	private TableColumn<customer, String> FirstNamecol;
-
+	/**
+	 * Last name column
+	 */
 	@FXML
 	private TableColumn<customer, String> lastNamecol;
-
+	/**
+	 * Email column
+	 */
 	@FXML
 	private TableColumn<customer, String> Emailcol;
-
+	/**
+	 * Status column
+	 */
 	@FXML
 	private TableColumn<customer, ConfirmationStatus> Statuscol;
-
+	/**
+	 * Error label
+	 */
 	@FXML
-	private Label errorLabel;
+	private Label ErrorLabel;
+	/**
+	 * Array List for changed status
+	 */
 	public static ArrayList<customer> ArrayForChangedStatus = new ArrayList<>();
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -77,7 +110,13 @@ public class ChangeCustomerStatusController extends UsersController implements I
 		primaryStage.show();
 
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 */
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
@@ -85,7 +124,12 @@ public class ChangeCustomerStatusController extends UsersController implements I
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	/**
+	 *
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 *
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ObservableList<customer> customer1 = FXCollections.observableArrayList();
