@@ -93,8 +93,10 @@ public class FillSurveyController extends UsersController implements Initializab
 
 	@FXML
 	private Label errorLabel;
+	public static ArrayList<SurveyAnswers> ArrayForSurveyAnswers = new ArrayList<>();
 	public String[] answer = new String[7];
-	//public static ArrayList<SurveyAnswers> ArrayForSurveyAnswers = new ArrayList<>();
+	// public static ArrayList<SurveyAnswers> ArrayForSurveyAnswers = new
+	// ArrayList<>();
 	public static ArrayList<survey> ArrayForSurvey = new ArrayList<>();
 
 	@Override
@@ -166,35 +168,59 @@ public class FillSurveyController extends UsersController implements Initializab
 
 	@FXML
 	void SendBtn(ActionEvent event) throws IOException {
-		if(answer1.getValue().equals("answer1*")||answer2.getValue().equals("answer2*")||answer3.getValue().equals("answer3*")||answer4.getValue().equals("answer4*")||
-				answer5.getValue().equals("answer5*")||answer6.getValue().equals("answer6*")) {
+		if (answer1.getValue().equals("answer1*") || answer2.getValue().equals("answer2*")
+				|| answer3.getValue().equals("answer3*") || answer4.getValue().equals("answer4*")
+				|| answer5.getValue().equals("answer5*") || answer6.getValue().equals("answer6*")) {
 			errorLabel.setText("Fill all the answers!!");
-		}else {
-//			ObservableList<SurveyAnswers> ArrayForSurveyAnswers = FXCollections.observableArrayList();
-//			for (int i = 0; i < ArrayForSurvey.size(); i++) {
-//				ArrayForSurveyAnswers.add(new survey(ArrayForSurvey.get(i)));
-//			}
-			answer[0]=CurrentUser.getID();
-			answer[1]=answer1.getValue();
-			answer[2]=answer2.getValue();
-			answer[3]=answer3.getValue();
-			answer[4]=answer4.getValue();
-			answer[5]=answer5.getValue();
-			answer[6]=answer6.getValue();
+		} else {
+			String SurveyID = "1000";
+			String CustomerID = CurrentUser.getID();
+
+			////////////////////
+			String QuestionNumber = "1";
+			String Qanswer = answer1.getValue();
+			SurveyAnswers answer = new SurveyAnswers(SurveyID, CustomerID, QuestionNumber, Qanswer);
+			ArrayForSurveyAnswers.add(answer);
+			///////////////////
+			QuestionNumber = "2";
+			Qanswer = answer2.getValue();
+			answer = new SurveyAnswers(SurveyID, CustomerID, QuestionNumber, Qanswer);
+			ArrayForSurveyAnswers.add(answer);
+			///////////////////
+			QuestionNumber = "3";
+			Qanswer = answer3.getValue();
+			answer = new SurveyAnswers(SurveyID, CustomerID, QuestionNumber, Qanswer);
+			ArrayForSurveyAnswers.add(answer);
+			///////////////////
+			QuestionNumber = "4";
+			Qanswer = answer4.getValue();
+			answer = new SurveyAnswers(SurveyID, CustomerID, QuestionNumber, Qanswer);
+			ArrayForSurveyAnswers.add(answer);
+			///////////////////
+			QuestionNumber = "5";
+			Qanswer = answer5.getValue();
+			answer = new SurveyAnswers(SurveyID, CustomerID, QuestionNumber, Qanswer);
+			ArrayForSurveyAnswers.add(answer);
+			///////////////////
+			QuestionNumber = "6";
+			Qanswer = answer6.getValue();
+			answer = new SurveyAnswers(SurveyID, CustomerID, QuestionNumber, Qanswer);
+			ArrayForSurveyAnswers.add(answer);
+
+			InsertAnswersSurveyController.ArrayForSurveyAnswers = ArrayForSurveyAnswers;
 			
-			message = new FullMessage(Request.SET_SURVEY_ANSWER, Response.Wait, answer);
-			ZliClientUI.ZliClientController.accept(message);
-			if(message.getResponse().equals(Response.SET_ANSWER_DONE)) {
-				Optional<ButtonType> Option=PopUpMessage.ConfirmationForUser("Thank You");
+			Optional<ButtonType> Option=PopUpMessage.ConfirmationForUser("Thank you, have a nice day.");
+			if(Option.get()== ButtonType.OK) {
+				answer1.setValue("answer1*");
+				answer2.setValue("answer2*");
+				answer3.setValue("answer3*");
+				answer4.setValue("answer4*");
+				answer5.setValue("answer5*");
+				answer6.setValue("answer6*");
 			}
-			else {
-				Optional<ButtonType> Option=PopUpMessage.ConfirmationForUser("Try Again");
-			}
-					
+		
 		}
-		
-		
-		
+
 	}
 
 }

@@ -303,10 +303,16 @@ public class ReadMessageFromClient {
 			case UPDATE_REFUND_STATUS:
 				OrderQuery.UpdateRefundStatus(messageFromClient);
 				break;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 				
 			case GET_USERS_FROM_DB_FOR_WORKER:
 				messageFromClient=UserQuery.GetUsersFromDB(messageFromClient);
 				break;	
+=======
+			case UPLOAD_FILE:
+				messageFromClient=SurveyQuery.UploadFile(messageFromClient);
+				break;
+>>>>>>> 9f2568b gg
 
 			}
 

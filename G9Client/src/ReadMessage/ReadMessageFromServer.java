@@ -26,6 +26,7 @@ import ClientGUIControllers.CustomerServiceWorkerPageController;
 import ClientGUIControllers.DeliveryPersonPageController;
 import ClientGUIControllers.FillSurveyController;
 import ClientGUIControllers.GraphController;
+import ClientGUIControllers.InsertAnswersSurveyController;
 import ClientGUIControllers.LoginController;
 import ClientGUIControllers.PaymentController;
 import ClientGUIControllers.ServiceExpertPageController;
@@ -213,7 +214,7 @@ public class ReadMessageFromServer {
 				FillSurveyController.ArrayForSurvey = (ArrayList<survey>) MessageFromServer.getObject();
 				break;
 			case SET_SURVEY_ANSWER:
-				FillSurveyController.message.setResponse(MessageFromServer.getResponse());
+				InsertAnswersSurveyController.message.setResponse(MessageFromServer.getResponse());
 				break;
 
 			case CHECK_AMOUNT:

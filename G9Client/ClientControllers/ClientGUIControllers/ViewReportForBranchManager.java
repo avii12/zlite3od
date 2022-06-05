@@ -133,6 +133,7 @@ public class ViewReportForBranchManager extends UsersController implements Initi
 
 	public void SearchBtn(ActionEvent event) throws IOException {
 		if (Check()) {
+			TextAreaReport.clear();
 			ObservableList<IncomeReport> Details = FXCollections.observableArrayList();
 			ObservableList<OrderReport> Orders = FXCollections.observableArrayList();
 			String date = ReportYear.getValue() + "-" + ReportMonth.getValue() + "-01";

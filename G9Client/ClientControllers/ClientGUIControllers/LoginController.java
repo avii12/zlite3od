@@ -117,17 +117,19 @@ public class LoginController extends UsersController{
 	}
 	
 	private boolean notEmpty(Login login) {
+		username.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
+		password.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
 
 		if (login.getUsername().equals("") && !login.getPassword().equals("")) {
 			username.setStyle("-fx-border-color: red;-fx-background-radius: 15; -fx-border-radius: 15");
-			password.setStyle("-fx-border-color: red;-fx-background-radius: 15; -fx-border-radius: 15");
+			password.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
 			errorControl("please type username");
 			return false;
 
 		}
 
 		if (!login.getUsername().equals("") && login.getPassword().equals("")) {
-			username.setStyle("-fx-border-color: red;-fx-background-radius: 15; -fx-border-radius: 15");
+			username.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
 			password.setStyle("-fx-border-color: red;-fx-background-radius: 15; -fx-border-radius: 15");
 			errorControl("please type password");
 			return false;

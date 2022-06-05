@@ -68,7 +68,7 @@
             <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
          </image>
       </ImageView>
-      <Label fx:id="ErrorLabel" layoutX="324.0" layoutY="497.0" prefHeight="21.0" prefWidth="221.0" textFill="RED">
+      <Label fx:id="ErrorLabel" layoutX="282.0" layoutY="497.0" prefHeight="26.0" prefWidth="304.0" textFill="RED">
          <font>
             <Font size="16.0" />
          </font></Label>

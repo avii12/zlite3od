@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="736.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ServiceExpertPageController"> 
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="736.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ServiceExpertPageController"> 
    <children>
       <ImageView fitHeight="150.0" fitWidth="144.0" layoutX="-7.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,33 +21,14 @@
             <Font name="System Bold Italic" size="32.0" />
          </font>
       </Text>
-      <Text layoutX="256.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What would you like to do ?">
-         <font>
-            <Font name="System Italic" size="18.0" />
-         </font>
-      </Text>
-      <Pane layoutX="135.0" layoutY="176.0" prefHeight="231.0" prefWidth="217.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
+      <Pane layoutX="131.0" layoutY="139.0" prefHeight="231.0" prefWidth="471.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
          <children>
-            <Button layoutX="36.0" layoutY="172.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="144.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="View Survey results" textFill="WHITE">
+            <Button layoutX="112.0" layoutY="170.0" mnemonicParsing="false" onAction="#UploadFile" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Upload a report to the system" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <ImageView fitHeight="130.0" fitWidth="150.0" layoutX="43.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../G9Common/Pic/survey.jpg" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane layoutX="379.0" layoutY="176.0" prefHeight="231.0" prefWidth="217.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
-         <children>
-            <Button layoutX="17.0" layoutY="171.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Summarize Survey Result" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="130.0" fitWidth="144.0" layoutX="43.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="130.0" fitWidth="144.0" layoutX="164.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../G9Common/Pic/summarize.jpg" />
                </image>

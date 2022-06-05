@@ -1,5 +1,6 @@
 package queries;
 
+import java.io.FileOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -52,25 +53,25 @@ public class SurveyQuery {
 	}
 
 	public static FullMessage SetAnswersToDB(FullMessage messageFromClient)throws SQLException {
-		String[] answerANDid = (String[]) messageFromClient.getObject();
-		
-		String CustomerID=answerANDid[0];
-		
-		for(int i=1;i<7;i++) {
-			int QN=i;
-			String QA=answerANDid[i];
+		SurveyAnswers answerANDid = (SurveyAnswers) messageFromClient.getObject();
+		System.out.println(answerANDid.toString());
+		System.out.println("server");
 		try {
-			mainQuery.InsertOneRowIntosurveyAnswersTable(QN,QA,CustomerID);
+			mainQuery.InsertOneRowIntosurveyAnswersTable(answerANDid);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//mainQuery.DeleteRowFromDB1("surveyanswers","CustomerID='1'");
-		}
 		messageFromClient.setResponse(Response.SET_ANSWER_DONE);
 		return messageFromClient;
+	
 	}
 
+	public static FullMessage UploadFile(FullMessage messageFromClient)throws SQLException {
+		FileOutputStream output=null;
+		
+		
+		return null;
+	}
 
 }

@@ -3,6 +3,7 @@ package Report;
 import java.io.Serializable;
 
 import AllUsers.ConfirmationStatus;
+import Survey.SurveyAnswers;
 
 public class customer  implements Serializable {
 
@@ -31,6 +32,7 @@ public class customer  implements Serializable {
 		Email = email;
 		Status = status;
 	}
+	
 	public String getCustomerID() {
 		return CustomerID;
 	}

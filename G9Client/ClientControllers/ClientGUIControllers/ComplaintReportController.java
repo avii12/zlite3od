@@ -69,9 +69,19 @@ public class ComplaintReportController extends UsersController implements Initia
 	public void ViewQuarterlyComplaint(MouseEvent event) throws IOException {
 		quarterly[0] = Quarterly.getValue().toString();
 		quarterly[1]=ReportYear.getValue().toString();
-		if (quarterly.equals("Quarterly*")||ReportYear.getValue().toString().equals("Year*")) {
+		if (Quarterly.getValue().equals("Quarterly*") && ReportYear.getValue().toString().equals("Year*")) {
+			Quarterly.setStyle("-fx-border-color: red;-fx-background-radius: 15; -fx-border-radius: 15");
+			ReportYear.setStyle("-fx-border-color: red;-fx-background-radius: 15; -fx-border-radius: 15");
+			 ErrorLabel.setText("Fill the two combobox");
+		} else if (Quarterly.getValue().equals("Quarterly*") && !(ReportYear.getValue().toString().equals("Year*"))){
+			Quarterly.setStyle("-fx-border-color: red;-fx-background-radius: 15; -fx-border-radius: 15");
+			ReportYear.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
 			 ErrorLabel.setText("Fill the wanted quarterly");
-		} else {
+		}else if (!(Quarterly.getValue().equals("Quarterly*")) && ReportYear.getValue().toString().equals("Year*")){
+			Quarterly.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
+			ReportYear.setStyle("-fx-border-color: red;-fx-background-radius: 15; -fx-border-radius: 15");
+			 ErrorLabel.setText("Fill the wanted year");
+		}else {
 			Stage primaryStage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/Graph.fxml"));
 			Scene scene = new Scene(root);
@@ -79,6 +89,8 @@ public class ComplaintReportController extends UsersController implements Initia
 			primaryStage.show();
 		}
 	}
+
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

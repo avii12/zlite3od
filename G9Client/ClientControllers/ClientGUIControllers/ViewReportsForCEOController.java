@@ -26,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -66,6 +67,7 @@ public class ViewReportsForCEOController extends UsersController implements Init
 	private TextArea TextAreaReport;
 
 	public void FindReportBtn(ActionEvent event) throws Exception {
+		TextAreaReport.clear();
 		DisplayMessageForUser("");
 		if ((BranchName.getValue().equals("BranchName*") || (ReportType.getValue().equals("Type*"))))
 	    {
@@ -118,7 +120,6 @@ public class ViewReportsForCEOController extends UsersController implements Init
 									dateAndTypeAndBranch);
 							ZliClientUI.ZliClientController.accept(message);
 							if (!(message.getResponse().equals(Response.NO_REPORT))) {
-								DisplayMessageToTextAreaIncome("test");
 								DisplayMessageToTextAreaIncome(" Branch Name: " + IncomeReport.get(4).toString());
 								DisplayMessageToTextAreaIncome(" Report ID: " + IncomeReport.get(0).toString());
 								DisplayMessageToTextAreaIncome(" Report Date: " + IncomeReport.get(1).toString());
@@ -209,6 +210,8 @@ public class ViewReportsForCEOController extends UsersController implements Init
 		ReportMonth.setDisable(true);
 		ReportYear1.setDisable(true);
 		Quarterly.setDisable(true);
+		ReportType.setEditable(true);
+		
 	}
 
 	@FXML
@@ -242,6 +245,9 @@ public class ViewReportsForCEOController extends UsersController implements Init
 		}
 	}
 
+	
+	
+	
 	public void DisplayMessageForUser(String message) {
 		Platform.runLater(() -> {
 			ErrorLabel.setText(message);
