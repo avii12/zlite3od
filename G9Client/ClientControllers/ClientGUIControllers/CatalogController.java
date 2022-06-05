@@ -137,7 +137,7 @@ public class CatalogController extends UsersController implements Initializable 
 	public static ArrayList<Item> ItemListFromDB = new ArrayList<>();
 	public static int Bouque = 1;
 	public static Order order = new Order(null, CurrentUser.getID(), null, OrderStatus.PENDING, null, null, null, null,
-			PriceOfItemsInCart, null, null, 0.0, null, null, null, RefundStatus.NULL);
+			PriceOfItemsInCart, null, null, 0.0, null, null, null);
 
 	public static ArrayList<String> IsSaleOn1 = new ArrayList<>();
 	public static ArrayList<String> percent1 = new ArrayList<>();

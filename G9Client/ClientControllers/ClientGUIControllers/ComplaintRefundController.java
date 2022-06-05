@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import customerService.Complaint;
 import javafx.event.ActionEvent;
@@ -64,12 +65,16 @@ public class ComplaintRefundController extends UsersController implements Initia
 
 	public void refundButton(ActionEvent event) throws Exception {
 
-		
 		getReply();
 		if (!refundCustomer()) {
 			errorText.setText("Problem accured while refunding the customer!");
 			errorText.setFill(Color.RED);
 		} else {
+			double refund = (double) message.getObject();
+			String convertedRefund = String.valueOf(refund);
+
+			PopUpMsg.AlertForUser(
+					"User has been refunded with " + convertedRefund + "\n" + "**An E-mail has been sent to user!**");
 			((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 			Stage primaryStage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/ComplaintHandling.fxml"));
@@ -91,20 +96,18 @@ public class ComplaintRefundController extends UsersController implements Initia
 		String reply = reply_txt.getText();
 		String customerID = complaint.getCustomerId();
 		int OrderNumber = complaint.getOrderNumber();
-	
 
 		// new complaintReplay()
 	}
 
 	public boolean refundCustomer() {
 
-		Object sendComplaint = complaint;
-		System.out.println(sendComplaint.toString());
-		 message = new FullMessage(Request.UPDATE_BALANCE_AFTER_COMPLAINT,
-				Response.UPDATE_BALANCE_AFTER_COMPLAINT_SUCCEEDED, sendComplaint);
+		Complaint sendComplaint = complaint;
+		System.out.println(sendComplaint);
+		message = new FullMessage(Request.UPDATE_BALANCE_AFTER_COMPLAINT, Response.Wait, sendComplaint);
 		ZliClientUI.ZliClientController.accept(message);
 
-		if (message.getResponse() == Response.MANAGE_COMPLAINT_APPROVED_SUCCEEDED_WRITING_INTO_DB) {
+		if (message.getResponse() == Response.UPDATE_BALANCE_AFTER_COMPLAINT_SUCCEEDED) {
 
 			return true;
 		}
@@ -117,7 +120,7 @@ public class ComplaintRefundController extends UsersController implements Initia
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		ComplaintRefundController.complaint = ComplaintHandelingController.complaint;
-        
+
 		complaint_txt.setWrapText(true);
 		complaint_txt.setText(complaint.getText());
 

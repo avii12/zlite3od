@@ -47,7 +47,7 @@ public class ServerGuiController implements Initializable {
 	 * DBPassword variable contains Database Password.
 	 */
 
-	final public static String DBPassword = "Ebedhaddad123_";
+	final public static String DBPassword = "Ebrahemenb123";
 
 	/**
 	 * DBpath variable contains Database Path.

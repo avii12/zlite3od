@@ -1,6 +1,6 @@
 package queries;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +17,6 @@ import Orders.ItemType;
 import Orders.OrderStatus;
 import Orders.RefundStatus;
 import Orders.TypeOfSupply;
-
 
 public class mainQuery {
 
@@ -44,8 +43,9 @@ public class mainQuery {
 		}
 		return rs;
 	}
-	
-	public static void InsertOneRowIntosurveyAnswersTable(int QuestionNum,String QuestionAnswer,String CustomerID) throws ParseException {
+
+	public static void InsertOneRowIntosurveyAnswersTable(int QuestionNum, String QuestionAnswer, String CustomerID)
+			throws ParseException {
 
 		String query = "INSERT INTO surveyanswers (" + "QuestionNumber," + "QuestionAnswer," + " CustomerID) VALUES ("
 				+ "?, ?, ?)";
@@ -72,9 +72,9 @@ public class mainQuery {
 		} catch (SQLException e) {
 		}
 	}
-	
-	public static void DeleteRowFromDB1(String TableName,String condition) {
-		String query = "DELETE FROM zli_db."+TableName +" WHERE (" + condition + ")";
+
+	public static void DeleteRowFromDB1(String TableName, String condition) {
+		String query = "DELETE FROM zli_db." + TableName + " WHERE (" + condition + ")";
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(query);
@@ -83,11 +83,11 @@ public class mainQuery {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void InsertOneRowIntoCustomerTable(Users user) throws ParseException {
 
 		String query = "INSERT INTO customer (" + "ID," + "FirstName," + " LastName," + " Email," + " PhoneNumber,"
-				+ " UserType," + " LogInStatus," + " ConfirmationStatus,"+" CreditCard,"+" Balance) VALUES ("
+				+ " UserType," + " LogInStatus," + " ConfirmationStatus," + " CreditCard," + " Balance) VALUES ("
 				+ "?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
 		PreparedStatement pstmt = null;
@@ -100,7 +100,7 @@ public class mainQuery {
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
 			pstmt.setBoolean(7, user.isLogInStatus());
-			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
+			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
 			pstmt.setDouble(10, 0);
 			pstmt.executeUpdate();
@@ -108,11 +108,11 @@ public class mainQuery {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void InsertOneRowIntoWorkerTable(Users user) throws ParseException {
 
 		String query = "INSERT INTO worker (" + "ID," + "FirstName," + " LastName," + " Email," + " PhoneNumber,"
-				+ " UserType," + " LogInStatus," + " ConfirmationStatus,"+" Sales) VALUES ("
+				+ " UserType," + " LogInStatus," + " ConfirmationStatus," + " Sales) VALUES ("
 				+ "?, ?, ?, ?, ?, ?, ?, ?,?)";
 
 		PreparedStatement pstmt = null;
@@ -125,18 +125,18 @@ public class mainQuery {
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
 			pstmt.setBoolean(7, user.isLogInStatus());
-			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
+			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void InsertOneRowIntoServicesTable(Users user) throws ParseException {
 
-		String query = "INSERT INTO servicespecialist (" + "ID," + "FirstName," + " LastName," + " Email," + " PhoneNumber,"
-				+ " UserType," + " LogInStatus," + " ConfirmationStatus) VALUES ("
+		String query = "INSERT INTO servicespecialist (" + "ID," + "FirstName," + " LastName," + " Email,"
+				+ " PhoneNumber," + " UserType," + " LogInStatus," + " ConfirmationStatus) VALUES ("
 				+ "?, ?, ?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement pstmt = null;
@@ -149,17 +149,17 @@ public class mainQuery {
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
 			pstmt.setBoolean(7, user.isLogInStatus());
-			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
+			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void InsertOneRowIntoCostomerServicesTable(Users user) throws ParseException {
 
-		String query = "INSERT INTO customerserviceworker (" + "ID," + "FirstName," + " LastName," + " Email," + " PhoneNumber,"
-				+ " UserType," + " LogInStatus," + " ConfirmationStatus) VALUES ("
+		String query = "INSERT INTO customerserviceworker (" + "ID," + "FirstName," + " LastName," + " Email,"
+				+ " PhoneNumber," + " UserType," + " LogInStatus," + " ConfirmationStatus) VALUES ("
 				+ "?, ?, ?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement pstmt = null;
@@ -172,16 +172,17 @@ public class mainQuery {
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
 			pstmt.setBoolean(7, user.isLogInStatus());
-			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
+			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
 	public static void InsertOneRowIntoDeliveryPersonTable(Users user) throws ParseException {
 
-		String query = "INSERT INTO deliveryperson (" + "ID," + "FirstName," + " LastName," + " Email," + " PhoneNumber,"
-				+ " UserType," + " LogInStatus," + " ConfirmationStatus,"+" Branch) VALUES ("
+		String query = "INSERT INTO deliveryperson (" + "ID," + "FirstName," + " LastName," + " Email,"
+				+ " PhoneNumber," + " UserType," + " LogInStatus," + " ConfirmationStatus," + " Branch) VALUES ("
 				+ "?, ?, ?, ?, ?, ?, ?, ?,?)";
 
 		PreparedStatement pstmt = null;
@@ -194,13 +195,14 @@ public class mainQuery {
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
 			pstmt.setBoolean(7, user.isLogInStatus());
-			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
-			pstmt.setString(9,"");
+			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
+			pstmt.setString(9, "");
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
 	public static void insertOneRowIntoCustomerTable(String id, String FirstName, String LastName, String Email,
 			String PhoneNumber, String UserType, String LogInStatus, ConfirmationStatus Status, String CreditCard,
 			Double Balance) {
@@ -363,15 +365,14 @@ public class mainQuery {
 	public static void InsertOneRowIntoOrderTable(String orderNumber, String customerID, Branch branch,
 			OrderStatus orderstatus, Timestamp orderDate, Timestamp estimatedDate, Timestamp actualDate,
 			TypeOfSupply supplyType, double totalPrice, double deliveryCost, String customerName,
-			String deliveryAddress, String Item, String PhoneNumber, String greetingCard, RefundStatus refundstatus)
-			throws ParseException {
+			String deliveryAddress, String Item, String PhoneNumber, String greetingCard) throws ParseException {
 
 		// String estimatedSupplyDateAndTime =
 		// DateTimeHandler.convertMySqlDateTimeFormatToString(estimatedSupplyDateTime);
 		String query = "INSERT INTO orders (" + " OrderNumber," + " CustomerID," + " Branch," + " OrderStatus,"
 				+ " OrderDate," + " EstimatedOrderDate," + " ActualOrderDate," + "SupplyType," + "TotalPrice,"
 				+ "DeliveryCost," + "CustomerName," + "DeliveryAddress," + "AllItems," + "PhoneNumber,"
-				+ "GreetingCard," + "RefundStatus) VALUES (" + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
+				+ "GreetingCard) VALUES (" + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(query);
@@ -390,29 +391,27 @@ public class mainQuery {
 			pstmt.setString(13, Item);
 			pstmt.setString(14, PhoneNumber);
 			pstmt.setString(15, greetingCard);
-			pstmt.setString(16, String.valueOf(refundstatus));
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void InsertOneRowIntoComplaintTable(int complaintNumber, String customerId, String complaintDate,
-			String branchName, String orderNumber, double totalPrice, String text) throws ParseException {
+	public static void InsertOneRowIntoComplaintTable(int complaintid, int complaintnumber, String customerid,
+			int ordernumber, Timestamp date, Branch branch, String text) throws ParseException {
 
-		// String estimatedSupplyDateAndTime =
-		// DateTimeHandler.convertMySqlDateTimeFormatToString(estimatedSupplyDateTime);
-		String query = "INSERT INTO complaints (" + " complaintNumber," + " customerId," + " orderNumber,"
-				+ " complaintDate," + " branchName," + " totalPrice," + " text) VALUES (" + "?, ?, ?, ?, ?, ?, ?)";
+		System.out.println(branch);
+		String query = "INSERT INTO complaint (" + " ComplaintID," + " ComplaintNum," + " CustomerID," + " OrderID,"
+				+ " Date," + " Branch," + " Text) VALUES (" + "?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, complaintNumber);
-			pstmt.setString(2, customerId);
-			pstmt.setString(3, complaintDate);
-			pstmt.setString(4, branchName);
-			pstmt.setString(5, orderNumber);
-			pstmt.setDouble(6, totalPrice);
+			pstmt.setInt(1, complaintid);
+			pstmt.setInt(2, complaintnumber);
+			pstmt.setString(3, customerid);
+			pstmt.setInt(4, ordernumber);
+			pstmt.setTimestamp(5, date);
+			pstmt.setString(6, String.valueOf(branch));
 			pstmt.setString(7, text);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

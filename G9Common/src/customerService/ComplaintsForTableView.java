@@ -25,6 +25,7 @@ public class ComplaintsForTableView {
 		this.branchName = complaint.getBranchName();
 		this.text = complaint.getText();
 		this.totalPrice = complaint.getTotalPrice();
+		this.complaintNum = complaint.getComplaintNum();
 
 	}
 

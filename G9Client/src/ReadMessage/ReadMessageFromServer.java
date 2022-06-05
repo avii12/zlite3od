@@ -20,13 +20,13 @@ import ClientGUIControllers.CatalogManagement;
 import ClientGUIControllers.ChangeCustomerStatusController;
 import ClientGUIControllers.ChangeUserPermissionController;
 import ClientGUIControllers.ComplaintHandelingController;
+import ClientGUIControllers.ComplaintRefundController;
 import ClientGUIControllers.CustomerPageController;
 import ClientGUIControllers.CustomerServiceWorkerPageController;
 import ClientGUIControllers.DeliveryPersonPageController;
 import ClientGUIControllers.FillSurveyController;
 import ClientGUIControllers.GraphController;
 import ClientGUIControllers.LoginController;
-import ClientGUIControllers.MakeComplaintForCustomerController;
 import ClientGUIControllers.PaymentController;
 import ClientGUIControllers.ServiceExpertPageController;
 import ClientGUIControllers.StartSalesController;
@@ -509,7 +509,8 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_COMPLAINTS:
-
+					ComplaintHandelingController.complaintListFromDB = null;
+					ComplaintHandelingController.message.setResponse(Response.NO_COMPLAINTS);
 					break;
 
 				case COMPLAINTS_FOUND:
@@ -540,6 +541,16 @@ public class ReadMessageFromServer {
 
 			case UPDATE_TYPE_USER:
 				ChangeUserPermissionController.message.setResponse(MessageFromServer.getResponse());
+				break;
+
+			case UPDATE_BALANCE_AFTER_COMPLAINT:
+				switch (ResponseFromServer) {
+
+				case UPDATE_BALANCE_AFTER_COMPLAINT_SUCCEEDED:
+					ComplaintRefundController.message.setResponse(ResponseFromServer);
+					ComplaintRefundController.message.setObject(ReturnedObjectFromDB);
+					break;
+				}
 				break;
 
 			}

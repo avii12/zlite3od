@@ -45,7 +45,7 @@ public class ComplaintsQuery {
 		}
 		returnMessageToClient.setObject(complaintList);
 		returnMessageToClient.setResponse(Response.COMPLAINTS_FOUND);
-		System.out.println((returnMessageToClient.getRequest().toString()));
+
 
 		return returnMessageToClient;
 	}
@@ -54,6 +54,7 @@ public class ComplaintsQuery {
 		try {
 			int complaintID = rs.getInt(1);
 			int complaintnum = rs.getInt(2);
+			System.out.println(complaintID + " " + complaintnum + "\n");
 			String customerID = rs.getString(3);
 			int ordernum = rs.getInt(4);
 			Timestamp complaintdate = rs.getTimestamp(5);
@@ -70,20 +71,21 @@ public class ComplaintsQuery {
 	}
 
 	public static FullMessage AddComplaintToDB(FullMessage messageFromClient) throws SQLException, ParseException {
-		return messageFromClient;
-		/*
-		 * Complaint complaint = (Complaint) messageFromClient.getObject(); FullMessage
-		 * returnMessageToClient = messageFromClient; int complaintNumber =
-		 * complaint.getComplaintNumber(); String customerId =
-		 * complaint.getCustomerId(); String complaintDate =
-		 * complaint.getComplaintDate(); String branchName = complaint.getBranchName();
-		 * System.out.println(branchName); String orderNumber =
-		 * complaint.getOrderNumber(); double totalPrice = complaint.getTotalPrice();
-		 * String text = complaint.getText();
-		 * 
-		 * mainQuery.InsertOneRowIntoComplaintTable(complaintNumber, customerId,
-		 * complaintDate, branchName, orderNumber, totalPrice, text);
-		 */
+
+		Complaint complaint = (Complaint) messageFromClient.getObject();
+		FullMessage returnMessageToClient = messageFromClient;
+		int complaintid = complaint.getComplaintID();
+		int complaintnumber = complaint.getComplaintNum();
+		String customerid = complaint.getCustomerId();
+		int ordernumber = complaint.getOrderNumber();
+		Timestamp date = complaint.getComplaintDate();
+		Branch branch = complaint.getBranchName();
+		String text = complaint.getText();
+
+		mainQuery.InsertOneRowIntoComplaintTable(complaintid, complaintnumber, customerid, ordernumber, date, branch,
+				text);
+
+		return returnMessageToClient;
 
 	}
 }

@@ -297,11 +297,9 @@ public class OrderQuery {
 			String DeliveryAddress = rs.getString(12);
 			String AllItems = rs.getString(13);
 			String GreetingCard = rs.getString(15);
-			RefundStatus refundstatus = RefundStatus.valueOf(rs.getString(16));
 
 			return new Order(OrderNumber, CustomerID, branch, orderStatus, OrderDate, EstimatedDate, ActualDate,
-					SupplayType, TotalPrice, DeliveryCost, CustomerName, DeliveryAddress, AllItems, GreetingCard,
-					refundstatus);
+					SupplayType, TotalPrice, DeliveryCost, CustomerName, DeliveryAddress, AllItems, GreetingCard);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -328,9 +326,8 @@ public class OrderQuery {
 		String items = order.getAllItems();
 		String phone = order.getPhoneNumber();
 		String greetingCard = order.getGreetingCard();
-		RefundStatus refundtstaus = order.getRefundStatus();
 		mainQuery.InsertOneRowIntoOrderTable(ordernumber, customerID, branch, orderstatus, orderdate, estimated,
-				actualdate, type, price, deliveryCost, name, address, items, phone, greetingCard, refundtstaus);
+				actualdate, type, price, deliveryCost, name, address, items, phone, greetingCard);
 		return returnMessageToClient;
 	}
 

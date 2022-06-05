@@ -1,5 +1,6 @@
 package ClientGUIControllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -12,11 +13,13 @@ import Orders.RefundStatus;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import customerService.Complaint;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,7 +38,7 @@ import javafx.stage.StageStyle;
 public class WorkerInsertComplaintChooseOrder extends UsersController implements Initializable {
 
 	public static FullMessage message;
-	private Complaint complaint;
+	public static Complaint complaint;
 	public static ArrayList<Order> OrderFromDB = new ArrayList<>();
 	public ObservableList<Order> customers = FXCollections.observableArrayList();
 	public static ObservableList<Order> selectedorder;
@@ -90,6 +93,37 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 		message = new FullMessage(Request.Disconnect, Response.Wait, null);
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
+	}
+	
+	@FXML
+	public void ChooseOrder(ActionEvent event) throws IOException {
+
+		selectedorder = OrderTable.getSelectionModel().getSelectedItems();
+		if (selectedorder.size() == 0) {
+			PopUpMsg.AlertForUser("Please Select an order to continue!!");
+		} else {
+
+			String ordernumber = String.valueOf(selectedorder.get(0).getOrderNumber());
+			int ordernumberParsed = Integer.parseInt(ordernumber);
+			complaint.setOrderNumber(ordernumberParsed);
+			complaint.setBranchName(selectedorder.get(0).getBranch());
+			PopUpMsg.AlertForUser("Order Number " + selectedorder.get(0).getOrderNumber() + " is Selected");
+			((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
+			Stage primaryStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/WriteComplaintForCustomer.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.initStyle(StageStyle.UNDECORATED);
+			scene.setOnMousePressed(pressEvent -> {
+				scene.setOnMouseDragged(dragEvent -> {
+					primaryStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+					primaryStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+				});
+			});
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		}
+
 	}
 
 	@FXML

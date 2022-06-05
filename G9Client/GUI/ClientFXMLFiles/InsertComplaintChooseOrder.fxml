@@ -58,7 +58,7 @@
         </columns>
       </TableView>
       <Text layoutX="34.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the order that the customer complainted about" wrappingWidth="186.13671875" />
-      <Button layoutX="434.0" layoutY="426.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Choose Order" textFill="WHITE" />
+      <Button layoutX="434.0" layoutY="426.0" mnemonicParsing="false" onAction="#ChooseOrder" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Choose Order" textFill="WHITE" />
       <Label fx:id="ErrorLabel" layoutX="374.0" layoutY="394.0" prefHeight="17.0" prefWidth="245.0" />
    </children>
 </AnchorPane>

@@ -3,7 +3,6 @@ package Orders;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 public class Order implements Serializable {
 
 	/**
@@ -27,11 +26,11 @@ public class Order implements Serializable {
 	public String AllItems;
 	public String PhoneNumber;
 	public String GreetingCard;
-    public RefundStatus refundStatus;
 
 	public Order(String orderNumber, String customerID, Branch branch, OrderStatus orderstatus, Timestamp orderDate,
-			Timestamp estimatedDate, Timestamp actualDate, TypeOfSupply supplyType, double totalPrice, ItemCategory item,
-			String customerName, double deliveryCost, String deliveryAddress,String Items,String GreetingCard,RefundStatus refundstatus ) {
+			Timestamp estimatedDate, Timestamp actualDate, TypeOfSupply supplyType, double totalPrice,
+			ItemCategory item, String customerName, double deliveryCost, String deliveryAddress, String Items,
+			String GreetingCard) {
 
 		super();
 		OrderNumber = orderNumber;
@@ -48,7 +47,6 @@ public class Order implements Serializable {
 		DeliveryCost = deliveryCost;
 		DeliveryAddress = deliveryAddress;
 		AllItems = Items;
-		refundStatus=refundstatus;
 	}
 
 	public Order(String OrderNumber, String CustomerName, String DeliveryAddress) {
@@ -85,7 +83,8 @@ public class Order implements Serializable {
 
 	public Order(String orderNumber2, String customerID2, Branch branch2, OrderStatus orderStatus2,
 			Timestamp orderDate2, Timestamp estimatedDate2, Timestamp actualDate2, TypeOfSupply supplyType,
-			double totalPrice2, double deliveryCost2, String customerName2, String deliveryAddress2, String Item,String GreetingCard,RefundStatus refundstatus) {
+			double totalPrice2, double deliveryCost2, String customerName2, String deliveryAddress2, String Item,
+			String GreetingCard) {
 
 		this.OrderNumber = orderNumber2;
 		this.CustomerID = customerID2;
@@ -102,7 +101,6 @@ public class Order implements Serializable {
 		this.DeliveryAddress = deliveryAddress2;
 		this.AllItems = Item;
 		this.GreetingCard = GreetingCard;
-		this.refundStatus=refundstatus;
 
 	}
 
@@ -120,18 +118,7 @@ public class Order implements Serializable {
 		this.DeliveryCost = order.getDeliveryCost();
 		this.DeliveryAddress = order.getDeliveryAddress();
 		this.AllItems = order.getAllItems();
-		this.GreetingCard=order.getGreetingCard();
-		this.refundStatus=order.getRefundStatus();
-	}
-	
-	
-
-	public RefundStatus getRefundStatus() {
-		return refundStatus;
-	}
-
-	public void setRefundStatus(RefundStatus refundStatus) {
-		this.refundStatus = refundStatus;
+		this.GreetingCard = order.getGreetingCard();
 	}
 
 	public String getGreetingCard() {
@@ -280,8 +267,7 @@ public class Order implements Serializable {
 				+ ", ActualDate=" + ActualDate + ", SupplyType=" + SupplyType + ", TotalPrice=" + TotalPrice + ", Item="
 				+ Item + ", CustomerName=" + CustomerName + ", DeliveryCost=" + DeliveryCost + ", DeliveryAddress="
 				+ DeliveryAddress + ", AllItems=" + AllItems + ", PhoneNumber=" + PhoneNumber + ", GreetingCard="
-				+ GreetingCard + ", refundStatus=" + refundStatus + "]";
+				+ GreetingCard + ", refundStatus=" + "]";
 	}
 
-	
 }

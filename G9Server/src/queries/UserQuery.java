@@ -38,8 +38,8 @@ public class UserQuery {
 		returnMessageToClient.setObject(status);
 		return returnMessageToClient;
 	}
-	
-	public static FullMessage GetCustomerFromDB(FullMessage messageFromClient) throws SQLException{
+
+	public static FullMessage GetCustomerFromDB(FullMessage messageFromClient) throws SQLException {
 		FullMessage returnMessageToClient = messageFromClient;
 		List<customer> CustomerList = new ArrayList<customer>();
 
@@ -67,24 +67,23 @@ public class UserQuery {
 		return returnMessageToClient;
 
 	}
-	
-	public static FullMessage UpdateCustomerStatus(FullMessage messageFromClient) throws SQLException{
+
+	public static FullMessage UpdateCustomerStatus(FullMessage messageFromClient) throws SQLException {
 		FullMessage returnedMessage = messageFromClient;
 		String condition1;
 		customer MsgFromClient = ((customer) returnedMessage.getObject());
 		String id = MsgFromClient.getCustomerID();
-		if(MsgFromClient.getStatus().equals(ConfirmationStatus.FROZEN)) {
-		 condition1 = "ConfirmationStatus='FROZEN'";
-		}
-		else {
-			 condition1 = "ConfirmationStatus='CONFIRMED'";
+		if (MsgFromClient.getStatus().equals(ConfirmationStatus.FROZEN)) {
+			condition1 = "ConfirmationStatus='FROZEN'";
+		} else {
+			condition1 = "ConfirmationStatus='CONFIRMED'";
 		}
 		String condition2 = "ID=" + id;
 		mainQuery.updateTuple("customer", condition1, condition2);
 		returnedMessage.setResponse(Response.EDIT_SUCCEED);
 		return returnedMessage;
 	}
-	
+
 	public static FullMessage GetUsersFromDB(FullMessage messageFromClient) throws SQLException {
 		String UserType = (String) messageFromClient.getObject();
 		FullMessage returnMessageToClient = messageFromClient;
@@ -114,7 +113,7 @@ public class UserQuery {
 		return returnMessageToClient;
 
 	}
-	
+
 	public static FullMessage ChangeUsersFromDB(FullMessage messageFromClient) throws SQLException {
 		FullMessage returnedMessage = messageFromClient;
 		Users user = null;
@@ -136,7 +135,7 @@ public class UserQuery {
 		return messageFromClient;
 
 	}
-	
+
 	public static void InserToNewTable(String NewTable, Users user) throws SQLException {
 
 		switch (NewTable) {
@@ -184,7 +183,7 @@ public class UserQuery {
 		}
 
 	}
-	
+
 	public static FullMessage manageTheUsers(String TableName, String condition1, String condition2,
 			FullMessage messageFromClient) throws SQLException {
 		Users user = null;
@@ -213,7 +212,7 @@ public class UserQuery {
 		messageFromClient.setObject(user);
 		return messageFromClient;
 	}
-	
+
 	private static Users convertToUser(ResultSet rs) {
 		Users user = null;
 		try {
@@ -235,8 +234,7 @@ public class UserQuery {
 		return null;
 
 	}
-	
-	
+
 	private static Users convertToUsers(ResultSet rs) {
 		try {
 			int id = rs.getInt(1);
@@ -284,7 +282,7 @@ public class UserQuery {
 			String email = rs.getString(4);
 			ConfirmationStatus confirmation = ConfirmationStatus.valueOf(rs.getString(8));
 			return new customer(id, firstname, lastname, email, confirmation);
-					
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -292,7 +290,7 @@ public class UserQuery {
 		return null;
 
 	}
-	
+
 	private static Customer convertToCustomer(ResultSet rs) {
 		try {
 			String id = rs.getString(1);
@@ -360,25 +358,35 @@ public class UserQuery {
 
 	public static FullMessage restoreOldBalanceAfterComplaint(FullMessage messageFromClient) throws SQLException {
 		FullMessage returnMessageToClient = messageFromClient;
-		Object fromMessage = messageFromClient.getObject();
+		Complaint comp = (Complaint) messageFromClient.getObject();
 
-		Complaint comp = (Complaint) fromMessage;
 		String customerId = comp.getCustomerId();
 		int complaintNumber = comp.getComplaintNum();
-		Double refundPrice = comp.getTotalPrice();
+		int ordernum = comp.getOrderNumber();
 		Double balance = 0.0;
+		Double totalprice = 0.0;
 		Double priceAfterRefund = 0.0;
-
-		ResultSet rs = mainQuery.getRowFromDB("customer", "ID='" + customerId + "'");
+		ResultSet rs = mainQuery.getRowFromDB("orders", "OrderNumber='" + ordernum + "'");
 		if (rs.next())
-			balance = rs.getDouble(10);
+			totalprice = rs.getDouble(9);
+		else
+			return returnMessageToClient;
 
 		rs.close();
+		
+		ResultSet rs1 = mainQuery.getRowFromDB("customer", "ID='" + customerId + "'");
+		if (rs1.next()) 
+			balance = rs1.getDouble(10);
+		else
+			return returnMessageToClient;
+                             
+		rs1.close();
 
-		priceAfterRefund = balance + refundPrice;
+		priceAfterRefund = balance + totalprice;
 		mainQuery.updateTuple("customer", "Balance='" + priceAfterRefund + "'", "ID='" + customerId + "'");
-		mainQuery.DeleteRowFromDB("complaintNumber ='" + complaintNumber + "'", "complaints");
+		mainQuery.DeleteRowFromDB("ComplaintNum ='" + complaintNumber + "'", "complaint");
 		returnMessageToClient.setResponse(Response.UPDATE_BALANCE_AFTER_COMPLAINT_SUCCEEDED);
+		returnMessageToClient.setObject(totalprice);
 		return returnMessageToClient;
 
 	}
@@ -388,12 +396,12 @@ public class UserQuery {
 		FullMessage returnMessageToClient = message;
 		String id = ((String) message.getObject());
 		String condition = "ID='" + id + "'";
-		ResultSet rs = mainQuery.getTuple("worker",condition);
-		Branch branch=null;
+		ResultSet rs = mainQuery.getTuple("worker", condition);
+		Branch branch = null;
 
 		if (rs.next()) {
 
-			branch = Branch.valueOf(rs.getString(10));		
+			branch = Branch.valueOf(rs.getString(10));
 		}
 		returnMessageToClient.setObject(branch);
 		return returnMessageToClient;

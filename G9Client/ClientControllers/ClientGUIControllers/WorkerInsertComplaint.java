@@ -83,7 +83,6 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 			case NO_COMPLAINT_FOUND:
 
 				complaintnum = 1;
-				System.out.println(complaintnum + "first");
 				complaint.setComplaintNum(complaintnum);
 				break;
 
@@ -91,7 +90,6 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 
 				complaintnum = (int) message.getObject();
 				complaintnum++;
-				System.out.println(complaintnum + "after increment");
 				complaint.setComplaintNum(complaintnum);
 				break;
 
@@ -133,7 +131,7 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 
 		selectedcustomer = CustomerTable.getSelectionModel().getSelectedItems();
 		if (selectedcustomer.size() == 0) {
-			PopUpMsg.AlertForUser("Please Select Items to Add to Cart");
+			PopUpMsg.AlertForUser("Please Select a user to continue");
 		} else {
 
 			String id = String.valueOf(selectedcustomer.get(0).getUserID());

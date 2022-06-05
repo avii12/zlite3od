@@ -3,13 +3,16 @@ package ClientGUIControllers;
 import java.io.IOException;
 
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import Orders.Branch;
 import Orders.ItemsForTableView;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import customerService.Complaint;
 import customerService.ComplaintsForTableView;
@@ -22,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,17 +43,20 @@ public class ComplaintHandelingController extends UsersController implements Ini
 	@FXML
 	private TableView<ComplaintsForTableView> complaintTable;
 	@FXML
-	private TableColumn<ComplaintsForTableView, String> complaintDateCol;
+	private TableColumn<ComplaintsForTableView, Timestamp> complaintDateCol;
 	@FXML
-	private TableColumn<ComplaintsForTableView, String> branchNameCol;
+	private TableColumn<ComplaintsForTableView, Branch> branchNameCol;
 	@FXML
-	private TableColumn<ComplaintsForTableView, String> orderNumberCol;
+	private TableColumn<ComplaintsForTableView, Integer> orderNumberCol;
 	@FXML
-	private TableColumn<ComplaintsForTableView, String> complaintNumberCol;
+	private TableColumn<ComplaintsForTableView, Integer> complaintNumberCol;
 	@FXML
 	private TableColumn<ComplaintsForTableView, String> customerIdCol;
 
 	public static FullMessage message;
+
+	public static ObservableList<ComplaintsForTableView> complaints;
+	public static ObservableList<ComplaintsForTableView> selectedComplaint;
 
 	@FXML
 	private Text errorText;
@@ -105,8 +112,7 @@ public class ComplaintHandelingController extends UsersController implements Ini
 	@FXML
 	public void ShowCustomerComplaint(ActionEvent event) throws Exception {
 
-		ObservableList<ComplaintsForTableView> selectedComplaint = complaintTable.getSelectionModel()
-				.getSelectedItems();
+		selectedComplaint = complaintTable.getSelectionModel().getSelectedItems();
 		if (selectedComplaint.isEmpty()) {
 			errorText.setText("Please select a complaint");
 			errorText.setFill(Color.RED);
@@ -132,25 +138,34 @@ public class ComplaintHandelingController extends UsersController implements Ini
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		ObservableList<ComplaintsForTableView> complaints = FXCollections.observableArrayList();
-		message = new FullMessage(Request.GET_COMPLAINT_FROM_DB, Response.Wait, "complaints");
+		complaints = FXCollections.observableArrayList();
+		message = new FullMessage(Request.GET_COMPLAINT_FROM_DB, Response.Wait, "complaint");
 		ZliClientUI.ZliClientController.accept(message);
 
-		for (int i = 0; i < complaintListFromDB.size(); i++)
-			complaints.add(new ComplaintsForTableView(complaintListFromDB.get(i)));
+		if (message.getResponse().equals(Response.NO_COMPLAINTS)) {
+			if (complaints.size() != 0)
+				complaints.clear();
+		}
 
-		System.out.println(complaints.toString()+"fdsf");
-		
-		complaintNumberCol
-				.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, String>("complaintNum"));
-		orderNumberCol.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, String>("OrderNumber"));
-		customerIdCol.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, String>("customerId"));
-		complaintDateCol.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, String>("complaintDate"));
-		branchNameCol.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, String>("branchName"));
+		else {
 
-		complaintTable.setItems(complaints);
-		complaintTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-		complaintTable.refresh();
+			for (int i = 0; i < complaintListFromDB.size(); i++)
+				complaints.add(new ComplaintsForTableView(complaintListFromDB.get(i)));
+
+			complaintNumberCol
+					.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, Integer>("complaintNum"));
+			orderNumberCol
+					.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, Integer>("OrderNumber"));
+			customerIdCol.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, String>("customerId"));
+			complaintDateCol
+					.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, Timestamp>("complaintDate"));
+			branchNameCol.setCellValueFactory(new PropertyValueFactory<ComplaintsForTableView, Branch>("branchName"));
+
+			complaintTable.setItems(complaints);
+			complaintTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+			complaintTable.refresh();
+			System.out.println(complaints);
+		}
 
 	}
 
