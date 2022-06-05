@@ -1,36 +1,49 @@
 package customerService;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+
+import Orders.Branch;
 
 public class Complaint implements Serializable {
 
-	private int complaintNumber;
+	private int complaintID;
+	private int complaintNum;
 	private String customerId;
-	private String complaintDate;
-	private String branchName;
-	private String OrderNumber;
-	private double totalPrice;
+	private int OrderNumber;
+	private Timestamp complaintDate;
+	private Branch branchName;
 	private String text;
+	private double totalPrice;
 
-	public Complaint(int complaintNumber, String customerId, String complaintDate, String branchName,
-			String orderNumber, double totalPrice, String text) {
+	public Complaint(int complaintID, int complaintNum, String customerId, int OrderNumber, Timestamp complaintDate,
+			Branch branchName, String text, double totalprice) {
 		super();
-		this.complaintNumber = complaintNumber;
+		this.complaintID = complaintID;
+		this.complaintNum = complaintNum;
 		this.customerId = customerId;
+		this.OrderNumber = OrderNumber;
 		this.complaintDate = complaintDate;
 		this.branchName = branchName;
-		this.OrderNumber = orderNumber;
-		this.totalPrice = totalPrice;
 		this.text = text;
+		this.totalPrice = totalprice;
 
 	}
 
-	public int getComplaintNumber() {
-		return complaintNumber;
+	public int getComplaintID() {
+		return complaintID;
 	}
 
-	public void setComplaintNumber(int complaintNumber) {
-		this.complaintNumber = complaintNumber;
+	public void setComplaintID(int complaintID) {
+		this.complaintID = complaintID;
+	}
+
+	public int getComplaintNum() {
+		return complaintNum;
+	}
+
+	public void setComplaintNum(int complaintNum) {
+		this.complaintNum = complaintNum;
 	}
 
 	public String getCustomerId() {
@@ -41,36 +54,28 @@ public class Complaint implements Serializable {
 		this.customerId = customerId;
 	}
 
-	public String getComplaintDate() {
-		return complaintDate;
-	}
-
-	public void setComplaintDate(String complaintDate) {
-		this.complaintDate = complaintDate;
-	}
-
-	public String getBranchName() {
-		return branchName;
-	}
-
-	public void setBranchName(String branchName) {
-		this.branchName = branchName;
-	}
-
-	public String getOrderNumber() {
+	public int getOrderNumber() {
 		return OrderNumber;
 	}
 
-	public void setOrderNumber(String orderNumber) {
+	public void setOrderNumber(int orderNumber) {
 		OrderNumber = orderNumber;
 	}
 
-	public double getTotalPrice() {
-		return totalPrice;
+	public Timestamp getComplaintDate() {
+		return complaintDate;
 	}
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setComplaintDate(Timestamp complaintDate) {
+		this.complaintDate = complaintDate;
+	}
+
+	public Branch getBranchName() {
+		return branchName;
+	}
+
+	public void setBranchName(Branch branchName) {
+		this.branchName = branchName;
 	}
 
 	public String getText() {
@@ -81,11 +86,21 @@ public class Complaint implements Serializable {
 		this.text = text;
 	}
 
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	@Override
 	public String toString() {
-		return "Complaint [complaintNumber=" + complaintNumber + ", customerId=" + customerId + ", complaintDate="
-				+ complaintDate + ", branchName=" + branchName + ", OrderNumber=" + OrderNumber + ", totalPrice="
-				+ totalPrice + ", text=" + text + "]";
+		return "Complaint [complaintID=" + complaintID + ", complaintNum=" + complaintNum + ", customerId=" + customerId
+				+ ", OrderNumber=" + OrderNumber + ", complaintDate=" + complaintDate + ", branchName=" + branchName
+				+ ", text=" + text + ", totalPrice=" + totalPrice + "]";
 	}
+	
+	
 
 }

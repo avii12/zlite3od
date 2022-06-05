@@ -35,6 +35,8 @@ import ClientGUIControllers.ViewReportForBranchManager;
 import ClientGUIControllers.ViewReportsForCEOController;
 import ClientGUIControllers.ViewTwoReportsForOneBranchController;
 import ClientGUIControllers.ViewTwoReportsForTwoBranchesController;
+import ClientGUIControllers.WorkerInsertComplaint;
+import ClientGUIControllers.WorkerInsertComplaintChooseOrder;
 import ClientGUIControllers.WorkerPageController;
 import Orders.Item;
 
@@ -190,10 +192,25 @@ public class ReadMessageFromServer {
 					PaymentController.message.setObject(MessageFromServer.getObject());
 					break;
 				}
-				
+
+			case GET_LAST_COMPLAINT_NUMBER:
+
+				switch (ResponseFromServer) {
+
+				case NO_COMPLAINT_FOUND:
+					WorkerInsertComplaint.message.setResponse(Response.NO_COMPLAINT_FOUND);
+					WorkerInsertComplaint.message.setObject("1");
+					break;
+
+				case NOT_FIRST_COMPLAINT:
+					WorkerInsertComplaint.message.setResponse(Response.NOT_FIRST_COMPLAINT);
+					WorkerInsertComplaint.message.setObject(MessageFromServer.getObject());
+					break;
+				}
+
 			case GET_SURVEY_FROM_DB:
 				FillSurveyController.message.setResponse(MessageFromServer.getResponse());
-				FillSurveyController.ArrayForSurvey= (ArrayList<survey>) MessageFromServer.getObject();
+				FillSurveyController.ArrayForSurvey = (ArrayList<survey>) MessageFromServer.getObject();
 				break;
 			case SET_SURVEY_ANSWER:
 				FillSurveyController.message.setResponse(MessageFromServer.getResponse());
@@ -361,12 +378,12 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_ORDER_FOUND:
-					MakeComplaintForCustomerController.message.setResponse(Response.NO_ORDER_FOUND);
+					WorkerInsertComplaintChooseOrder.message.setResponse(Response.NO_ORDER_FOUND);
 					break;
 
 				case ORDER_FOUND_FOR_MANAGER:
-					MakeComplaintForCustomerController.message.setResponse(Response.ORDER_FOUND_FOR_CUSTOMER);
-					MakeComplaintForCustomerController.OrderFromDB = (ArrayList<Order>) MessageFromServer.getObject();
+					WorkerInsertComplaintChooseOrder.message.setResponse(Response.ORDER_FOUND_FOR_CUSTOMER);
+					WorkerInsertComplaintChooseOrder.OrderFromDB = (ArrayList<Order>) MessageFromServer.getObject();
 					break;
 
 				}
@@ -514,6 +531,11 @@ public class ReadMessageFromServer {
 				ChangeUserPermissionController.message.setResponse(MessageFromServer.getResponse());
 				ChangeUserPermissionController.ArrayForChangedPermission = (ArrayList<Users>) MessageFromServer
 						.getObject();
+				break;
+
+			case GET_USERS_FROM_DB_FOR_WORKER:
+				WorkerInsertComplaint.message.setResponse(MessageFromServer.getResponse());
+				WorkerInsertComplaint.ArrayForCustomers = (ArrayList<Users>) MessageFromServer.getObject();
 				break;
 
 			case UPDATE_TYPE_USER:

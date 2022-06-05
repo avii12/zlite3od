@@ -27,8 +27,6 @@ public class Customer extends User implements Serializable {
 		this.balance = balance;
 	}
 
-	
-
 	public Customer(Customer customer) {
 		super(customer.getID(),customer.getFirstName(),customer.getLastName(),customer.getPhoneNumber(),customer.getType(),customer.getCreditcard(), customer.isLogInStatus(),customer.getConfirmationstatus());
 	this.balance=customer.getBalance();

@@ -1,22 +1,31 @@
 package customerService;
 
+import java.sql.Timestamp;
+
+import Orders.Branch;
+
 public class ComplaintsForTableView {
-	
+
 	private Complaint complaint;
-	private int complaintNumber;
+	private int complaintID;
+	private int complaintNum;
 	private String customerId;
-	private String complaintDate;
-	private String branchName;
-	private String OrderNumber;
-	
+	private int OrderNumber;
+	private Timestamp complaintDate;
+	private Branch branchName;
+	private String text;
+	private double totalPrice;
+
 	public ComplaintsForTableView(Complaint complaint) {
 		this.complaint = complaint;
-		this.complaintNumber = complaint.getComplaintNumber();
+		this.complaintID = complaint.getComplaintID();
 		this.customerId = complaint.getCustomerId();
+		this.OrderNumber = complaint.getOrderNumber();
 		this.complaintDate = complaint.getComplaintDate();
 		this.branchName = complaint.getBranchName();
-		this.OrderNumber = complaint.getOrderNumber();
-		
+		this.text = complaint.getText();
+		this.totalPrice = complaint.getTotalPrice();
+
 	}
 
 	public Complaint getComplaint() {
@@ -27,12 +36,20 @@ public class ComplaintsForTableView {
 		this.complaint = complaint;
 	}
 
-	public int getComplaintNumber() {
-		return complaintNumber;
+	public int getComplaintID() {
+		return complaintID;
 	}
 
-	public void setComplaintNumber(int complaintNumber) {
-		this.complaintNumber = complaintNumber;
+	public void setComplaintID(int complaintID) {
+		this.complaintID = complaintID;
+	}
+
+	public int getComplaintNum() {
+		return complaintNum;
+	}
+
+	public void setComplaintNum(int complaintNum) {
+		this.complaintNum = complaintNum;
 	}
 
 	public String getCustomerId() {
@@ -43,30 +60,51 @@ public class ComplaintsForTableView {
 		this.customerId = customerId;
 	}
 
-	public String getComplaintDate() {
-		return complaintDate;
-	}
-
-	public void setComplaintDate(String complaintDate) {
-		this.complaintDate = complaintDate;
-	}
-
-	public String getBranchName() {
-		return branchName;
-	}
-
-	public void setBranchName(String branchName) {
-		this.branchName = branchName;
-	}
-
-	public String getOrderNumber() {
+	public int getOrderNumber() {
 		return OrderNumber;
 	}
 
-	public void setOrderNumber(String orderNumber) {
+	public void setOrderNumber(int orderNumber) {
 		OrderNumber = orderNumber;
 	}
-	
-	
+
+	public Timestamp getComplaintDate() {
+		return complaintDate;
+	}
+
+	public void setComplaintDate(Timestamp complaintDate) {
+		this.complaintDate = complaintDate;
+	}
+
+	public Branch getBranchName() {
+		return branchName;
+	}
+
+	public void setBranchName(Branch branchName) {
+		this.branchName = branchName;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "ComplaintsForTableView [complaint=" + complaint + ", complaintID=" + complaintID + ", complaintNum="
+				+ complaintNum + ", customerId=" + customerId + ", OrderNumber=" + OrderNumber + ", complaintDate="
+				+ complaintDate + ", branchName=" + branchName + ", text=" + text + ", totalPrice=" + totalPrice + "]";
+	}
 
 }

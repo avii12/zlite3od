@@ -153,7 +153,7 @@ public class CatalogController extends UsersController implements Initializable 
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
 		ClearLists();
 
 		if (status.equals(ConfirmationStatus.FROZEN)) {

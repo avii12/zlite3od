@@ -131,7 +131,11 @@ public class ReadMessageFromClient {
 
 				messageFromClient = OrderQuery.CheckIfFirstOrder(messageFromClient);
 				break;
-
+				
+			case GET_LAST_COMPLAINT_NUMBER:
+				messageFromClient = OrderQuery.CheckIfFirstComplaint(messageFromClient);
+				break;
+			
 			case INSERT_ORDER_TO_DB:
 
 				try {
@@ -299,6 +303,10 @@ public class ReadMessageFromClient {
 			case UPDATE_REFUND_STATUS:
 				OrderQuery.UpdateRefundStatus(messageFromClient);
 				break;
+				
+			case GET_USERS_FROM_DB_FOR_WORKER:
+				messageFromClient=UserQuery.GetUsersFromDB(messageFromClient);
+				break;	
 
 			}
 

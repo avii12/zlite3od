@@ -67,7 +67,7 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 	}
 
 	@FXML
-	public void FinishButton(ActionEvent event) throws IOException {
+	/*public void FinishButton(ActionEvent event) throws IOException {
 
 		if (TextAreaField.getText().equals("")) {
 			PopUpMsg.AlertForUser("Please enter text before submitting Complaint");
@@ -94,7 +94,7 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		}
-	}
+	}*/
 
 	private void errorControl(String message) {
 

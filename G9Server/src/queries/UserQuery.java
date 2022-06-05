@@ -364,7 +364,7 @@ public class UserQuery {
 
 		Complaint comp = (Complaint) fromMessage;
 		String customerId = comp.getCustomerId();
-		int complaintNumber = comp.getComplaintNumber();
+		int complaintNumber = comp.getComplaintNum();
 		Double refundPrice = comp.getTotalPrice();
 		Double balance = 0.0;
 		Double priceAfterRefund = 0.0;

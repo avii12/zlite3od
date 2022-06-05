@@ -73,19 +73,6 @@ public class CartPageController extends UsersController implements Initializable
 	}
 
 	@FXML
-	public void RefreshButton(ActionEvent event) {
-
-		if (CatalogController.ItemsIncart.size() == 0)
-			errorControl("Cart Is Empty!!");
-		else {
-			TextPrice.setText(String.valueOf(TotalPrice));
-			CartTable.setItems(ItemsIncart);
-			CartTable.refresh();
-		}
-
-	}
-
-	@FXML
 	public void RemoveButton(ActionEvent event) {
 
 		if (CatalogController.ItemsIncart.size() == 0) {

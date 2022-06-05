@@ -112,7 +112,7 @@ public class MakeComplaintForCustomerController extends UsersController implemen
 				((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 				Stage primaryStage = new Stage();
 				Parent root = FXMLLoader
-						.load(getClass().getResource("/ClientFXMLFiles/WriteComplaintForCustomer.fxml"));
+						.load(getClass().getResource("/ClientFXMLFiles/InsertComplaintChooseOrder.fxml"));
 				Scene scene = new Scene(root);
 				primaryStage.initStyle(StageStyle.UNDECORATED);
 				scene.setOnMousePressed(pressEvent -> {

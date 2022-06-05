@@ -90,7 +90,7 @@ public class ComplaintRefundController extends UsersController implements Initia
 	public void getReply() {
 		String reply = reply_txt.getText();
 		String customerID = complaint.getCustomerId();
-		String OrderNumber = complaint.getOrderNumber();
+		int OrderNumber = complaint.getOrderNumber();
 	
 
 		// new complaintReplay()

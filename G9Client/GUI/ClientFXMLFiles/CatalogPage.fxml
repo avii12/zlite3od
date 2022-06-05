@@ -75,6 +75,7 @@
               </columns>
             </TableView>
             <Button fx:id="ComposeButton" layoutX="191.0" layoutY="522.0" mnemonicParsing="false" onAction="#ComposeButton" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Compose" textFill="WHITE" />
+            <Text layoutX="28.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="**Press and hold CTRL + Left Mouse Click to start composing**" wrappingWidth="161.0" />
          </children>
       </Pane>
       <ImageView fx:id="CartButton" fitHeight="68.0" fitWidth="71.0" layoutX="1134.0" layoutY="707.0" onMouseClicked="#CartButton" pickOnBounds="true" preserveRatio="true">

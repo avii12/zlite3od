@@ -22,7 +22,7 @@ public class ComplaintsQuery {
 
 		FullMessage returnMessageToClient = messageFromClient;
 		List<Complaint> complaintList = new ArrayList<Complaint>();
-		ResultSet rs = mainQuery.SelectAllFromDB("complaints");
+		ResultSet rs = mainQuery.SelectAllFromDB("complaint");
 		try {
 
 			if (!rs.isBeforeFirst()) {
@@ -37,6 +37,7 @@ public class ComplaintsQuery {
 
 				}
 			}
+			System.out.println(complaintList);
 			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -51,15 +52,15 @@ public class ComplaintsQuery {
 
 	private static Complaint convertToComplaint(ResultSet rs) {
 		try {
-			int complaintNumber = rs.getInt(1);
-			String customerId = rs.getString(2);
-			String orderNumber = rs.getString(3);
-			String firstName = rs.getString(4);
-			String lastName = rs.getString(5);
-			Double totalPrice = rs.getDouble(6);
+			int complaintID = rs.getInt(1);
+			int complaintnum = rs.getInt(2);
+			String customerID = rs.getString(3);
+			int ordernum = rs.getInt(4);
+			Timestamp complaintdate = rs.getTimestamp(5);
+			Branch branchname = Branch.valueOf(rs.getString(6));
 			String text = rs.getString(7);
 
-			return new Complaint(complaintNumber, customerId, orderNumber, firstName, lastName, totalPrice, text);
+			return new Complaint(complaintID, complaintnum, customerID, ordernum, complaintdate, branchname, text, 0.0);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -69,20 +70,20 @@ public class ComplaintsQuery {
 	}
 
 	public static FullMessage AddComplaintToDB(FullMessage messageFromClient) throws SQLException, ParseException {
-		Complaint complaint = (Complaint) messageFromClient.getObject();
-		FullMessage returnMessageToClient = messageFromClient;
-		int complaintNumber = complaint.getComplaintNumber();
-		String customerId = complaint.getCustomerId();
-		String complaintDate = complaint.getComplaintDate();
-		String branchName = complaint.getBranchName();
-		System.out.println(branchName);
-		String orderNumber = complaint.getOrderNumber();
-		double totalPrice = complaint.getTotalPrice();
-		String text = complaint.getText();
-
-		mainQuery.InsertOneRowIntoComplaintTable(complaintNumber, customerId, complaintDate, branchName, orderNumber,
-				totalPrice, text);
-		return returnMessageToClient;
+		return messageFromClient;
+		/*
+		 * Complaint complaint = (Complaint) messageFromClient.getObject(); FullMessage
+		 * returnMessageToClient = messageFromClient; int complaintNumber =
+		 * complaint.getComplaintNumber(); String customerId =
+		 * complaint.getCustomerId(); String complaintDate =
+		 * complaint.getComplaintDate(); String branchName = complaint.getBranchName();
+		 * System.out.println(branchName); String orderNumber =
+		 * complaint.getOrderNumber(); double totalPrice = complaint.getTotalPrice();
+		 * String text = complaint.getText();
+		 * 
+		 * mainQuery.InsertOneRowIntoComplaintTable(complaintNumber, customerId,
+		 * complaintDate, branchName, orderNumber, totalPrice, text);
+		 */
 
 	}
 }
