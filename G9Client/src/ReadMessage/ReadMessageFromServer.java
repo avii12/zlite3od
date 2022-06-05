@@ -334,6 +334,7 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 				case GET_THE_SUBRACTED_DATE_TIME_SUCCEDED:
 					AcceptCancelOrderController.message.setResponse(Response.TIME_FOUND);
+					AcceptCancelOrderController.message.setObject(ReturnedObjectFromDB);
 					break;
 				case GET_THE_SUBRACTED_DATE_TIME_SUCCEDED_FOR_DELIVERY:
 					DeliveryPersonPageController.message.setResponse(Response.TIME_FOUND);

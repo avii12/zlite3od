@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="501.0" prefWidth="834.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.AcceptOrderController">
+<AnchorPane prefHeight="501.0" prefWidth="834.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.AcceptOrderController">
    <children>
       <Pane layoutX="9.0" layoutY="5.0" prefHeight="110.0" prefWidth="115.0">
          <children>
@@ -58,7 +58,7 @@
             <Image url="@../../../G9Common/Pic/Cancel.png" />
          </image>
       </ImageView>
-      <Label fx:id="errorLabel" layoutX="273.0" layoutY="476.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
+      <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="457.0" prefHeight="26.0" prefWidth="458.0" textAlignment="CENTER" textFill="RED" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font size="16.0" />
          </font></Label>

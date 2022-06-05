@@ -1,6 +1,6 @@
 package queries;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ import Orders.ItemType;
 import Orders.OrderStatus;
 import Orders.RefundStatus;
 import Orders.TypeOfSupply;
-import ServerGUIControllers.ServerGuiController;
+
 
 public class mainQuery {
 

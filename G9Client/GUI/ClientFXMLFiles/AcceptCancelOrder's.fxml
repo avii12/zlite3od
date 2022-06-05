@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="169.0" prefWidth="861.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.AcceptCancelOrderController">
+<AnchorPane prefHeight="169.0" prefWidth="861.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.AcceptCancelOrderController">
    <children>
       <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="-5.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -55,5 +55,10 @@
             <Font size="16.0" />
          </font></Label>
       <Line endX="-51.0" endY="-175.0" layoutX="55.0" layoutY="176.0" startX="802.0" startY="-175.0" stroke="#111411" strokeWidth="6.0" />
+      <Label fx:id="ErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="474.0" prefHeight="18.0" prefWidth="436.0" textAlignment="CENTER" textFill="RED" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

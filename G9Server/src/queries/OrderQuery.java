@@ -214,6 +214,7 @@ public class OrderQuery {
 			return returnMessageToClient;
 		}
 		while (rs.next()) {
+			System.out.println(rs.getTimestamp(6));
 			Order orderFromDB = convertToOrder(rs);
 			if (orderFromDB != null) {
 				orderList.add(orderFromDB);
@@ -426,6 +427,7 @@ public class OrderQuery {
 		Double Balance = 0.0;
 		Double NewBalance = 0.0;
 		OrderStatus orderstatus = null;
+		String msg=null;
 
 		String EstimatedString = list.get(0);
 		Timestamp Estimated = Timestamp.valueOf(EstimatedString);
@@ -465,14 +467,14 @@ public class OrderQuery {
 			if (Seconds > 10800 || Seconds < 0) {
 				NewBalance = TotalPrice + Balance;
 				mainQuery.updateTuple("customer", "Balance='" + NewBalance + "'", "ID='" + CustomerID + "'");
+				msg="Customer Got Full Refund";
 			} else if (Seconds < 10800 && Seconds > 5400) {
 				TotalPrice = TotalPrice / 2;
 				NewBalance = Balance + TotalPrice;
 				mainQuery.updateTuple("customer", "Balance='" + NewBalance + "'", "ID='" + CustomerID + "'");
+				msg="Customer Got 50% Refund";
 			} else {
-
-				// pop up message to the client you didn't get back any money from your original
-				// Total price
+				msg="Customer Didn't Get Refund";
 			}
 		} else {
 			// if(orderstatus.equals(OrderStatus.COMPLETED)) {
@@ -491,7 +493,7 @@ public class OrderQuery {
 		// }
 		// need to send the messageForUser in the object for the controller
 		FullMessage messageToClient = new FullMessage(Request.THE_SUBRACTED_DATE_TIME_DONE,
-				Response.GET_THE_SUBRACTED_DATE_TIME_SUCCEDED, null);
+				Response.GET_THE_SUBRACTED_DATE_TIME_SUCCEDED,msg);
 		return messageToClient;
 
 	}

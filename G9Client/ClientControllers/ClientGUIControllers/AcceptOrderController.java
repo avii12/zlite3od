@@ -129,7 +129,7 @@ public class AcceptOrderController extends UsersController implements Initializa
 					Order order = event.getRowValue();
 					order.setOrderstatus(event.getNewValue());
 					if (event.getNewValue() == OrderStatus.APPROVED) {
-
+						errorControl("Customer Order Approved");
 						Orders.remove(order);
 					} else if (event.getNewValue() == OrderStatus.UN_APPROVED) {
 						ArrayList<String> UpdateBalance = new ArrayList<>();
@@ -139,6 +139,7 @@ public class AcceptOrderController extends UsersController implements Initializa
 						message = new FullMessage(Request.UPDATE_BALANCE_ORDER_UNAPPROVED, Response.WAIT_RESPONSE,
 								UpdateBalance);
 						ZliClientUI.ZliClientController.accept(message);
+						errorControl("Customer Got Full Refund");
 						Orders.remove(order);
 					}
 
