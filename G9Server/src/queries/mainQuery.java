@@ -17,11 +17,11 @@ import Orders.ItemType;
 import Orders.OrderStatus;
 import Orders.RefundStatus;
 import Orders.TypeOfSupply;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-=======
+
+
 import ServerGUIControllers.ServerGuiController;
 import Survey.SurveyAnswers;
->>>>>>> 9f2568b gg
+
 
 public class mainQuery {
 
@@ -48,14 +48,13 @@ public class mainQuery {
 		}
 		return rs;
 	}
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 
-	public static void InsertOneRowIntosurveyAnswersTable(int QuestionNum, String QuestionAnswer, String CustomerID)
-			throws ParseException {
-=======
+
+	
+
 	
 	public static void InsertOneRowIntosurveyAnswersTable(SurveyAnswers answerANDid) throws ParseException {
->>>>>>> 9f2568b gg
+
 
 		String query = "INSERT INTO surveyanswers (SurveyID,CustomerID, QuestionNumber,QuestionAnswer) VALUES ("
 				+ "?, ?, ?,?)";
@@ -111,13 +110,13 @@ public class mainQuery {
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
 			pstmt.setBoolean(7, user.isLogInStatus());
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
-=======
+
 			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "100");
->>>>>>> 9f2568b gg
+
 			pstmt.setDouble(10, 0);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -141,13 +140,13 @@ public class mainQuery {
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
 			pstmt.setBoolean(7, user.isLogInStatus());
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
-=======
+
 			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "0");
->>>>>>> 9f2568b gg
+
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -216,13 +215,13 @@ public class mainQuery {
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
 			pstmt.setBoolean(7, user.isLogInStatus());
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
-=======
+
 			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9,"TheSecretGarden");
->>>>>>> 9f2568b gg
+
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

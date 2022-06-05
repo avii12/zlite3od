@@ -28,12 +28,11 @@ public enum Request {
 GET_USERS_FROM_DB, 
 UPDATE_TYPE_USER, 
 GET_SURVEY_FROM_DB,
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+ Upstream, 
 SET_SURVEY_ANSWER, 
 GET_USERS_FROM_DB_FOR_WORKER,
 GET_LAST_COMPLAINT_NUMBER,
-=======
-SET_SURVEY_ANSWER, UPLOAD_FILE,
->>>>>>> 9f2568b gg
+ UPLOAD_FILE,
+
 
 }
