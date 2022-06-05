@@ -35,34 +35,86 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
 
+/**
+ *Class description:  
+ *Controlling The UI Of Branch Manager For Accepting 
+ *Pending Orders that belongs To His Branch 
+ *
+ *@author obied haddad
+ *
+ */
 public class AcceptOrderController extends UsersController implements Initializable {
 
+    /**
+	 * Back Button
+	 */
 	@FXML
 	private ImageView Backbtn;
+	/**
+	 * Exit Button
+	 */
 	@FXML
 	private ImageView Exitbtn;
 
+	/**
+	 *  Table Displays The Orders 
+	 */
 	@FXML
 	private TableView<Order> AcceptTable;
+	/**
+	 * Column That Contains The Order Name
+	 */
 	@FXML
 	private TableColumn<Order, String> OrderNamecol;
+	/**
+	 * Column That Contains The Order Price
+	 */
 	@FXML
 	private TableColumn<Order, Double> PriceCol;
+	/**
+	 * Column That Contains The Order Type
+	 */
 	@FXML
 	private TableColumn<Order, TypeOfSupply> OrderTypeCol;
+	/**
+	 * Column That Contains Order Date
+	 */
 	@FXML
 	private TableColumn<Order, Timestamp> DateCol;
+	/**
+	 * Column That contains The Order Status
+	 */
 	@FXML
 	private TableColumn<Order, OrderStatus> Status;
+	/**
+	 * Label For Message For The User 
+	 */
 	@FXML
 	private Label errorLabel;
 
+	/**
+	 * ArrayList Of Orders That contains All The Orders That Need To Change Status
+	 */
 	ArrayList<Order> ArrayForChangedOrderStatus = new ArrayList<>();
 
+	/**
+	 * ArrayList Of Orders That Contains All the Orders We Got From DB
+	 */
 	public static ArrayList<Order> OrderFromDB = new ArrayList<>();
 
+	/**
+	 * Parimter Message Of FullMessage
+	 */
 	public static FullMessage message;
 
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -81,6 +133,12 @@ public class AcceptOrderController extends UsersController implements Initializa
 
 	}
 
+	/**
+	 *
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevent Data 
+	 *
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -156,6 +214,10 @@ public class AcceptOrderController extends UsersController implements Initializa
 		}
 	}
 
+	/**
+	 * The Function Display's The Message On The Label
+	 * @param message
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {
@@ -170,6 +232,13 @@ public class AcceptOrderController extends UsersController implements Initializa
 		});
 	}
 
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 */
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);

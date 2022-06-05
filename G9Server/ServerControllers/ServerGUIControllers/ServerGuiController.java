@@ -52,7 +52,7 @@ public class ServerGuiController implements Initializable {
 	/**
 	 * DBpath variable contains Database Path.
 	 */
-	final public static String DBPath = "jdbc:mysql://localhost/zli_db?serverTimezone=IST";
+	final public static String DBPath = "jdbc:mysql://localhost/zli_db?useSSL=false&allowPubliceKeyRetrieval=true&serverTimezone=Asia/Jerusalem";
 	/**
 	 * ExternalDBpath variable contains Database Path.
 	 */
