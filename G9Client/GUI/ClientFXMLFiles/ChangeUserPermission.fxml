@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="375.0" prefWidth="614.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ChangeUserPermissionController">
+   <children>
+      <Pane layoutX="-97.0" layoutY="-4.0" prefHeight="554.0" prefWidth="834.0">
+         <children>
+            <TableView fx:id="UsersTable" layoutX="206.0" layoutY="186.0" prefHeight="302.0" prefWidth="611.0">
+               <columns>
+                  <TableColumn fx:id="UserIDcol" prefWidth="108.0" text="UserID" />
+                  <TableColumn fx:id="FirstNamecol" prefWidth="132.0" text="First Name" />
+                  <TableColumn fx:id="lastNamecol" prefWidth="137.60003662109375" text="Last Name" />
+                  <TableColumn fx:id="Emailcol" prefWidth="115.99993896484375" text="Email" />
+                  <TableColumn fx:id="Typecol" prefWidth="116.00006103515625" text="Type" />
+               </columns>
+            </TableView>
+            <Text layoutX="316.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change User Permission ">
+               <font>
+                  <Font name="System Bold Italic" size="32.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="94.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="206.0" layoutY="116.0" stroke="#edf1f2" strokeType="INSIDE" width="611.0" />
+            <Label fx:id="errorLabel" layoutX="328.0" layoutY="461.0" prefHeight="17.0" prefWidth="269.0" />
+            <Line endX="333.9998779296875" endY="531.0" layoutX="591.0" layoutY="-527.0" startX="-492.0" startY="530.0" strokeWidth="6.0" />
+            <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="105.0" layoutY="488.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../G9Common/Pic/go-back-2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="862.0" layoutY="7.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../G9Common/Pic/Cancel.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="ErrorLabel" layoutX="394.0" layoutY="130.0" prefHeight="31.0" prefWidth="228.0" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="4.0" fill="#d3c2e4" height="10.0" layoutX="173.0" layoutY="-176.0" stroke="#edf1f2" strokeType="INSIDE" width="443.0" />
+      <Line endX="-308.0" endY="-5.000030517578125" layoutX="311.0" layoutY="10.0" startX="-308.0" startY="539.4852294921875" strokeWidth="6.0" />
+      <Line endX="515.75732421875" endY="539.4852294921875" layoutX="314.0" layoutY="10.0" startX="-305.0" startY="539.4852294921875" strokeWidth="6.0" />
+      <Line endX="519.9998779296875" endY="-11.000030517578125" layoutX="311.0" layoutY="12.0" startX="519.9998779296875" startY="537.3639526367188" strokeWidth="6.0" />
+      <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="729.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/background.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

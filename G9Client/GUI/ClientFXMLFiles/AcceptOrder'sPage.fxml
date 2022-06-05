@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="501.0" prefWidth="834.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.AcceptOrderController">
+   <children>
+      <Pane layoutX="9.0" layoutY="5.0" prefHeight="110.0" prefWidth="115.0">
+         <children>
+            <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="-9.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="4.0" fill="#d3c2e4" height="10.0" layoutX="173.0" layoutY="-176.0" stroke="#edf1f2" strokeType="INSIDE" width="443.0" />
+      <Line endX="-308.0" endY="-9.0" layoutX="311.0" layoutY="10.0" startX="-308.0" startY="507.0" strokeWidth="6.0" />
+      <Line endX="516.9998779296875" endY="510.0" layoutX="311.0" layoutY="10.0" startX="-308.0" startY="510.0" strokeWidth="6.0" />
+      <Line endX="519.9998779296875" endY="-11.000030517578125" layoutX="311.0" layoutY="10.0" startX="519.9998779296875" startY="510.0" strokeWidth="6.0" />
+      <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="729.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/background.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="-318.0" endY="-18.0" layoutX="321.0" layoutY="20.0" startX="506.9998779296875" startY="-18.0" strokeWidth="6.0" />
+      <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="11.0" layoutY="453.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="AcceptTable" layoutX="102.0" layoutY="136.0" prefHeight="316.0" prefWidth="611.0">
+        <columns>
+          <TableColumn fx:id="OrderNamecol" prefWidth="108.0" text="OrderName" />
+            <TableColumn fx:id="PriceCol" prefWidth="132.0" text="TotalPrice" />
+            <TableColumn fx:id="OrderTypeCol" prefWidth="137.60003662109375" text="OrderType" />
+            <TableColumn fx:id="DateCol" prefWidth="115.99993896484375" text="Date" />
+            <TableColumn fx:id="Status" prefWidth="116.00006103515625" text="orderstatus" />
+        </columns>
+      </TableView>
+      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="102.0" layoutY="109.0" stroke="#edf1f2" strokeType="INSIDE" width="611.0" />
+      <Text layoutX="257.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accept Order's Page">
+         <font>
+            <Font name="System Bold Italic" size="32.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="766.0" layoutY="8.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/Cancel.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="errorLabel" layoutX="273.0" layoutY="476.0" prefHeight="17.0" prefWidth="269.0" textFill="RED">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

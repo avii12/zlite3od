@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="563.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ViewTwoReportsForOneBranchController">
+   <children>
+      <Pane layoutX="-1.0" layoutY="-27.0" prefHeight="576.0" prefWidth="849.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+         <children>
+            <Text layoutX="185.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Two Reports For One Branch">
+               <font>
+                  <Font name="System Bold Italic" size="32.0" />
+               </font>
+            </Text>
+            <Pane layoutX="236.0" layoutY="188.0" prefHeight="252.0" prefWidth="405.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
+               <children>
+                  <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select branch :*  ">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select First Quarterly :*">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <ComboBox fx:id="Quarterly1" layoutX="229.0" layoutY="134.0" prefHeight="44.0" prefWidth="153.0" promptText="Quarterly1*" style="-fx-background-color: white; -fx-background-radius: 15;" />
+                  <ComboBox fx:id="Year" layoutX="229.0" layoutY="76.0" prefHeight="44.0" prefWidth="153.0" promptText="Year*" style="-fx-background-color: white; -fx-background-radius: 15;" />
+                  <Text layoutX="14.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Year:*">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="11.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Second Quarterly :*">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="Quarterly2" layoutX="229.0" layoutY="192.0" prefHeight="44.0" prefWidth="153.0" promptText="Quarterly2*" style="-fx-background-color: white; -fx-background-radius: 15;" />
+                  <ComboBox fx:id="BranchName" layoutX="229.0" layoutY="18.0" prefHeight="44.0" prefWidth="153.0" promptText="BranchName*" style="-fx-background-color: white; -fx-background-radius: 15;" />
+               </children>
+            </Pane>
+            <Text layoutX="326.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select details for your reports">
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="125.0" layoutY="135.0" stroke="#edf1f2" strokeType="INSIDE" width="628.0" />
+            <ImageView fitHeight="219.0" fitWidth="111.0" layoutX="753.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../G9Common/Pic/background.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="344.0" layoutY="451.0" mnemonicParsing="false" onAction="#ViewReportsDistribution" prefHeight="44.0" prefWidth="190.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="View Reports Distribution" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="ErrorLabel" layoutX="324.0" layoutY="508.0" prefHeight="17.0" prefWidth="231.0" textFill="RED">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="-1.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="788.0" layoutY="34.0" onMouseClicked="#exitButton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../G9Common/Pic/Cancel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Line endX="612.0" endY="-20.0" layoutX="242.0" layoutY="23.0" startX="-239.00003051757812" startY="-20.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="617.0" endY="-17.0" layoutX="237.0" layoutY="24.0" startX="617.0" startY="534.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="614.0" endY="537.0" layoutX="240.0" layoutY="23.0" startX="-237.0" startY="537.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="-235.0" endY="-19.0" layoutX="237.0" layoutY="23.0" startX="-235.0" startY="537.0" stroke="#111411" strokeWidth="6.0" />
+      <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="8.0" layoutY="493.0" onMouseClicked="#BackBtn" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

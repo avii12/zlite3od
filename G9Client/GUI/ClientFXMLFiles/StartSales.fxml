@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="475.0" prefWidth="785.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.StartSalesController">
+   <children>
+      <Button fx:id="StartSalesBtn" layoutX="214.0" layoutY="306.0" mnemonicParsing="false" onAction="#StartSales" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Start Sales" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="-3.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+         </image>
+      </ImageView>
+      <Text layoutX="310.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Sales" wrappingWidth="186.00000500679016">
+         <font>
+            <Font name="System Bold Italic" size="32.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="126.0" layoutY="102.0" stroke="#edf1f2" strokeType="INSIDE" width="554.0" />
+      <Line endX="569.0" layoutX="217.0" layoutY="3.0" startX="-220.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="-43.0" endY="-159.0" layoutX="45.0" layoutY="166.0" startX="-43.0" startY="303.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="588.0" endY="-60.0" layoutX="201.0" layoutY="532.0" startX="-198.0" startY="-60.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="121.0" endY="-53.0" layoutX="668.0" layoutY="56.0" startX="121.0" startY="413.0" stroke="#111411" strokeWidth="6.0" />
+      <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="687.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/background.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="213.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Percentage :" wrappingWidth="146.9999985843897">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <ComboBox fx:id="SaleComboBox" layoutX="421.0" layoutY="134.0" prefHeight="31.0" prefWidth="215.0" promptText="sale percentage" />
+      <Label fx:id="ErrorLabel" layoutX="286.0" layoutY="248.0" prefHeight="21.0" prefWidth="235.0" textFill="RED">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Button fx:id="EndSalesBtn" disable="true" layoutX="214.0" layoutY="381.0" mnemonicParsing="false" onAction="#EndSales" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="End Sales" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="BranchComboBox" layoutX="421.0" layoutY="191.0" prefHeight="31.0" prefWidth="215.0" promptText="ChooseBranch" />
+      <Button fx:id="StartSalesBranch" layoutX="421.0" layoutY="306.0" mnemonicParsing="false" onAction="#StartSalesWithSpecificBranch" prefHeight="45.0" prefWidth="215.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Start Sales With Specific Branch" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Text layoutX="214.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Branch :" wrappingWidth="115.99999858438969">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="7.0" layoutY="404.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="724.0" layoutY="8.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../G9Common/Pic/Cancel.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,63 @@
+package ClientGUIControllers;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import RequestsAndResponses.FullMessage;
+import RequestsAndResponses.Request;
+import RequestsAndResponses.Response;
+import ZliClient.ZliClientUI;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+
+public class GraphController extends UsersController implements Initializable {
+	public static ArrayList<String> BranchForManager = new ArrayList<>();
+	public static FullMessage message;
+	@FXML
+    private BarChart<?, ?> ComplaintReport;
+
+    @FXML
+    private CategoryAxis x;
+
+    @FXML
+    private NumberAxis y;
+
+    @FXML
+    private Label ErrorLabel;
+
+	
+	public String[] quarterly = new String[3];
+			
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		String managerID=CurrentUser.getID();
+		message = new FullMessage(Request.GET_MANAGER_ID, Response.Wait,managerID);
+		ZliClientUI.ZliClientController.accept(message);
+		quarterly[0]=ComplaintReportController.quarterly[0];///quarterly
+		quarterly[1]=BranchForManager.get(0);//barnachname
+		quarterly[2]=ComplaintReportController.quarterly[1];//year
+		message = new FullMessage(Request.GET_NUM_OF_COMPLAINT, Response.Wait,quarterly);
+		ZliClientUI.ZliClientController.accept(message);
+		int[] NumOfComlaint=(int[]) message.getObject();
+		if(NumOfComlaint[0]==0 && NumOfComlaint[1]==0&&NumOfComlaint[2]==0) {
+			ErrorLabel.setText("No Complaint Report!");
+		}
+		else{
+		
+		
+		XYChart.Series set1= new XYChart.Series<>();
+		set1.getData().add(new XYChart.Data("month 1",NumOfComlaint[0]));
+	set1.getData().add(new XYChart.Data("month 2",NumOfComlaint[1]));
+		set1.getData().add(new XYChart.Data("month 3",NumOfComlaint[2]));
+	    ComplaintReport.getData().addAll(set1);
+	}
+	}
+	
+	}
+
