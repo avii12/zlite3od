@@ -14,10 +14,25 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *Display The Cart Page Window 
+ * @author obied haddad
+ *
+ */
 public class BouquetPageController extends UsersController {
-	
+	/**
+	 * Parimter Message Of FullMessage
+	 */
 	public static FullMessage message;
 	
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -36,7 +51,15 @@ public class BouquetPageController extends UsersController {
 
 	}
 	
-	
+	/**
+	 * After Clicking On Cart Button
+	 * The Function Hide The Current Window And
+	 * Load The Cart Page Window 
+	 * We Can Drag the Window How Ever We Want
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	public void CartButton(MouseEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -55,6 +78,13 @@ public class BouquetPageController extends UsersController {
 
 	}
 	
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 */
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);

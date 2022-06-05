@@ -15,6 +15,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *Class description:  
+ *Controlling The UI Of Service Expert 
+ *
+ *
+ *@author obied haddad
+ *
+ */
 public class ServiceExpertPageController extends UsersController {
 public static FullMessage message;
 	

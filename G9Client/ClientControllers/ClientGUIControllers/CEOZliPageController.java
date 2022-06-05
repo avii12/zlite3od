@@ -22,13 +22,38 @@ import javafx.stage.StageStyle;
 
 public class CEOZliPageController extends UsersController implements Initializable {
 
+	/**
+	 * Static Parimter Message Of FullMessage
+	 */
 	public static FullMessage message;
+	
+	/**
+	 * Label For Welcome For The User
+	 */
 	@FXML
 	private Label WelcomeLabel;
+	
+	/**
+	 * Label For The User Status
+	 */
 	@FXML
 	private Label StatusLabel;
+	
+	/**
+	 * Label For The User Type
+	 */
 	@FXML 
 	private Label TypeLabel;
+	
+	/**
+	 * After Clicking On LogOut Button 
+	 * The Function Hide The Current Window 
+	 * And Load The Login window
+	 * We Can Drag the Window How Ever We Want
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void LogoutButton(ActionEvent event) throws IOException {
 
@@ -57,6 +82,13 @@ public class CEOZliPageController extends UsersController implements Initializab
 		}
 	}
 
+	/**
+	 * After Clicking On Exit Button 
+	 * The Function Send A Message To The Server The
+	 * Function LogOut The Account And Disconnect From The Server
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void exitButton(MouseEvent event) throws IOException {
 
@@ -67,6 +99,15 @@ public class CEOZliPageController extends UsersController implements Initializab
 		System.exit(0);
 	}
 	
+	/**
+	 * After Clicking On View Report
+	 * The Function Hide The Current Window And
+	 * Load The View Reports For CEO Window 
+	 * We Can Drag the Window How Ever We Want
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ViewReportBtn(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -84,6 +125,15 @@ public class CEOZliPageController extends UsersController implements Initializab
 		primaryStage.show();
 	}
 
+	/**
+	 * After Clicking On View Report For One Branch
+	 * The Function Hide The Current Window And
+	 * Load The View Report For One Branch Window 
+	 * We Can Drag the Window How Ever We Want
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ViewReportsForOneBranchBtn(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -101,6 +151,15 @@ public class CEOZliPageController extends UsersController implements Initializab
 		primaryStage.show();
 	}
 	
+	/**
+	 * After Clicking On View Report For Two Branch
+	 * The Function Hide The Current Window And
+	 * Load The View Report For Two Branch Window 
+	 * We Can Drag the Window How Ever We Want
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ViewReportsForTwoBranchesBtn(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -118,6 +177,10 @@ public class CEOZliPageController extends UsersController implements Initializab
 		primaryStage.show();
 	}
 
+	/**
+	 * This method sets the correct values of the CEO Zli in portal.
+	 * 
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		WelcomeLabel.setText("Welcome" + "-" + CurrentUser.getFirstName().toUpperCase());
