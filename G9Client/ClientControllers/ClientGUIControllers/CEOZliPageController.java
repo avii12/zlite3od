@@ -28,67 +28,34 @@ import javafx.stage.StageStyle;
  *
  */
 public class CEOZliPageController extends UsersController implements Initializable {
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-
-	/**
-	 * Static Parimter Message Of FullMessage
-=======
 	/**
 	 * message type of FullMessage
->>>>>>> 7a300d4 dd
 	 */
 	public static FullMessage message;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-	
-	/**
-	 * Label For Welcome For The User
-=======
 	/**
 	 * Welcome label
->>>>>>> 7a300d4 dd
 	 */
 	@FXML
 	private Label WelcomeLabel;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-	
-	/**
-	 * Label For The User Status
-=======
 	/**
 	 * Status label
->>>>>>> 7a300d4 dd
 	 */
 	@FXML
 	private Label StatusLabel;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-	
-	/**
-	 * Label For The User Type
-=======
 	/**
 	 * Type label
->>>>>>> 7a300d4 dd
 	 */
 	@FXML 
 	private Label TypeLabel;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-	
-	/**
-	 * After Clicking On LogOut Button 
-	 * The Function Hide The Current Window 
-	 * And Load The Login window
-	 * We Can Drag the Window How Ever We Want
-	 * 
-=======
 	/**
 	 * After Clicking On Logout Button 
 	 * The Function Hide The Current Window and logout the account. 
 	 * Load The Login Window 
 	 * And We Can Drag the Window How Ever We Want
->>>>>>> 7a300d4 dd
 	 * @param event
 	 * @throws IOException
 	 */
+	
 	@FXML
 	public void LogoutButton(ActionEvent event) throws IOException {
 
@@ -118,7 +85,6 @@ public class CEOZliPageController extends UsersController implements Initializab
 	}
 
 	/**
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 	 * After Clicking On Exit Button 
 	 * The Function Send A Message To The Server The
 	 * Function LogOut The Account And Disconnect From The Server
@@ -136,17 +102,10 @@ public class CEOZliPageController extends UsersController implements Initializab
 	}
 	
 	/**
-	 * After Clicking On View Report
-	 * The Function Hide The Current Window And
-	 * Load The View Reports For CEO Window 
-	 * We Can Drag the Window How Ever We Want
-	 * 
-=======
 	 * After Clicking On View Report Button 
 	 * The Function Hide The Current Window  
 	 * And Load The View Report Window that the CEO can view all the reports  
 	 * And We Can Drag the Window How Ever We Want
->>>>>>> 7a300d4 dd
 	 * @param event
 	 * @throws IOException
 	 */
@@ -166,21 +125,13 @@ public class CEOZliPageController extends UsersController implements Initializab
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 
-	/**
-	 * After Clicking On View Report For One Branch
-	 * The Function Hide The Current Window And
-	 * Load The View Report For One Branch Window 
-	 * We Can Drag the Window How Ever We Want
-	 * 
-=======
+
 	/**
 	 * After Clicking On View Reports For One Branch Button 
 	 * The Function Hide The Current Window  
 	 * And Load The View Reports For One Branch Window 
 	 * And We Can Drag the Window How Ever We Want
->>>>>>> 7a300d4 dd
 	 * @param event
 	 * @throws IOException
 	 */
@@ -200,21 +151,14 @@ public class CEOZliPageController extends UsersController implements Initializab
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 	
-	/**
-	 * After Clicking On View Report For Two Branch
-	 * The Function Hide The Current Window And
-	 * Load The View Report For Two Branch Window 
-	 * We Can Drag the Window How Ever We Want
-	 * 
-=======
+
+	
 	/**
 	 * After Clicking On View Reports For Two Branches Button 
 	 * The Function Hide The Current Window  
 	 * And Load The View Reports For Two Branches Window 
 	 * And We Can Drag the Window How Ever We Want
->>>>>>> 7a300d4 dd
 	 * @param event
 	 * @throws IOException
 	 */
@@ -234,18 +178,11 @@ public class CEOZliPageController extends UsersController implements Initializab
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+
 
 	/**
 	 * This method sets the correct values of the CEO Zli in portal.
 	 * 
-=======
-	/**
-	 *
-	 *Initializing The List After Getting All The Relevant Data
-	 *Send To The Server Message That Contains All the Relevant Data 
-	 *
->>>>>>> 7a300d4 dd
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
