@@ -311,6 +311,9 @@ public class ReadMessageFromClient {
 		case UPLOAD_FILE:
 				messageFromClient=SurveyQuery.UploadFile(messageFromClient);
 				break;
+		case GET_SURVEYID:
+			messageFromClient=SurveyQuery.GetSurveyFromDB(messageFromClient);
+			break;
 
 
 			}

@@ -84,9 +84,7 @@ public class InsertAnswersSurveyController extends UsersController implements In
 
 	@FXML
 	public void AddBtn(ActionEvent event) {
-		//ObservableList<SurveyAnswers> SurveyAnswer1 = FXCollections.observableArrayList();
 		SurveyAnswers selectedUser = AnswersTable.getSelectionModel().getSelectedItem();
-		//ObservableList<SurveyAnswers> selectedProducts = AnswersTable.getSelectionModel().getSelectedItems();
 		if (AnswersTable.getSelectionModel().getSelectedItem()==null) {
 			PopUpMsg.AlertForUser("Please Select row to save!");
 		}

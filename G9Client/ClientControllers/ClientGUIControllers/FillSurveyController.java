@@ -95,8 +95,6 @@ public class FillSurveyController extends UsersController implements Initializab
 	private Label errorLabel;
 	public static ArrayList<SurveyAnswers> ArrayForSurveyAnswers = new ArrayList<>();
 	public String[] answer = new String[7];
-	// public static ArrayList<SurveyAnswers> ArrayForSurveyAnswers = new
-	// ArrayList<>();
 	public static ArrayList<survey> ArrayForSurvey = new ArrayList<>();
 
 	@Override
@@ -173,7 +171,10 @@ public class FillSurveyController extends UsersController implements Initializab
 				|| answer5.getValue().equals("answer5*") || answer6.getValue().equals("answer6*")) {
 			errorLabel.setText("Fill all the answers!!");
 		} else {
-			String SurveyID = "1000";
+			message = new FullMessage(Request.GET_SURVEYID, Response.Wait, CurrentUser);
+			ZliClientUI.ZliClientController.accept(message);
+			
+			String SurveyID =ArrayForSurvey.get(0).getSurveyID();
 			String CustomerID = CurrentUser.getID();
 
 			////////////////////

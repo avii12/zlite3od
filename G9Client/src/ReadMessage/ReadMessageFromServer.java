@@ -553,7 +553,9 @@ public class ReadMessageFromServer {
 					break;
 				}
 				break;
-
+			case GET_SURVEYID:
+				FillSurveyController.ArrayForSurvey = (ArrayList<survey>) MessageFromServer.getObject();
+				break;
 			}
 
 		}

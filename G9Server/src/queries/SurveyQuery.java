@@ -44,7 +44,8 @@ public class SurveyQuery {
 		try {
 			int QuestionNumber = rs.getInt(1);
 			String QuestionForm = rs.getString(2);
-			return new survey(QuestionNumber, QuestionForm);
+			String SurveyID=rs.getString(3);
+			return new survey(QuestionNumber, QuestionForm,SurveyID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
