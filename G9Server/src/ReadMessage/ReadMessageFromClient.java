@@ -196,7 +196,7 @@ public class ReadMessageFromClient {
 				 /**
 				  * We Get Balance And CreditCard Customer From DB
 				  */
-				messageFromClient = UserQuery.GetUserBalanceAndCreditCard(messageFromClient);
+				messageFromClient = UserQuery.GetUserDetails(messageFromClient);
 				break;
 
 			case GET_LAST_ORDER_ID:
@@ -529,6 +529,10 @@ public class ReadMessageFromClient {
 				  * We get Survey From DB
 				  */
 				messageFromClient = SurveyQuery.GetSurveyFromDB(messageFromClient);
+				break;
+				
+			case GET_CUSTOMER_EMAIL:
+				messageFromClient = UserQuery.GetUserEmail(messageFromClient);
 				break;
 
 			}

@@ -57,8 +57,14 @@ import customerService.Complaint;
 public class ReadMessageFromServer {
 
 	/**
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
      * This is a function which analyzes all the messages from the server
      * by Request and Response and then does logic accordingly
+=======
+	 * Class description: This is a class which is a Wrapper for handling all
+	 * messages from the server.
+	 * 
+>>>>>>> d07a28e fsd
 	 * @param message
 	 * @throws IOException
 	 */
@@ -823,6 +829,10 @@ public class ReadMessageFromServer {
 				 *set object from server to the controller arrayList
 			     */
 				FillSurveyController.ArrayForSurvey = (ArrayList<survey>) MessageFromServer.getObject();
+				break;
+
+			case GET_CUSTOMER_EMAIL:
+				DeliveryPersonPageController.message.setObject((Customer)ReturnedObjectFromDB);
 				break;
 			}
 

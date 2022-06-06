@@ -1,12 +1,7 @@
 
 package ClientGUIControllers;
-
-
-
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
-
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;

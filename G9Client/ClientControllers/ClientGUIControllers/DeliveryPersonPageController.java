@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import AllUsers.Customer;
 import Orders.Order;
 import Orders.OrderStatus;
 import Orders.TypeOfSupply;
@@ -197,8 +199,11 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 				if (Option.get() == ButtonType.OK) {
 					if (order.getOrderstatus() == OrderStatus.COMPLETED) {
 						errorControl("Thank you For Your Service");
-						PopUpMsg.AlertForUser(
-								"**An email has been sent to" + "||" + order.getCustomerName() + "||" + "**");
+						message = new FullMessage(Request.GET_CUSTOMER_EMAIL,
+								Response.Wait, order.getCustomerID());
+						ZliClientUI.ZliClientController.accept(message);
+						Customer customer = (Customer) message.getObject();
+						PopUpMsg.simulationMessage("Simulation","Simulation Email to the user!","E-mail sent to : " +customer.getEmail());
 						ArrayList<String> ArrayForMessageObject = new ArrayList<>();
 						String EstimaitedTime = order.getEstimatedDate().toString();
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());

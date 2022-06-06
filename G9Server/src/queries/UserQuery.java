@@ -332,12 +332,40 @@ public class UserQuery {
 	 * @return returnMessageToClient
 	 * @throws SQLException
 	 */
-	public static FullMessage GetUserBalanceAndCreditCard(FullMessage messageFromClient) throws SQLException {
+	public static FullMessage GetUserDetails(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
 		User user = (User) messageFromClient.getObject();
 		Customer customerFromDB = null;
 		String id = user.getID();
+		String condition = "ID='" + id + "'";
+		ResultSet rs = mainQuery.getTuple("customer", condition);
+		try {
+			// If the row doesn't exist in login Table
+			while (rs.next()) {
+				customerFromDB = convertToCustomer(rs);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		returnMessageToClient.setObject(customerFromDB);
+		returnMessageToClient.setResponse(Response.CUSTOMER_FOUND);
+		return returnMessageToClient;
+	}
+	
+	/**
+	 * This method returns new Customer so we can get his email
+	 * @param messageFromClient
+	 * @return Customer
+	 * @throws SQLException
+	 */
+	public static FullMessage GetUserEmail(FullMessage messageFromClient) throws SQLException {
+
+		FullMessage returnMessageToClient = messageFromClient;
+		String id = (String) messageFromClient.getObject();
+		Customer customerFromDB = null;
 		String condition = "ID='" + id + "'";
 		ResultSet rs = mainQuery.getTuple("customer", condition);
 		try {
