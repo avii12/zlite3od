@@ -62,14 +62,6 @@ public class ReadMessageFromServer {
 	 * @param message
 	 * @throws IOException
 	 */
-	/**
-	 * @param message
-	 * @throws IOException
-	 */
-	/**
-	 * @param message
-	 * @throws IOException
-	 */
 	@SuppressWarnings({ "incomplete-switch", "unchecked" })
 	public static void readMessageFromServer(Object message) throws IOException {
 
@@ -95,43 +87,43 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case Create_CUSTOMER_PORTAL:
-					/*
+					/**
 					 * Creat Customer Portal
 					 */
 					LoginController.message.setResponse(Response.Create_CUSTOMER_PORTAL);
 					break;
 				case Create_BRANCHMANAGER_PORTAL:
-					/*
+					/**
 					 * Creat Branch Manager Portal
 					 */
 					LoginController.message.setResponse(Response.Create_BRANCHMANAGER_PORTAL);
 					break;
 				case Create_CEOZLI_PORTAL:
-					/*
+					/**
 					 * Creat CEO Portal
 					 */
 					LoginController.message.setResponse(Response.Create_CEOZLI_PORTAL);
 					break;
 				case Create_SERVICESPECIALIST_PORTAL:
-					/*
+					/**
 					 * Creat Service Specialist Portal
 					 */
 					LoginController.message.setResponse(Response.Create_SERVICESPECIALIST_PORTAL);
 					break;
 				case Create_CUSTOMERSERVICEWORKER_PORTAL:
-					/*
+					/**
 					 * Creat Customer Service Worker Portal
 					 */
 					LoginController.message.setResponse(Response.Create_CUSTOMERSERVICEWORKER_PORTAL);
 					break;
 				case Create_WORKER_PORTAL:
-					/*
+					/**
 					 * Creat Worker Portal
 					 */
 					LoginController.message.setResponse(Response.Create_WORKER_PORTAL);
 					break;
 				case Create_DELIVERYPERSON_PORTAL:
-					/*
+					/**
 					 * Creat Delivery Person Portal
 					 */
 					LoginController.message.setResponse(Response.Create_DELIVERYPERSON_PORTAL);
@@ -213,7 +205,7 @@ public class ReadMessageFromServer {
 				break;
 
 			case GET_ITEMS_FROM_DB:
-				/*
+				/**
 				 *Geting items from DB
 				 * 
 				 */
@@ -224,14 +216,14 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_CATALOG:
-					/*
+					/**
 					 *do nothing
 					 * 
 					 */
 					break;
 
 				case CATALOG_FOUND:
-					/*
+					/**
 					 *Catlog Found 
 					 *sent to the controler the object
 					 * 
@@ -249,7 +241,7 @@ public class ReadMessageFromServer {
 
 				case NO_ORDER_FOUND:
 					AcceptOrderController.message.setResponse(Response.NO_ORDER_FOUND);
-					/*
+					/**
 					 *set response no order found 
 					 * 
 					 */
@@ -259,7 +251,7 @@ public class ReadMessageFromServer {
 					AcceptOrderController.message.setResponse(Response.ORDER_FOUND);
 
 					AcceptOrderController.OrderFromDB = (ArrayList<Order>) MessageFromServer.getObject();
-					/*
+					/**
 					 *set response order found 
 					 * send to the controller object from type arraylist of order
 					 */
@@ -274,7 +266,7 @@ public class ReadMessageFromServer {
 
 				case NO_ORDER_FOUND:
 					DeliveryPersonPageController.message.setResponse(Response.NO_ORDER_FOUND);
-					/*
+					/**
 					 *set response no order found 
 					 * 
 					 */
@@ -282,7 +274,7 @@ public class ReadMessageFromServer {
 				case ORDER_FOUND:
 					DeliveryPersonPageController.message.setResponse(Response.ORDER_FOUND);
 					DeliveryPersonPageController.OrderFromDB = (ArrayList<Order>) MessageFromServer.getObject();
-					/*
+					/**
 					 *set response order found 
 					 *sent to the controller object arraylist type of order 
 					 */
@@ -292,7 +284,7 @@ public class ReadMessageFromServer {
 			case GET_CUSTOMER_DETAILS:
 				PaymentController.message.setResponse(Response.CUSTOMER_FOUND);
 				PaymentController.message.setObject(MessageFromServer.getObject());
-				/*
+				/**
 				 *set response customer found 
 				 * set the object from server
 				 */
@@ -307,7 +299,7 @@ public class ReadMessageFromServer {
 				case NO_ORDER_FOUND:
 					PaymentController.message.setResponse(Response.NO_ORDER_FOUND);
 					PaymentController.message.setObject("1");
-					/*
+					/**
 					 *set response no order found 
 					 * set the object from server
 					 */
@@ -316,7 +308,7 @@ public class ReadMessageFromServer {
 				case NOT_FIRST_ORDER:
 					PaymentController.message.setResponse(Response.NOT_FIRST_ORDER);
 					PaymentController.message.setObject(MessageFromServer.getObject());
-					/*
+					/**
 					 *set response not first order
 					 *set the object from the server
 					 * 
@@ -333,7 +325,7 @@ public class ReadMessageFromServer {
 				case NO_COMPLAINT_FOUND:
 					WorkerInsertComplaint.message.setResponse(Response.NO_COMPLAINT_FOUND);
 					WorkerInsertComplaint.message.setObject("1");
-					/*
+					/**
 					 *set response no complaint found
 					 *set the object from the server 
 					 * 
@@ -343,7 +335,7 @@ public class ReadMessageFromServer {
 				case NOT_FIRST_COMPLAINT:
 					WorkerInsertComplaint.message.setResponse(Response.NOT_FIRST_COMPLAINT);
 					WorkerInsertComplaint.message.setObject(MessageFromServer.getObject());
-					/*
+					/**
 					 *set response not first complaint
 					 *set the object from the server 
 					 * 
@@ -354,7 +346,7 @@ public class ReadMessageFromServer {
 			case GET_SURVEY_FROM_DB:
 				FillSurveyController.message.setResponse(MessageFromServer.getResponse());
 				FillSurveyController.ArrayForSurvey = (ArrayList<survey>) MessageFromServer.getObject();
-				/*
+				/**
 				 *set response from serever
 				 *set the object for the controller from the server 
 				 * 
@@ -362,7 +354,7 @@ public class ReadMessageFromServer {
 				break;
 			case SET_SURVEY_ANSWER:
 				InsertAnswersSurveyController.message.setResponse(MessageFromServer.getResponse());
-				/*
+				/**
 				 *set response from server to the controller
 				 * 
 				 */
@@ -376,14 +368,14 @@ public class ReadMessageFromServer {
 
 				case AMOUNT_UPDATED:
 					CatalogController.message.setResponse(Response.AMOUNT_UPDATED);
-					/*
+					/**
 					 *set response from server to the controller amount updated 
 					 * 
 					 */
 					break;
 				case PRODUCT_NOT_IN_INVENTORY:
 					CatalogController.message.setResponse(Response.PRODUCT_NOT_IN_INVENTORY);
-					/*
+					/**
 					 *set response from server to the controller product not in inventory
 					 * 
 					 */
@@ -394,7 +386,7 @@ public class ReadMessageFromServer {
 
 			case INSER_ORDER_TO_DB:
 				PaymentController.message.setRequest(RequestFromClient);
-				/*
+				/**
 				 *set request from server to the controller
 				 * 
 				 */
@@ -410,7 +402,7 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_CATALOG:
-					/*
+					/**
 					 *do nothing
 					 * 
 					 */
@@ -419,7 +411,7 @@ public class ReadMessageFromServer {
 				case CATALOG_FOUND:
 					CatalogController.ItemListFromDB = (ArrayList<Item>) MessageFromServer.getObject();
 					AcceptOrderController.OrderFromDB = (ArrayList<Order>) MessageFromServer.getObject();
-					/*
+					/**
 					 *set object from server to the controller arraylist 
 					 * 
 					 */
@@ -434,7 +426,7 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_CATALOG:
-					/*
+					/**
 					 *do nothing
 					 * 
 					 */
@@ -442,7 +434,7 @@ public class ReadMessageFromServer {
 
 				case CATALOG_FOUND:
 					CatalogController.ItemListFromDB = (ArrayList<Item>) MessageFromServer.getObject();
-					/*
+					/**
 					 *set object from server to the controller arraylist 
 					 * 
 					 */
@@ -457,7 +449,7 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_CATALOG:
-					/*
+					/**
 					 *do nothing
 					 * 
 					 */
@@ -465,14 +457,14 @@ public class ReadMessageFromServer {
 
 				case CATALOG_FOUND:
 					CatalogController.ItemListFromDB = (ArrayList<Item>) MessageFromServer.getObject();
-					/*
+					/**
 					 *set object from server to the controller arraylist 
 					 * 
 					 */
 					break;
 
 				case AMOUNT_RESTORED:
-					/*
+					/**
 					 *do nothing
 					 * 
 					 */
@@ -487,7 +479,7 @@ public class ReadMessageFromServer {
 
 				case NO_CATALOG:
 					CatalogManagement.message.setResponse(Response.NO_CATALOG);
-					/*
+					/**
 					 *set response from server to the controller
 					 * 
 					 */
@@ -496,7 +488,7 @@ public class ReadMessageFromServer {
 				case CATALOG_FOUND:
 					CatalogManagement.ItemListFromDB = (ArrayList<Item>) MessageFromServer.getObject();
 					CatalogManagement.message.setResponse(Response.CATALOG_FOUND);
-					/*
+					/**
 					 *set object from server to the controller arraylist 
 					 *set response from server to controller catalog found
 					 * 
