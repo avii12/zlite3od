@@ -23,8 +23,12 @@ import queries.mainQuery;
  * This Is A Class Which Is A Wrapper For Handling
  * All Messages From The Client.
  * 
- * @author Obied
- *
+ *@author Obied haddad
+ *@author maisalon safory
+ *@author ibrahem enbtawe
+ *@author shorok heib
+ *@author mario rohana
+ *@author seren hanany
  */
 public class ReadMessageFromClient {
 

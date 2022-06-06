@@ -52,7 +52,12 @@ import customerService.Complaint;
  * Class description:
  * This is a class which is a Wrapper for handling
  * all messages from the server.
- *@author Obied
+ *@author Obied haddad
+ *@author maisalon safory
+ *@author ibrahem enbtawe
+ *@author shorok heib
+ *@author mario rohana
+ *@author seren hanany
  */
 public class ReadMessageFromServer {
 
