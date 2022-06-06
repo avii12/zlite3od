@@ -30,17 +30,45 @@ import javafx.stage.StageStyle;
  *
  */
 public class ServiceExpertPageController extends UsersController {
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
+	/**
+	 * Pane to open  Browse
+	 */
 	@FXML
 	private Pane anchorid;
+	/**
+	 * Text Field for path
+	 */
 	@FXML
 	private TextField TextFieldPath;
+	/**
+	 * Upload Button
+	 */
 	@FXML
 	private Button UploadButton;
+	/**
+	 * variable for path
+	 */
 	private String path;
+	/**
+	 * variable for file
+	 */
 	private File file;
+	/**
+	 * variable for extracted Path
+	 */
 	public static String extractedPath;
-
+	/**
+	 * After Clicking On Logout Button 
+	 * The Function Hide The Current Window and logout. 
+	 * Load The Login Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void LogoutButton(ActionEvent event) throws IOException {
 
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -66,7 +94,12 @@ public class ServiceExpertPageController extends UsersController {
 			break;
 		}
 	}
-
+	/**
+	 * After Clicking On Exit Button 
+	 * The Function Send A Message To The Server The
+	 * Function LogOut The Account And Disconnect From The Server
+	 * @param event
+	 */
 	public void ExitButton(MouseEvent event) throws IOException {
 
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -76,6 +109,11 @@ public class ServiceExpertPageController extends UsersController {
 		System.exit(0);
 	}
 
+	/**
+	 * After Clicking on Browse Report Button
+	 * Function load the browse window
+	 * @param event
+	 */
 	@FXML
 	public void BrowseReport(ActionEvent event) {
 
@@ -96,6 +134,10 @@ public class ServiceExpertPageController extends UsersController {
 		}
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void UploadReport(ActionEvent event) {
 

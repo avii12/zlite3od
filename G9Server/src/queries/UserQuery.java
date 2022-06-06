@@ -1,11 +1,9 @@
 package queries;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
 import AllUsers.ConfirmationStatus;
 import AllUsers.Customer;
 import AllUsers.User;
