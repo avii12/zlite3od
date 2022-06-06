@@ -400,7 +400,6 @@ public class UserQuery {
 		Branch branch = null;
 
 		if (rs.next()) {
-
 			branch = Branch.valueOf(rs.getString(10));
 		}
 		returnMessageToClient.setObject(branch);

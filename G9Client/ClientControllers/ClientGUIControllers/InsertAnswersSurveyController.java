@@ -90,7 +90,6 @@ public class InsertAnswersSurveyController extends UsersController implements In
 		}
 		else {
 			
-		System.out.println(selectedUser.toString());
 		message = new FullMessage(Request.SET_SURVEY_ANSWER, Response.Wait, selectedUser);
 		ZliClientUI.ZliClientController.accept(message);
 		AnswersTable.getItems().remove(selectedUser);
