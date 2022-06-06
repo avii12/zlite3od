@@ -164,7 +164,6 @@ public class ComplaintHandelingController extends UsersController implements Ini
 			complaintTable.setItems(complaints);
 			complaintTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 			complaintTable.refresh();
-			System.out.println(complaints);
 		}
 
 	}
