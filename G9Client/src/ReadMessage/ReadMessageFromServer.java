@@ -553,6 +553,7 @@ public class ReadMessageFromServer {
 					break;
 				}
 				break;
+<<<<<<< HEAD
 
 			case EXTRACT_PDF_FROM_DB:
 				switch (ResponseFromServer) {
@@ -569,6 +570,11 @@ public class ReadMessageFromServer {
 				}
 				break;
 
+=======
+			case GET_SURVEYID:
+				FillSurveyController.ArrayForSurvey = (ArrayList<survey>) MessageFromServer.getObject();
+				break;
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 			}
 
 		}

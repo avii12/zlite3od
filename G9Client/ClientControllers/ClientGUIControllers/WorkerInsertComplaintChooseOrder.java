@@ -74,7 +74,6 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 				Orders.add(new Order(OrderFromDB.get(i)));
 
 			}
-			System.out.println(Orders.toString());
 			OrderNumberCol.setCellValueFactory(new PropertyValueFactory<Order, String>("OrderNumber"));
 			DateCol.setCellValueFactory(new PropertyValueFactory<Order, Timestamp>("ActualDate"));
 			BranchCol.setCellValueFactory(new PropertyValueFactory<Order, Branch>("branch"));

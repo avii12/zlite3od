@@ -37,7 +37,6 @@ public class ComplaintsQuery {
 
 				}
 			}
-			System.out.println(complaintList);
 			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -54,7 +53,6 @@ public class ComplaintsQuery {
 		try {
 			int complaintID = rs.getInt(1);
 			int complaintnum = rs.getInt(2);
-			System.out.println(complaintID + " " + complaintnum + "\n");
 			String customerID = rs.getString(3);
 			int ordernum = rs.getInt(4);
 			Timestamp complaintdate = rs.getTimestamp(5);

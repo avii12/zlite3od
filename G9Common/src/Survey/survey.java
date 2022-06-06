@@ -6,6 +6,13 @@ public class survey  implements Serializable {
 	
 	public int QuestionNumber;
 	public String QuestionForm;
+	public String SurveyID;
+	
+	public survey(survey survey) {
+		this.QuestionNumber=survey.getQuestionNumber();
+		this.QuestionForm=survey.getQuestionForm();
+		this.SurveyID=survey.getSurveyID();
+	}
 	public int getQuestionNumber() {
 		return QuestionNumber;
 	}
@@ -18,19 +25,26 @@ public class survey  implements Serializable {
 	public void setQuestionForm(String questionForm) {
 		QuestionForm = questionForm;
 	}
-	public survey(int questionNumber, String questionForm) {
-		super();
-		QuestionNumber = questionNumber;
-		QuestionForm = questionForm;
-	}
-	public survey(survey survey) {
-		this.QuestionNumber=survey.getQuestionNumber();
-		this.QuestionForm=survey.getQuestionForm();
+	
+	public void setSurveyID(String surveyID) {
+		SurveyID = surveyID;
 	}
 	@Override
 	public String toString() {
-		return "survey [QuestionNumber=" + QuestionNumber + ", QuestionForm=" + QuestionForm + "]";
+		return "survey [QuestionNumber=" + QuestionNumber + ", QuestionForm=" + QuestionForm + ", SurveyID=" + SurveyID
+				+ "]";
 	}
+	public survey(int questionNumber, String questionForm, String surveyID) {
+		super();
+		QuestionNumber = questionNumber;
+		QuestionForm = questionForm;
+		SurveyID = surveyID;
+	}
+	public String getSurveyID() {
+		return SurveyID;
+	}
+	
+	
 	
 
 }

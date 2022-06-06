@@ -498,7 +498,6 @@ public class mainQuery {
 	public static void InsertOneRowIntoComplaintTable(int complaintid, int complaintnumber, String customerid,
 			int ordernumber, Timestamp date, Branch branch, String text) throws ParseException {
 
-		System.out.println(branch);
 		String query = "INSERT INTO complaint (" + " ComplaintID," + " ComplaintNum," + " CustomerID," + " OrderID,"
 				+ " Date," + " Branch," + " Text) VALUES (" + "?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt = null;

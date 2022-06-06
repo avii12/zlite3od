@@ -308,7 +308,6 @@ public class OrderDetailsController extends UsersController implements Initializ
 		Branch branch = selectBranchComboBox.getValue();
 		MakeDateForDB();
 		order.setBranch(branch);
-		System.out.println(order.getBranch());
 	}
 
 	/**

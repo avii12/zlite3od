@@ -36,31 +36,85 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
 
-public class DeliveryPersonPageController extends UsersController implements Initializable{
+/**
+ * Class description: Controlling The UI Of Delivery Person For Comlpeting
+ * Orders that belongs To the Same Branch He work with
+ *
+ * @author obied haddad
+ *
+ */
+public class DeliveryPersonPageController extends UsersController implements Initializable {
 
+	/**
+	 * Exit Button
+	 */
 	@FXML
 	private ImageView Exitbtn;
+
+	/**
+	 * Table Displays The Orders
+	 */
 	@FXML
 	private TableView<Order> DeliveryTable;
+
+	/**
+	 * Column That Contains The Order Name
+	 */
 	@FXML
 	private TableColumn<Order, String> OrderNameCol;
+
+	/**
+	 * Column That Contains The Order Price
+	 */
 	@FXML
 	private TableColumn<Order, Double> PriceCol;
+
+	/**
+	 * Column That Contains The Order Type
+	 */
 	@FXML
 	private TableColumn<Order, TypeOfSupply> OrderTypeCol;
+
+	/**
+	 * Column That Contains Order Date
+	 */
 	@FXML
 	private TableColumn<Order, Timestamp> DateCol;
+
+	/**
+	 * Column That contains The Order Status
+	 */
 	@FXML
-	private TableColumn<Order, OrderStatus> StatusCol;	
+	private TableColumn<Order, OrderStatus> StatusCol;
+
+	/**
+	 * Label For Message For The User
+	 */
 	@FXML
 	private Label ErrorLabel;
 
+	/**
+	 * ArrayList Of Orders That contains All The Orders That Need To Change Status
+	 */
 	ArrayList<Order> ArrayForChangedOrderStatus = new ArrayList<>();
 
+	/**
+	 * ArrayList Of Orders That Contains All the Orders We Got From DB
+	 */
 	public static ArrayList<Order> OrderFromDB = new ArrayList<>();
-	
+
+	/**
+	 * Parimter Message Of FullMessage
+	 */
 	public static FullMessage message;
-	
+
+	/**
+	 * After Clicking On LogOut Button The Function Hide The Current Window And Load
+	 * The Login window We Can Drag the Window How Ever We Want
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void Logout(ActionEvent event) throws IOException {
 
@@ -89,10 +143,15 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 		}
 	}
 
-
+	/**
+	 *
+	 * Initializing The List After Getting All The Relevant Data Send To The Server
+	 * Message That Contains All the Relevent Data
+	 *
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		ObservableList<Order> Orders = FXCollections.observableArrayList();
 		message = new FullMessage(Request.GET_ORDER_FROM_DB_FOR_DELIVERY, Response.Wait, CurrentUser.getID());
 		ZliClientUI.ZliClientController.accept(message);
@@ -112,9 +171,9 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 			OrderTypeCol.setCellValueFactory(new PropertyValueFactory<Order, TypeOfSupply>("SupplyType"));
 			DateCol.setCellValueFactory(new PropertyValueFactory<Order, Timestamp>("EstimatedDate"));
 			StatusCol.setCellValueFactory(new PropertyValueFactory<Order, OrderStatus>("orderstatus"));
-			OrderNameCol.setCellValueFactory(new PropertyValueFactory<Order,String>("AllItems"));
+			OrderNameCol.setCellValueFactory(new PropertyValueFactory<Order, String>("AllItems"));
 
-			OrderStatus[] orderStatusArray = {OrderStatus.COMPLETED };
+			OrderStatus[] orderStatusArray = { OrderStatus.COMPLETED };
 			StatusCol.setCellFactory((param) -> new ComboBoxTableCell<>(new StringConverter<OrderStatus>() {
 				@Override
 				public String toString(OrderStatus object) {
@@ -130,55 +189,66 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 
 			DeliveryTable.setItems(Orders);
 			DeliveryTable.setEditable(true);
-			
+
 			StatusCol.setOnEditCommit(event -> {
 				Order order = event.getRowValue();
 				order.setOrderstatus(event.getNewValue());
 				Optional<ButtonType> Option = PopUpMessage.ConfirmationForUser("Are You Sure You Want To Continue");
 				if (Option.get() == ButtonType.OK) {
-						if(order.getOrderstatus()==OrderStatus.COMPLETED) {
+					if (order.getOrderstatus() == OrderStatus.COMPLETED) {
 						errorControl("Thank you For Your Service");
 						ArrayList<String> ArrayForMessageObject = new ArrayList<>();
 						String EstimaitedTime = order.getEstimatedDate().toString();
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-						String OrderDate=timestamp.toString();
-							
+						String OrderDate = timestamp.toString();
+
 						ArrayForMessageObject.add(EstimaitedTime);
 						ArrayForMessageObject.add(OrderDate);
 						ArrayForMessageObject.add(order.getOrderNumber());
-						message = new FullMessage(Request.GET_THE_SUBRACTED_DATE_TIME, Response.WAIT_RESPONSE_FOR_DELIVERY,
-								ArrayForMessageObject);
+						message = new FullMessage(Request.GET_THE_SUBRACTED_DATE_TIME,
+								Response.WAIT_RESPONSE_FOR_DELIVERY, ArrayForMessageObject);
 						ZliClientUI.ZliClientController.accept(message);
 						Orders.remove(order);
-						}	
-						ArrayForChangedOrderStatus.add(order);
-						message = new FullMessage(Request.COMPLETED_ORDER_FINISHED, Response.WAIT_RESPONSE,
-								ArrayForChangedOrderStatus);
-						ZliClientUI.ZliClientController.accept(message);
-						ArrayForChangedOrderStatus.remove(order);
-					}else {
+					}
+					ArrayForChangedOrderStatus.add(order);
+					message = new FullMessage(Request.COMPLETED_ORDER_FINISHED, Response.WAIT_RESPONSE,
+							ArrayForChangedOrderStatus);
+					ZliClientUI.ZliClientController.accept(message);
+					ArrayForChangedOrderStatus.remove(order);
+				} else {
 				}
 			});
 
 			DeliveryTable.refresh();
-	
+
 		}
 	}
-		
-		private void errorControl(String message) {
 
-			Platform.runLater(new Runnable() {
+	/**
+	 * The Function Display's The Message On The Label
+	 * 
+	 * @param message
+	 */
+	private void errorControl(String message) {
 
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					ErrorLabel.setText(message);
-					ErrorLabel.setVisible(true);
-				}
+		Platform.runLater(new Runnable() {
 
-			});
-		}
-		
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				ErrorLabel.setText(message);
+				ErrorLabel.setVisible(true);
+			}
+
+		});
+	}
+
+	/**
+	 * After Clicking On Exit Button The Function Send A Message To The Server The
+	 * Function LogOut The Account And Disconnect From The Server
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -187,6 +257,5 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
 
 }

@@ -103,7 +103,6 @@ public class ComplaintRefundController extends UsersController implements Initia
 	public boolean refundCustomer() {
 
 		Complaint sendComplaint = complaint;
-		System.out.println(sendComplaint);
 		message = new FullMessage(Request.UPDATE_BALANCE_AFTER_COMPLAINT, Response.Wait, sendComplaint);
 		ZliClientUI.ZliClientController.accept(message);
 

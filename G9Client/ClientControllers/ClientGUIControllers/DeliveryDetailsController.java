@@ -28,15 +28,24 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class DeliveryDetailsController extends UsersController implements Initializable {
+	
+	/**
+	 * Static Parimter Message Of FullMessage
+	 */
 	public static FullMessage message;
+	
 	@FXML
 	private Label ErrorLabel;
+	
 	@FXML
 	private TextField TextFieldAddress;
+	
 	@FXML
 	private TextField TextFieldCustomerName;
+	
 	@FXML
 	private TextField TextFieldPhoneNumber;
+	
 
 	public static Order order;
 
@@ -163,6 +172,10 @@ public class DeliveryDetailsController extends UsersController implements Initia
 
 	}
 
+	/**
+	 * This method sets the correct values of the Branch Manager in portal.
+	 * 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 

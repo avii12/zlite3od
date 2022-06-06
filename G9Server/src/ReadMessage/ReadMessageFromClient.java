@@ -317,6 +317,7 @@ public class ReadMessageFromClient {
 			case GET_USERS_FROM_DB_FOR_WORKER:
 				messageFromClient = UserQuery.GetUsersFromDB(messageFromClient);
 				break;
+<<<<<<< HEAD
 			case UPLOAD_PDF_TO_SYSTEM:
 				try {
 					mainQuery.InsertPDF((String) messageFromClient.getObject());
@@ -332,6 +333,12 @@ public class ReadMessageFromClient {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+=======
+		case GET_SURVEYID:
+			messageFromClient=SurveyQuery.GetSurveyFromDB(messageFromClient);
+			break;
+
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 
 			}
 

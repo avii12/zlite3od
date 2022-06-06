@@ -64,7 +64,6 @@ public class StartSalesController extends UsersController implements Initializab
 		String sale = parsedMsgFromServer[0];
 
 		if (sale.equals("1") || sale.equals("2")) {
-			System.out.println("sales are on");
 			StartSalesBranch.setDisable(true);
 			StartSalesBtn.setDisable(true);
 			EndSalesBtn.setDisable(false);

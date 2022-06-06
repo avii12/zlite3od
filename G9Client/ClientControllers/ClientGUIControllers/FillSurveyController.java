@@ -6,12 +6,8 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import AllUsers.ConfirmationStatus;
-import Report.customer;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -28,77 +24,104 @@ import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.ComboBoxTableCell;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.StringConverter;
-
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the fill survey by customer
+ *  
+ *@author Seren Hanany
+ *
+ */
 public class FillSurveyController extends UsersController implements Initializable {
 	public static FullMessage message;
 	public static ArrayList<survey> updateItems = new ArrayList<>();
 	@FXML
 	/**
-	 * ComboBox of answers.
+	 * ComboBox of answers1.
 	 */
 	private ComboBox<String> answer1;
 	@FXML
 	/**
-	 * ComboBox of answers.
+	 * ComboBox of answers2.
 	 */
 	private ComboBox<String> answer2;
 	@FXML
 	/**
-	 * ComboBox of answers.
+	 * ComboBox of answers3.
 	 */
 	private ComboBox<String> answer3;
 	@FXML
 	/**
-	 * ComboBox of answers.
+	 * ComboBox of answers4.
 	 */
 	private ComboBox<String> answer4;
 	@FXML
 	/**
-	 * ComboBox of answers.
+	 * ComboBox of answers5.
 	 */
 	private ComboBox<String> answer5;
 	@FXML
 	/**
-	 * ComboBox of answers.
+	 * ComboBox of answers6.
 	 */
 	private ComboBox<String> answer6;
-
+	/**
+	 * Label of Question1.
+	 */
 	@FXML
 	private Label Question1;
-
+	/**
+	 * Label of Question2.
+	 */
 	@FXML
 	private Label Question2;
-
+	/**
+	 * Label of Question3.
+	 */
 	@FXML
 	private Label Question3;
-
+	/**
+	 * Label of Question4.
+	 */
 	@FXML
 	private Label Question4;
-
+	/**
+	 * Label of Question5.
+	 */
 	@FXML
 	private Label Question5;
-
+	/**
+	 * Label of Question6.
+	 */
 	@FXML
 	private Label Question6;
-
+	/**
+	 * Label error.
+	 */
 	@FXML
 	private Label errorLabel;
+	/**
+	 * Array list for survey answers
+	 */
 	public static ArrayList<SurveyAnswers> ArrayForSurveyAnswers = new ArrayList<>();
+	/**
+	 * Array String for save answers
+	 */
 	public String[] answer = new String[7];
-	// public static ArrayList<SurveyAnswers> ArrayForSurveyAnswers = new
-	// ArrayList<>();
+	/**
+	 * Array list for survey 
+	 */
 	public static ArrayList<survey> ArrayForSurvey = new ArrayList<>();
-
+	/**
+	 *
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 *
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ObservableList<survey> Survey = FXCollections.observableArrayList();
@@ -137,7 +160,14 @@ public class FillSurveyController extends UsersController implements Initializab
 
 		}
 	}
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackBtn(MouseEvent event) throws IOException {
 
@@ -156,7 +186,13 @@ public class FillSurveyController extends UsersController implements Initializab
 		primaryStage.show();
 
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -165,7 +201,15 @@ public class FillSurveyController extends UsersController implements Initializab
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	/**
+	 * After Clicking On send Button 
+	 * The Function Hide The Current Window  
+	 * And Load The Pop Up Message
+	 * And send the answers to customer service worker
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void SendBtn(ActionEvent event) throws IOException {
 		if (answer1.getValue().equals("answer1*") || answer2.getValue().equals("answer2*")
@@ -173,7 +217,9 @@ public class FillSurveyController extends UsersController implements Initializab
 				|| answer5.getValue().equals("answer5*") || answer6.getValue().equals("answer6*")) {
 			errorLabel.setText("Fill all the answers!!");
 		} else {
-			String SurveyID = "1000";
+			message = new FullMessage(Request.GET_SURVEYID, Response.Wait, CurrentUser);
+			
+			String SurveyID =ArrayForSurvey.get(0).getSurveyID();
 			String CustomerID = CurrentUser.getID();
 
 			////////////////////

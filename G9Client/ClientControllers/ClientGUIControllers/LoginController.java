@@ -31,7 +31,6 @@ import ZliClient.ZliClientUI;
  * @version 10/05/2022
  *
  */
-
 public class LoginController extends UsersController{
 	
 	private static Login login;
@@ -50,9 +49,20 @@ public class LoginController extends UsersController{
 	@FXML
 	private PasswordField password;
 
+	/**
+	 * Label For Message For The User 
+	 */
 	@FXML
 	private Label errorLabel;
 
+	/**
+	 * After Clicking On LogIn Button 
+	 * The Function Get The Text Field Contents
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
 	public void LoginButton(ActionEvent event) throws IOException {
 
 		 login = new Login(username.getText(), password.getText());
@@ -60,6 +70,12 @@ public class LoginController extends UsersController{
 		
 	}
 
+	/**
+	 * Load The Correct Page 
+	 * From the Text Fields Contents
+	 * @param event
+	 * @throws IOException
+	 */
 	public void logOnToNeededPage(ActionEvent event) throws IOException {
 		
 		if (notEmpty(login)) {
@@ -116,6 +132,14 @@ public class LoginController extends UsersController{
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * If Any Of The Fields Is Empty
+	 * Display To The User Message
+	 * @param login
+	 * @return
+	 */
 	private boolean notEmpty(Login login) {
 		username.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
 		password.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
@@ -146,7 +170,11 @@ public class LoginController extends UsersController{
 		return true;
 
 	}
-
+	
+	/**
+	 * The Function Display's The Message On The Label
+	 * @param message
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {
@@ -160,7 +188,13 @@ public class LoginController extends UsersController{
 
 		});
 	}
-
+	
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server  
+	 * Disconnect From The Server  
+	 * @param event
+	 */
 	public void ExitButton(MouseEvent event) {
 		System.out.println("exit the establish Connection to server Window");
 		Request request = Request.Disconnect;
@@ -169,7 +203,15 @@ public class LoginController extends UsersController{
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -189,6 +231,14 @@ public class LoginController extends UsersController{
 
 	}
 
+	/**
+	 * Hide The Current Window 
+	 * Transfer To The Needed Page 
+	 * 
+	 * @param event
+	 * @param path
+	 * @throws IOException
+	 */
 	public void TransferToNeededPage(ActionEvent event, String path) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window

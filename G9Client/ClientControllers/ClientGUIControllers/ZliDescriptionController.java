@@ -17,7 +17,14 @@ import javafx.stage.StageStyle;
 
 public class ZliDescriptionController {
 
-	
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws IOException {
 		
 		Request request = Request.Disconnect;
@@ -41,6 +48,14 @@ public class ZliDescriptionController {
 		primaryStage.show();/* show the new screen *SearchForOrder.fxml */
 	}
 	
+	/**
+	 * After Clicking On Exit Button 
+	 * The Function Send A Message To The Server 
+	 * The Function Disconnect From The Server
+	 * 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void ExitBtn(MouseEvent event) throws Exception {
 		Request request = Request.Disconnect;
 		Response response = Response.Wait;
