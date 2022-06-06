@@ -182,7 +182,11 @@ public class AcceptCancelOrderController extends UsersController implements Init
 						String EstimaitedTime = order.getEstimatedDate().toString();
 					
 						
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 						if(order.getActualDate()==null) {
+=======
+						if(order.getOrderDate().equals(null)) {
+>>>>>>> 25737fc jty
 							Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 							 Actual=timestamp.toString();
 							}else {

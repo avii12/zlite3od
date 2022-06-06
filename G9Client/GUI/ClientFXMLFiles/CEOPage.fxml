@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="607.0" prefWidth="1029.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CEOZliPageController">
+<AnchorPane prefHeight="607.0" prefWidth="1029.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CEOZliPageController">
    <children>
       <Text layoutX="430.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CEO Page" wrappingWidth="169.71484375">
          <font>

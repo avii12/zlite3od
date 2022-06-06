@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="798.0" prefWidth="1204.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CatalogController">
+<AnchorPane prefHeight="798.0" prefWidth="1204.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CatalogController">
    <children>
       <Text layoutX="468.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catalog Page" wrappingWidth="237.30389404296875">
          <font>

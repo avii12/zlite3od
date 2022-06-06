@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="493.0" prefWidth="856.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ComplaintHandelingController">
+<AnchorPane prefHeight="493.0" prefWidth="856.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ComplaintHandelingController">
    <children>
       <Text layoutX="275.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complaint Handling">
          <font>
@@ -23,11 +23,11 @@
             <Font name="System Italic" size="18.0" />
          </font>
       </Text>
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-      <Button fx:id="Continue" layoutX="137.0" layoutY="403.0" mnemonicParsing="false" onAction="#ShowCustomerComplaint" prefHeight="40.0" prefWidth="171.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Choose Complaint" textFill="WHITE">
-=======
+
+     
+
       <Button fx:id="Continue" layoutX="137.0" layoutY="454.0" mnemonicParsing="false" onAction="#ShowCustomerComplaint" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Continue" textFill="WHITE">
->>>>>>> 4862a0e cxzc
+
          <font>
             <Font name="System Italic" size="16.0" />
          </font>
