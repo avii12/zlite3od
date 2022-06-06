@@ -28,23 +28,43 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class ViewTwoReportsForOneBranchController extends UsersController implements Initializable {
-
+	/**
+	 *static parameter message of full message
+	 */
 	public static FullMessage message;
+	/**
+	 *ComboBox for quarterly1
+	 */
 	@FXML
     private ComboBox<String> Quarterly1;
-
+	/**
+	 *ComboBox for year
+	 */
     @FXML
     private ComboBox<String> Year;
-
+    /**
+	 *ComboBox for quarterly2
+	 */
     @FXML
     private ComboBox<String> Quarterly2;
-
+    /**
+	 *ComboBox for branch name
+	 */
     @FXML
     private ComboBox<String> BranchName;
-
+    /**
+	 *Error label
+	 */
     @FXML
     private Label ErrorLabel;
+    /**
+	 *double array for total price for income
+	 */
     static double[] TotalPriceForIncome=new double[2];
+    /**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ObservableList<String> Quarterlies = FXCollections.observableArrayList("1-3","4-6", "7-12");
@@ -62,7 +82,15 @@ public class ViewTwoReportsForOneBranchController extends UsersController implem
 			}
 		}
 	
-	
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
 	public void BackBtn(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
@@ -78,6 +106,14 @@ public class ViewTwoReportsForOneBranchController extends UsersController implem
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void exitButton(MouseEvent event) throws IOException {
 
@@ -89,6 +125,12 @@ public class ViewTwoReportsForOneBranchController extends UsersController implem
 	}
 	
 	
+/**
+ * after clicking on View Reports Distribution button
+ * The function Load a graph window
+ * @param event
+ * @throws IOException
+ */
 public void ViewReportsDistribution(ActionEvent event) throws IOException {
 		
 	if ((BranchName.getValue().equals("BranchName*")||
@@ -118,9 +160,11 @@ public void ViewReportsDistribution(ActionEvent event) throws IOException {
 		
 	}//else1
 }
-		
-	
-	 
+/**
+ * This function gets String message
+ * put the message on error label
+ * @param msg
+ */
 	 public void DisplayMessageForUser(String message) {
 			Platform.runLater(() -> {
 				ErrorLabel.setText(message);

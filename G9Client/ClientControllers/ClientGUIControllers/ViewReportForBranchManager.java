@@ -2,24 +2,15 @@ package ClientGUIControllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
-
-import Orders.Branch;
-import Orders.Item;
-import Orders.ItemCategory;
-import Orders.ItemsForTableView;
 import Report.OrderReport;
 import Report.IncomeReport;
 import Report.Reports;
-
-import java.time.*;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -42,28 +33,53 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling Graph for branch manager 
+ *  
+ * @author Seren Hanany
+ *
+ */
 public class ViewReportForBranchManager extends UsersController implements Initializable {
-
+	/**
+	 *static parameter message of full message
+	 */
 	public static FullMessage message;
+	/**
+	 *Array list for reports from DB
+	 */
 	public static ArrayList<Reports> ReportFromDB = new ArrayList<>();
+	/**
+	 *Array list for branch manager
+	 */
 	public static ArrayList<String> BranchForManager = new ArrayList<>();
+	/**
+	 *Array list for income report
+	 */
 	public static ArrayList<String> IncomeReport = new ArrayList<>();
+	/**
+	 *Array list for orders report
+	 */
 	public static ArrayList<String> OrdersReport = new ArrayList<>();
+	/**
+	 *Text area to show reports
+	 */
 	@FXML
 	private TextArea TextAreaReport;
+	/**
+	 *Table view for income report
+	 */
 	@FXML
 	private TableView<IncomeReport> DetailsTable;
+	/**
+	 *Table view for orders report
+	 */
 	@FXML
 	private TableView<OrderReport> OrderReport;
-	@FXML
-	private ImageView exitid;
-	@FXML
-	private ImageView photoid;
-	@FXML
-	private ImageView logoid;
-	@FXML
-	private ImageView backid;
+	/**
+	 *Error label
+	 */
 	@FXML
 	private Label ErrorLabel;
 	@FXML
@@ -82,7 +98,15 @@ public class ViewReportForBranchManager extends UsersController implements Initi
 	 */
 	private ComboBox<String> ReportType;
 	
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
 	public void BackBtn(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
@@ -98,7 +122,14 @@ public class ViewReportForBranchManager extends UsersController implements Initi
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void exitButton(MouseEvent event) throws IOException {
 
@@ -108,7 +139,11 @@ public class ViewReportForBranchManager extends UsersController implements Initi
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 *
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ObservableList<String> Types = FXCollections.observableArrayList("Income", "Orders");
@@ -130,12 +165,15 @@ public class ViewReportForBranchManager extends UsersController implements Initi
 		}
 		ReportType.setItems(Types);
 	}
-
+	/**
+	 * After Clicking On search Button 
+	 * And We Can show the wanted report in area text
+	 * @param event
+	 * @throws IOException
+	 */
 	public void SearchBtn(ActionEvent event) throws IOException {
 		if (Check()) {
 			TextAreaReport.clear();
-			ObservableList<IncomeReport> Details = FXCollections.observableArrayList();
-			ObservableList<OrderReport> Orders = FXCollections.observableArrayList();
 			String date = ReportYear.getValue() + "-" + ReportMonth.getValue() + "-01";
 
 			String[] TypeAndDate = new String[4];
@@ -204,14 +242,26 @@ public class ViewReportForBranchManager extends UsersController implements Initi
 		}
 	}
 
+	/**
+	 * This function gets String message
+	 * put the message on text area
+	 * @param msg
+	 */
 	public void DisplayMessageToTextAreaIncome(String msg) {
+		
 		Platform.runLater(() -> {
 			String Message = TextAreaReport.getText();
 			this.TextAreaReport.setText(Message + "\n" + msg);
 		});
 	}
 
+	/**
+	 * Boolean function 
+	 * Check all the values in comboBox
+	 * @return
+	 */
 	public boolean Check() {
+		
 		ReportYear.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
 		ReportMonth.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");
 		ReportType.setStyle("-fx-border-color: black;-fx-background-radius: 15; -fx-border-radius: 15");

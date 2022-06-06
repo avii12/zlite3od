@@ -59,7 +59,7 @@
          <columns>
             <TableColumn fx:id="SurveyIDcol" prefWidth="146.4000244140625" text="SurveyID" />
             <TableColumn fx:id="CustomerIDcol" prefWidth="146.39996337890625" text="CustomerID" />
-            <TableColumn fx:id="QuestionNymbercol" prefWidth="213.5999755859375" text="QuestionNumber" />
+            <TableColumn fx:id="QuestionNumbercol" prefWidth="213.5999755859375" text="QuestionNumber" />
             <TableColumn fx:id="Answercol" prefWidth="105.5999755859375" text="Answer" />
          </columns>
       </TableView>

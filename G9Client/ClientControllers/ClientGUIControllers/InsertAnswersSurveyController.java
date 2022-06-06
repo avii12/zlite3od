@@ -1,17 +1,13 @@
 package ClientGUIControllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.ResourceBundle;
-
-import Orders.ItemsForTableView;
-import Report.customer;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
 import Survey.SurveyAnswers;
-import ZliClient.PopUpMessage;
 import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.collections.FXCollections;
@@ -23,7 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,31 +26,61 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling Graph for branch manager 
+ *  
+ *@author Seren Hanany
+ *
+ */
 public class InsertAnswersSurveyController extends UsersController implements Initializable {
-
+	/**
+	 *static parameter message of full message
+	 */
 	public static FullMessage message;
-
+	/**
+	 * Error label
+	 */
 	@FXML
 	private Label errorLabel;
-
+	/**
+	 * Table view for answer 
+	 */
 	@FXML
 	private TableView<SurveyAnswers> AnswersTable;
-
+	/**
+	 * Survey ID column
+	 */
 	@FXML
 	private TableColumn<SurveyAnswers, String> SurveyIDcol;
-
+	/**
+	 * Customer ID column
+	 */
 	@FXML
 	private TableColumn<SurveyAnswers, String> CustomerIDcol;
-
+	/**
+	 * Question number column 
+	 */
 	@FXML
-	private TableColumn<SurveyAnswers, String> QuestionNymbercol;
-
+	private TableColumn<SurveyAnswers, String> QuestionNumbercol;
+	/**
+	 * Answer column 
+	 */
 	@FXML
 	private TableColumn<SurveyAnswers, String> Answercol;
-
+	/**
+	 * Array list for survey answers
+	 */
 	public static ArrayList<SurveyAnswers> ArrayForSurveyAnswers = new ArrayList<>();
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -64,7 +89,14 @@ public class InsertAnswersSurveyController extends UsersController implements In
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackBtn(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -81,7 +113,14 @@ public class InsertAnswersSurveyController extends UsersController implements In
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 * After Clicking On add Button 
+	 * The Function Hide The Current Window  
+	 * And send the answers to DB
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void AddBtn(ActionEvent event) {
 		SurveyAnswers selectedUser = AnswersTable.getSelectionModel().getSelectedItem();
@@ -96,7 +135,11 @@ public class InsertAnswersSurveyController extends UsersController implements In
 
 		}
 	}
-
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 *
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ObservableList<SurveyAnswers> SurveyAnswer = FXCollections.observableArrayList();
@@ -109,7 +152,7 @@ public class InsertAnswersSurveyController extends UsersController implements In
 
 			SurveyIDcol.setCellValueFactory(new PropertyValueFactory<SurveyAnswers, String>("SurveyID"));
 			CustomerIDcol.setCellValueFactory(new PropertyValueFactory<SurveyAnswers, String>("CustomerID"));
-			QuestionNymbercol.setCellValueFactory(new PropertyValueFactory<SurveyAnswers, String>("QuestionNumber"));
+			QuestionNumbercol.setCellValueFactory(new PropertyValueFactory<SurveyAnswers, String>("QuestionNumber"));
 			Answercol.setCellValueFactory(new PropertyValueFactory<SurveyAnswers, String>("QuestionAnswer"));
 			AnswersTable.setItems(SurveyAnswer);
 		} else {
