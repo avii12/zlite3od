@@ -133,12 +133,9 @@ public class ChangeUserPermissionController extends UsersController implements I
 		UsersTable.setEditable(true);
 		
 		Typecol.setOnEditCommit(event -> {
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-			Optional<ButtonType> Option=PopUpMessage.ConfirmationForUser("Edit this User?");
-=======
-			Users selectedUser = UsersTable.getSelectionModel().getSelectedItem();
+
 			Optional<ButtonType> Option=PopUpMsg.ConfirmationForUser("Edit this User?");
->>>>>>> 225ef9c dd
+			Users selectedUser = UsersTable.getSelectionModel().getSelectedItem();
 			if(Option.get()== ButtonType.OK) {
 			Users user=event.getRowValue();
 			user.setEmail(user.getUserType());//old type
