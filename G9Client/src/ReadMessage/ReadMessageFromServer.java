@@ -554,6 +554,21 @@ public class ReadMessageFromServer {
 				}
 				break;
 
+			case EXTRACT_PDF_FROM_DB:
+				switch (ResponseFromServer) {
+
+				case PDF_FOUND:
+					ServiceExpertPageController.message.setResponse(Response.PDF_FOUND);
+					ServiceExpertPageController.extractedPath = (String) ReturnedObjectFromDB;
+					break;
+
+				case PDF_NOT_FOUND:
+					ServiceExpertPageController.message.setResponse(Response.PDF_NOT_FOUND);
+					break;
+
+				}
+				break;
+
 			}
 
 		}

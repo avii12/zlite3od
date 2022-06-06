@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="736.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ServiceExpertPageController"> 
+<Pane fx:id="anchorid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="736.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ServiceExpertPageController"> 
    <children>
       <ImageView fitHeight="150.0" fitWidth="144.0" layoutX="-7.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,7 +24,7 @@
       </Text>
       <Pane layoutX="131.0" layoutY="139.0" prefHeight="231.0" prefWidth="471.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
          <children>
-            <Button layoutX="112.0" layoutY="170.0" mnemonicParsing="false" onAction="#UploadFile" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Upload a report to the system" textFill="WHITE">
+            <Button layoutX="144.0" layoutY="170.0" mnemonicParsing="false" onAction="#BrowseReport" prefHeight="37.0" prefWidth="171.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Browse Report" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -55,5 +56,16 @@
             <Image url="@../../../G9Common/Pic/Cancel.png" />
          </image>
       </ImageView>
+      <TextField fx:id="TextFieldPath" disable="true" layoutX="252.0" layoutY="378.0" prefHeight="25.0" prefWidth="223.0" />
+      <Button fx:id="UploadButton" disable="true" layoutX="272.0" layoutY="421.0" mnemonicParsing="false" onAction="#UploadReport" prefHeight="37.0" prefWidth="183.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Upload Report to system" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="531.0" layoutY="421.0" mnemonicParsing="false" onAction="#ExtractPDF" prefHeight="37.0" prefWidth="183.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Extract PDF from DB" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

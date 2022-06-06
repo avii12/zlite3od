@@ -1,10 +1,16 @@
 package queries;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+
+import org.w3c.dom.Document;
 
 import Orders.Branch;
 import Report.ReportType;
@@ -72,6 +78,12 @@ public class SurveyQuery {
 		
 		
 		return null;
+	}
+	
+	public static void getByteArrayFromFile(final Document handledDocument) throws IOException {
+	 
+		
+		
 	}
 
 }

@@ -1,11 +1,19 @@
 package queries;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import AllUsers.ConfirmationStatus;
 import AllUsers.Users;
@@ -17,11 +25,10 @@ import Orders.ItemType;
 import Orders.OrderStatus;
 import Orders.RefundStatus;
 import Orders.TypeOfSupply;
-
-
+import RequestsAndResponses.FullMessage;
+import RequestsAndResponses.Response;
 import ServerGUIControllers.ServerGuiController;
 import Survey.SurveyAnswers;
-
 
 public class mainQuery {
 
@@ -49,12 +56,7 @@ public class mainQuery {
 		return rs;
 	}
 
-
-	
-
-	
 	public static void InsertOneRowIntosurveyAnswersTable(SurveyAnswers answerANDid) throws ParseException {
-
 
 		String query = "INSERT INTO surveyanswers (SurveyID,CustomerID, QuestionNumber,QuestionAnswer) VALUES ("
 				+ "?, ?, ?,?)";
@@ -114,7 +116,7 @@ public class mainQuery {
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
 
-			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
+			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "100");
 
 			pstmt.setDouble(10, 0);
@@ -144,7 +146,7 @@ public class mainQuery {
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
 
-			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
+			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "0");
 
 			pstmt.executeUpdate();
@@ -219,8 +221,8 @@ public class mainQuery {
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
 
-			pstmt.setString(8,String.valueOf(user.getConfirmationstatus()));
-			pstmt.setString(9,"TheSecretGarden");
+			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
+			pstmt.setString(9, "TheSecretGarden");
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -386,6 +388,77 @@ public class mainQuery {
 	 * "SELECT MAX(GiaSP) from tbsanpham where manhom = '"+manhom+"'"; ResultSet rs
 	 * = statement.executeQuery(sql); if (rs.next()) { max = rs.getInt(1);
 	 */
+
+	public static void UpdateDateForPDFInsert() throws SQLException {
+
+		String updateSQL = "UPDATE summarizedpdf " + "SET Date = ? " + "WHERE surveyID=?";
+		// String updateSQL = "UPDATE candidates " + "SET resume = ? " + "WHERE id=?";
+
+		PreparedStatement pstmt = con.prepareStatement(updateSQL);
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		String date = dtf.format(now);
+		Timestamp dateTimeStamp = Timestamp.valueOf(date);
+		System.out.println(dateTimeStamp);
+		pstmt.setTimestamp(1, dateTimeStamp);
+		pstmt.setString(2, "1");
+		pstmt.executeUpdate();
+
+	}
+
+	public static void InsertPDF(String path) throws SQLException, FileNotFoundException {
+
+		String updateSQL = "UPDATE summarizedpdf " + "SET File = ? " + "WHERE surveyID=?";
+		// String updateSQL = "UPDATE candidates " + "SET resume = ? " + "WHERE id=?";
+
+		PreparedStatement pstmt = con.prepareStatement(updateSQL);
+
+		File file = new File(path);
+		FileInputStream input = new FileInputStream(file);
+
+		// set parameters
+		pstmt.setBinaryStream(1, input);
+		pstmt.setString(2, "1000");
+		pstmt.executeUpdate();
+
+		// UpdateDateForPDFInsert();
+
+	}
+
+	@SuppressWarnings("unused")
+	public static FullMessage ShowPDF(FullMessage message) throws SQLException, IOException {
+
+		String selectSQL = "SELECT File FROM summarizedpdf WHERE surveyID=?";
+		PreparedStatement pstmt = con.prepareStatement(selectSQL);
+
+		pstmt.setString(1, "1000");
+		ResultSet rs = pstmt.executeQuery();
+
+		File file = new File("C:\\Reports\\PDF_from_db.pdf");
+
+		if (rs.next()) {
+
+			if (rs.getBlob(1) != null) {
+
+				FileOutputStream output = new FileOutputStream(file);
+				InputStream input = rs.getBinaryStream("File");
+				message.setResponse(Response.PDF_FOUND);
+				message.setObject(file.getAbsolutePath());
+				byte[] buffer = new byte[1024];
+				while (input.read(buffer) > 0) {
+					output.write(buffer);
+				}
+
+			} else {
+				message.setResponse(Response.PDF_NOT_FOUND);
+			}
+			return message;
+
+		}
+		message.setResponse(Response.PDF_NOT_FOUND);
+		return message;
+	}
 
 	public static void InsertOneRowIntoOrderTable(String orderNumber, String customerID, Branch branch,
 			OrderStatus orderstatus, Timestamp orderDate, Timestamp estimatedDate, Timestamp actualDate,

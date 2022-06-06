@@ -276,14 +276,14 @@ public class CatalogAddController extends UsersController implements Initializab
 
 		String slash = "\\\\";
 		String path;
-		String[] parsedMsgFromClient;
+		String[] parsedMsg;
 		final FileChooser chooser = new FileChooser();
 		Stage stage = (Stage) anchorid.getScene().getWindow();
 		File file = chooser.showOpenDialog(stage);
 
 		if (file != null) {
-			parsedMsgFromClient = file.getAbsolutePath().split("C:");
-			path = "File:C:" + slash + parsedMsgFromClient[1];
+			parsedMsg = file.getAbsolutePath().split("C:");
+			path = "File:C:" + slash + parsedMsg[1];
 			TextFieldPath.setText(path);
 		}
 	}

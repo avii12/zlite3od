@@ -1,5 +1,7 @@
 package ReadMessage;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
@@ -17,6 +19,7 @@ import queries.OrderQuery;
 import queries.ReportQuery;
 import queries.SurveyQuery;
 import queries.UserQuery;
+import queries.mainQuery;
 
 public class ReadMessageFromClient {
 
@@ -26,6 +29,13 @@ public class ReadMessageFromClient {
 
 	public static FullMessage ReadMessage(Object message, ConnectionToClient client) throws SQLException {
 		CurrentClient = client;
+		
+		/*try {
+			mainQuery.ShowPDF();
+		} catch (SQLException | IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}*/
 
 		if (!(message instanceof FullMessage)) {
 
@@ -114,13 +124,13 @@ public class ReadMessageFromClient {
 			case COMPLETED_ORDER_FINISHED:
 				messageFromClient = OrderQuery.updateOrdersStatusOnDb(messageFromClient);
 				break;
-				
+
 			case GET_SURVEY_FROM_DB:
-				messageFromClient=SurveyQuery.GetSurveyFromDB(messageFromClient);
+				messageFromClient = SurveyQuery.GetSurveyFromDB(messageFromClient);
 				break;
-				
+
 			case SET_SURVEY_ANSWER:
-				messageFromClient=SurveyQuery.SetAnswersToDB(messageFromClient);
+				messageFromClient = SurveyQuery.SetAnswersToDB(messageFromClient);
 				break;
 
 			case GET_CUSTOMER_DETAILS:
@@ -131,11 +141,11 @@ public class ReadMessageFromClient {
 
 				messageFromClient = OrderQuery.CheckIfFirstOrder(messageFromClient);
 				break;
-				
+
 			case GET_LAST_COMPLAINT_NUMBER:
 				messageFromClient = OrderQuery.CheckIfFirstComplaint(messageFromClient);
 				break;
-			
+
 			case INSERT_ORDER_TO_DB:
 
 				try {
@@ -278,18 +288,18 @@ public class ReadMessageFromClient {
 			case UPDATE_BALANCE_AFTER_COMPLAINT:
 				messageFromClient = UserQuery.restoreOldBalanceAfterComplaint(messageFromClient);
 				break;
-				
+
 			case GET_USERS_FROM_DB:
-				messageFromClient=UserQuery.GetUsersFromDB(messageFromClient);
-				break;	
+				messageFromClient = UserQuery.GetUsersFromDB(messageFromClient);
+				break;
 
 			case GET_WORKER_BRANCH:
 				messageFromClient = UserQuery.GetBranchFromWorker(messageFromClient);
 				break;
-				
+
 			case UPDATE_TYPE_USER:
-				messageFromClient=UserQuery.ChangeUsersFromDB(messageFromClient);
-				break;	
+				messageFromClient = UserQuery.ChangeUsersFromDB(messageFromClient);
+				break;
 
 			case ADD_COMPLAINT_FROM_USER_TO_DB:
 				try {
@@ -304,14 +314,24 @@ public class ReadMessageFromClient {
 				OrderQuery.UpdateRefundStatus(messageFromClient);
 				break;
 
-				
 			case GET_USERS_FROM_DB_FOR_WORKER:
-				messageFromClient=UserQuery.GetUsersFromDB(messageFromClient);
-				break;	
-		case UPLOAD_FILE:
-				messageFromClient=SurveyQuery.UploadFile(messageFromClient);
+				messageFromClient = UserQuery.GetUsersFromDB(messageFromClient);
 				break;
-
+			case UPLOAD_PDF_TO_SYSTEM:
+				try {
+					mainQuery.InsertPDF((String) messageFromClient.getObject());
+				} catch (FileNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case EXTRACT_PDF_FROM_DB:
+				try {
+					messageFromClient=mainQuery.ShowPDF(messageFromClient);
+				} catch (SQLException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 			}
 
