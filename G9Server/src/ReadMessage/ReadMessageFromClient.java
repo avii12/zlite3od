@@ -4,9 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-
-import Orders.Item;
-import Orders.Order;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -141,7 +138,7 @@ public class ReadMessageFromClient {
 				break;
 
 			case GET_LAST_COMPLAINT_NUMBER:
-				messageFromClient = OrderQuery.CheckIfFirstComplaint(messageFromClient);
+				messageFromClient = ComplaintsQuery.CheckIfFirstComplaint(messageFromClient);
 				break;
 
 			case INSERT_ORDER_TO_DB:

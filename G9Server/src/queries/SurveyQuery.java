@@ -78,11 +78,5 @@ public class SurveyQuery {
 		
 		return null;
 	}
-	
-	public static void getByteArrayFromFile(final Document handledDocument) throws IOException {
-	 
-		
-		
-	}
 
 }

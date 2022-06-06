@@ -410,19 +410,31 @@ public class mainQuery {
 	public static void InsertPDF(String path) throws SQLException, FileNotFoundException {
 
 		String updateSQL = "UPDATE summarizedpdf " + "SET File = ? " + "WHERE surveyID=?";
-		// String updateSQL = "UPDATE candidates " + "SET resume = ? " + "WHERE id=?";
 
 		PreparedStatement pstmt = con.prepareStatement(updateSQL);
 
 		File file = new File(path);
 		FileInputStream input = new FileInputStream(file);
 
-		// set parameters
 		pstmt.setBinaryStream(1, input);
 		pstmt.setString(2, "1000");
 		pstmt.executeUpdate();
+		SetDateForPDFTable();
 
-		// UpdateDateForPDFInsert();
+	}
+	
+	public static void SetDateForPDFTable() throws SQLException, FileNotFoundException {
+
+		String updateSQL = "UPDATE summarizedpdf " + "SET Date = ? " + "WHERE surveyID=?";
+		// String updateSQL = "UPDATE candidates " + "SET resume = ? " + "WHERE id=?";
+
+		PreparedStatement pstmt = con.prepareStatement(updateSQL);
+
+		Timestamp date = new Timestamp(System.currentTimeMillis());
+		System.out.println(date);
+		pstmt.setTimestamp(1, date);
+		pstmt.setString(2, "1000");
+		pstmt.executeUpdate();
 
 	}
 

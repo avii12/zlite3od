@@ -86,4 +86,29 @@ public class ComplaintsQuery {
 		return returnMessageToClient;
 
 	}
+	
+	public static FullMessage CheckIfFirstComplaint(FullMessage messageFromClient) throws SQLException {
+
+		FullMessage returnMessageToClient = messageFromClient;
+		ResultSet rs = mainQuery.SelectAllFromDB("complaint");
+		int c = 0;
+		try {
+			// If the row doesn't exist in login Table
+			if (!rs.isBeforeFirst()) {
+				returnMessageToClient.setResponse(Response.NO_COMPLAINT_FOUND);
+				return returnMessageToClient;
+			}
+
+			while (rs.next()) {
+				c++;
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		returnMessageToClient.setObject(c);
+		returnMessageToClient.setResponse(Response.NOT_FIRST_COMPLAINT);
+		return returnMessageToClient;
+	}
 }

@@ -111,6 +111,7 @@ public class CatalogController extends UsersController implements Initializable 
 	public static String IsSaleOn;
 	public static String percent;
 	public static String branch;
+	private int selectedIndex;
 
 	public static ObservableList<ItemsForCartView> ItemsIncart = FXCollections.observableArrayList();
 	public static double TotalPrice = 0;
@@ -153,7 +154,7 @@ public class CatalogController extends UsersController implements Initializable 
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		ClearLists();
 
 		if (status.equals(ConfirmationStatus.FROZEN)) {
@@ -206,8 +207,8 @@ public class CatalogController extends UsersController implements Initializable 
 			break;
 
 		case "2":
-			String percent = percent1.get(0) + "%";
-			for (int i = 1; i < percent1.size(); i++) {
+			String percent = "";
+			for (int i = 0; i < percent1.size(); i++) {
 				if (percent1.get(i).equals("0")) {
 
 				} else
@@ -215,9 +216,10 @@ public class CatalogController extends UsersController implements Initializable 
 			}
 			percent = RemoveDuplicate(percent);
 
-			String name = branch1.get(0);
+			String name = "";
+			;
 
-			for (int i = 1; i < branch1.size(); i++) {
+			for (int i = 0; i < branch1.size(); i++) {
 				if (branch1.get(i).equals("0")) {
 
 				} else

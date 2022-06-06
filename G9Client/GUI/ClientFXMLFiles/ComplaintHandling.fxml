@@ -23,7 +23,7 @@
             <Font name="System Italic" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="Continue" layoutX="137.0" layoutY="403.0" mnemonicParsing="false" onAction="#ShowCustomerComplaint" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Continue" textFill="WHITE">
+      <Button fx:id="Continue" layoutX="137.0" layoutY="403.0" mnemonicParsing="false" onAction="#ShowCustomerComplaint" prefHeight="40.0" prefWidth="171.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Choose Complaint" textFill="WHITE">
          <font>
             <Font name="System Italic" size="16.0" />
          </font>

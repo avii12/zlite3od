@@ -68,11 +68,11 @@ public class StartSalesController extends UsersController implements Initializab
 			StartSalesBtn.setDisable(true);
 			EndSalesBtn.setDisable(false);
 		}
-		
-		if(sale.equals("1"))
-			StartSalesWithBranchClicked=false;
+
+		if (sale.equals("1"))
+			StartSalesWithBranchClicked = false;
 		else
-			StartSalesWithBranchClicked=true;
+			StartSalesWithBranchClicked = true;
 		ArrayList<Branch> branches = new ArrayList<>();
 		branches.add(branch);
 		ArrayList<String> sales = new ArrayList<>();
@@ -103,19 +103,19 @@ public class StartSalesController extends UsersController implements Initializab
 			Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser("Are You sure you want to Start the Sales!?");
 			if (Option.get() == ButtonType.OK) {
 
-				StartSalesBranch.setDisable(false);
+				StartSalesBranch.setDisable(true);
 				StartSalesBtn.setDisable(false);
 				EndSalesBtn.setDisable(true);
 				errorControl("");
 
 				message = new FullMessage(Request.GET_THE_SALE_PERCENTAGE_FROM_WORKER, Response.Wait, branch);
-				ZliClientUI.ZliClientController.accept(message);	
+				ZliClientUI.ZliClientController.accept(message);
 				String percent = (String) message.getObject();
 				message = new FullMessage(Request.CHECK_IF_SALES_ARE_ON, Response.Wait, branch);
 				ZliClientUI.ZliClientController.accept(message);
 				String[] parsedMsgFromServer = (String[]) message.getObject();
-				
-                String length = String.valueOf(parsedMsgFromServer.length);
+
+				String length = String.valueOf(parsedMsgFromServer.length);
 				message = new FullMessage(Request.UPDATE_WORKER_AFTER_END_SALE, Response.Wait,
 						branch.toString() + " " + length);
 				ZliClientUI.ZliClientController.accept(message);
@@ -128,6 +128,12 @@ public class StartSalesController extends UsersController implements Initializab
 
 		}
 
+	}
+
+	@FXML
+	public void StartSalesComboAction(ActionEvent event) {
+
+		StartSalesBranch.setDisable(false);
 	}
 
 	@FXML

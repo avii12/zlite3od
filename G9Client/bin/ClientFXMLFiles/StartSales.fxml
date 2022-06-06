@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="475.0" prefWidth="785.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.StartSalesController">
+<AnchorPane prefHeight="475.0" prefWidth="785.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.StartSalesController">
    <children>
       <Button fx:id="StartSalesBtn" layoutX="214.0" layoutY="306.0" mnemonicParsing="false" onAction="#StartSales" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Start Sales" textFill="WHITE">
          <font>
@@ -43,7 +43,7 @@
             <Font size="16.0" />
          </font></Text>
       <ComboBox fx:id="SaleComboBox" layoutX="421.0" layoutY="134.0" prefHeight="31.0" prefWidth="215.0" promptText="sale percentage" />
-      <Label fx:id="ErrorLabel" layoutX="286.0" layoutY="248.0" prefHeight="21.0" prefWidth="235.0" textFill="RED">
+      <Label fx:id="ErrorLabel" layoutX="250.0" layoutY="248.0" prefHeight="25.0" prefWidth="341.0" textFill="RED">
          <font>
             <Font size="16.0" />
          </font></Label>
@@ -52,8 +52,8 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <ComboBox fx:id="BranchComboBox" layoutX="421.0" layoutY="191.0" prefHeight="31.0" prefWidth="215.0" promptText="ChooseBranch" />
-      <Button fx:id="StartSalesBranch" layoutX="421.0" layoutY="306.0" mnemonicParsing="false" onAction="#StartSalesWithSpecificBranch" prefHeight="45.0" prefWidth="215.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Start Sales With Specific Branch" textFill="WHITE">
+      <ComboBox fx:id="BranchComboBox" layoutX="421.0" layoutY="191.0" onAction="#StartSalesComboAction" prefHeight="31.0" prefWidth="215.0" promptText="ChooseBranch" />
+      <Button fx:id="StartSalesBranch" disable="true" layoutX="421.0" layoutY="306.0" mnemonicParsing="false" onAction="#StartSalesWithSpecificBranch" prefHeight="45.0" prefWidth="215.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Start Sales With Specific Branch" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

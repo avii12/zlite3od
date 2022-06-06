@@ -13,6 +13,7 @@ import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
 import ZliClient.PopUpMessage;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -197,6 +198,8 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 				if (Option.get() == ButtonType.OK) {
 					if (order.getOrderstatus() == OrderStatus.COMPLETED) {
 						errorControl("Thank you For Your Service");
+						PopUpMsg.AlertForUser(
+								"**An email has been sent to" + "||" + order.getCustomerName() + "||" + "**");
 						ArrayList<String> ArrayForMessageObject = new ArrayList<>();
 						String EstimaitedTime = order.getEstimatedDate().toString();
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());

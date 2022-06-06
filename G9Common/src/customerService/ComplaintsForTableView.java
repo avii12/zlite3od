@@ -28,6 +28,8 @@ public class ComplaintsForTableView {
 		this.complaintNum = complaint.getComplaintNum();
 
 	}
+	
+	
 
 	public Complaint getComplaint() {
 		return complaint;
