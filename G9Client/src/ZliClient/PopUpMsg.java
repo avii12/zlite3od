@@ -15,7 +15,14 @@ import javafx.stage.Stage;
 
 public class PopUpMsg {
 	
+	/**
+	 * This method displays a confirmation box with the string (message)
+	 * user has option to choose 'ok' or 'cancel' 
+	 * @param message
+	 * @return
+	 */
 	public static Optional<ButtonType> ConfirmationForUser(String message ) {
+		
 		Alert.AlertType type = Alert.AlertType.CONFIRMATION;
 		Alert alert = new Alert (type,"");
 		alert.initModality(Modality.APPLICATION_MODAL);
@@ -24,7 +31,14 @@ public class PopUpMsg {
 		return alert.showAndWait();
 	}
 	
+	/**
+	 * this box appears with 2 buttons OK and Cancel
+	 * the method returns Optional<ButtonType> , we have to check if its equals to OK to continue , other wise we do nothing.
+	 * example after calling this method : if(confirmationMessage(message) == ButtonType.OK)
+	 * @param dialogPane
+	 */
 	public static void centerButtons(DialogPane dialogPane) {
+		
         Region spacer = new Region();
         ButtonBar.setButtonData(spacer, ButtonBar.ButtonData.BIG_GAP);
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -33,6 +47,12 @@ public class PopUpMsg {
         hboxDialogPane.getChildren().add(spacer);
      }
 	
+	/**
+	 * This method simulation Message for user
+	 * @param title
+	 * @param Headermessage
+	 * @param bodyMessage
+	 */
 	public static void simulationMessage(String title ,String Headermessage, String bodyMessage) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(title);
@@ -44,7 +64,15 @@ public class PopUpMsg {
 		alert.showAndWait();
 	}
 	
+	/**
+	 * This is a message for the user to that
+	 * informs him about something (such as finishing the order
+	 * process).
+	 * @param message
+	 * @return
+	 */
 	public static Optional<ButtonType> AlertForUser(String message ){
+		
 		Alert.AlertType type = Alert.AlertType.INFORMATION;
 		Alert alert = new Alert (type,"");
 		alert.initModality(Modality.APPLICATION_MODAL);
