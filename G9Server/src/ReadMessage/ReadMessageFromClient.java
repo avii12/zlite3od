@@ -43,7 +43,7 @@ public class ReadMessageFromClient {
 	public static FullMessage ReadMessage(Object message, ConnectionToClient client) throws SQLException {
 		CurrentClient = client;
 
-		/*
+		/**
 		 * try { mainQuery.ShowPDF(); } catch (SQLException | IOException e2) { // TODO
 		 * Auto-generated catch block e2.printStackTrace(); }
 		 */
