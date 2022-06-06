@@ -12,11 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import AllUsers.ConfirmationStatus;
-import AllUsers.Users;
 import Orders.Branch;
 import Orders.DominantColor;
 import Orders.FlowerColor;
@@ -125,175 +121,14 @@ public class mainQuery {
 		} catch (SQLException e) {
 		}
 	}
-
 	/**
-	 * Method For inserting into customer table
+	 * Method For Inserting Row In Customer table
 	 * 
-	 * @param user
-	 * @throws ParseException
+	 * @param userName
+	 * @param Password
+	 * @param userId
+	 * @param userType
 	 */
-	public static void InsertOneRowIntoCustomerTable(Users user) throws ParseException {
-
-		String query = "INSERT INTO customer (" + "ID," + "FirstName," + " LastName," + " Email," + " PhoneNumber,"
-				+ " UserType," + " LogInStatus," + " ConfirmationStatus," + " CreditCard," + " Balance) VALUES ("
-				+ "?, ?, ?, ?, ?, ?, ?, ?,?,?)";
-
-		PreparedStatement pstmt = null;
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, user.getFirstName());
-			pstmt.setString(3, user.getLastName());
-			pstmt.setString(4, user.getEmail());
-			pstmt.setString(5, user.getPhoneNumber());
-			pstmt.setString(6, user.getUserType());
-			pstmt.setString(7, user.isLogInStatus());
-
-			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
-			pstmt.setString(9, "");
-
-			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
-			pstmt.setString(9, "100");
-
-			pstmt.setDouble(10, 0);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Method For inserting into Worker table
-	 * 
-	 * @param user
-	 * @throws ParseException
-	 */
-	public static void InsertOneRowIntoWorkerTable(Users user) throws ParseException {
-
-		String query = "INSERT INTO worker (" + "ID," + "FirstName," + " LastName," + " Email," + " PhoneNumber,"
-				+ " UserType," + " LogInStatus," + " ConfirmationStatus," + " Sales) VALUES ("
-				+ "?, ?, ?, ?, ?, ?, ?, ?,?)";
-
-		PreparedStatement pstmt = null;
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, user.getFirstName());
-			pstmt.setString(3, user.getLastName());
-			pstmt.setString(4, user.getEmail());
-			pstmt.setString(5, user.getPhoneNumber());
-			pstmt.setString(6, user.getUserType());
-			pstmt.setString(7, user.isLogInStatus());
-
-			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
-			pstmt.setString(9, "");
-
-			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
-			pstmt.setString(9, "0");
-
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Method For inserting into service specialist table
-	 * 
-	 * @param user
-	 * @throws ParseException
-	 */
-	public static void InsertOneRowIntoServicesTable(Users user) throws ParseException {
-
-		String query = "INSERT INTO servicespecialist (" + "ID," + "FirstName," + " LastName," + " Email,"
-				+ " PhoneNumber," + " UserType," + " LogInStatus," + " ConfirmationStatus) VALUES ("
-				+ "?, ?, ?, ?, ?, ?, ?, ?)";
-
-		PreparedStatement pstmt = null;
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, user.getFirstName());
-			pstmt.setString(3, user.getLastName());
-			pstmt.setString(4, user.getEmail());
-			pstmt.setString(5, user.getPhoneNumber());
-			pstmt.setString(6, user.getUserType());
-			pstmt.setString(7, user.isLogInStatus());
-			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Method For inserting into customer service worker table
-	 * 
-	 * @param user
-	 * @throws ParseException
-	 */
-	public static void InsertOneRowIntoCostomerServicesTable(Users user) throws ParseException {
-
-		String query = "INSERT INTO customerserviceworker (" + "ID," + "FirstName," + " LastName," + " Email,"
-				+ " PhoneNumber," + " UserType," + " LogInStatus," + " ConfirmationStatus) VALUES ("
-				+ "?, ?, ?, ?, ?, ?, ?, ?)";
-
-		PreparedStatement pstmt = null;
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, user.getFirstName());
-			pstmt.setString(3, user.getLastName());
-			pstmt.setString(4, user.getEmail());
-			pstmt.setString(5, user.getPhoneNumber());
-			pstmt.setString(6, user.getUserType());
-			pstmt.setString(7, user.isLogInStatus());
-			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void InsertOneRowIntoDeliveryPersonTable(Users user) throws ParseException {
-
-		String query = "INSERT INTO deliveryperson (" + "ID," + "FirstName," + " LastName," + " Email,"
-				+ " PhoneNumber," + " UserType," + " LogInStatus," + " ConfirmationStatus," + " Branch) VALUES ("
-				+ "?, ?, ?, ?, ?, ?, ?, ?,?)";
-
-		PreparedStatement pstmt = null;
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, user.getFirstName());
-			pstmt.setString(3, user.getLastName());
-			pstmt.setString(4, user.getEmail());
-			pstmt.setString(5, user.getPhoneNumber());
-			pstmt.setString(6, user.getUserType());
-			pstmt.setString(7, user.isLogInStatus());
-
-			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
-			pstmt.setString(9, "");
-
-			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
-			pstmt.setString(9, "TheSecretGarden");
-
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	public static void DeleteRowFromDB1(String TableName, String condition) {
-		String query = "DELETE FROM zli_db." + TableName + " WHERE (" + condition + ")";
-		PreparedStatement pstmt = null;
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public static void insertOneRowIntoCustomerTable(String id, String FirstName, String LastName, String Email,
 			String PhoneNumber, String UserType, String LogInStatus, ConfirmationStatus Status, String CreditCard,
 			Double Balance) {
@@ -309,6 +144,14 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * Method For Inserting Row In BranchManager table
+	 * 
+	 * @param userName
+	 * @param Password
+	 * @param userId
+	 * @param userType
+	 */
 	public static void insertOneRowIntoBranchManagerAndDeliveryTable(String tabelname, String id, String FirstName,
 			String LastName, String Email, String PhoneNumber, String UserType, String LogInStatus,
 			ConfirmationStatus Status, Branch branch) {
@@ -323,7 +166,14 @@ public class mainQuery {
 		} catch (SQLException e) {
 		}
 	}
-
+	/**
+	 * Method For Inserting Row In CeoZli And ServiceSpecialist And CustomerService Table
+	 * 
+	 * @param userName
+	 * @param Password
+	 * @param userId
+	 * @param userType
+	 */
 	public static void insertOneRowIntoCeoZliAndServiceSpAndCustomerServiceTable(String tabelname, String id,
 			String FirstName, String LastName, String Email, String PhoneNumber, String UserType, String LogInStatus,
 			ConfirmationStatus Status) {
@@ -339,6 +189,14 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * Method For Inserting Row In Worker Table
+	 * 
+	 * @param userName
+	 * @param Password
+	 * @param userId
+	 * @param userType
+	 */
 	public static void insertOneRowIntoWorkerTable(String id, String FirstName, String LastName, String Email,
 			String PhoneNumber, String UserType, String LogInStatus, ConfirmationStatus Status, String Sales) {
 		String query = "INSERT INTO zli_db.worker (ID,FirstName,LastName,Email,PhoneNumber,UserType,LogInStatus,ConfirmationStatus,Sales) VALUES( '"

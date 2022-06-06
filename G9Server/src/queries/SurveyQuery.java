@@ -1,20 +1,8 @@
 package queries;
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
-
-import org.w3c.dom.Document;
-
-import Orders.Branch;
-import Report.ReportType;
-import Report.Reports;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Response;
 import Survey.SurveyAnswers;
@@ -22,7 +10,14 @@ import Survey.survey;
 
 public class SurveyQuery {
 
+	/**
+	 * This method returns the survey from database
+	 * @param messageFromClient
+	 * @return messageFromClient
+	 * @throws SQLException
+	 */
 	public static FullMessage GetSurveyFromDB(FullMessage messageFromClient)throws SQLException {
+		
 		ArrayList<survey> SurveyQ = new ArrayList<survey>();
 		ResultSet rs = mainQuery.SelectAllFromDB("surveyquestions");
 		try {
@@ -46,7 +41,13 @@ public class SurveyQuery {
 		return messageFromClient;
 	}
 	
+	/**
+	 * This method takes details of survey from Database and makes new Object of survey to return
+	 * @param rs
+	 * @return Survey Object
+	 */
 	private static survey convertToSurvey(ResultSet rs) {
+		
 		try {
 			int QuestionNumber = rs.getInt(1);
 			String QuestionForm = rs.getString(2);
@@ -59,7 +60,14 @@ public class SurveyQuery {
 		return null;
 	}
 
+	/**
+	 * This method inserts the answers from customer into database
+	 * @param messageFromClient
+	 * @return messageFromClient
+	 * @throws SQLException
+	 */
 	public static FullMessage SetAnswersToDB(FullMessage messageFromClient)throws SQLException {
+		
 		SurveyAnswers answerANDid = (SurveyAnswers) messageFromClient.getObject();
 		try {
 			mainQuery.InsertOneRowIntosurveyAnswersTable(answerANDid);
@@ -70,13 +78,6 @@ public class SurveyQuery {
 		messageFromClient.setResponse(Response.SET_ANSWER_DONE);
 		return messageFromClient;
 	
-	}
-
-	public static FullMessage UploadFile(FullMessage messageFromClient)throws SQLException {
-		FileOutputStream output=null;
-		
-		
-		return null;
 	}
 
 }

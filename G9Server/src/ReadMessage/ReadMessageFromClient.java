@@ -302,7 +302,7 @@ public class ReadMessageFromClient {
 				 /**
 				  * We Update Worker Sale In DB
 				  */
-				ItemsAndProductsQuery.UpdateSaleForWorker(messageFromClient);
+				UserQuery.UpdateSaleForWorker(messageFromClient);
 				break;
 			case UPDATE_WORKER_SALE_FOR_SPECIFIC_BRANCH:
 				 /**

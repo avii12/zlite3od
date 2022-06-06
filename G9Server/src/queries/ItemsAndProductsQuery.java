@@ -4,26 +4,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import AllUsers.User;
 import Orders.Branch;
 import Orders.DominantColor;
 import Orders.FlowerColor;
 import Orders.Item;
 import Orders.ItemCategory;
 import Orders.ItemType;
-import Orders.Order;
-import Orders.OrderStatus;
-import Orders.PriceRange;
-import Orders.TypeOfSupply;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Response;
 import Worker.SaleColumn;
 
+/**
+ * This class is responsible for handling All Items and products in Catalog
+ * @author Ebrahem Enbtawe
+ *
+ */
 public class ItemsAndProductsQuery {
 
+	/**
+	 * This method takes all items from catalog in database to display to user
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage CreateCatalogForUser(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -53,6 +57,12 @@ public class ItemsAndProductsQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This method takes all items from catalog in database according to price to display to user
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage CreateCatalogAccordingToPrice(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -79,14 +89,18 @@ public class ItemsAndProductsQuery {
 			}
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		returnMessageToClient.setObject(itemList);
 		returnMessageToClient.setResponse(Response.CATALOG_FOUND);
 		return returnMessageToClient;
 	}
-
+	/**
+	 * This method takes all items from catalog in database according to Type to display to user
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage CreateCatalogAccordingToType(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -117,6 +131,12 @@ public class ItemsAndProductsQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This method takes all items from catalog in database according to Type to display to user
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage CreateCatalogAccordingToColor(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -148,7 +168,13 @@ public class ItemsAndProductsQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This method takes Item details from database and returns new Item with this details
+	 * @param rs
+	 * @return Item
+	 */
 	private static Item convertToItem(ResultSet rs) {
+		
 		try {
 			String itemID = rs.getString(1);
 			ItemCategory itemCategory = ItemCategory.valueOf(rs.getString(2));
@@ -170,6 +196,12 @@ public class ItemsAndProductsQuery {
 		return null;
 	}
 
+	/**
+	 * This method Restores amount of items in database
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage RestoreAmountForItem(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -195,13 +227,22 @@ public class ItemsAndProductsQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This method removes any Item in catalog
+	 * @param message
+	 */
 	public static void RemoveItemFromCatalog(FullMessage message) {
+		
 		String[] parsedMsgFromClient = ((String) message.getObject()).split(" ");
 		String ID = parsedMsgFromClient[0];
 		String tablename = parsedMsgFromClient[1];
 		mainQuery.DeleteRowFromDB("ID='" + ID + "'", tablename);
 	}
 
+	/**
+	 * This method is to edit an Item in catalog
+	 * @param message
+	 */
 	public static void UpdateItemInCatalog(FullMessage message) {
 
 		String[] parsedMsgFromClient = ((String) message.getObject()).split(" ");
@@ -231,7 +272,13 @@ public class ItemsAndProductsQuery {
 
 	}
 
+	/**
+	 * This method is to change Item prices when there's sales
+	 * @param message
+	 * @throws SQLException
+	 */
 	public static void ChangeItemsPrices(FullMessage message) throws SQLException {
+		
 		ResultSet rs = mainQuery.SelectAllFromDB("catalog");
 		String percentOfSaleInString = (String) message.getObject();
 
@@ -248,9 +295,14 @@ public class ItemsAndProductsQuery {
 		rs.close();
 	}
 
+	/**
+	 * This method restores the Item prices to original prices (after end sales)
+	 * @param message
+	 * @throws SQLException
+	 */
 	public static void ChangeItemsPricesToBeforeSales(FullMessage message) throws SQLException {
+		
 		ResultSet rs = mainQuery.SelectAllFromDB("catalog");
-		String percentOfSaleInString = (String) message.getObject();
 		String[] parsedMsgFromClient = ((String) message.getObject()).split(",");
 
 		double pricePercentageAfterSale = Double.parseDouble(parsedMsgFromClient[1]);
@@ -265,19 +317,15 @@ public class ItemsAndProductsQuery {
 
 		rs.close();
 	}
-
-	public static void UpdateSaleForWorker(FullMessage message) {
-		String[] parsedMsgFromClient = ((String) message.getObject()).split(" ");
-		String Id = parsedMsgFromClient[0];
-		String percent = parsedMsgFromClient[1];
-		String valueToDB = "1" + "," + percent;
-		mainQuery.updateTuple("worker", "Sales='" + valueToDB + "'", Id);
-
-	}
-
+	
+	/**
+	 * This method Updates Sale column for worker when starting sales for specific branch
+	 * @param message
+	 * @throws SQLException
+	 */
 	public static void UpdateSaleForWorkerForSpecificBranch(FullMessage message) throws SQLException {
+		
 		String[] parsedMsgFromClient = ((String) message.getObject()).split(" ");
-		String Id = parsedMsgFromClient[0];
 		String percent = parsedMsgFromClient[1];
 		String Branch = parsedMsgFromClient[2];
 		String condition = "Branch='" + Branch + "'";
@@ -292,7 +340,13 @@ public class ItemsAndProductsQuery {
 
 	}
 
+	/**
+	 * This method Updates Sale column for worker when ending sales with specific branch
+	 * @param message
+	 * @throws SQLException
+	 */
 	public static void UpdateSaleForWorkerToEndSale(FullMessage message) throws SQLException {
+		
 		ResultSet rs = null;
 		String[] parsedMsgFromClient = ((String) message.getObject()).split(" ");
 		String branch = parsedMsgFromClient[0];
@@ -315,6 +369,12 @@ public class ItemsAndProductsQuery {
 
 	}
 
+	/**
+	 * This mehtod checks if there's Sales in progress
+	 * @param message
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage CheckIfSalesAreOn(FullMessage message) throws SQLException {
 
 		String[] parsedMsgFromClient = null;
@@ -340,7 +400,14 @@ public class ItemsAndProductsQuery {
 
 	}
 
+	/**
+	 * This method checks if there's sales when loading catalog page
+	 * @param message
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage CheckIfSalesAreOnForCatalog(FullMessage message) throws SQLException {
+		
 		ArrayList<SaleColumn> SaleCols = new ArrayList<>();
 		FullMessage returnMessageToClient = message;
 		String SaleCol = null;
@@ -367,7 +434,14 @@ public class ItemsAndProductsQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This method takes the percentage from database and returns it to user
+	 * @param message
+	 * @return
+	 * @throws SQLException
+	 */
 	public static FullMessage GetPercentageOfSales(FullMessage message) throws SQLException {
+		
 		FullMessage returnMessageToClient = message;
 		String SaleCol = null;
 		Branch branch = (Branch) message.getObject();

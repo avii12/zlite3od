@@ -11,7 +11,7 @@ import ServerGUIControllers.ServerGuiController;
  * Class description: 
  * In this class we have all the methods that belong to
  * the import action .
- * @author obied
+ * @author obied haddad
  *
  */
 public class ImportQuery {
