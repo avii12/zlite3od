@@ -75,7 +75,6 @@ public class ReadMessageFromServer {
 			FullMessage MessageFromServer = (FullMessage) message;
 			Request RequestFromClient = MessageFromServer.getRequest();
 			Response ResponseFromServer = MessageFromServer.getResponse();
-
 			Object ReturnedObjectFromDB = MessageFromServer.getObject();
 
 			switch (RequestFromClient) {
