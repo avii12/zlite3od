@@ -1,5 +1,9 @@
 
 package ClientGUIControllers;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+=======
+
+>>>>>>> bf242e9 dd
 import java.net.URL;
 import java.util.ResourceBundle;
 import RequestsAndResponses.FullMessage;
@@ -19,19 +23,38 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import java.time.LocalDate;
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the UI of Server IP 
+ *  
+ *@author Seren Hanany
+ *
+ */
 public class ServerIPController implements Initializable {
-
+/**
+ * Error label
+ */
 	@FXML
 	private Label ErrorLabel;
+	/**
+	 * Text Field for port
+	 */
 	@FXML
 	private TextField TextFieldLocalHost;
+	/**
+	 * Confirm Button
+	 */
 	@FXML
 	private Button BtnConfirm;
+	/**
+	 * Exit Button
+	 */
 	@FXML
 	private Button BtnExit;
 
-	/* When clicked exit SeachIP frame */
+	/**
+	 *  When clicked exit SeachIP frame */
 	@FXML
 	public void ExitBtn(MouseEvent event) throws Exception {
 		System.out.println("exit the establish Connection to server Window");
@@ -39,7 +62,8 @@ public class ServerIPController implements Initializable {
 	}
 
 	
-	/* When clicked establishes connection to the Server */
+	/**
+	 *  When clicked establishes connection to the Server */
 	public void ConnectBtn(MouseEvent event) throws Exception {
 		
 		if (TextFieldLocalHost.getText().isEmpty()) {
@@ -70,11 +94,14 @@ public class ServerIPController implements Initializable {
 			primaryStage.show();/* show the new screen *SearchForOrder.fxml */
 
 			primaryStage.show();/* show the new screen *ZRLI.fxml* */
-// branch 'master' of https://github.com/avii12/ZliProj.git
 		}
 	}
 
-	// load the ServerIP form
+	/**
+	 *  load the ServerIP form
+	 * @param primaryStage
+	 * @throws Exception
+	 */
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/IPAddress.fxml"));
 		Scene scene = new Scene(root);
@@ -89,14 +116,20 @@ public class ServerIPController implements Initializable {
 		primaryStage.show();
 
 	}
-
+	/**
+	 * The Function Display's The Message On The Label
+	 * @param message
+	 */
 	public void DisplayMessageForUser(String message) {
 		Platform.runLater(() -> {
 			ErrorLabel.setText(message);
 		});
 
 	}
-
+	/**
+	 * This method sets the correct values.
+	 * 
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		TextFieldLocalHost.setText("localhost");
