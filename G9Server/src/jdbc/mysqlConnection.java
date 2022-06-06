@@ -4,11 +4,28 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * 
+ * Class description: 
+ * This is a class for the connection to the 
+ * DB.
+ * 
+ * @author Obied
+ *
+ */
 public class mysqlConnection {
+	
+	/**
+	 * This is the var of the connection to the DB
+	 */
 	public static Connection conn;
-
-
-	/* Connect to DB */
+	/**
+	 * Create the connection to the DB
+	 * @param DBName
+	 * @param DBUserName
+	 * @param DBPassword
+	 * @return 
+	 */
 	public static boolean connectToDB(String DBName, String DBUserName, String DBPassword) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -35,7 +52,11 @@ public class mysqlConnection {
 		return true;
 	}
 
-	/* Return the Connection */
+
+	/**
+	 * This is the getter of the connection
+	 * @return connection
+	 */
 	public Connection getConnection() {
 		return conn;
 	}
