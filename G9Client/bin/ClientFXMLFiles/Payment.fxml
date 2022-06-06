@@ -13,14 +13,14 @@
 
 <AnchorPane prefHeight="335.0" prefWidth="683.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.PaymentController">
    <children>
-      <Text layoutX="288.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment">
+      <Text layoutX="275.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment">
          <font>
             <Font name="System Bold Italic" size="32.0" />
          </font>
       </Text>
       <ImageView fitHeight="131.0" fitWidth="130.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
       <Pane layoutX="127.0" layoutY="143.0" prefHeight="61.0" prefWidth="429.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
@@ -30,9 +30,9 @@
             <Text fill="RED" layoutX="171.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </Pane>
-      <Button layoutX="296.0" layoutY="232.0" mnemonicParsing="false" onAction="#DoneButton" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Done" textFill="WHITE">
+      <Button layoutX="296.0" layoutY="231.0" mnemonicParsing="false" onAction="#DoneButton" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Done" textFill="WHITE">
          <font>
-            <Font name="System Italic" size="14.0" />
+            <Font name="System Italic" size="16.0" />
          </font>
       </Button>
       <Line endX="465.0" endY="-10.0" layoutX="233.0" layoutY="13.0" startX="-227.0" startY="-10.0" stroke="#111411" strokeWidth="6.0" />
@@ -42,21 +42,21 @@
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="127.0" layoutY="105.0" stroke="#edf1f2" strokeType="INSIDE" width="429.0" />
       <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="598.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
-      <Text fx:id="errorText" fill="RED" layoutX="248.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="187.13671875">
+      <Text fx:id="errorText" fill="RED" layoutX="248.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="187.13671875">
          <font>
             <Font size="16.0" />
          </font></Text>
       <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="6.0" layoutY="275.0" onMouseClicked="#BackBtn" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
          </image>
       </ImageView>
       <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="635.0" layoutY="7.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/Cancel.png" />
+            <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
          </image>
       </ImageView>
    </children>

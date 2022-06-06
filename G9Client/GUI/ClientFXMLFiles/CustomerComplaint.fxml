@@ -6,26 +6,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="463.0" prefWidth="825.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ComplaintRefundController">
+<AnchorPane prefHeight="454.0" prefWidth="748.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ComplaintRefundController">
    <children>
-      <Pane layoutX="-43.0" layoutY="-50.0" prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <ImageView fitHeight="139.0" fitWidth="138.0" layoutX="36.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Backup15/G9Common/Pic/LOGO.jpeg" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Text layoutX="211.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Complaint">
+      <Text layoutX="250.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Complaint">
          <font>
-            <Font name="System Bold Italic" size="36.0" />
+            <Font name="System Bold Italic" size="32.0" />
          </font>
       </Text>
       <Text layoutX="259.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0">
@@ -33,37 +23,43 @@
             <Font name="System Italic" size="18.0" />
          </font>
       </Text>
-      <ImageView fitHeight="58.0" fitWidth="78.0" layoutX="14.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Backup15/G9Common/Pic/go-back-2.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="316.0" layoutY="374.0" mnemonicParsing="false" onAction="#refundButton" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Refund" textFill="WHITE">
+      <Button layoutX="329.0" layoutY="376.0" mnemonicParsing="false" onAction="#refundButton" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Refund" textFill="WHITE">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
       </Button>
-      <Line endX="581.0" endY="-10.0" layoutX="227.0" layoutY="13.0" startX="-234.0" startY="-10.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="584.0" endY="-10.0" layoutX="227.0" layoutY="13.0" startX="584.0" startY="435.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="587.0" endY="438.0" layoutX="227.0" layoutY="13.0" startX="-227.0" startY="438.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="-225.0" endY="435.0" layoutX="227.0" layoutY="13.0" startX="-225.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
-      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="154.0" layoutY="109.0" stroke="#edf1f2" strokeType="INSIDE" width="462.0" />
-      <ImageView fitHeight="61.0" fitWidth="65.0" layoutX="739.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@ZliProj/G9Common/Pic/Cancel.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="709.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Backup15/G9Common/Pic/background.jpg" />
-         </image>
-      </ImageView>
-      <Text layoutX="87.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complaint :" wrappingWidth="248.6708954963833" />
-      <Text layoutX="99.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Replay :" wrappingWidth="248.6708954963833" />
-      <Button layoutX="53.0" layoutY="373.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="40.0" prefWidth="78.0" text="back" />
-      <Button layoutX="733.0" layoutY="25.0" mnemonicParsing="false" onAction="#ExitButton" prefHeight="40.0" prefWidth="65.0" text="exit" />
+      <Line endX="523.0" endY="-10.0" layoutX="226.0" layoutY="13.0" startX="-234.0" startY="-10.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="519.0" endY="438.0" layoutX="233.0" layoutY="13.0" startX="-227.0" startY="438.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="-225.0" endY="435.0" layoutX="227.0" layoutY="16.0" startX="-225.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
+      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="169.0" layoutY="110.0" stroke="#edf1f2" strokeType="INSIDE" width="462.0" />
+      <Text layoutX="75.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complaint :" wrappingWidth="79.67089549638331" />
+      <Text layoutX="75.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Replay :" wrappingWidth="51.67089549638331" />
       <TextField fx:id="reply_txt" layoutX="169.0" layoutY="238.0" prefHeight="85.0" prefWidth="462.0" />
-      <Text fx:id="errorText" layoutX="224.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="322.0" />
+      <Text fx:id="errorText" fill="RED" layoutX="237.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="322.0">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
       <TextArea fx:id="complaint_txt" editable="false" layoutX="172.0" layoutY="141.0" prefHeight="85.0" prefWidth="456.0" />
+      <Line endX="515.0" endY="-23.0" layoutX="237.0" layoutY="24.0" startX="515.0" startY="424.0" stroke="#111411" strokeWidth="6.0" />
+      <ImageView fitHeight="131.0" fitWidth="138.0" layoutX="5.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="58.0" fitWidth="58.0" layoutX="7.0" layoutY="387.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="58.0" layoutX="698.0" layoutY="6.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="193.0" fitWidth="138.0" layoutX="660.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

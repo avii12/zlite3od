@@ -13,14 +13,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="684.0" prefWidth="788.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CartPageController">
+<AnchorPane prefHeight="684.0" prefWidth="788.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CartPageController">
 
    <children>
       <Pane layoutX="129.0" layoutY="127.0" prefHeight="361.0" prefWidth="537.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
          <children>
             <TableView fx:id="CartTable" layoutX="46.0" layoutY="14.0" prefHeight="291.0" prefWidth="446.0">
                <columns>
-                  <TableColumn fx:id="CartNameCol" prefWidth="116.0" text="ItemName" />
+                  <TableColumn fx:id="CartNameCol" prefWidth="116.0" text="Item Name" />
                   <TableColumn fx:id="CartTypeCol" prefWidth="99.0" text="Type" />
                   <TableColumn fx:id="CartPriceCol" prefWidth="115.0" text="Price" />
                   <TableColumn fx:id="CartBouqueCol" prefWidth="115.0" text="Bouque" />
@@ -37,18 +37,18 @@
 
       <ImageView fitHeight="59.0" fitWidth="60.0" layoutX="452.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/cart.png" />
+            <Image url="@../../../../../../../ZerliDesign/cart1.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="59.0" fitWidth="78.0" layoutX="369.0" layoutY="552.0" onMouseClicked="#OrderDetailsButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/payment1.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/payment1.jpg" />
          </image>
       </ImageView>
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="126.0" layoutY="103.0" stroke="#edf1f2" strokeType="INSIDE" width="537.0" />
       <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="-5.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
       <Line endX="-54.0" endY="-174.0" layoutX="55.0" layoutY="176.0" startX="-54.0" startY="502.0" stroke="#111411" strokeWidth="6.0" />
@@ -56,7 +56,7 @@
       <Line endX="733.2425537109375" endY="505.0" layoutX="55.0" layoutY="176.0" startX="-54.0" startY="505.0" stroke="#111411" strokeWidth="6.0" />
       <Line endX="736.2425537109375" endY="-162.99998474121094" layoutX="55.0" layoutY="164.0" startX="736.2425537109375" startY="517.0" stroke="#111411" strokeWidth="6.0" />
 
-      <Label fx:id="ErrorLabel" layoutX="246.0" layoutY="620.0" prefHeight="25.0" prefWidth="375.0" textFill="RED">
+      <Label fx:id="ErrorLabel" layoutX="200.0" layoutY="618.0" prefHeight="25.0" prefWidth="375.0" textFill="RED">
          <font>
             <Font size="16.0" />
          </font></Label>
@@ -76,12 +76,12 @@
       </Pane>
       <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="689.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="BackButton" fitHeight="61.0" fitWidth="61.0" layoutX="9.0" layoutY="612.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
          </image>
       </ImageView>
    </children>

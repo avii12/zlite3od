@@ -116,7 +116,7 @@
          </font></Label>
       <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="-2.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="136.0" layoutY="105.0" stroke="#edf1f2" strokeType="INSIDE" width="613.0" />
@@ -126,17 +126,17 @@
       <Line endX="772.9999389648438" endY="456.24267578125" layoutX="55.0" layoutY="176.0" startX="-50.75737762451172" startY="456.24267578125" stroke="#111411" strokeWidth="6.0" />
       <ImageView fx:id="BackButton" fitHeight="61.0" fitWidth="61.0" layoutX="9.0" layoutY="564.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
          </image>
       </ImageView>
       <ImageView fx:id="ExitButton" fitHeight="61.0" fitWidth="65.0" layoutX="767.0" layoutY="6.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/Cancel.png" />
+            <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="729.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
    </children>

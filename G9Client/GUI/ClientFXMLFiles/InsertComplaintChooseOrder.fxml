@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="482.0" prefWidth="841.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.WorkerInsertComplaintChooseOrder">
+<AnchorPane prefHeight="588.0" prefWidth="856.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.WorkerInsertComplaintChooseOrder">
    <children>
-      <Text layoutX="206.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert Complaint To System">
+      <Text layoutX="216.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert Complaint To System">
          <font>
             <Font name="System Bold Italic" size="32.0" />
          </font>
@@ -25,40 +25,43 @@
          </font>
       </Text>
       <Line endX="623.0" endY="-10.0" layoutX="227.0" layoutY="13.0" startX="-234.0" startY="-10.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="626.0" endY="-10.0" layoutX="227.0" layoutY="13.0" startX="626.0" startY="463.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="626.0" endY="466.0" layoutX="227.0" layoutY="13.0" startX="-224.0" startY="466.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="-225.0" endY="463.0" layoutX="227.0" layoutY="13.0" startX="-225.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
-      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="127.0" layoutY="89.0" stroke="#edf1f2" strokeType="INSIDE" width="581.0" />
+      <Line endX="626.0" endY="-10.0" layoutX="227.0" layoutY="13.0" startX="626.0" startY="577.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="626.0" endY="580.0" layoutX="227.0" layoutY="13.0" startX="-225.0" startY="580.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="-225.0" endY="577.0" layoutX="227.0" layoutY="13.0" startX="-225.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
+      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="138.0" layoutY="118.0" stroke="#edf1f2" strokeType="INSIDE" width="581.0" />
       <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
-      <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="7.0" layoutY="411.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="7.0" layoutY="526.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="751.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="751.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="789.0" layoutY="7.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/Cancel.png" />
+            <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
          </image>
       </ImageView>
-      <TableView fx:id="OrderTable" layoutX="202.0" layoutY="113.0" prefHeight="302.0" prefWidth="541.0">
+      <TableView fx:id="OrderTable" layoutX="147.0" layoutY="189.0" prefHeight="302.0" prefWidth="541.0">
         <columns>
-          <TableColumn fx:id="OrderNumberCol" prefWidth="91.0" text="OrderNumber" />
-          <TableColumn fx:id="DateCol" minWidth="0.0" prefWidth="131.0" text="ActualDate" />
-            <TableColumn fx:id="BranchCol" minWidth="0.0" prefWidth="97.0" text="branch" />
-            <TableColumn fx:id="AllItemsCol" minWidth="0.0" prefWidth="221.0" text="allItems" />
+          <TableColumn fx:id="OrderNumberCol" prefWidth="133.0" text="Order Number" />
+          <TableColumn fx:id="DateCol" minWidth="0.0" prefWidth="133.0" text="Actual Date" />
+            <TableColumn fx:id="BranchCol" minWidth="0.0" prefWidth="140.0" text="Branch" />
+            <TableColumn fx:id="AllItemsCol" minWidth="0.0" prefWidth="134.0" text="All Items" />
         </columns>
       </TableView>
-      <Text layoutX="34.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the order that the customer complainted about" wrappingWidth="186.13671875" />
-      <Button layoutX="434.0" layoutY="426.0" mnemonicParsing="false" onAction="#ChooseOrder" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Choose Order" textFill="WHITE" />
-      <Label fx:id="ErrorLabel" layoutX="374.0" layoutY="394.0" prefHeight="17.0" prefWidth="245.0" />
+      <Text layoutX="237.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the order that the customer complainted about" wrappingWidth="369.13671875" />
+      <Button layoutX="353.0" layoutY="502.0" mnemonicParsing="false" onAction="#ChooseOrder" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Choose Order" textFill="WHITE" />
+      <Label fx:id="ErrorLabel" layoutX="289.0" layoutY="551.0" prefHeight="17.0" prefWidth="245.0" textFill="RED">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
    </children>
 </AnchorPane>

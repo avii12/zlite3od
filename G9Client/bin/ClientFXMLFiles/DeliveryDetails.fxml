@@ -18,10 +18,10 @@
          <children>
             <ImageView fitHeight="143.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+                  <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
                </image>
             </ImageView>
-            <Text layoutX="271.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery details">
+            <Text layoutX="271.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery details">
                <font>
                   <Font name="System Bold Italic" size="32.0" />
                </font>
@@ -52,19 +52,19 @@
             <Button layoutX="664.0" layoutY="398.0" mnemonicParsing="false" onAction="#SubmitButton" prefHeight="48.0" prefWidth="104.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Submit" textFill="WHITE" />
             <ImageView fitHeight="61.0" fitWidth="54.0" layoutX="9.0" layoutY="396.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../G9Common/Pic/go-back-2.png" />
+                  <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="56.0" fitWidth="54.0" layoutX="723.0" layoutY="8.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../G9Common/Pic/Cancel.png" />
+                  <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
                </image>
             </ImageView>
             <Label fx:id="ErrorLabel" layoutX="323.0" layoutY="373.0" prefHeight="21.0" prefWidth="170.0" textFill="RED" />
             <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="132.0" layoutY="117.0" stroke="#edf1f2" strokeType="INSIDE" width="469.0" />
             <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="678.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../G9Common/Pic/background.jpg" />
+                  <Image url="@../../../../../../../ZerliDesign/background.jpg" />
                </image>
             </ImageView>
             <Text fx:id="errorText" fill="RED" layoutX="277.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.6689453125">

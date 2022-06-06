@@ -11,33 +11,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="394.0" prefWidth="829.0" scaleZ="2.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ComplaintReportController">
+<AnchorPane prefHeight="394.0" prefWidth="769.0" scaleZ="2.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ComplaintReportController">
    <children>
       <Pane layoutX="-104.0" layoutY="-172.0" prefHeight="200.0" prefWidth="200.0" />
-      <Text layoutX="258.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complaint Report " wrappingWidth="308.42578125">
+      <Text layoutX="257.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complaint Report " wrappingWidth="308.42578125">
          <font>
             <Font name="System Bold Italic" size="32.0" />
          </font>
       </Text>
       <ImageView fx:id="logoid" fitHeight="133.0" fitWidth="157.0" layoutX="-4.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="128.0" layoutY="99.0" stroke="#edf1f2" strokeType="INSIDE" width="568.0" />
-      <ImageView fx:id="photoid" fitHeight="288.0" fitWidth="99.0" layoutX="729.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="148.0" layoutY="99.0" stroke="#edf1f2" strokeType="INSIDE" width="527.0" />
+      <ImageView fx:id="photoid" fitHeight="288.0" fitWidth="99.0" layoutX="698.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
       <Label fx:id="ErrorLabel" layoutX="241.0" layoutY="267.0" prefHeight="24.0" prefWidth="245.0" textFill="RED">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Line endX="591.0" endY="-20.0" layoutX="237.0" layoutY="23.0" startX="-235.0" startY="-20.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="560.0" endY="-20.0" layoutX="240.0" layoutY="23.0" startX="-235.0" startY="-20.0" stroke="#111411" strokeWidth="6.0" />
       <Line endX="-237.0" endY="365.0" layoutX="237.0" layoutY="23.0" startX="-237.0" startY="-22.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="596.0" endY="536.0" layoutX="235.0" layoutY="-145.0" startX="-234.0" startY="536.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="594.0" endY="-20.0" layoutX="237.0" layoutY="23.0" startX="594.0" startY="363.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="562.0" endY="536.0" layoutX="235.0" layoutY="-145.0" startX="-234.0" startY="536.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="563.0" endY="-20.0" layoutX="237.0" layoutY="26.0" startX="563.0" startY="365.0" stroke="#111411" strokeWidth="6.0" />
       <ComboBox fx:id="Quarterly" layoutX="337.0" layoutY="205.0" prefWidth="150.0" style="-fx-border-color: black; -fx-border-radius: 15; -fx-background-radius: 15;" />
       <Text layoutX="241.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quarterly :">
          <font>
@@ -46,7 +46,7 @@
       </Text>
       <ImageView fitHeight="61.0" fitWidth="91.0" layoutX="536.0" layoutY="162.0" onMouseClicked="#ViewQuarterlyComplaint" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/Correct.png" />
+            <Image url="@../../../../../../../ZerliDesign/Correct.png" />
          </image>
       </ImageView>
       <Text layoutX="241.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year :">
@@ -55,14 +55,14 @@
          </font>
       </Text>
       <ComboBox fx:id="ReportYear" layoutX="337.0" layoutY="147.0" prefWidth="150.0" style="-fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;" />
-      <ImageView fitHeight="61.0" fitWidth="65.0" layoutX="767.0" layoutY="7.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="61.0" fitWidth="65.0" layoutX="736.0" layoutY="6.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/Cancel.png" />
+            <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
          </image>
       </ImageView>
       <ImageView fx:id="BackBtn" fitHeight="61.0" fitWidth="61.0" layoutX="7.0" layoutY="321.0" onMouseClicked="#BackBtn" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
          </image>
       </ImageView>
    </children>
