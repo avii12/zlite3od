@@ -194,6 +194,8 @@ public class CancelOrderController extends UsersController implements Initializa
 			});
 
 			CancelTable.refresh();
+		default:
+			break;
 		}
 	}
 	

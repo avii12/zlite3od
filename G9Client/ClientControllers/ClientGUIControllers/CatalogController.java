@@ -281,6 +281,7 @@ public class CatalogController extends UsersController implements Initializable 
 
 		message = new FullMessage(Request.CHECK_IF_SALES_ARE_ON_FOR_CATALOG, Response.Wait, null);
 		ZliClientUI.ZliClientController.accept(message);
+		@SuppressWarnings("unchecked")
 		ArrayList<SaleColumn> saleColumn = (ArrayList<SaleColumn>) message.getObject();
 		for (int i = 0; i < saleColumn.size(); i++) {
 			IsSaleOn1.add(saleColumn.get(i).getSaleOn());

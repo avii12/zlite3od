@@ -142,6 +142,8 @@ public class CatalogManagement extends UsersController implements Initializable 
 		case NO_CATALOG:
 			errorControl("THE CATALOG IS EMPTY!!");
 			break;
+		default:
+			break;
 
 		}
 	}

@@ -5,11 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import AllUsers.ConfirmationStatus;
-import AllUsers.User;
 import AllUsers.Users;
-import Report.customer;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -137,10 +133,8 @@ public class ChangeUserPermissionController extends UsersController implements I
 		UsersTable.setEditable(true);
 		
 		Typecol.setOnEditCommit(event -> {
-			Users selectedUser = UsersTable.getSelectionModel().getSelectedItem();
 			Optional<ButtonType> Option=PopUpMessage.ConfirmationForUser("Edit this User?");
 			if(Option.get()== ButtonType.OK) {
-			String[] msgServer=new String[3];
 			Users user=event.getRowValue();
 			user.setEmail(user.getUserType());//old type
 			user.setUserType(event.getNewValue());

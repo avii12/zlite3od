@@ -33,11 +33,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 /**
- *Class description:  
- *Controlling The adding to Catalog 
+ * Class description: Controlling The adding to Catalog
  *
- *@author mario rohana
+ * @author mario rohana
  *
  */
 public class CatalogAddController extends UsersController implements Initializable {
@@ -95,9 +95,10 @@ public class CatalogAddController extends UsersController implements Initializab
 	 */
 	@FXML
 	private Label ErrorLabel;
+
 	/**
-	 *Initializing The List After Getting All The Relevant Data
-	 *Send To The Server Message That Contains All the Relevent Data 
+	 * Initializing The List After Getting All The Relevant Data Send To The Server
+	 * Message That Contains All the Relevent Data
 	 *
 	 */
 	@Override
@@ -107,10 +108,10 @@ public class CatalogAddController extends UsersController implements Initializab
 	}
 
 	/**
-	 * This function set valued in comboBoxes 
+	 * This function set valued in comboBoxes
 	 */
 	public void SetComboBoxes() {
-		
+
 		ArrayList<ItemCategory> categoryList = new ArrayList<>();
 		categoryList.add(ItemCategory.BOUQUET);
 		categoryList.add(ItemCategory.FLOWER);
@@ -145,12 +146,12 @@ public class CatalogAddController extends UsersController implements Initializab
 	}
 
 	/**
-	 * Boolean function text field is valid
-	 * Check the value text fields 
+	 * Boolean function text field is valid Check the value text fields
+	 * 
 	 * @return
 	 */
 	private boolean TextFieldsIsInvalid() {
-		
+
 		boolean check = false;
 		if (TextFieldName.getText().equals("")) {
 
@@ -186,12 +187,12 @@ public class CatalogAddController extends UsersController implements Initializab
 	}
 
 	/**
-	 * Boolean function comboBox is valid
-	 * Check the value text fields  
+	 * Boolean function comboBox is valid Check the value text fields
+	 * 
 	 * @return
 	 */
 	private boolean ComboBoxesIsInvalid() {
-		
+
 		boolean check = false;
 
 		if (CategoryComboBox.getValue() == null) {
@@ -229,10 +230,10 @@ public class CatalogAddController extends UsersController implements Initializab
 	}
 
 	/**
-	 * After Clicking On add Button 
-	 * The Function Hide The Current Window and logout. 
-	 * Load The Catalog Management Window 
-	 * And We Can Drag the Window How Ever We Want
+	 * After Clicking On add Button The Function Hide The Current Window and logout.
+	 * Load The Catalog Management Window And We Can Drag the Window How Ever We
+	 * Want
+	 * 
 	 * @param event
 	 * @throws IOException
 	 */
@@ -284,36 +285,35 @@ public class CatalogAddController extends UsersController implements Initializab
 					});
 					primaryStage.setScene(scene);
 					primaryStage.show();
-				}
-				else {
-					
+				} else {
+
 				}
 			}
 		}
 	}
 
 	/**
-	 * This function gets string text
-	 * Check if the text contain number 
+	 * This function gets string text Check if the text contain number
+	 * 
 	 * @param strNum
 	 * @return
 	 */
 	public static boolean isNumeric(String strNum) {
-		
+
 		if (strNum == null) {
 			return false;
 		}
 		try {
-			double d = Double.parseDouble(strNum);
 		} catch (NumberFormatException nfe) {
 			return false;
 		}
 		return true;
 	}
+
 	/**
-	 * After Clicking On Exit Button 
-	 * The Function Send A Message To The Server The
+	 * After Clicking On Exit Button The Function Send A Message To The Server The
 	 * Function LogOut The Account And Disconnect From The Server
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -324,11 +324,11 @@ public class CatalogAddController extends UsersController implements Initializab
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
+
 	/**
-	 * After Clicking On Back Button 
-	 * The Function Hide The Current Window 
-	 * And Load The previous Window 
-	 * And We Can Drag the Window How Ever We Want
+	 * After Clicking On Back Button The Function Hide The Current Window And Load
+	 * The previous Window And We Can Drag the Window How Ever We Want
+	 * 
 	 * @param event
 	 * @throws IOException
 	 */
@@ -350,8 +350,8 @@ public class CatalogAddController extends UsersController implements Initializab
 	}
 
 	/**
-	 * After Clicking on Browse Button
-	 * Load The Browse Window 
+	 * After Clicking on Browse Button Load The Browse Window
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -370,9 +370,10 @@ public class CatalogAddController extends UsersController implements Initializab
 			TextFieldPath.setText(path);
 		}
 	}
+
 	/**
-	 * This function gets String message
-	 * put the message on error label
+	 * This function gets String message put the message on error label
+	 * 
 	 * @param msg
 	 */
 	private void errorControl(String message) {

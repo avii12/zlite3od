@@ -17,13 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 /**
@@ -143,7 +139,6 @@ public class DeliveryDetailsController extends UsersController implements Initia
 			return false;
 		}
 		try {
-			double d = Double.parseDouble(strNum);
 		} catch (NumberFormatException nfe) {
 			return false;
 		}

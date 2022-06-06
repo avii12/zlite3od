@@ -223,6 +223,8 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 			});
 
 			DeliveryTable.refresh();
+		default:
+			break;
 
 		}
 	}

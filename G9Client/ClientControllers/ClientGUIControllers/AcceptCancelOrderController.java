@@ -209,6 +209,8 @@ public class AcceptCancelOrderController extends UsersController implements Init
 			});
 
 			MangerAcceptCancelTable.refresh();
+		default:
+			break;
 		}
 	}
 

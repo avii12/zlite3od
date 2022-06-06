@@ -211,6 +211,8 @@ public class AcceptOrderController extends UsersController implements Initializa
 			});
 
 			AcceptTable.refresh();
+		default:
+			break;
 		}
 	}
 
