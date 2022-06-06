@@ -3,10 +3,13 @@ package Report;
 import java.io.Serializable;
 
 import AllUsers.ConfirmationStatus;
-import Survey.SurveyAnswers;
 
 public class customer  implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String CustomerID;
 	public String FirstName;
 	public String LastName;

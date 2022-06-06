@@ -16,7 +16,10 @@ import ServerGUIControllers.ServerGuiController;
  */
 public class ImportQuery {
 	
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 	
+=======
+>>>>>>> f01b14e aa
 	private static ServerGuiController serverGuiController = ServerGuiController.getLoader().getController();
 	
 	/**

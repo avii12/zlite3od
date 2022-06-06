@@ -4,38 +4,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;//github.com/avii12/ZliRepository.git
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.time.LocalDate;
-
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import AllUsers.ConfirmationStatus;
-import AllUsers.Customer;
-import AllUsers.User;
 import Orders.Branch;
-import Orders.DateTimeConvert;
-import Orders.DominantColor;
-import Orders.FlowerColor;
-import Orders.Item;
-import Orders.ItemCategory;
-import Orders.ItemType;
 import Orders.Order;
 import Orders.OrderStatus;
-import Orders.RefundStatus;
 import Orders.TypeOfSupply;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
 
+/**
+ * Class Description:
+ * This class is responsible for all the order process
+ * @author Ebrahem Enbtawe
+ * @author Seren Hannany
+ * @author Obied Haddad
+ * @author Mario Rohannah
+ * @author Maisalon Safory
+ * @author Shorok heeb
+ *
+ */
 public class OrderQuery {
 
+	/**
+	 * This function checks if there is orders in Database 
+	 * @param messageFromClient
+	 * @return FullMessage
+	 * @throws SQLException
+	 */
 	public static FullMessage CheckIfFirstOrder(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -61,32 +60,15 @@ public class OrderQuery {
 		return returnMessageToClient;
 	}
 
-
-	private static Item convertToItem(ResultSet rs) {
-		try {
-			String itemID = rs.getString(1);
-			ItemCategory itemCategory = ItemCategory.valueOf(rs.getString(2));
-			FlowerColor flowercolor = FlowerColor.valueOf(rs.getString(3));
-			String name = rs.getString(4);
-			double price = rs.getDouble(5);
-			String picturePath = rs.getString(6);
-			String greetingCard = rs.getString(7);
-			ItemType itemType = ItemType.valueOf(rs.getString(8));
-			DominantColor dominantColor = DominantColor.valueOf(rs.getString(9));
-
-			int amount = rs.getInt(10);
-
-			return new Item(itemID, itemCategory, flowercolor, name, price, picturePath, greetingCard, itemType,
-					dominantColor, amount);
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
+	/**
+	 * This function takes the orders of a specific branch and its status is PENDING
+	 * this function makes new Order Objects and adds this to List orderList
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage AcceptOrder(FullMessage messageFromClient) throws SQLException {
+		
 		FullMessage returnMessageToClient = messageFromClient;
 		List<Order> orderList = new ArrayList<Order>();
 		String BranchName = null;
@@ -124,7 +106,16 @@ public class OrderQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This function takes the branch of a specific delivery person
+	 * Then it takes the APPROVED order that was ordered from this branch as a delivery 
+	 * this function makes new Order Objects and adds this to List orderList
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage DeliveryOrder(FullMessage messageFromClient) throws SQLException {
+		
 		FullMessage returnMessageToClient = messageFromClient;
 		List<Order> orderList = new ArrayList<Order>();
 		String BranchName = null;
@@ -163,6 +154,13 @@ public class OrderQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This function takes the PENDING and APPROVED orders of the customers
+	 * this function makes new Order Objects and adds this to List orderList and returns
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage CancelOrder(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -194,6 +192,14 @@ public class OrderQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This function takes the branch of a specific branchmanager
+	 * Then it takes the CANCELED orders that was ordered and canceled in this branch
+	 * this function makes new Order Objects and adds this to List orderList 
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage ManagerCancelOrder(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -227,6 +233,13 @@ public class OrderQuery {
 
 	}
 
+	/**
+	 * This function takes the COMPLETED orders of specific customer
+	 * this function makes new Order Objects and adds this to List orderList 
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage GetOrderForCustomer(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -254,7 +267,13 @@ public class OrderQuery {
 
 	}
 
+	/**
+	 * This function takes details from database and makes new Object of Order and returns it
+	 * @param rs
+	 * @return Order
+	 */
 	private static Order convertToOrder(ResultSet rs) {
+		
 		try {
 			String OrderNumber = rs.getString(1);
 			String CustomerID = rs.getString(2);
@@ -281,7 +300,15 @@ public class OrderQuery {
 		return null;
 	}
 
+	/**
+	 * This function is responsible for adding new Order to database
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 * @throws ParseException
+	 */
 	public static FullMessage addOrderToDb(FullMessage messageFromClient) throws SQLException, ParseException {
+		
 		Order order = (Order) messageFromClient.getObject();
 		FullMessage returnMessageToClient = messageFromClient;
 		String ordernumber = order.getOrderNumber();
@@ -304,6 +331,13 @@ public class OrderQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This function checks if there is an enough amount of a specific item 
+	 * If there is enough of that item it updates the amount
+	 * @param messageFromClient
+	 * @return returnMessageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage GetAmountAndUpdate(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -329,22 +363,20 @@ public class OrderQuery {
 			}
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// returnMessageToClient.setObject(customerFromDB);
 		return returnMessageToClient;
 	}
 
-	public static void UpdateRefundStatus(FullMessage messageFromClient) throws SQLException {
-
-		FullMessage returnMessageToClient = messageFromClient;
-		String orderNumber = (String) returnMessageToClient.getObject();
-		String condition = "OrderNumber='" + orderNumber + "'";
-		mainQuery.updateTuple("orders", "RefundStatus='" + RefundStatus.WAITING + "'", condition);
-	}
-
+	/**
+	 * This function Updates the order Status in Database
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
+	@SuppressWarnings("unchecked")
 	public static FullMessage updateOrdersStatusOnDb(FullMessage messageFromClient) throws SQLException {
+		
 		ArrayList<Order> orders = new ArrayList<>();
 		orders = new ArrayList<Order>((Collection<? extends Order>) messageFromClient.getObject());// copy the array
 		FullMessage returnMessageToClient = messageFromClient; // that we got from
@@ -416,7 +448,16 @@ public class OrderQuery {
 		return null;
 	}
 
+	/**
+	 * This function calculates the difference between two times 
+	 * This function Updates the balance of customer
+	 * @param messageFromClient
+	 * @return messageToClient
+	 * @throws SQLException
+	 */
 	public static FullMessage getTheDiffrenceTimeBetweenDates(FullMessage messageFromClient) throws SQLException {
+		
+		@SuppressWarnings("unchecked")
 		ArrayList<String> list = (ArrayList<String>) messageFromClient.getObject();
 
 		Double TotalPrice = 0.0;
