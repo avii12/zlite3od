@@ -42,7 +42,7 @@ public class ZliServerUI extends Application {
 		serverGuiController.start(primaryStage);
 	}
 
-	/*
+	/**
 	 * This function goes to the ZliServer method of stop listening when button
 	 * Disconnect is clicked in the Server Controller
 	 */
@@ -52,7 +52,7 @@ public class ZliServerUI extends Application {
 
 	}
 
-	/*
+	/**
 	 * This function Creates new Instance of ZliServerChat with the specific Port to
 	 * Connect to. This function Connects to the DB Using dbName,User,Password
 	 */

@@ -14,7 +14,7 @@ import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 import queries.mainQuery;
 
-/*
+/**
  * This class overrides some of the methods in the abstract superclass in order
  * to give more functionality to the server.
  *
@@ -25,7 +25,7 @@ public class ZliServerChat extends AbstractServer {
 	private ServerGuiController HandleClientStatus = ServerGuiController.getLoader().getController();
 	private Connection con;
 
-	/*
+	/**
 	 * Constructs an instance of the echo server.
 	 *
 	 * @param port: The port number to connect on.
@@ -34,7 +34,7 @@ public class ZliServerChat extends AbstractServer {
 		super(port);
 	}
 
-	/*
+	/**
 	 * This method handles any messages received from the client.
 	 *
 	 * @param msg: The message received from the client.
@@ -81,7 +81,7 @@ public class ZliServerChat extends AbstractServer {
 		serverGuiController.DisplayMessageToTextAreaConsole("Server has stopped listening for connections." + "\n");
 	}
 
-	/* Send Message to A specific Client not all */
+	/** Send Message to A specific Client not all */
 	public void sentToSpecificClient(ConnectionToClient client, Object msg) {
 		try {
 			client.sendToClient(msg);
