@@ -15,7 +15,6 @@ import AllUsers.ConfirmationStatus;
  * @author Shoroq ,Heib.
  *
  */
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 public class customer implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
