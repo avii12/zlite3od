@@ -29,13 +29,11 @@ public class ReadMessageFromClient {
 
 	public static FullMessage ReadMessage(Object message, ConnectionToClient client) throws SQLException {
 		CurrentClient = client;
-		
-		/*try {
-			mainQuery.ShowPDF();
-		} catch (SQLException | IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}*/
+
+		/*
+		 * try { mainQuery.ShowPDF(); } catch (SQLException | IOException e2) { // TODO
+		 * Auto-generated catch block e2.printStackTrace(); }
+		 */
 
 		if (!(message instanceof FullMessage)) {
 
@@ -317,7 +315,6 @@ public class ReadMessageFromClient {
 			case GET_USERS_FROM_DB_FOR_WORKER:
 				messageFromClient = UserQuery.GetUsersFromDB(messageFromClient);
 				break;
-<<<<<<< HEAD
 			case UPLOAD_PDF_TO_SYSTEM:
 				try {
 					mainQuery.InsertPDF((String) messageFromClient.getObject());
@@ -328,17 +325,14 @@ public class ReadMessageFromClient {
 				break;
 			case EXTRACT_PDF_FROM_DB:
 				try {
-					messageFromClient=mainQuery.ShowPDF(messageFromClient);
+					messageFromClient = mainQuery.ShowPDF(messageFromClient);
 				} catch (SQLException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-=======
-		case GET_SURVEYID:
-			messageFromClient=SurveyQuery.GetSurveyFromDB(messageFromClient);
-			break;
-
->>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
+			case GET_SURVEYID:
+				messageFromClient = SurveyQuery.GetSurveyFromDB(messageFromClient);
+				break;
 
 			}
 

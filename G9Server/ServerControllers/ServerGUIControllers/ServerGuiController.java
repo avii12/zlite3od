@@ -47,11 +47,7 @@ public class ServerGuiController implements Initializable {
 	 * DBPassword variable contains Database Password.
 	 */
 
-<<<<<<< HEAD
 	final public static String DBPassword = "Ebrahemenb123";
-=======
-	final public static String DBPassword = "Ebedhaddad123_";
->>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 
 	/**
 	 * DBpath variable contains Database Path.
@@ -225,7 +221,7 @@ public class ServerGuiController implements Initializable {
 	}
 
 	public void ImportButton(ActionEvent event) throws Exception {
-		if (BtnConnect.isDisable()==false) {
+		if (BtnConnect.isDisable() == false) {
 			DisplayMessageToTextAreaConsole("You Should Connect First");
 		} else {
 			connectionToExternalDB = new mysqlConnection();
@@ -246,7 +242,7 @@ public class ServerGuiController implements Initializable {
 	public void SetTextFieldsVisibility(boolean Visible) {
 
 		this.BtnConnect.setDisable(Visible);
-		this.BtnDisconnect.setDisable(!Visible);		
+		this.BtnDisconnect.setDisable(!Visible);
 
 		this.BtnDisconnect.setDisable(!Visible);
 		this.TextfieldPort.setDisable(Visible);
