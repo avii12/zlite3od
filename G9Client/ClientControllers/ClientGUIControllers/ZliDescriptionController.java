@@ -3,6 +3,7 @@ package ClientGUIControllers;
 import java.io.IOException;
 
 
+
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -36,6 +37,7 @@ public class ZliDescriptionController {
 	 */
 	public void BackButton(MouseEvent event) throws IOException {
 		
+		
 		Request request = Request.Disconnect;
 		Response response = Response.Wait;
 		FullMessage message = new FullMessage(request, response,null);
@@ -66,6 +68,7 @@ public class ZliDescriptionController {
 	 * @throws IOException
 	 */
 	public void ExitBtn(MouseEvent event) throws Exception {
+		
 		Request request = Request.Disconnect;
 		Response response = Response.Wait;
 		FullMessage message = new FullMessage(request, response,null);
@@ -83,6 +86,7 @@ public class ZliDescriptionController {
 	 */
 	
 	public void TransferToLoginPageButton (ActionEvent event) throws Exception{
+		
 		
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();

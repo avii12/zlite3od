@@ -23,12 +23,11 @@ import RequestsAndResponses.Response;
 import ZliClient.ZliClientUI;
 
 /**
- * class description: this class is for the login screen functionality of the
- * login
- * 
- * @author Mario Rohana
- * 
- * @version 10/05/2022
+ * Class description: 
+ * This is a class for 
+ * controlling the Start Sales 
+ *  
+ *@author Obied haddad
  *
  */
 public class LoginController extends UsersController{
@@ -240,6 +239,7 @@ public class LoginController extends UsersController{
 	 * @throws IOException
 	 */
 	public void TransferToNeededPage(ActionEvent event, String path) throws IOException {
+		
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();

@@ -94,6 +94,7 @@ public class ServiceExpertPageController extends UsersController {
 			break;
 		}
 	}
+
 	/**
 	 * After Clicking On Exit Button 
 	 * The Function Send A Message To The Server The
@@ -114,6 +115,7 @@ public class ServiceExpertPageController extends UsersController {
 	 * Function load the browse window
 	 * @param event
 	 */
+
 	@FXML
 	public void BrowseReport(ActionEvent event) {
 

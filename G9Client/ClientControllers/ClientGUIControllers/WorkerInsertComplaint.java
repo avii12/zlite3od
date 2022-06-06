@@ -2,12 +2,11 @@ package ClientGUIControllers;
 
 import java.io.IOException;
 
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import AllUsers.Users;
-import Orders.ItemsForTableView;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -147,6 +146,7 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 	 */
 	@FXML
 	public void BackButton(MouseEvent event) throws Exception {
+		
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/ComplaintHandling.fxml"));
@@ -170,6 +170,7 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
+		
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
 		message = new FullMessage(Request.Disconnect, Response.Wait, null);
@@ -184,6 +185,7 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
      */
 	@FXML
 	public void ChooseCustomer(ActionEvent event) throws IOException {
+		
 
 		selectedcustomer = CustomerTable.getSelectionModel().getSelectedItems();
 		if (selectedcustomer.size() == 0) {
@@ -215,6 +217,7 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 	 * @param message
 	 */
 	private void errorControl(String message) {
+		
 
 		Platform.runLater(new Runnable() {
 

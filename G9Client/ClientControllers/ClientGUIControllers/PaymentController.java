@@ -1,26 +1,17 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.TimeZone;
-
 import AllUsers.Customer;
 import Orders.Order;
-import Orders.RefundStatus;
 import Orders.TypeOfSupply;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
-import Utils.OrganizeDate;
 import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.event.ActionEvent;
@@ -37,19 +28,41 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the Start Sales 
+ *  
+ *@author Obied haddad
+ *
+ */
 public class PaymentController extends UsersController implements Initializable {
-
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
 
 	@FXML
+	/**
+	 * Text For error Text For The User 
+	 */
 	private Text errorText;
 	@FXML
+	/**
+	 * Text Field For Credit Card of the user 
+	 */
 	private TextField TextFieldCreditCard;
-
+	/**
+	 * variable of Order
+	 */
+	
 	public static Order order;
 
 	@Override
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	public void initialize(URL location, ResourceBundle resources) {
 
 		if (OrderDetailsController.order.getSupplyType().equals(TypeOfSupply.DELIVERY)) {
@@ -59,8 +72,15 @@ public class PaymentController extends UsersController implements Initializable 
 			PaymentController.order = OrderDetailsController.order;
 
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 */
 	public void ExitButton(MouseEvent event) {
+		
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
 		message = new FullMessage(Request.Disconnect, Response.Wait, null);
@@ -82,12 +102,19 @@ public class PaymentController extends UsersController implements Initializable 
 	}
 
 	@FXML
+	/**
+	 * After Clicking On Done Button 
+	 * The Function Hide The Current Window 
+	 * And Load The Customer Page
+	 * @param event
+	 * @throws IOException
+	 */
 	public void DoneButton(ActionEvent event) throws IOException, ParseException {
 
 		int OrderId = 0;
 
 		Optional<ButtonType> Option = PopUpMsg
-				.ConfirmationForUser("Aftre clicking okay the Payment will procceed, Are you Sure?!");
+				.ConfirmationForUser("After clicking okay the Payment will procceed, Are you Sure?!");
 		if (Option.get() == ButtonType.OK) {
 
 			message = new FullMessage(Request.GET_CUSTOMER_DETAILS, Response.Wait, CurrentUser);
@@ -183,8 +210,16 @@ public class PaymentController extends UsersController implements Initializable 
 		}
 
 	}
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackBtn(MouseEvent event) throws Exception {
+		
 		String path = null;
 		if (order.getSupplyType().equals(TypeOfSupply.DELIVERY)) {
 			path = "/ClientFXMLFiles/DeliveryDetails.fxml";

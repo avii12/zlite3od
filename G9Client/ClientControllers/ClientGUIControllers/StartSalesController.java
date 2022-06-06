@@ -1,14 +1,15 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
+
+
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Orders.Branch;
-import Orders.FlowerColor;
-import Orders.PriceRange;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -30,28 +31,70 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the Start Sales 
+ *  
+ *@author Obied haddad
+ *
+ */
 public class StartSalesController extends UsersController implements Initializable {
-
+	
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
 	@FXML
+	/**
+	 * End Sales Button
+	 */
+
 	private Button EndSalesBtn;
 	@FXML
+	/**
+	 * Start Sales Button
+	 */
 	private Button StartSalesBtn;
 	@FXML
+	/**
+	 * Label For Message For The User 
+	 */
 	private Label ErrorLabel;
 	@FXML
+	/**
+	 * ComboBox for Sales percentage
+	 */
 	private ComboBox<String> SaleComboBox;
 	@FXML
+	/**
+	 * ComboBox for Branches
+	 */
 	private ComboBox<Branch> BranchComboBox;
 	@FXML
+	/**
+	 * Start Sales Branch button
+	 */
 	private Button StartSalesBranch;
 	@FXML
+	/**
+	 * Boolean of Start Sales with Branch
+	 */
 	private boolean StartSalesWithBranchClicked = true;
 	@FXML
+	/**
+	 * variable of Branch
+	 */
+	
 	private Branch branch;
 
 	@Override
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	public void initialize(URL location, ResourceBundle resources) {
+		
 
 		message = new FullMessage(Request.GET_WORKER_BRANCH, Response.Wait, CurrentUser.getID());
 		ZliClientUI.ZliClientController.accept(message);
@@ -85,7 +128,12 @@ public class StartSalesController extends UsersController implements Initializab
 	}
 
 	@FXML
+	/**
+	 * after clicking on EndSales button disable sales  
+	 * @param event
+	 */
 	public void EndSales(ActionEvent event) {
+		
 
 		message = new FullMessage(Request.CHECK_IF_CATALOG_EXIST_TO_START_SALES, Response.Wait, null);
 		ZliClientUI.ZliClientController.accept(message);
@@ -131,12 +179,21 @@ public class StartSalesController extends UsersController implements Initializab
 	}
 
 	@FXML
+	/**
+	 * when choosing value from StartSalesComboAction ComboBox is enable
+	 * @param event
+	 */
 	public void StartSalesComboAction(ActionEvent event) {
+		
 
 		StartSalesBranch.setDisable(false);
 	}
 
 	@FXML
+	/**
+	 * after clicking on StartSalesWithSpecificBranch button starting sales for the branch
+	 * @param event
+	 */
 	private void StartSalesWithSpecificBranch(ActionEvent event) {
 
 		StartSalesWithBranchClicked = true;
@@ -184,6 +241,10 @@ public class StartSalesController extends UsersController implements Initializab
 	}
 
 	@FXML
+	/**
+	 * after clicking on StartSales button starting sales for all branches
+	 * @param event
+	 */
 	public void StartSales(ActionEvent event) {
 
 		StartSalesWithBranchClicked = false;
@@ -229,8 +290,18 @@ public class StartSalesController extends UsersController implements Initializab
 
 	}
 
+	
 	@FXML
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	public void ExitButton(MouseEvent event) throws IOException {
+		
 
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
@@ -239,7 +310,17 @@ public class StartSalesController extends UsersController implements Initializab
 		System.exit(0);
 	}
 
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws Exception {
+		
+		
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/NetWorkMarketingWorker.fxml"));
@@ -254,8 +335,12 @@ public class StartSalesController extends UsersController implements Initializab
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 * The Function Display's The Message On The Label
+	 * @param message
+	 */
 	private void errorControl(String message) {
+		
 
 		Platform.runLater(new Runnable() {
 

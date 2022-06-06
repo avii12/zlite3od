@@ -2,15 +2,13 @@ package ClientGUIControllers;
 
 import java.io.IOException;
 
+
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import AllUsers.Users;
 import Orders.Branch;
 import Orders.Order;
-import Orders.RefundStatus;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -45,10 +43,15 @@ import javafx.stage.StageStyle;
  *
  */
 public class WorkerInsertComplaintChooseOrder extends UsersController implements Initializable {
+	
+	
 	/**
 	 * message type of FullMessage
 	 */
 	public static FullMessage message;
+	/**
+	 * variable of complaint
+	 */
 	
 	public static Complaint complaint;
 	/**
@@ -100,6 +103,8 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 	 *Send To The Server Message That Contains All the Relevant Data 
 	 */
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		
 
 		complaint = WorkerInsertComplaint.complaint;
 		ObservableList<Order> Orders = FXCollections.observableArrayList();
@@ -137,6 +142,8 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 	 * @param event
 	 */
 	public void ExitButton(MouseEvent event) {
+		
+		
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
 		message = new FullMessage(Request.Disconnect, Response.Wait, null);
@@ -151,6 +158,8 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
      */
 	@FXML
 	public void ChooseOrder(ActionEvent event) throws IOException {
+		
+		
 
 		selectedorder = OrderTable.getSelectionModel().getSelectedItems();
 		if (selectedorder.size() == 0) {
@@ -190,6 +199,8 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 	 * @throws IOException
 	 */
 	public void BackButton(MouseEvent event) throws Exception {
+		
+		
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/InsertComplaint.fxml"));
@@ -209,6 +220,8 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 	 * @param message
 	 */
 	private void errorControl(String message) {
+		
+		
 
 		Platform.runLater(new Runnable() {
 
