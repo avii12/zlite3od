@@ -47,20 +47,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
- * Class description: Controlling The Catalog
- *
- * @author obied haddad
-=======
- * class description:
- * this class is for the Catalog screen 
- * functionality of the Catalog
- * 
- * @author Seren Hanany
- * 
- * @version 11/05/2022
->>>>>>> f6a1903 dd
- *
+ * Class description: 
+ * This is a class for 
+ * controlling the Catalog
+ *  
+ *@author Obied haddad
+ *@author ibrahem enbtawe
  */
 public class CatalogController extends UsersController implements Initializable {
 	/**

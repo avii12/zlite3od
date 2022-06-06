@@ -33,7 +33,7 @@ import javafx.stage.StageStyle;
  * This is a class for 
  * controlling the Start Sales 
  *  
- *@author Obied haddad
+ *@author obied haddad
  *
  */
 public class PaymentController extends UsersController implements Initializable {

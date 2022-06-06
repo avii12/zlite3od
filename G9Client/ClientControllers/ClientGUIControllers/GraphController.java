@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
  * This is a class for 
  * controlling Graph for branch manager 
  *  
- *@author Seren Hanany
+ *@author shorok heib
  *
  */
 public class GraphController extends UsersController implements Initializable {

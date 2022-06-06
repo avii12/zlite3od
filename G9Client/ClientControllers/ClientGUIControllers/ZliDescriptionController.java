@@ -22,7 +22,7 @@ import javafx.stage.StageStyle;
  * This is a class for 
  * controlling the Zli Description 
  *  
- *@author Obied haddad
+ *@author shorok heib
  *
  */
 public class ZliDescriptionController {

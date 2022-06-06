@@ -33,7 +33,7 @@ import javafx.stage.StageStyle;
  * This is a class for 
  * controlling Graph for CEO
  *  
- * @author Seren Hanany
+ * @author mario rohana
  *
  */
 public class ViewReportsForCEOController extends UsersController implements Initializable {

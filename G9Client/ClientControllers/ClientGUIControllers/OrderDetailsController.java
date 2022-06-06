@@ -45,7 +45,7 @@ import javafx.util.Callback;
  * This is a class for 
  * controlling the Start Sales 
  *  
- *@author Obied haddad
+ *@author maisalon safory
  *
  */
 

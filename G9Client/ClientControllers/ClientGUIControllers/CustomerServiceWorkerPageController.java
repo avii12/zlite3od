@@ -18,7 +18,7 @@ import javafx.stage.StageStyle;
 /**
  * Class description: Controlling The Customer Service worker page
  *
- * @author obied haddad
+ * @author shorok heib
  *
  */
 public class CustomerServiceWorkerPageController extends UsersController {

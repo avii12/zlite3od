@@ -37,7 +37,7 @@ import javafx.stage.StageStyle;
  * This is a class for 
  * controlling the  Worker Insert Worker Insert Complaint
  *  
- *@author Obied haddad
+ *@author shorok heib
  *
  */
 

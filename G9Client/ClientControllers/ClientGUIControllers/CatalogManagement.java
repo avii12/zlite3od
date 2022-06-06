@@ -33,14 +33,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 /**
- *Class description:  
- *Controlling The Catalog Management  
- *
- *@author obied haddad
- *
- */
-/**
- * @author סירין
+ * Class description: 
+ * This is a class for 
+ * controlling the CatalogManagement
+ *  
+ *@author shorok heib
  *
  */
 public class CatalogManagement extends UsersController implements Initializable {

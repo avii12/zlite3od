@@ -37,7 +37,7 @@ import javafx.util.StringConverter;
  * This is a class for 
  * controlling the change customer status by branch manager
  *  
- *@author Seren Hanany
+ *@author mario rohana
  *
  */
 public class ChangeCustomerStatusController extends UsersController implements Initializable {

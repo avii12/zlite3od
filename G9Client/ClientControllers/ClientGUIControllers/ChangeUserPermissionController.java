@@ -38,7 +38,7 @@ import javafx.util.StringConverter;
  * This is a class for 
  * controlling the change user permission by branch manager
  *  
- *@author Seren Hanany
+ *@author maisalon safory
  *
  */
 public class ChangeUserPermissionController extends UsersController implements Initializable {

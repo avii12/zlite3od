@@ -29,7 +29,7 @@ import javafx.stage.StageStyle;
 /**
  * Class description: Controlling The Delivery Details
  *
- * @author obied haddad
+ * @author mario rohana
  *
  */
 public class DeliveryDetailsController extends UsersController implements Initializable {

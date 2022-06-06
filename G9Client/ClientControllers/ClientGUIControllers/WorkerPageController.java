@@ -21,7 +21,7 @@ import javafx.stage.StageStyle;
  * This is a class for 
  * controlling the Worker Page 
  *  
- *@author Obied haddad
+ *@author ibrahem enbtawe
  *
  */
 public class WorkerPageController extends UsersController {
