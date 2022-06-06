@@ -137,7 +137,8 @@ public class ServiceExpertPageController extends UsersController {
 	}
 
 	/**
-	 * 
+	 * After Clicking on Upload Report Button 
+	 * function send message to server to upload PDF
 	 * @param event
 	 */
 	@FXML
@@ -152,6 +153,11 @@ public class ServiceExpertPageController extends UsersController {
 
 	}
 
+	/**
+	 * After Clicking on extract Report Button 
+	 * function send message to server to extract PDF
+	 * @param event
+	 */
 	@FXML
 	public void ExtractPDF(ActionEvent event) {
 

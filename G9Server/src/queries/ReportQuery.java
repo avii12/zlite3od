@@ -1,47 +1,38 @@
 package queries;
 
-import java.security.Timestamp;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
-import AllUsers.ConfirmationStatus;
-import AllUsers.Customer;
-import AllUsers.User;
-import Report.customer;
 import Orders.Branch;
-import Orders.DominantColor;
-import Orders.FlowerColor;
-import Orders.Item;
-import Orders.ItemCategory;
-import Orders.ItemType;
-import Report.IncomeReport;
-import Report.OrderReport;
 import Report.ReportType;
 import Report.Reports;
 import RequestsAndResponses.FullMessage;
-import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
-
+/**
+ * Class Description:
+ * This class is responsible for all the report process
+ * @author Ebrahem Enbtawe
+ * @author Seren Hannany
+ * @author Obied Haddad
+ * @author Mario Rohannah
+ * @author Maisalon Safory
+ * @author Shorok heeb
+ *
+ */
 public class ReportQuery {
 
+	/**
+	 * This method get information for order to create order reports
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public static FullMessage GetOrderReport(FullMessage messageFromClient) throws SQLException {
+		
 		String[] DateAndBranch = (String[]) messageFromClient.getObject();
 
 		ArrayList<String> OrderReport = new ArrayList<String>();
-		String orderDate = "";
 		String date = DateAndBranch[0];
 		String condition = "Branch='" + DateAndBranch[2] + "' AND ReportDate='"+date+"'";
 		ResultSet rs = mainQuery.getTuple("reportorder", condition);
@@ -74,7 +65,14 @@ public class ReportQuery {
 
 	}
 
+	/**
+	 *  This method get information for order to create income reports
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public static FullMessage GetIncomeReportForManager(FullMessage messageFromClient) throws SQLException {
+		
 		String[] TypeAndDate = (String[]) messageFromClient.getObject();
 		String date = TypeAndDate[0];
 		String condition = "BranchName='" + TypeAndDate[2] + "' AND (Date='" + date + "')";
@@ -109,6 +107,12 @@ public class ReportQuery {
 		return messageFromClient;
 	}
 
+	/**
+	 *  This method get ID for manager
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public static FullMessage GetManagerID(FullMessage messageFromClient) throws SQLException {
 
 		String BranchID = (String) messageFromClient.getObject();
@@ -136,6 +140,12 @@ public class ReportQuery {
 
 	}
 
+	/**
+	 *  This method check if the report id exist in data base
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public static FullMessage GetReportFromDB(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -175,6 +185,11 @@ public class ReportQuery {
 
 	}
 
+	/**
+	 *  This method convert to report the information in the data base
+	 * @param rs
+	 * @return
+	 */
 	private static Reports convertToReport(ResultSet rs) {
 		try {
 			int ReportID = rs.getInt(1);
@@ -189,14 +204,21 @@ public class ReportQuery {
 		return null;
 	}
 
+	/**
+	 *  This method get message  and get number of complaint according to quarterly
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public static FullMessage GetNumOfComplaintByQuarterly(FullMessage messageFromClient) throws SQLException {
+		
 		FullMessage returnMessageToClient = messageFromClient;
 		String[] quarterly = (String[]) messageFromClient.getObject();
 		int[] NumOfComlaint = new int[3];
 		NumOfComlaint[0] = 0;
 		NumOfComlaint[1] = 0;
 		NumOfComlaint[2] = 0;
-		String fromDate, toDate, condition;
+		String fromDate, toDate;
 		switch (quarterly[0]) {
 		case "1-3":
 			fromDate = quarterly[2] + "-01-01 00:00:00";
@@ -261,8 +283,18 @@ public class ReportQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 *  This method get message  and get number of complaint 
+	 * @param fromDate
+	 * @param ToDate
+	 * @param BranchName
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public static int GetNumOfComplaint(String fromDate, String ToDate, String BranchName,
 			FullMessage messageFromClient) throws SQLException {
+		
 		int NumOfComlpaint = 0;
 		String condition = "Branch='" + BranchName + "' AND (Date between '" + fromDate + "' AND '" + ToDate + "')";
 		ResultSet rs = mainQuery.getTuple("complaint", condition);
@@ -287,8 +319,18 @@ public class ReportQuery {
 
 	}
 
+	/**
+	 * This method get message  and get Total Price Of Quarterly
+	 * @param fromDate
+	 * @param ToDate
+	 * @param BranchName
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public static double GetTotalPriceOfQuarterly(String fromDate, String ToDate, String BranchName,
 			FullMessage messageFromClient) throws SQLException {
+		
 		double TotalPrice = 0;
 
 		String condition = "Branch='" + BranchName + "' AND (EstimatedOrderDate between '" + fromDate + "' AND '"
@@ -315,7 +357,14 @@ public class ReportQuery {
 
 	}
 
+	/**
+	 * This method get message  and get Total Price Of two Quarterly
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public static FullMessage GetReportForTwoQuarterly(FullMessage messageFromClient) throws SQLException {
+		
 		String[] infoForQuarterly = (String[]) messageFromClient.getObject();
 		double[] Numforquarterly = new double[7];
 		Numforquarterly[0] = 0;
@@ -326,7 +375,7 @@ public class ReportQuery {
 		Numforquarterly[5] = 0;
 		String fromDate, toDate;
 
-		switch (infoForQuarterly[1]) {
+		switch (infoForQuarterly[1]) {//Quarterly 1
 		case "1-3":
 			fromDate = infoForQuarterly[3] + "-01-01 00:00:00";
 			toDate = infoForQuarterly[3] + "-01-31 23:59:59";
@@ -378,7 +427,7 @@ public class ReportQuery {
 
 		}// switch1
 
-		switch (infoForQuarterly[2]) {
+		switch (infoForQuarterly[2]) {//Quarterly 2
 		case "1-3":
 			fromDate = infoForQuarterly[3] + "-01-01 00:00:00";
 			toDate = infoForQuarterly[3] + "-01-31 23:59:59";
@@ -434,7 +483,14 @@ public class ReportQuery {
 		return messageFromClient;
 	}
 
+	/**
+	 * This method get message  and get Report For Two Branches
+	 * @param messageFromClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public static FullMessage GetReportForTwoBranches(FullMessage messageFromClient) throws SQLException {
+		
 		String[] infoForQuarterly = (String[]) messageFromClient.getObject();
 		double[] TotalPrice = new double[7];
 		TotalPrice[0] = 0;
