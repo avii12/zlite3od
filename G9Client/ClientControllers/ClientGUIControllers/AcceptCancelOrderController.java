@@ -184,6 +184,12 @@ public class AcceptCancelOrderController extends UsersController implements Init
 						
 
 						if(order.getActualDate()==null) {
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+=======
+
+						
+
+>>>>>>> b829af6 ff
 							Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 							 Actual=timestamp.toString();
 							}else {
