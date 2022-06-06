@@ -24,7 +24,7 @@ public class SurveyQuery {
 
 	public static FullMessage GetSurveyFromDB(FullMessage messageFromClient)throws SQLException {
 		ArrayList<survey> SurveyQ = new ArrayList<survey>();
-		ResultSet rs = mainQuery.SelectAllProductsFromDB("surveyquestions");
+		ResultSet rs = mainQuery.SelectAllFromDB("surveyquestions");
 		try {
 			if (!rs.isBeforeFirst()) {
 				messageFromClient.setResponse(Response.NO_SURVEY);

@@ -481,19 +481,19 @@ public class OrderQuery {
 		long diff1 = OrderDate.getTime() - Estimated.getTime();
 		long OrderDateSeconds = TimeUnit.MILLISECONDS.toSeconds(diff1);
 
-		ResultSet rs = mainQuery.getRowFromDB("orders", "OrderNumber='" + OrderNumber + "'");
+		ResultSet rs = mainQuery.getTuple("orders", "OrderNumber='" + OrderNumber + "'");
 		if (rs.next()) {
 			CustomerID = rs.getString(2);
 		}
 		rs.close();
 
-		ResultSet rs1 = mainQuery.getRowFromDB("customer", "ID='" + CustomerID + "'");
+		ResultSet rs1 = mainQuery.getTuple("customer", "ID='" + CustomerID + "'");
 		if (rs1.next()) {
 			Balance = rs1.getDouble(10);
 		}
 		rs1.close();
 
-		ResultSet rs2 = mainQuery.getRowFromDB("orders", "OrderNumber='" + OrderNumber + "'");
+		ResultSet rs2 = mainQuery.getTuple("orders", "OrderNumber='" + OrderNumber + "'");
 		if (rs2.next()) {
 			orderstatus = OrderStatus.valueOf(rs2.getString(4));
 			TotalPrice = rs2.getDouble(9);

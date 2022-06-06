@@ -23,15 +23,21 @@ import Orders.FlowerColor;
 import Orders.ItemCategory;
 import Orders.ItemType;
 import Orders.OrderStatus;
-import Orders.RefundStatus;
 import Orders.TypeOfSupply;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Response;
-import ServerGUIControllers.ServerGuiController;
 import Survey.SurveyAnswers;
 
 /**
- * @author Obied
+ * Class Description: This class is responsible for all the Insert,
+ * Update,Remove... Queries This class has Direct connection to the database
+ * 
+ * @author Obied haddad
+ * @author Seren Hananny
+ * @author Maisalon Safory
+ * @author Ebrahem Enbtawe
+ * @author Mario Rohannah
+ * @author Shorok Heeb
  *
  */
 public class mainQuery {
@@ -43,12 +49,14 @@ public class mainQuery {
 	 * The var of the connection to external db
 	 */
 	private static Connection externaldbCon;
+
 	/**
-	 * Setter of the connection of  db
+	 * Setter of the connection of zli db
 	 */
 	public static void setConnectionFromServerToDB(Connection connection) {
 		con = connection;
 	}
+
 	/**
 	 * Setter of the connection of external db
 	 */
@@ -57,7 +65,8 @@ public class mainQuery {
 	}
 
 	/**
-	 * This method will be called once to import the data of users management from the allusers DB.
+	 * This method will be called once to import the data of users management from
+	 * the allusers DB.
 	 * 
 	 * @return rs
 	 */
@@ -76,6 +85,7 @@ public class mainQuery {
 
 	/**
 	 * Method for inserting Survey into DB
+	 * 
 	 * @param answerANDid
 	 * @throws ParseException
 	 */
@@ -99,6 +109,7 @@ public class mainQuery {
 
 	/**
 	 * Method For Inserting Row In login table
+	 * 
 	 * @param userName
 	 * @param Password
 	 * @param userId
@@ -119,6 +130,7 @@ public class mainQuery {
 
 	/**
 	 * Method For inserting into customer table
+	 * 
 	 * @param user
 	 * @throws ParseException
 	 */
@@ -154,6 +166,7 @@ public class mainQuery {
 
 	/**
 	 * Method For inserting into Worker table
+	 * 
 	 * @param user
 	 * @throws ParseException
 	 */
@@ -188,6 +201,7 @@ public class mainQuery {
 
 	/**
 	 * Method For inserting into service specialist table
+	 * 
 	 * @param user
 	 * @throws ParseException
 	 */
@@ -215,7 +229,8 @@ public class mainQuery {
 	}
 
 	/**
-	 * Method For inserting into customer service worker  table
+	 * Method For inserting into customer service worker table
+	 * 
 	 * @param user
 	 * @throws ParseException
 	 */
@@ -342,7 +357,15 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * This function Selects a tuple from database with certain condition and
+	 * returns it with ResultSet
+	 * @param tableName
+	 * @param condition
+	 * @return rs
+	 */
 	public static ResultSet getTuple(String tableName, String condition) {
+
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
@@ -354,6 +377,13 @@ public class mainQuery {
 		return rs;
 	}
 
+	/**
+	 * this function Selects tuple according to MAX and MIN price
+	 * @param tableName
+	 * @param minPrice
+	 * @param maxPrice
+	 * @return
+	 */
 	public static ResultSet getTupleAccordingToPrice(String tableName, int minPrice, int maxPrice) {
 
 		PreparedStatement statement = null;
@@ -371,22 +401,16 @@ public class mainQuery {
 		return rs;
 	}
 
-	public static ResultSet SelectAllProductsFromDB(String tableName) {/// select table
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-
-			String query = "SELECT * FROM zli_db." + tableName;
-			pstmt = con.prepareStatement(query);
-			rs = pstmt.executeQuery();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rs;
-	}
-
+	
+	/**
+	 * This function selects Column from table in database with certain condition
+	 * @param tableName
+	 * @param columnName
+	 * @param condition
+	 * @return
+	 */
 	public static ResultSet getColumnFromTableInDB(String tableName, String columnName, String condition) {
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -399,7 +423,14 @@ public class mainQuery {
 		return rs;
 	}
 
+	/**
+	 * This function updates table column in database with certain condition 
+	 * @param tableName
+	 * @param columnSet
+	 * @param condition
+	 */
 	public static void updateTuple(String tableName, String columnSet, String condition) {
+		
 		PreparedStatement statement = null;
 		try {
 			String query = "UPDATE zli_db." + tableName + " SET " + columnSet + " WHERE " + "(" + condition + ")";
@@ -411,7 +442,13 @@ public class mainQuery {
 
 	}
 
+	/**
+	 * This function updates column without condition
+	 * @param tableName
+	 * @param columnSet
+	 */
 	public static void updateTupleWithNoCondition(String tableName, String columnSet) {
+		
 		PreparedStatement statement = null;
 		try {
 			String query = "UPDATE zli_db." + tableName + " SET " + columnSet + "";
@@ -423,7 +460,13 @@ public class mainQuery {
 
 	}
 
+	/**
+	 * This function Selects all from certain table in database
+	 * @param tableName
+	 * @return
+	 */
 	public static ResultSet SelectAllFromDB(String tableName) {
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -437,30 +480,12 @@ public class mainQuery {
 		return rs;
 	}
 
-	/*
-	 * java.sql.Statement statement = conn.createStatement(); String sql =
-	 * "SELECT MAX(GiaSP) from tbsanpham where manhom = '"+manhom+"'"; ResultSet rs
-	 * = statement.executeQuery(sql); if (rs.next()) { max = rs.getInt(1);
+	/**
+	 * this function Inserts PDF into database
+	 * @param path
+	 * @throws SQLException
+	 * @throws FileNotFoundException
 	 */
-
-	public static void UpdateDateForPDFInsert() throws SQLException {
-
-		String updateSQL = "UPDATE summarizedpdf " + "SET Date = ? " + "WHERE surveyID=?";
-		// String updateSQL = "UPDATE candidates " + "SET resume = ? " + "WHERE id=?";
-
-		PreparedStatement pstmt = con.prepareStatement(updateSQL);
-
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-		LocalDateTime now = LocalDateTime.now();
-		String date = dtf.format(now);
-		Timestamp dateTimeStamp = Timestamp.valueOf(date);
-		System.out.println(dateTimeStamp);
-		pstmt.setTimestamp(1, dateTimeStamp);
-		pstmt.setString(2, "1");
-		pstmt.executeUpdate();
-
-	}
-
 	public static void InsertPDF(String path) throws SQLException, FileNotFoundException {
 
 		String updateSQL = "UPDATE summarizedpdf " + "SET File = ? " + "WHERE surveyID=?";
@@ -476,7 +501,12 @@ public class mainQuery {
 		SetDateForPDFTable();
 
 	}
-	
+
+	/**
+	 * This function Sets the date for when inserting PDF file into database
+	 * @throws SQLException
+	 * @throws FileNotFoundException
+	 */
 	public static void SetDateForPDFTable() throws SQLException, FileNotFoundException {
 
 		String updateSQL = "UPDATE summarizedpdf " + "SET Date = ? " + "WHERE surveyID=?";
@@ -492,6 +522,13 @@ public class mainQuery {
 
 	}
 
+	/**
+	 * this function Extracts the PDF from database onto Reports folder in PC
+	 * @param message
+	 * @return
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	@SuppressWarnings("unused")
 	public static FullMessage ShowPDF(FullMessage message) throws SQLException, IOException {
 
@@ -507,13 +544,14 @@ public class mainQuery {
 
 			if (rs.getBlob(1) != null) {
 
-				FileOutputStream output = new FileOutputStream(file);
-				InputStream input = rs.getBinaryStream("File");
-				message.setResponse(Response.PDF_FOUND);
-				message.setObject(file.getAbsolutePath());
-				byte[] buffer = new byte[1024];
-				while (input.read(buffer) > 0) {
-					output.write(buffer);
+				try (FileOutputStream output = new FileOutputStream(file)) {
+					InputStream input = rs.getBinaryStream("File");
+					message.setResponse(Response.PDF_FOUND);
+					message.setObject(file.getAbsolutePath());
+					byte[] buffer = new byte[1024];
+					while (input.read(buffer) > 0) {
+						output.write(buffer);
+					}
 				}
 
 			} else {
@@ -526,10 +564,30 @@ public class mainQuery {
 		return message;
 	}
 
+	/**
+	 * This function Inserts new order Into the Order table
+	 * @param orderNumber
+	 * @param customerID
+	 * @param branch
+	 * @param orderstatus
+	 * @param orderDate
+	 * @param estimatedDate
+	 * @param actualDate
+	 * @param supplyType
+	 * @param totalPrice
+	 * @param deliveryCost
+	 * @param customerName
+	 * @param deliveryAddress
+	 * @param Item
+	 * @param PhoneNumber
+	 * @param greetingCard
+	 * @throws ParseException
+	 */
 	public static void InsertOneRowIntoOrderTable(String orderNumber, String customerID, Branch branch,
 			OrderStatus orderstatus, Timestamp orderDate, Timestamp estimatedDate, Timestamp actualDate,
 			TypeOfSupply supplyType, double totalPrice, double deliveryCost, String customerName,
 			String deliveryAddress, String Item, String PhoneNumber, String greetingCard) throws ParseException {
+		
 
 		// String estimatedSupplyDateAndTime =
 		// DateTimeHandler.convertMySqlDateTimeFormatToString(estimatedSupplyDateTime);
@@ -561,8 +619,20 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * This function Inserts New complaint into Complaint table
+	 * @param complaintid
+	 * @param complaintnumber
+	 * @param customerid
+	 * @param ordernumber
+	 * @param date
+	 * @param branch
+	 * @param text
+	 * @throws ParseException
+	 */
 	public static void InsertOneRowIntoComplaintTable(int complaintid, int complaintnumber, String customerid,
 			int ordernumber, Timestamp date, Branch branch, String text) throws ParseException {
+		
 
 		String query = "INSERT INTO complaint (" + " ComplaintID," + " ComplaintNum," + " CustomerID," + " OrderID,"
 				+ " Date," + " Branch," + " Text) VALUES (" + "?, ?, ?, ?, ?, ?, ?)";
@@ -582,9 +652,24 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * This function is to insert new Item for Catalog in database
+	 * @param itemID
+	 * @param itemCategory
+	 * @param color
+	 * @param itemName
+	 * @param price
+	 * @param picturePath
+	 * @param greetingCard
+	 * @param type
+	 * @param dominantColor
+	 * @param amount
+	 * @throws ParseException
+	 */
 	public static void InsertOneRowIntoCatalogTable(String itemID, ItemCategory itemCategory, FlowerColor color,
 			String itemName, double price, String picturePath, String greetingCard, ItemType type,
 			DominantColor dominantColor, int amount) throws ParseException {
+		
 
 		String query = "INSERT INTO catalog (" + "ID," + "Category," + " Color," + " ItemName," + " Price,"
 				+ " PicturePath," + " GreetingCard," + " Type," + "DominantColor," + "Amount) VALUES ("
@@ -609,7 +694,13 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * This function is to delete a row from a table in database with specific condition
+	 * @param condition
+	 * @param tableName
+	 */
 	public static void DeleteRowFromDB(String condition, String tableName) {
+		
 		String query = "DELETE FROM zli_db." + tableName + " WHERE (" + condition + ")";
 		PreparedStatement pstmt = null;
 		try {
@@ -620,48 +711,14 @@ public class mainQuery {
 		}
 	}
 
-	public static ResultSet getRowFromDB(String tableName, String condition) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			String query = "SELECT * FROM zli_db." + tableName + "  WHERE " + condition;
-			pstmt = con.prepareStatement(query);
-			rs = pstmt.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rs;
-	}
-
-	public static ResultSet getDifferenceBetweenDate(String tableName, Timestamp FirstDate, Timestamp SecoundDate) {
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			pstmt = con.prepareStatement("SELECT TIMESTAMPDIFF('SECOND'" + "'" + FirstDate + "'" + "," + "'"
-					+ SecoundDate + "'" + ")" + "time" + " FROM zli_db." + tableName + "");
-			rs = pstmt.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rs;
-	}
-
-	public static ResultSet getDifferenceBetweenDates(String tableName, Timestamp FirstDate, Timestamp SecoundDate) {
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			pstmt = con.prepareStatement("SELECT TIMEDIFF('" + FirstDate + "'" + "," + "'" + SecoundDate + "'" + ")"
-					+ " FROM zli_db." + tableName + "");
-			rs = pstmt.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rs;
-	}
-
+	/**
+	 * This function Selects certain Column from table in database
+	 * @param tableName
+	 * @param columnName
+	 * @return
+	 */
 	public static ResultSet getColumnFromTableInDB(String tableName, String columnName) {
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {

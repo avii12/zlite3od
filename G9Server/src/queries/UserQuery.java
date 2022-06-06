@@ -328,7 +328,7 @@ public class UserQuery {
 		String CustomerId = list.get(1);
 		double Balance = 0.0;
 
-		ResultSet rs = mainQuery.getRowFromDB("customer", "ID='" + CustomerId + "'");
+		ResultSet rs = mainQuery.getTuple("customer", "ID='" + CustomerId + "'");
 		if (rs.next()) {
 			Balance = rs.getDouble(10);
 		}
@@ -336,7 +336,7 @@ public class UserQuery {
 
 		double TotalPrice = 0.0;
 		double BalanceBeforePurchasing = 0.0;
-		ResultSet rs1 = mainQuery.getRowFromDB("orders", "OrderNumber='" + OrderNumber + "'");
+		ResultSet rs1 = mainQuery.getTuple("orders", "OrderNumber='" + OrderNumber + "'");
 		if (rs1.next()) {
 			TotalPrice = rs1.getDouble(9);
 		}
@@ -358,7 +358,7 @@ public class UserQuery {
 		Double balance = 0.0;
 		Double totalprice = 0.0;
 		Double priceAfterRefund = 0.0;
-		ResultSet rs = mainQuery.getRowFromDB("orders", "OrderNumber='" + ordernum + "'");
+		ResultSet rs = mainQuery.getTuple("orders", "OrderNumber='" + ordernum + "'");
 		if (rs.next())
 			totalprice = rs.getDouble(9);
 		else
@@ -366,7 +366,7 @@ public class UserQuery {
 
 		rs.close();
 		
-		ResultSet rs1 = mainQuery.getRowFromDB("customer", "ID='" + customerId + "'");
+		ResultSet rs1 = mainQuery.getTuple("customer", "ID='" + customerId + "'");
 		if (rs1.next()) 
 			balance = rs1.getDouble(10);
 		else
