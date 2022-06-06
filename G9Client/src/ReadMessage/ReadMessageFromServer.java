@@ -57,6 +57,14 @@ public class ReadMessageFromServer {
 	 * @param message
 	 * @throws IOException
 	 */
+	/**
+	 * @param message
+	 * @throws IOException
+	 */
+	/**
+	 * @param message
+	 * @throws IOException
+	 */
 	@SuppressWarnings({ "incomplete-switch", "unchecked" })
 	public static void readMessageFromServer(Object message) throws IOException {
 
@@ -497,60 +505,93 @@ public class ReadMessageFromServer {
 				ViewTwoReportsForTwoBranchesController.message.setResponse(MessageFromServer.getResponse());
 				break;
 			case GET_CUSTOMER_FROM_DB:
+				
 				ChangeCustomerStatusController.ArrayForChangedStatus = (ArrayList<customer>) (MessageFromServer
 						.getObject());
 				break;
 			case UPDATE_STATUS_CUSTOMER:
-
+				/**
+				 *set response from server to the controller ChangeCustomerStatus
+			     */
 				ChangeCustomerStatusController.message.setResponse(MessageFromServer.getResponse());
 				break;
 			case GET_USER_STATUS:
+				/**
+				 *set object from server to the controller CustomerPage
+			     */
 				CustomerPageController.message.setObject(ReturnedObjectFromDB);
 				break;
 
 			case GET_COMPLAINT_FROM_DB:
-
 				switch (ResponseFromServer) {
 
 				case NO_COMPLAINTS:
+					/**
+					 * set response from server to the controller ComplaintHandeling
+				     */
 					ComplaintHandelingController.complaintListFromDB = null;
 					ComplaintHandelingController.message.setResponse(Response.NO_COMPLAINTS);
 					break;
 
 				case COMPLAINTS_FOUND:
-
+					/**
+					 *set object from server to the controller arrayList
+				     */
 					ComplaintHandelingController.complaintListFromDB = (ArrayList<Complaint>) MessageFromServer
 							.getObject();
 					break;
 				}
 			case GET_NUM_OF_COMPLAINT_FOR_CEO:
+				/**
+				 *set object from server to the controller ViewReportsForCEO
+			     */
 				ViewReportsForCEOController.message.setObject(MessageFromServer.getObject());
 				break;
 
 			case GET_ORDER_REPORT_FROM_DB_FOR_CEO:
+				/**
+				 * set response from server to the controller ViewReportsForCEO
+				 *set object from server to the controller arrayList 
+			     */
 				ViewReportsForCEOController.message.setResponse(MessageFromServer.getResponse());
 				ViewReportsForCEOController.OrdersReport = (ArrayList<String>) MessageFromServer.getObject();
 				break;
 
 			case GET_USERS_FROM_DB:
+				/**
+				 *set response from server to the controller ChangeUserPermission
+				 *set object from server to the controller arrayList
+			     */
 				ChangeUserPermissionController.message.setResponse(MessageFromServer.getResponse());
 				ChangeUserPermissionController.ArrayForChangedPermission = (ArrayList<Users>) MessageFromServer
 						.getObject();
 				break;
 
 			case GET_USERS_FROM_DB_FOR_WORKER:
+				/**
+				 * set response from server to WorkerInsertComplaint
+				 *set object from server to WorkerInsertComplaint 
+			     */
 				WorkerInsertComplaint.message.setResponse(MessageFromServer.getResponse());
 				WorkerInsertComplaint.ArrayForCustomers = (ArrayList<Users>) MessageFromServer.getObject();
 				break;
 
 			case UPDATE_TYPE_USER:
+				/**
+				 *set response from server to controller ChangeUserPermission 
+			     */
 				ChangeUserPermissionController.message.setResponse(MessageFromServer.getResponse());
 				break;
 
 			case UPDATE_BALANCE_AFTER_COMPLAINT:
+			
 				switch (ResponseFromServer) {
 
 				case UPDATE_BALANCE_AFTER_COMPLAINT_SUCCEEDED:
+					/**
+					 * set object from server to controller ComplaintRefund
+					 *set response from server to controller ComplaintRefund 
+				     */
 					ComplaintRefundController.message.setResponse(ResponseFromServer);
 					ComplaintRefundController.message.setObject(ReturnedObjectFromDB);
 					break;
@@ -561,11 +602,17 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case PDF_FOUND:
+					 /**
+					 * set response from server to the controller
+				     */
 					ServiceExpertPageController.message.setResponse(Response.PDF_FOUND);
 					ServiceExpertPageController.extractedPath = (String) ReturnedObjectFromDB;
 					break;
 
 				case PDF_NOT_FOUND:
+					 /**
+					 * set response from server to the controller
+				     */
 					ServiceExpertPageController.message.setResponse(Response.PDF_NOT_FOUND);
 					break;
 
@@ -573,6 +620,9 @@ public class ReadMessageFromServer {
 				break;
 
 			case GET_SURVEYID:
+				 /**
+				 *set object from server to the controller arrayList
+			     */
 				FillSurveyController.ArrayForSurvey = (ArrayList<survey>) MessageFromServer.getObject();
 				break;
 			}
