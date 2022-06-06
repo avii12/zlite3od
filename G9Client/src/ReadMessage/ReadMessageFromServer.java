@@ -508,11 +508,18 @@ public class ReadMessageFromServer {
 
 				switch (ResponseFromServer) {
 				case NO_ORDER_FOUND:
+					/**
+					 * set response from server to the Controller CancelOrder 
+				     */
 					CancelOrderController.message.setResponse(Response.NO_ORDER_FOUND);
 
 					break;
 
 				case ORDER_FOUND:
+					/**
+					 * set response from server to the Controller CancelOrder 
+					 * *set object from server to the controller ArrayList 
+				     */
 					CancelOrderController.message.setResponse(Response.ORDER_FOUND);
 					CancelOrderController.OrderFromDB = (ArrayList<Order>) MessageFromServer.getObject();
 					break;
@@ -523,21 +530,36 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case MANAGE_ORDER_APPROVED_SUCCEEDED_WRITING_INTO_DB:
+					/**
+					 * set response from server to the Controller AcceptOrder 
+				     */
 					AcceptOrderController.message.setResponse(Response.MANAGE_ORDER_APPROVED_SUCCEEDED_WRITING_INTO_DB);
 					break;
 				case MANAGE_ORDER_COMPLETED_SUCCEEDED_WRITING_INTO_DB:
+					/**
+					 * set response from server to the Controller CancelOrder 
+				     */
 					CancelOrderController.message
 							.setResponse(Response.MANAGE_ORDER_COMPLETED_SUCCEEDED_WRITING_INTO_DB);
 					break;
 				case MANAGE_ORDER_UN_APPROVED_SUCCEEDED_WRITING_INTO_DB:
+					/**
+					 * set response from server to the Controller AcceptOrder 
+				     */
 					AcceptOrderController.message
 							.setResponse(Response.MANAGE_ORDER_UN_APPROVED_SUCCEEDED_WRITING_INTO_DB);
 					break;
 				case MANAGE_ORDER_APPROVED_CANCEL_SUCCEEDED_WRITING_INTO_DB:
+					/**
+					 * set response from server to the Controller AcceptCancel 
+				     */
 					AcceptCancelOrderController.message
 							.setResponse(Response.MANAGE_ORDER_APPROVED_CANCEL_SUCCEEDED_WRITING_INTO_DB);
 					break;
 				case MANAGE_ORDER_CANCEL_SUCCEEDED_WRITING_INTO_DB:
+					/**
+					 * set response from server to the Controller CancelOrder 
+				     */
 					CancelOrderController.message.setResponse(Response.MANAGE_ORDER_CANCEL_SUCCEEDED_WRITING_INTO_DB);
 					break;
 
@@ -548,6 +570,9 @@ public class ReadMessageFromServer {
 			case UPDATE_BALANCE_ORDER_UNAPPROVED:
 				switch (ResponseFromServer) {
 				case UPDATE_UNAPPROVED_ORDER_BALANCE_SUCCEEDED:
+					/**
+					 * set response from server to the Controller AcceptOrder 
+				     */
 					AcceptOrderController.message.setResponse(Response.MANAGE_ORDER_APPROVED_SUCCEEDED_WRITING_INTO_DB);
 					break;
 				}
@@ -556,10 +581,17 @@ public class ReadMessageFromServer {
 			case THE_SUBRACTED_DATE_TIME_DONE:
 				switch (ResponseFromServer) {
 				case GET_THE_SUBRACTED_DATE_TIME_SUCCEDED:
+					/**
+					 * set response from server to the Controller AcceptCancelOrder
+					 *set object from server to the controller AcceptCancelOrder 
+				     */
 					AcceptCancelOrderController.message.setResponse(Response.TIME_FOUND);
 					AcceptCancelOrderController.message.setObject(ReturnedObjectFromDB);
 					break;
 				case GET_THE_SUBRACTED_DATE_TIME_SUCCEDED_FOR_DELIVERY:
+					/**
+					 * set response from server to the Controller DeliveryPersonPage
+				     */
 					DeliveryPersonPageController.message.setResponse(Response.TIME_FOUND);
 					break;
 				}
@@ -569,10 +601,17 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_ORDER_FOUND:
+					/**
+					 * set response from server to the Controller AcceptCancelOrder
+				     */
 					AcceptCancelOrderController.message.setResponse(Response.NO_ORDER_FOUND);
 					break;
 
 				case ORDER_FOUND_FOR_MANAGER:
+					/**
+					 * set response from server to the Controller AcceptCancelOrder
+					 *set object from server to the controller arrayList 
+				     */
 					AcceptCancelOrderController.message.setResponse(Response.ORDER_FOUND_FOR_MANAGER);
 					AcceptCancelOrderController.OrderFromDB = (ArrayList<Order>) MessageFromServer.getObject();
 					break;
@@ -584,10 +623,17 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_ORDER_FOUND:
+					/**
+					 * set response from server to the WorkerInsertComplaintChooseOrder
+				     */
 					WorkerInsertComplaintChooseOrder.message.setResponse(Response.NO_ORDER_FOUND);
 					break;
 
 				case ORDER_FOUND_FOR_MANAGER:
+					/**
+					 * set response from server to the WorkerInsertComplaintChooseOrder
+					 *set object from server to the controller arrayList 
+				     */
 					WorkerInsertComplaintChooseOrder.message.setResponse(Response.ORDER_FOUND_FOR_CUSTOMER);
 					WorkerInsertComplaintChooseOrder.OrderFromDB = (ArrayList<Order>) MessageFromServer.getObject();
 					break;
@@ -599,10 +645,16 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case CATALOG_FOUND:
+					/**
+					 *set response from server to the controller StartSales 
+				     */
 					StartSalesController.message.setResponse(Response.CATALOG_FOUND);
 					break;
 
 				case NO_CATALOG:
+					/**
+					 *set response from server to the controller StartSales 
+				     */
 					StartSalesController.message.setResponse(Response.NO_CATALOG);
 					break;
 
@@ -610,27 +662,45 @@ public class ReadMessageFromServer {
 				break;
 
 			case GET_THE_SALE_PERCENTAGE_FROM_WORKER:
-
+				/**
+				 *set object from server to the controller StartSales 
+			     */
 				StartSalesController.message.setObject(ReturnedObjectFromDB);
 				break;
 
 			case CHECK_IF_SALES_ARE_ON:
+				/**
+				 *set object from server to the controller StartSales 
+			     */
 				StartSalesController.message.setObject(ReturnedObjectFromDB);
 				break;
 			case GET_WORKER_BRANCH:
+				/**
+				 *set object from server to the controller StartSales 
+			     */
 				StartSalesController.message.setObject(ReturnedObjectFromDB);
 				break;
 
 			case CHECK_IF_SALES_ARE_ON_FOR_CATALOG:
+				/**
+				 *set object from server to the controller Catalog 
+			     */
 				CatalogController.message.setObject(ReturnedObjectFromDB);
 				break;
 
 			case GET_REPORT_FROM_DB:
-
+				/**
+				 * set response from server to the ViewReportForBranchManager
+				 *set object from server to the controller arrayList 
+			     */
 				ViewReportForBranchManager.message.setResponse(MessageFromServer.getResponse());
 				ViewReportForBranchManager.IncomeReport = (ArrayList<String>) MessageFromServer.getObject();
 				break;
 			case GET_REPORT_FROM_DB_FOR_CEO:
+				/**
+				 * set response from server to the Controller ViewReportsForCEO
+				 *set object from server to the controller arrayList 
+			     */
 				ViewReportsForCEOController.message.setResponse(MessageFromServer.getResponse());
 				ViewReportsForCEOController.IncomeReport = (ArrayList<String>) MessageFromServer.getObject();
 				break;
@@ -639,10 +709,16 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_REPORT:
+					/**
+					 * set response from server to the ViewReportForBranchManager
+				     */
 					ViewReportForBranchManager.message.setResponse(MessageFromServer.getResponse());
 					break;
 
 				case REPORT_FOUND:
+					/**
+					 * set response from server to the ViewReportForBranchManager
+				     */
 					ViewReportForBranchManager.message.setResponse(MessageFromServer.getResponse());
 					break;
 				}
@@ -651,12 +727,16 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_REPORT:
-
+					/**
+					 * set response from server to the Controller ViewReportsForCEOController
+				     */
 					ViewReportsForCEOController.message.setResponse(MessageFromServer.getResponse());
 					break;
 
 				case REPORT_FOUND:
-
+					/**
+					 * set response from server to the Controller ViewReportsForCEOController
+				     */
 					ViewReportsForCEOController.message.setResponse(MessageFromServer.getResponse());
 					break;
 				}
@@ -666,12 +746,21 @@ public class ReadMessageFromServer {
 				switch (ResponseFromServer) {
 
 				case NO_REPORT:
+					/**
+					 * set response from server to the ViewReportForBranchManager
+					 *set response from server to the Controller Graph
+					 *set response from server to the ViewReportForBranchManager
+				     */
 					ViewReportForBranchManager.message.setResponse(MessageFromServer.getResponse());
 					GraphController.message.setResponse(MessageFromServer.getResponse());
 					ViewReportForBranchManager.message.setResponse(MessageFromServer.getResponse());
 					break;
 
 				case REPORT_FOUND:
+					/**
+					 * set response from server to the ViewReportForBranchManager
+					 *set object from server to the controller arrayList 
+				     */
 					GraphController.BranchForManager = (ArrayList<String>) MessageFromServer.getObject();
 					ViewReportForBranchManager.message.setResponse(MessageFromServer.getResponse());
 					ViewReportForBranchManager.BranchForManager = (ArrayList<String>) MessageFromServer.getObject();
@@ -681,13 +770,18 @@ public class ReadMessageFromServer {
 				break;
 
 			case GET_ORDER_REPORT_FROM_DB:
-				
+				/**
+				 * set response from server to the ViewReportForBranchManager
+				 *set object from server to the controller arrayList 
+			     */
 				ViewReportForBranchManager.message.setResponse(MessageFromServer.getResponse());
 				ViewReportForBranchManager.OrdersReport = (ArrayList<String>) MessageFromServer.getObject();
 				break;
 
 			case GET_NUM_OF_COMPLAINT:
-
+				/**
+				 *set object from server to the controller Graph 
+			     */
 				GraphController.message.setObject(MessageFromServer.getObject());
 				break;
 
