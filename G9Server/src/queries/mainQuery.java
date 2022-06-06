@@ -115,6 +115,7 @@ public class mainQuery {
 		}
 	}
 
+
 	/**
 	 * Method For inserting into customer table
 	 * @param user
