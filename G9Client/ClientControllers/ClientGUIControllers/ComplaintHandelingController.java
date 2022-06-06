@@ -1,18 +1,14 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
-
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import Orders.Branch;
-import Orders.ItemsForTableView;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
-import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import customerService.Complaint;
 import customerService.ComplaintsForTableView;
@@ -25,7 +21,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,36 +30,81 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ *Class description:  
+ *Controlling The Complaint handling   
+ *
+ *@author obied haddad
+ *
+ */
 public class ComplaintHandelingController extends UsersController implements Initializable {
-
+	/**
+	 * variable for complaint 
+	 */
 	public static Complaint complaint;
-
+	/**
+	 * Table View for complaint table
+	 */
 	@FXML
 	private TableView<ComplaintsForTableView> complaintTable;
+	/**
+	 * Table column for complaint 
+	 */
 	@FXML
 	private TableColumn<ComplaintsForTableView, Timestamp> complaintDateCol;
+	/**
+	 * Table column for branch Name
+	 */
 	@FXML
 	private TableColumn<ComplaintsForTableView, Branch> branchNameCol;
+	/**
+	 * Table column for Order number
+	 */
 	@FXML
 	private TableColumn<ComplaintsForTableView, Integer> orderNumberCol;
+	/**
+	 * Table column for complaint number
+	 */
 	@FXML
 	private TableColumn<ComplaintsForTableView, Integer> complaintNumberCol;
+	/**
+	 * Table column for customer ID 
+	 */
 	@FXML
 	private TableColumn<ComplaintsForTableView, String> customerIdCol;
-
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
-
+	/**
+	 * Observable List for complaints
+	 */
 	public static ObservableList<ComplaintsForTableView> complaints;
+	/**
+	 * Observable List for selected complaints
+	 */
 	public static ObservableList<ComplaintsForTableView> selectedComplaint;
-
+	/**
+	 * Error text
+	 */
 	@FXML
 	private Text errorText;
-
+	/**
+	 * variable for check
+	 */
 	public boolean check = false;
-
+	/**
+	 * Array list for complaint 
+	 */
 	public static ArrayList<Complaint> complaintListFromDB = new ArrayList<>();
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -83,6 +123,13 @@ public class ComplaintHandelingController extends UsersController implements Ini
 
 	}
 
+	/**
+	 * After Clicking on insert complaint 
+	 * The Function Hide The Current Window  
+	 * And Load The Insert Complaint Window 
+	 * @param event
+	 * @throws IOException
+	 */
 	public void InsertComplaint(ActionEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -101,6 +148,10 @@ public class ComplaintHandelingController extends UsersController implements Ini
 
 	}
 
+	/**
+	 * This function choose customer from the Observable List
+	 * @param selectedComplaint
+	 */
 	public void chooseCustomer(ObservableList<ComplaintsForTableView> selectedComplaint) {
 
 		Complaint complaint1 = selectedComplaint.get(0).getComplaint();
@@ -109,6 +160,13 @@ public class ComplaintHandelingController extends UsersController implements Ini
 
 	}
 
+	/**
+	 * After clicking on Show Customer Complaint Button
+	  * The Function Hide The Current Window  
+	 * And Load The Customer Complaint Window 
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void ShowCustomerComplaint(ActionEvent event) throws Exception {
 
@@ -134,10 +192,12 @@ public class ComplaintHandelingController extends UsersController implements Ini
 			primaryStage.show();
 		}
 	}
-
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
 		complaints = FXCollections.observableArrayList();
 		message = new FullMessage(Request.GET_COMPLAINT_FROM_DB, Response.Wait, "complaint");
 		ZliClientUI.ZliClientController.accept(message);
@@ -167,7 +227,13 @@ public class ComplaintHandelingController extends UsersController implements Ini
 		}
 
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);

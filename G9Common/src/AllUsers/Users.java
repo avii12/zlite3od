@@ -3,18 +3,18 @@ package AllUsers;
 import java.io.Serializable;
 
 public class Users implements Serializable{
-	public int UserID;
+	public String UserID;
 	public String FirstName;
 	public String LastName;
 	public String Email;
 	public String PhoneNumber;
 	public String UserType;
-	public boolean LogInStatus;
+	public String LogInStatus;
 	public ConfirmationStatus Confirmationstatus;
 	
 	
-	public Users(int userID, String firstName, String lastName, String email, String phoneNumber, String userType,
-			boolean logInStatus, ConfirmationStatus confirmationstatus) {
+	public Users(String userID, String firstName, String lastName, String email, String phoneNumber, String userType,
+			String logInStatus, ConfirmationStatus confirmationstatus) {
 		super();
 		UserID = userID;
 		FirstName = firstName;
@@ -33,10 +33,10 @@ public class Users implements Serializable{
 	public void setPhoneNumber(String phoneNumber) {
 		PhoneNumber = phoneNumber;
 	}
-	public boolean isLogInStatus() {
+	public String isLogInStatus() {
 		return LogInStatus;
 	}
-	public void setLogInStatus(boolean logInStatus) {
+	public void setLogInStatus(String logInStatus) {
 		LogInStatus = logInStatus;
 	}
 	public ConfirmationStatus getConfirmationstatus() {
@@ -45,7 +45,7 @@ public class Users implements Serializable{
 	public void setConfirmationstatus(ConfirmationStatus confirmationstatus) {
 		Confirmationstatus = confirmationstatus;
 	}
-	public Users(int userID, String firstName, String lastName, String email, String userType) {
+	public Users(String userID, String firstName, String lastName, String email, String userType) {
 		super();
 		UserID = userID;
 		FirstName = firstName;
@@ -60,10 +60,10 @@ public class Users implements Serializable{
 		this.Email = users.getEmail();
 		this.UserType = users.getUserType();
 	}
-	public int getUserID() {
+	public String getUserID() {
 		return UserID;
 	}
-	public void setUserID(int userID) {
+	public void setUserID(String userID) {
 		UserID = userID;
 	}
 	public String getFirstName() {

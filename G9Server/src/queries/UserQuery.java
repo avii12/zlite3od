@@ -127,8 +127,21 @@ public class UserQuery {
 		user = (Users) NewMsg.getObject();
 		String NewType = MsgFromClient.getUserType();
 		// insert
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 		InserToNewTable(NewType, user);
 		mainQuery.DeleteRowFromDB(TableName, condition2);
+=======
+		try {
+			InserToNewTable(NewType, user);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		mainQuery.DeleteRowFromDB1(TableName, condition2);
+>>>>>>> 811848f hh
 		condition2 = "UserID=" + MsgFromClient.getUserID();
 		mainQuery.updateTuple("login", condition1, condition2);// update to new type
 		messageFromClient.setResponse(Response.USER_UPDATED);
@@ -136,49 +149,29 @@ public class UserQuery {
 
 	}
 
-	public static void InserToNewTable(String NewTable, Users user) throws SQLException {
+	public static void InserToNewTable(String NewTable, Users user) throws SQLException, ParseException {
 
 		switch (NewTable) {
 		case "worker":
-			try {
-				mainQuery.InsertOneRowIntoWorkerTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoWorkerTable(user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus(),"0");
 
 			break;
 		case "servicespecialist":
-			try {
-				mainQuery.InsertOneRowIntoServicesTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoCeoZliAndServiceSpAndCustomerServiceTable("servicespecialist",user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus());
 			break;
 		case "deliveryperson":
-			try {
-				mainQuery.InsertOneRowIntoDeliveryPersonTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoBranchManagerAndDeliveryTable("deliveryperson",user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus(),Branch.BeautifulBlossoms);
 			break;
 		case "customerserviceworker":
-			try {
-				mainQuery.InsertOneRowIntoCostomerServicesTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoCeoZliAndServiceSpAndCustomerServiceTable("customerserviceworker",user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus());
 			break;
 		case "customer":
-			try {
-				mainQuery.InsertOneRowIntoCustomerTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoCustomerTable(user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus(),"401",(double)1000);
 			break;
 		}
 
@@ -216,14 +209,13 @@ public class UserQuery {
 	private static Users convertToUser(ResultSet rs) {
 		Users user = null;
 		try {
-			int id = rs.getInt(1);
-
+			String id = rs.getString(1);
 			String firstname = rs.getString(2);
 			String lastname = rs.getString(3);
 			String email = rs.getString(4);
 			String PhoneNumber = rs.getString(5);
 			String Type = rs.getString(6);
-			boolean isLogin = rs.getBoolean(7);
+			String isLogin = rs.getString(7);
 			ConfirmationStatus confirmation = ConfirmationStatus.valueOf(rs.getString(8));
 			return new Users(id, firstname, lastname, email, PhoneNumber, Type, isLogin, confirmation);
 
@@ -237,7 +229,7 @@ public class UserQuery {
 
 	private static Users convertToUsers(ResultSet rs) {
 		try {
-			int id = rs.getInt(1);
+			String id = rs.getString(1);
 			String firstname = rs.getString(2);
 			String lastname = rs.getString(3);
 			String email = rs.getString(4);

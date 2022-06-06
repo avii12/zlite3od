@@ -1,11 +1,8 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
-
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -16,35 +13,55 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ *Class description:  
+ *Controlling The Complaint Refund   
+ *
+ *@author obied haddad
+ *
+ */
 public class ComplaintRefundController extends UsersController implements Initializable {
-
+	/**
+	 * Text area for complaint text 
+	 */
 	@FXML
 	private TextArea complaint_txt;
-
+	/**
+	 * Text area for replay text 
+	 */
 	@FXML
 	private TextField reply_txt;
-
+	/**
+	 * Text for error text
+	 */
 	@FXML
 	private Text errorText;
-
+	/**
+	 * Text for error text
+	 */
 	public static FullMessage message;
-
+	/**
+	 * variable for Complaint
+	 */
 	public static Complaint complaint;
 
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(ActionEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -63,9 +80,14 @@ public class ComplaintRefundController extends UsersController implements Initia
 
 	}
 
+	/**
+	 * After clicking on refund button
+	 * The Function Hide The Current Window  
+	 * And Load The Complaint Handling Window  
+	 * @param event
+	 * @throws Exception
+	 */
 	public void refundButton(ActionEvent event) throws Exception {
-
-		getReply();
 		if (!refundCustomer()) {
 			errorText.setText("Problem accured while refunding the customer!");
 			errorText.setFill(Color.RED);
@@ -92,14 +114,10 @@ public class ComplaintRefundController extends UsersController implements Initia
 
 	}
 
-	public void getReply() {
-		String reply = reply_txt.getText();
-		String customerID = complaint.getCustomerId();
-		int OrderNumber = complaint.getOrderNumber();
-
-		// new complaintReplay()
-	}
-
+	/**
+	 * This function updated the balance in DB 
+	 * @return
+	 */
 	public boolean refundCustomer() {
 
 		Complaint sendComplaint = complaint;
@@ -114,7 +132,10 @@ public class ComplaintRefundController extends UsersController implements Initia
 		return false;
 
 	}
-
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -124,7 +145,14 @@ public class ComplaintRefundController extends UsersController implements Initia
 		complaint_txt.setText(complaint.getText());
 
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ExitButton(ActionEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);

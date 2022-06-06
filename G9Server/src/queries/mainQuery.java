@@ -115,6 +115,7 @@ public class mainQuery {
 		}
 	}
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 
 	/**
 	 * Method For inserting into customer table
@@ -270,6 +271,19 @@ public class mainQuery {
 		}
 	}
 
+=======
+	public static void DeleteRowFromDB1(String TableName, String condition) {
+		String query = "DELETE FROM zli_db." + TableName + " WHERE (" + condition + ")";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+>>>>>>> 811848f hh
 	public static void insertOneRowIntoCustomerTable(String id, String FirstName, String LastName, String Email,
 			String PhoneNumber, String UserType, String LogInStatus, ConfirmationStatus Status, String CreditCard,
 			Double Balance) {

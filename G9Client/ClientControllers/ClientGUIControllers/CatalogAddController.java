@@ -3,12 +3,9 @@ package ClientGUIControllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Locale.Category;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import Orders.Branch;
 import Orders.DominantColor;
 import Orders.FlowerColor;
 import Orders.Item;
@@ -33,41 +30,87 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ *Class description:  
+ *Controlling The adding to Catalog 
+ *
+ *@author obied haddad
+ *
+ */
 public class CatalogAddController extends UsersController implements Initializable {
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
+	/**
+	 * Pane id
+	 */
 	@FXML
 	private Pane anchorid;
+	/**
+	 * Text field for path
+	 */
 	@FXML
 	private TextField TextFieldPath;
+	/**
+	 * Text field for name
+	 */
 	@FXML
 	private TextField TextFieldName;
+	/**
+	 * Text field for price
+	 */
 	@FXML
 	private TextField TextFieldPrice;
+	/**
+	 * Text field for amount
+	 */
 	@FXML
 	private TextField TextFieldAmount;
+	/**
+	 * ComboBox for category
+	 */
 	@FXML
 	private ComboBox<ItemCategory> CategoryComboBox;
+	/**
+	 * ComboBox for color
+	 */
 	@FXML
 	private ComboBox<FlowerColor> ColorComboBox;
+	/**
+	 * ComboBox for type
+	 */
 	@FXML
 	private ComboBox<ItemType> TypeComboBox;
+	/**
+	 * ComboBox for Dominant
+	 */
 	@FXML
 	private ComboBox<DominantColor> DominantComboBox;
+	/**
+	 * Error label
+	 */
 	@FXML
 	private Label ErrorLabel;
-
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevent Data 
+	 *
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		SetComboBoxes();
 	}
 
+	/**
+	 * This function set valued in comboBoxes 
+	 */
 	public void SetComboBoxes() {
+		
 		ArrayList<ItemCategory> categoryList = new ArrayList<>();
 		categoryList.add(ItemCategory.BOUQUET);
 		categoryList.add(ItemCategory.FLOWER);
@@ -101,9 +144,14 @@ public class CatalogAddController extends UsersController implements Initializab
 
 	}
 
+	/**
+	 * Boolean function text field is valid
+	 * Check the value text fields 
+	 * @return
+	 */
 	private boolean TextFieldsIsInvalid() {
+		
 		boolean check = false;
-
 		if (TextFieldName.getText().equals("")) {
 
 			TextFieldName.setStyle("-fx-border-color: red; -fx-background-radius: 15; -fx-border-radius: 15");
@@ -137,7 +185,13 @@ public class CatalogAddController extends UsersController implements Initializab
 
 	}
 
+	/**
+	 * Boolean function comboBox is valid
+	 * Check the value text fields  
+	 * @return
+	 */
 	private boolean ComboBoxesIsInvalid() {
+		
 		boolean check = false;
 
 		if (CategoryComboBox.getValue() == null) {
@@ -174,14 +228,19 @@ public class CatalogAddController extends UsersController implements Initializab
 		return check;
 	}
 
+	/**
+	 * After Clicking On add Button 
+	 * The Function Hide The Current Window and logout. 
+	 * Load The Catalog Management Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void AddButton(ActionEvent event) throws IOException {
 
 		String price = TextFieldPrice.getText();
 		String amount = TextFieldAmount.getText();
-		String name = TextFieldName.getText();
-		String path = TextFieldPath.getText();
-
 		if (TextFieldsIsInvalid()) {
 			errorControl("Please fill all Empty Details");
 			if (ComboBoxesIsInvalid()) {
@@ -203,7 +262,7 @@ public class CatalogAddController extends UsersController implements Initializab
 					String Name = TextFieldName.getText();
 					double Price = Double.parseDouble(TextFieldPrice.getText());
 					String Path = TextFieldPath.getText();
-					String card = "hey you";
+					String card = "";
 					ItemType type = TypeComboBox.getValue();
 					DominantColor dominant = DominantComboBox.getValue();
 					int Amount = Integer.parseInt(TextFieldAmount.getText());
@@ -233,7 +292,14 @@ public class CatalogAddController extends UsersController implements Initializab
 		}
 	}
 
+	/**
+	 * This function gets string text
+	 * Check if the text contain number 
+	 * @param strNum
+	 * @return
+	 */
 	public static boolean isNumeric(String strNum) {
+		
 		if (strNum == null) {
 			return false;
 		}
@@ -244,7 +310,12 @@ public class CatalogAddController extends UsersController implements Initializab
 		}
 		return true;
 	}
-
+	/**
+	 * After Clicking On Exit Button 
+	 * The Function Send A Message To The Server The
+	 * Function LogOut The Account And Disconnect From The Server
+	 * @param event
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -253,7 +324,14 @@ public class CatalogAddController extends UsersController implements Initializab
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackButton(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -271,6 +349,11 @@ public class CatalogAddController extends UsersController implements Initializab
 		primaryStage.show();
 	}
 
+	/**
+	 * After Clicking on Browse Button
+	 * Load The Browse Window 
+	 * @param event
+	 */
 	@FXML
 	public void BrowseButton(ActionEvent event) {
 
@@ -287,7 +370,11 @@ public class CatalogAddController extends UsersController implements Initializab
 			TextFieldPath.setText(path);
 		}
 	}
-
+	/**
+	 * This function gets String message
+	 * put the message on error label
+	 * @param msg
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {

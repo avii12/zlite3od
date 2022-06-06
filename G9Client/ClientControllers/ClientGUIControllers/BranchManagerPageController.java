@@ -23,6 +23,8 @@ import javafx.stage.StageStyle;
 
 
 /**
+ * *Class description:  
+ *Controlling The Branch manager page
  * @author Obied
  *
  */
@@ -212,9 +214,6 @@ public class BranchManagerPageController extends UsersController implements Init
 	 * @param event
 	 * @throws IOException
 	 */
-
-
-
 	@FXML
 	public void ViewBranchReportBtn(ActionEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
