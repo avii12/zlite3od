@@ -24,7 +24,7 @@ import javafx.stage.StageStyle;
 /**
  * *Class description:  
  *Controlling The Branch manager page
- * @author ibrahem enbtawe
+ * @author Ebrahem enbtawe
  *
  */
 public class BranchManagerPageController extends UsersController implements Initializable {

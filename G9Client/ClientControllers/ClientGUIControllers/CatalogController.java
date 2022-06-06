@@ -52,7 +52,7 @@ import javafx.stage.StageStyle;
  * controlling the Catalog
  *  
  *@author Obied haddad
- *@author ibrahem enbtawe
+ *@author Ebrahem enbtawe
  */
 public class CatalogController extends UsersController implements Initializable {
 	/**

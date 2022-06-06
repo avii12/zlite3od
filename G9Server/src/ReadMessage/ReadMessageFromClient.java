@@ -25,7 +25,7 @@ import queries.mainQuery;
  * 
  *@author Obied haddad
  *@author maisalon safory
- *@author ibrahem enbtawe
+ *@author Ebrahem enbtawe
  *@author shorok heib
  *@author mario rohana
  *@author seren hanany

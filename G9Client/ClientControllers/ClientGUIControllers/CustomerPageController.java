@@ -24,7 +24,7 @@ import javafx.stage.StageStyle;
 /**
  * Class description: Controlling The Customer page
  *
- * @author ibrahem enbtawe
+ * @author Ebrahem enbtawe
  *
  */
 public class CustomerPageController extends UsersController implements Initializable {

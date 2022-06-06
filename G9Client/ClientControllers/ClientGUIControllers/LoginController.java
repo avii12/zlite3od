@@ -27,7 +27,7 @@ import ZliClient.ZliClientUI;
  * This is a class for 
  * controlling the Start Sales 
  *  
- *@author ibrahem enbtawe
+ *@author Ebrahem enbtawe
  *
  */
 public class LoginController extends UsersController{
