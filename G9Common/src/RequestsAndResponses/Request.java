@@ -1,4 +1,18 @@
 package RequestsAndResponses;
+/**
+ * 
+ * Class description:
+ * this enum is for all the responses we get from the client 
+ * 
+ * 
+ * @author Obied, Haddad
+ * @author Maisalon, Safory
+ * @author Ebrahem, Enbtawe
+ * @author Mario, Rohana
+ * @author Seren ,Hanany.
+ * @author Shoroq ,Heib.
+ *
+ */
 
 public enum Request {
 

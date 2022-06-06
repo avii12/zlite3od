@@ -33,7 +33,7 @@ import javafx.scene.input.MouseEvent;
  * This is a class for 
  * controlling the fill survey by customer
  *  
- *@author Seren Hanany
+ *@author ibrahem enbtawe
  *
  */
 public class FillSurveyController extends UsersController implements Initializable {

@@ -37,7 +37,7 @@ import javafx.stage.StageStyle;
  *Class description:  
  *Controlling The adding to Catalog 
  *
- *@author obied haddad
+ *@author mario rohana
  *
  */
 public class CatalogAddController extends UsersController implements Initializable {

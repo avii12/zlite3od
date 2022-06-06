@@ -2,14 +2,44 @@ package Report;
 
 import Orders.Branch;
 
+/**
+ * 
+ * Class description:
+ *
+ *this class contains the income report information
+ * 
+ * @author Maisalon, Safory
+ * @author Seren ,Hanany.
+ * @author Shoroq ,Heib.
+ *
+ */
+
 public class IncomeReport {
 
+	/**
+	 * report id
+	 */
 	public int idreport;
+	/**
+	 * income report date
+	 */
 	public String date;
+	/**
+	 * total price of the income report
+	 */
 	public double TotalPrice;
+	/**
+	 * number of orders
+	 */
 	public int NumOfOrders;
+	/**
+	 * name of the branch
+	 */
 	public Branch BranchName;
 	
+	/**
+	 * @param income
+	 */
 	public IncomeReport(IncomeReport income) {
 		this.idreport=income.getIdreport();
 		this.date=income.getDate();
@@ -17,11 +47,20 @@ public class IncomeReport {
 		this.NumOfOrders=income.getNumOfOrders();
 		this.BranchName=income.getBranchName();
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "IncomeReport [idreport=" + idreport + ", date=" + date + ", TotalPrice=" + TotalPrice + ", NumOfOrders="
 				+ NumOfOrders + ", BranchName=" + BranchName + "]";
 	}
+	/**
+	 * @param idreport
+	 * @param date
+	 * @param totalPrice
+	 * @param numOfOrders
+	 * @param branchName
+	 */
 	public IncomeReport(int idreport, String date, double totalPrice, int numOfOrders, Branch branchName) {
 		super();
 		this.idreport = idreport;
@@ -30,6 +69,11 @@ public class IncomeReport {
 		NumOfOrders = numOfOrders;
 		BranchName = branchName;
 	}
+	
+	/**
+	 * setters and getters
+	 * 
+	 */
 	public int getIdreport() {
 		return idreport;
 	}

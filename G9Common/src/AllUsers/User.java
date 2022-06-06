@@ -2,22 +2,67 @@ package AllUsers;
 
 import java.io.Serializable;
 
+
+/**
+ * Class description: 
+ * the User class contains the user info.
+ * 
+ * @author Mario, Rohana.
+ * 
+ */
 public abstract class User implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * the user first name
+	 */
 	protected String FirstName;
+	
+	/**
+	 * user last name
+	 */
 	protected String LastName;
+	
+	/**
+	 * the user id PK
+	 */
 	protected String ID;
+	
+	/**
+	 * the user email
+	 */
 	protected String Email;
+	/**
+	 * user Phone number
+	 */
 	protected String PhoneNumber;
-	protected String Type; //The type of the user: costumer,CEO,BranchManger
+	/**
+	 * user type: manager, customer...
+	 */
+	protected String Type; 
+	
+	/**
+	 * the status of the user, logged in or not
+	 */
 	protected boolean LogInStatus;
+	
+	/**
+	 * user confirmation
+	 */
 	protected ConfirmationStatus Confirmationstatus;
 	
+	/**
+	 * @param iD
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param phoneNumber
+	 * @param type
+	 * @param logInStatus
+	 * @param confirmationstatus
+	 */
 	public User(String iD, String firstName, String lastName, String email, String phoneNumber, String type,
 			boolean logInStatus, ConfirmationStatus confirmationstatus) {
 		super();
@@ -31,6 +76,9 @@ public abstract class User implements Serializable {
 		Confirmationstatus = confirmationstatus;
 	}
 
+	/**
+	 * setters and getters of the class
+	 */
 	public String getFirstName() {
 		return FirstName;
 	}

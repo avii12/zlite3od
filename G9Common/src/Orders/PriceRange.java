@@ -1,5 +1,11 @@
 package Orders;
+/**
 
+ * enum for the price range options in the gui
+ * 
+ * @author Ebrahem ,Enbtawe.
+
+ */
 public enum PriceRange {
 	RANGE1 {
 		@Override

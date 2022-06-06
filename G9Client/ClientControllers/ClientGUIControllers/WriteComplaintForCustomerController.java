@@ -2,11 +2,10 @@ package ClientGUIControllers;
 
 import java.io.IOException;
 
+
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
-
-import Orders.Order;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -14,7 +13,6 @@ import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import customerService.Complaint;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +34,7 @@ import javafx.stage.StageStyle;
  *@author Obied haddad
  *
  */
+
 public class WriteComplaintForCustomerController extends UsersController implements Initializable {
 
 	/**
@@ -47,25 +46,25 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 	 * message type of FullMessage
 	 */
 	public static FullMessage message;
-	/**
-	 * ObservableList for order
-	 */
-	
-	private ObservableList<Order> order;
 	@FXML
 	/**
 	 * Label For Message For The User 
 	 */
 	private Label ErrorLabel;
 	@FXML
-
+	/**
+	 * variable of complaint
+	 */
+	
 	private Complaint complaint;
+	
 	/**
 	 *Initializing The List After Getting All The Relevant Data
 	 *Send To The Server Message That Contains All the Relevant Data 
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		complaint = WorkerInsertComplaintChooseOrder.complaint;
 	}
 
@@ -79,6 +78,7 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 	 */
 	@FXML
 	public void BackButton(MouseEvent event) throws Exception {
+		
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/InsertComplaintChooseOrder.fxml"));
@@ -100,10 +100,10 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 	 * The Function LogOut The Account 
 	 * And Disconnect From The Server  
 	 * @param event
-	 * @throws IOException
 	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
+		
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
 		message = new FullMessage(Request.Disconnect, Response.Wait, null);
@@ -120,6 +120,8 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 	 */
 	@FXML
 	public void FinishButton(ActionEvent event) throws IOException {
+		
+		
 
 		if (TextAreaField.getText().equals("")) {
 			PopUpMsg.AlertForUser("Please enter text before submitting Complaint");
@@ -150,7 +152,8 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 	 * The Function Display's The Message On The Label
 	 * @param message
 	 */
-	private void errorControl(String message) {
+    private void errorControl(String message) {
+		
 
 		Platform.runLater(new Runnable() {
 

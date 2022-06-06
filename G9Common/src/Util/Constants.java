@@ -1,5 +1,13 @@
 package Util;
 
+
+
+/**
+ * set the delivry cost, order discount, no delivery cost
+ * 
+ * @author obied ,Haddad.
+ *
+ */
 public class Constants {
 	
 	public static final double DeliveryCost = 10.0;

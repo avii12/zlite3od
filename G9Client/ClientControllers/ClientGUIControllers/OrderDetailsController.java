@@ -1,20 +1,16 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
-
 import Orders.Branch;
 import Orders.Order;
 import Orders.TypeOfSupply;
@@ -22,11 +18,9 @@ import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
 import Util.Constants;
-import Utils.OrganizeDate;
 import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -47,43 +41,81 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 /**
- * Class description: This class is for choosing the branch, the supply method,
- * date and time We add all the details to the order
- * 
- * @author Mario, Rohana.
+ * Class description: 
+ * This is a class for 
+ * controlling the Start Sales 
+ *  
+ *@author maisalon safory
+ *
  */
 
 public class OrderDetailsController extends UsersController implements Initializable {
 
 	@FXML
+	/**
+	 * Label For Message For The User 
+	 */
 	private Label ErrorLabel;
 	@FXML
+	/**
+	 * ComboBox for Branches
+	 */
 	private ComboBox<Branch> selectBranchComboBox;
 
 	@FXML
+	/**
+	 * ComboBox for Times
+	 */
 	private ComboBox<String> Time;
 
 	@FXML
+	/**
+	 * DatePicker for Dates
+	 */
 	private DatePicker Date;
 
 	@FXML
+	/**
+	 * Text Field for Card Number
+	 */
 	private TextField TextFieldCard;
-
+	/**
+	 * variable of Order
+	 */
 	public static Order order;
 
 	@FXML
+	/**
+	 * Text for Error text for user
+	 */
 	private Text errorText;
 
-	private static OrderDetailsController orderDetailsController;
-
+	
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
-
+	/**
+	 * Array List of percent
+	 */
 	ArrayList<String> percent1 = new ArrayList<>();
+	/**
+	 * Array List of Branch
+	 */
 	ArrayList<String> branch1 = new ArrayList<>();
+
 	private String branch;
 	private String percent;
 
 	@FXML
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -191,7 +223,14 @@ public class OrderDetailsController extends UsersController implements Initializ
 			}
 		}
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
@@ -312,8 +351,13 @@ public class OrderDetailsController extends UsersController implements Initializ
 		return false;
 
 	}
-
+	/**
+	this function check if the ComboBox is null
+	 * @return
+	 */
 	private boolean isInvalid() {
+		
+		
 		boolean check = false;
 
 		if (selectBranchComboBox.getValue() == null) {
@@ -333,8 +377,14 @@ public class OrderDetailsController extends UsersController implements Initializ
 		}
 		return check;
 	}
+	/**
+	 * this function makes date to insert to DB
 
+	 * @throws ParseException
+	 */
 	public void MakeDateForDB() throws ParseException {
+		
+		
 
 		String time = Time.getValue();
 		time = time + ":00";
@@ -367,6 +417,10 @@ public class OrderDetailsController extends UsersController implements Initializ
 	 */
 
 	@Override
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	public void initialize(URL location, ResourceBundle resources) {
 		OrderDetailsController.order = CartPageController.order;
 		branch = CatalogController.branch;

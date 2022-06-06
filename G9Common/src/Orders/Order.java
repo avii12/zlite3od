@@ -3,30 +3,103 @@ package Orders;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+/**
+ *  class description:
+ *  order class contains all the order information
+ *  
+ * 
+ * @author Obied ,Haddad.
+ * @author Ebrahem ,Enbtawe.
+ * @author Mario ,Rohana
+
+ */
 public class Order implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * the order number
+	 */
 	public String OrderNumber;
+	/**
+	 * customer id
+	 */
 	public String CustomerID;
+	/**
+	 * order branch
+	 */
 	public Branch branch;
+	/**
+	 *  order status(pending, approval...)
+	 */
 	public OrderStatus orderstatus;
+	/**
+	 * order date
+	 */
 	public Timestamp OrderDate;
+	/**
+	 * the estimated time
+	 */
 	public Timestamp EstimatedDate;
+	/**
+	 *  the actual date of the order
+	 */
 	public Timestamp ActualDate;
+	/**
+	 * order supply type
+	 */
 	public TypeOfSupply SupplyType;
+	/**
+	 *  price of the order
+	 */
 	public double TotalPrice;
+	/**
+	 * bouquet or flower
+	 */
 	public ItemCategory Item;
+	/**
+	 * the customer name that made the order
+	 */
 	public String CustomerName;
+	/**
+	 * the delivery cost 
+	 */
 	public double DeliveryCost;
+	/**
+	 *  delivery address of the customer
+	 */
 	public String DeliveryAddress;
+	/**
+	 * the items that the order contains
+	 */
 	public String AllItems;
+	/**
+	 * the phone number of the customer that made the order
+	 */
 	public String PhoneNumber;
+	/**
+	 * the added greeting card of the order
+	 */
 	public String GreetingCard;
 
+	/**
+	 * @param orderNumber
+	 * @param customerID
+	 * @param branch
+	 * @param orderstatus
+	 * @param orderDate
+	 * @param estimatedDate
+	 * @param actualDate
+	 * @param supplyType
+	 * @param totalPrice
+	 * @param item
+	 * @param customerName
+	 * @param deliveryCost
+	 * @param deliveryAddress
+	 * @param Items
+	 * @param GreetingCard
+	 */
 	public Order(String orderNumber, String customerID, Branch branch, OrderStatus orderstatus, Timestamp orderDate,
 			Timestamp estimatedDate, Timestamp actualDate, TypeOfSupply supplyType, double totalPrice,
 			ItemCategory item, String customerName, double deliveryCost, String deliveryAddress, String Items,
@@ -49,6 +122,11 @@ public class Order implements Serializable {
 		AllItems = Items;
 	}
 
+	/**
+	 * @param OrderNumber
+	 * @param CustomerName
+	 * @param DeliveryAddress
+	 */
 	public Order(String OrderNumber, String CustomerName, String DeliveryAddress) {
 
 		this.OrderNumber = OrderNumber;
@@ -56,31 +134,23 @@ public class Order implements Serializable {
 		this.DeliveryAddress = DeliveryAddress;
 	}
 
-	public Order(String CustomerId, Branch branch) {
-
-		this.OrderNumber = null; // order unique number is created in the DB
-		this.CustomerID = CustomerId;
-		this.branch = branch;
-		this.orderstatus = null; // default when creating new order.
-		// this.issueDateTime =
-		// DateTimeHandler.buildMySqlDateTimeFormatFromTextFields("1970/01/01",
-		// "00:00"); // the order
-		this.EstimatedDate = null;
-		// this.actualSupplyDateTime =
-		// DateTimeHandler.buildMySqlDateTimeFormatFromTextFields("1970/01/01",
-		// "00:00");
-		this.orderstatus = OrderStatus.PENDING; // default when creating new order.
-		// this.OrderDate =
-		// DateTimeConvert.buildMySqlDateTimeFormatFromTextFields("1970/01/01",
-		// "00:00"); // the order
-		this.EstimatedDate = null;
-		// this.ActualDate=
-		// DateTimeConvert.buildMySqlDateTimeFormatFromTextFields("1970/01/01",
-		// "00:00");
-		this.SupplyType = null;
-		this.TotalPrice = 0.0;
-	}
-
+	
+	/**
+	 * @param orderNumber2
+	 * @param customerID2
+	 * @param branch2
+	 * @param orderStatus2
+	 * @param orderDate2
+	 * @param estimatedDate2
+	 * @param actualDate2
+	 * @param supplyType
+	 * @param totalPrice2
+	 * @param deliveryCost2
+	 * @param customerName2
+	 * @param deliveryAddress2
+	 * @param Item
+	 * @param GreetingCard
+	 */
 	public Order(String orderNumber2, String customerID2, Branch branch2, OrderStatus orderStatus2,
 			Timestamp orderDate2, Timestamp estimatedDate2, Timestamp actualDate2, TypeOfSupply supplyType,
 			double totalPrice2, double deliveryCost2, String customerName2, String deliveryAddress2, String Item,
@@ -102,8 +172,11 @@ public class Order implements Serializable {
 		this.AllItems = Item;
 		this.GreetingCard = GreetingCard;
 
-	}
+	}   
 
+	/**
+	 * @param order
+	 */
 	public Order(Order order) {
 		this.OrderNumber = order.getOrderNumber();
 		this.CustomerID = order.getCustomerID();
@@ -121,6 +194,12 @@ public class Order implements Serializable {
 		this.GreetingCard = order.getGreetingCard();
 	}
 
+	
+	
+	
+	/**
+	 * setters and getters
+	 */
 	public String getGreetingCard() {
 		return GreetingCard;
 	}

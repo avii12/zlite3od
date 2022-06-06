@@ -9,7 +9,7 @@ import java.io.Serializable;
  *  userName, password, user type(customer,CEO,...), ID
  * 
  * @author Mario Rohana.
- *  
+ * @author seren ,hanany.
  *  @version 10/05/2022
  */
 

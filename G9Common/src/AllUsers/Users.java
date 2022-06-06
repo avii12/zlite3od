@@ -2,17 +2,61 @@ package AllUsers;
 
 import java.io.Serializable;
 
-public class Users implements Serializable{
+/**
+ * Class description: Users class This class is derived class from User class
+ * this class has the user class attributes
+ * 
+ * @Author Seren, Hanany.
+ * 
+ */
+
+public class Users implements Serializable {
+	/**
+	 * the Pk of the user is the id
+	 */
 	public String UserID;
+	/**
+	 * first name
+	 */
 	public String FirstName;
+	/**
+	 * user last name
+	 */
 	public String LastName;
+	/**
+	 * email of the user
+	 */
 	public String Email;
+	/**
+	 * the phone number of the user
+	 */
 	public String PhoneNumber;
+	/**
+	 * the user type in the system: manager, customer, customer service worker....
+	 * 
+	 */
 	public String UserType;
+	/**
+	 * check if the user is currently logged in
+	 * 
+	 */
 	public String LogInStatus;
+	/**
+	 * 
+	 * this is the state of the user if confirmed he can use the system
+	 */
 	public ConfirmationStatus Confirmationstatus;
-	
-	
+
+	/**
+	 * @param userID
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param phoneNumber
+	 * @param userType
+	 * @param logInStatus
+	 * @param confirmationstatus
+	 */
 	public Users(String userID, String firstName, String lastName, String email, String phoneNumber, String userType,
 			String logInStatus, ConfirmationStatus confirmationstatus) {
 		super();
@@ -25,26 +69,35 @@ public class Users implements Serializable{
 		LogInStatus = logInStatus;
 		Confirmationstatus = confirmationstatus;
 	}
-	
-	
+
+	/**
+	 * This section is for the Setters and Getters of the Class User
+	 */
+
 	public String getPhoneNumber() {
 		return PhoneNumber;
 	}
+
 	public void setPhoneNumber(String phoneNumber) {
 		PhoneNumber = phoneNumber;
 	}
+
 	public String isLogInStatus() {
 		return LogInStatus;
 	}
+
 	public void setLogInStatus(String logInStatus) {
 		LogInStatus = logInStatus;
 	}
+
 	public ConfirmationStatus getConfirmationstatus() {
 		return Confirmationstatus;
 	}
+
 	public void setConfirmationstatus(ConfirmationStatus confirmationstatus) {
 		Confirmationstatus = confirmationstatus;
 	}
+
 	public Users(String userID, String firstName, String lastName, String email, String userType) {
 		super();
 		UserID = userID;
@@ -53,6 +106,7 @@ public class Users implements Serializable{
 		Email = email;
 		UserType = userType;
 	}
+
 	public Users(Users users) {
 		this.UserID = users.getUserID();
 		this.FirstName = users.getFirstName();
@@ -60,41 +114,54 @@ public class Users implements Serializable{
 		this.Email = users.getEmail();
 		this.UserType = users.getUserType();
 	}
+
 	public String getUserID() {
 		return UserID;
 	}
+
 	public void setUserID(String userID) {
 		UserID = userID;
 	}
+
 	public String getFirstName() {
 		return FirstName;
 	}
+
 	public void setFirstName(String firstName) {
 		FirstName = firstName;
 	}
+
 	public String getLastName() {
 		return LastName;
 	}
+
 	public void setLastName(String lastName) {
 		LastName = lastName;
 	}
+
 	public String getEmail() {
 		return Email;
 	}
+
 	public void setEmail(String email) {
 		Email = email;
 	}
+
 	public String getUserType() {
 		return UserType;
 	}
+
 	public void setUserType(String userType) {
 		UserType = userType;
 	}
+
+	/**
+	 * return the user info
+	 */
 	@Override
 	public String toString() {
 		return "Users [UserID=" + UserID + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Email=" + Email
 				+ ", UserType=" + UserType + "]";
 	}
-	
 
 }

@@ -38,10 +38,10 @@ import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
 
 /**
- * Class description: Controlling The UI Of Delivery Person For Comlpeting
+ * Class description: Controlling The UI Of Delivery Person For Completing
  * Orders that belongs To the Same Branch He work with
  *
- * @author obied haddad
+ * @author seren hanany
  *
  */
 public class DeliveryPersonPageController extends UsersController implements Initializable {
@@ -147,7 +147,7 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 	/**
 	 *
 	 * Initializing The List After Getting All The Relevant Data Send To The Server
-	 * Message That Contains All the Relevent Data
+	 * Message That Contains All the Relevant Data
 	 *
 	 */
 	@Override

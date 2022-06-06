@@ -31,7 +31,7 @@ import javafx.stage.StageStyle;
  * This is a class for 
  * controlling Graph for branch manager 
  *  
- *@author Seren Hanany
+ *@author mario rohana
  *
  */
 public class InsertAnswersSurveyController extends UsersController implements Initializable {

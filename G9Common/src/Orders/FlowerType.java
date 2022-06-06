@@ -1,5 +1,10 @@
 package Orders;
 
+/**
+ * Enum for the flower type
+ * 
+ * @author Ebrahem ,Enbtawe.
+ */
 public enum FlowerType {
 	FLOWER1 {
 		@Override

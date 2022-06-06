@@ -1,15 +1,5 @@
 package ClientGUIControllers;
 
-/**
- * class description:
- * this class is for the Catalog screen 
- * functionality of the Catalog
- * 
- * @author Seren Hanany
- * 
- * @version 11/05/2022
- *
- */
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,10 +47,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
- * Class description: Controlling The Catalog
- *
- * @author obied haddad
- *
+ * Class description: 
+ * This is a class for 
+ * controlling the Catalog
+ *  
+ *@author Obied haddad
+ *@author ibrahem enbtawe
  */
 public class CatalogController extends UsersController implements Initializable {
 	/**

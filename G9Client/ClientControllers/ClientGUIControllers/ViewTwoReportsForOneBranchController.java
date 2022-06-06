@@ -1,5 +1,6 @@
 package ClientGUIControllers;
 import java.io.IOException;
+
 import java.net.URL;
 import java.time.Year;
 import java.util.ResourceBundle;
@@ -161,7 +162,7 @@ public void ViewReportsDistribution(ActionEvent event) throws IOException {
 			DisplayMessageForUser("No Report Founded!");
 		}
 		
-	}//else1
+	}
 }
 /**
  * This function gets String message

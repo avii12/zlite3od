@@ -2,17 +2,53 @@ package Orders;
 
 import java.sql.Timestamp;
 
+/**
+ *  this class is for the order details we put in the order table
+ * 
+ * @author Obied ,Haddad.
+ * @author Ebrahem ,Enbtawe.
+ * @author Mario ,Rohana
+
+ */
+
 public class OrderForTableView {
 
+	/**
+	 *  the order we want to put in the table
+	 */
 	private Order order;
+	/**
+	 *  the total price of the order
+	 */
 	private double TotalPrice;
+	/**
+	 * order Type
+	 */
 	private TypeOfSupply OrderType;
+	/**
+	 *  order date
+	 */
 	private Timestamp date;
+	/**
+	 * order status 
+	 */
 	private OrderStatus orderstatus;
+	/**
+	 * number of the order
+	 */
 	private String OrderNumber;
+	/**
+	 * the items that the orders contain
+	 */
 	private String allItems;
+	/**
+	 *  branch of the order
+	 */
 	private Branch branch;
 
+	/**
+	 * @param order
+	 */
 	public OrderForTableView(Order order) {
 		this.order = order;
 		this.TotalPrice = order.getTotalPrice();
@@ -25,7 +61,10 @@ public class OrderForTableView {
 
 	}
 	
-	
+	/**
+	 * 
+	 * setters and getters
+	 */
 
 	public Branch getBranch() {
 		return branch;
@@ -95,6 +134,9 @@ public class OrderForTableView {
 
 
 
+	/**
+	 *  to print the order information
+	 */
 	@Override
 	public String toString() {
 		return "OrderForTableView [order=" + order + ", TotalPrice=" + TotalPrice + ", OrderType=" + OrderType

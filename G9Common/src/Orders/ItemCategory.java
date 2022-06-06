@@ -1,5 +1,9 @@
 package Orders;
-
+/**
+ * item category enum
+ * 
+ * @author Obied ,Haddad.
+ */
 public enum ItemCategory {
 	FLOWER {
 		@Override

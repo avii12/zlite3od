@@ -4,7 +4,14 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import Orders.Branch;
-
+ 
+/**
+ * class description:
+ * this is the complaint class contains the complaints info
+ * @author Mario, Rohana.
+ * @author Ebrahem ,Enbtawe.
+ *
+ */
 public class Complaint implements Serializable {
 
 	private int complaintID;
@@ -16,6 +23,16 @@ public class Complaint implements Serializable {
 	private String text;
 	private double totalPrice;
 
+	/**
+	 * @param complaintID
+	 * @param complaintNum
+	 * @param customerId
+	 * @param OrderNumber
+	 * @param complaintDate
+	 * @param branchName
+	 * @param text
+	 * @param totalprice
+	 */
 	public Complaint(int complaintID, int complaintNum, String customerId, int OrderNumber, Timestamp complaintDate,
 			Branch branchName, String text, double totalprice) {
 		super();
@@ -29,7 +46,10 @@ public class Complaint implements Serializable {
 		this.totalPrice = totalprice;
 
 	}
-
+ 
+	/*
+	 * Setters and getters of the class
+	 */
 	public int getComplaintID() {
 		return complaintID;
 	}

@@ -127,7 +127,7 @@ public class AcceptCancelOrderController extends UsersController implements Init
 	/**
 	 *
 	 *Initializing The List After Getting All The Relevant Data
-	 *Send To The Server Message That Contains All the Relevent Data 
+	 *Send To The Server Message That Contains All the Relevant Data 
 	 *
 	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {

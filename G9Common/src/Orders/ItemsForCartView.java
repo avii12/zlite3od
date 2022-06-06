@@ -2,19 +2,62 @@ package Orders;
 
 import javafx.scene.image.ImageView;
 
+/**
+ * class description:
+ * this is the item class for the cart view
+ * 
+ * @author Obied ,Haddad.
+ * @author Mario ,Rohana.
+
+ */
 public class ItemsForCartView {
 
+	/**
+	 * the item
+	 */
 	private Item item;
+	/**
+	 * item picture
+	 */
 	private ImageView Picture;
+	/**
+	 * item name
+	 */
 	public String ItemName;
+	/**
+	 * item color
+	 */
 	public FlowerColor Color;
+	/**
+	 * item price
+	 */
 	public double Price;
+	/**
+	 *  item picture path 
+	 */
 	public String PicturePath;
+	/**
+	 * item type
+	 */
 	public ItemType type;
+	/**
+	 * dominant colors of the item
+	 */
 	public DominantColor dominantColor;
+	/**
+	 * item bouquet
+	 */
 	public int Bouque;
+	/**
+	 *  item ID 
+	 */
 	private String ID;
 
+	/**
+	 * @param item
+	 * @param Bouque
+	 * @param ItemName
+	 */
 	public ItemsForCartView(Item item,int Bouque,String ItemName) {
 		this.item = item;
 		this.type=item.getType();
@@ -26,7 +69,9 @@ public class ItemsForCartView {
 	}
 
 	
-	
+	/**
+	 *  setters and getters
+	 */
 	public String getID() {
 		return ID;
 	}

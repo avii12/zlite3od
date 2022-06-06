@@ -1,5 +1,10 @@
 package Orders;
-
+/**
+ * enum for the flower color
+ * 
+ * @author Obied ,Haddad.
+ * 
+ */
 public enum FlowerColor {
 	RED {
 		@Override

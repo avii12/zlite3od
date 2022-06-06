@@ -2,24 +2,72 @@ package Orders;
 
 import java.io.Serializable;
 
+/**
+ * class description;
+ * the item class contains all the attributes of the item
+ * 
+ * @author Obied ,Haddad.
+ * @author Ebrahem ,Enbtawe.
+ * @author Mario, Rohana.
 
+ */
 public class Item implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
+	/**
+	 *  item id 
+	 */
 	public String ItemID;
+	/**
+	 * item category
+	 */
 	public ItemCategory itemCategory;
+	/**
+	 * the item color
+	 */
 	public FlowerColor Color;
+	/**
+	 * item name
+	 */
 	public String ItemName;
+	/**
+	 * item price
+	 */
 	public double price;
+	/**
+	 *the path of the item picture
+	 */
 	public String PicturePath;
+	/**
+	 * item greeting card
+	 */
 	public String GreetingCard;
+	/**
+	 * item type
+	 */
 	public ItemType type;
+	/**
+	 * item dominant color
+	 */
 	public DominantColor dominantColor;
+	/**
+	 * item amount
+	 */
 	public int amount;
 	
+	/**
+	 * @param itemID
+	 * @param itemCategory
+	 * @param color
+	 * @param itemName
+	 * @param price
+	 * @param picturePath
+	 * @param greetingCard
+	 * @param type
+	 * @param dominantColor
+	 * @param amount
+	 */
 	public Item(String itemID, ItemCategory itemCategory, FlowerColor color, String itemName, double price,
 			String picturePath, String greetingCard,ItemType type,DominantColor dominantColor,int amount) {
 		super();
@@ -35,6 +83,9 @@ public class Item implements Serializable {
 		this.amount=amount;
 	}
 	
+	/**
+	 * @param item
+	 */
 	public Item(Item item) {
 		this.ItemID= item.getItemID();
 		this.ItemName = item.getItemName();
@@ -49,7 +100,10 @@ public class Item implements Serializable {
 
 	}
 	
-	
+	/**
+	 * 
+	 * setters and getters 
+	 */
 	
 	public int getAmount() {
 		return amount;

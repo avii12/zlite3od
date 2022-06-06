@@ -2,6 +2,7 @@ package ClientGUIControllers;
 
 import java.io.IOException;
 
+
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -20,15 +21,17 @@ import javafx.stage.StageStyle;
  * This is a class for 
  * controlling the Worker Page 
  *  
- *@author Obied haddad
+ *@author ibrahem enbtawe
  *
  */
 public class WorkerPageController extends UsersController {
+	
 
 	/**
 	 * Parimter Message Of FullMessage
 	 */
 	public static FullMessage message;
+	
 
 	
 	
@@ -41,6 +44,7 @@ public class WorkerPageController extends UsersController {
 	 */
 	@FXML
 	public void LogoutButton(ActionEvent event) throws IOException {
+		
 
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
@@ -77,6 +81,7 @@ public class WorkerPageController extends UsersController {
      */
     @FXML
 	public void StartSalesButton(ActionEvent event) throws IOException {
+    	
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
@@ -106,6 +111,7 @@ public class WorkerPageController extends UsersController {
 
 	@FXML
 	public void ExitButton(MouseEvent event) throws IOException {
+		
 
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
@@ -124,6 +130,7 @@ public class WorkerPageController extends UsersController {
 	 */
 	@FXML
 	public void CatalogManageButton(ActionEvent event) throws IOException {
+		
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
