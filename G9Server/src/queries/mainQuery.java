@@ -30,19 +30,37 @@ import RequestsAndResponses.Response;
 import ServerGUIControllers.ServerGuiController;
 import Survey.SurveyAnswers;
 
+/**
+ * @author Obied
+ *
+ */
 public class mainQuery {
-
+	/**
+	 * The var of the connection to the main db
+	 */
 	private static Connection con;
+	/**
+	 * The var of the connection to external db
+	 */
 	private static Connection externaldbCon;
-
+	/**
+	 * Setter of the connection of  db
+	 */
 	public static void setConnectionFromServerToDB(Connection connection) {
 		con = connection;
 	}
-
+	/**
+	 * Setter of the connection of external db
+	 */
 	public static void setConnectionFromServerToExternalDB(Connection connection) {
 		externaldbCon = connection;
 	}
 
+	/**
+	 * This method will be called once to import the data of users management from the allusers DB.
+	 * 
+	 * @return rs
+	 */
 	public static ResultSet getExternalDBData() {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -56,6 +74,11 @@ public class mainQuery {
 		return rs;
 	}
 
+	/**
+	 * Method for inserting Survey into DB
+	 * @param answerANDid
+	 * @throws ParseException
+	 */
 	public static void InsertOneRowIntosurveyAnswersTable(SurveyAnswers answerANDid) throws ParseException {
 
 		String query = "INSERT INTO surveyanswers (SurveyID,CustomerID, QuestionNumber,QuestionAnswer) VALUES ("
@@ -74,6 +97,13 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * Method For Inserting Row In login table
+	 * @param userName
+	 * @param Password
+	 * @param userId
+	 * @param userType
+	 */
 	public static void insertOneRowIntoLoginTable(String userName, String Password, String userId, String userType) {
 		String query = "INSERT INTO zli_db.login ( Username, Password, UserID, UserType) VALUES( '" + userName + "' , '"
 				+ Password + "' , '" + userId + "' , '" + userType + "' )";
@@ -85,17 +115,11 @@ public class mainQuery {
 		}
 	}
 
-	public static void DeleteRowFromDB1(String TableName, String condition) {
-		String query = "DELETE FROM zli_db." + TableName + " WHERE (" + condition + ")";
-		PreparedStatement pstmt = null;
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
+	/**
+	 * Method For inserting into customer table
+	 * @param user
+	 * @throws ParseException
+	 */
 	public static void InsertOneRowIntoCustomerTable(Users user) throws ParseException {
 
 		String query = "INSERT INTO customer (" + "ID," + "FirstName," + " LastName," + " Email," + " PhoneNumber,"
@@ -126,6 +150,11 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * Method For inserting into Worker table
+	 * @param user
+	 * @throws ParseException
+	 */
 	public static void InsertOneRowIntoWorkerTable(Users user) throws ParseException {
 
 		String query = "INSERT INTO worker (" + "ID," + "FirstName," + " LastName," + " Email," + " PhoneNumber,"
@@ -155,6 +184,11 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * Method For inserting into service specialist table
+	 * @param user
+	 * @throws ParseException
+	 */
 	public static void InsertOneRowIntoServicesTable(Users user) throws ParseException {
 
 		String query = "INSERT INTO servicespecialist (" + "ID," + "FirstName," + " LastName," + " Email,"
@@ -178,6 +212,11 @@ public class mainQuery {
 		}
 	}
 
+	/**
+	 * Method For inserting into customer service worker  table
+	 * @param user
+	 * @throws ParseException
+	 */
 	public static void InsertOneRowIntoCostomerServicesTable(Users user) throws ParseException {
 
 		String query = "INSERT INTO customerserviceworker (" + "ID," + "FirstName," + " LastName," + " Email,"

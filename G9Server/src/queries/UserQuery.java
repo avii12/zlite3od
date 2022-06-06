@@ -128,7 +128,7 @@ public class UserQuery {
 		String NewType = MsgFromClient.getUserType();
 		// insert
 		InserToNewTable(NewType, user);
-		mainQuery.DeleteRowFromDB1(TableName, condition2);
+		mainQuery.DeleteRowFromDB(TableName, condition2);
 		condition2 = "UserID=" + MsgFromClient.getUserID();
 		mainQuery.updateTuple("login", condition1, condition2);// update to new type
 		messageFromClient.setResponse(Response.USER_UPDATED);

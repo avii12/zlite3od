@@ -211,7 +211,6 @@ public class ReadMessageFromClient {
 				  * We Get Complaint From DB
 				  */
 				messageFromClient = ComplaintsQuery.CheckIfFirstComplaint(messageFromClient);
-
 				break;
 
 			case INSERT_ORDER_TO_DB:
