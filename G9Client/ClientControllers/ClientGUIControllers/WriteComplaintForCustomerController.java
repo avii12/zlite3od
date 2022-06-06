@@ -1,6 +1,7 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
@@ -27,22 +28,55 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the Write Complaint for customer 
+ *  
+ *@author Obied haddad
+ *
+ */
 public class WriteComplaintForCustomerController extends UsersController implements Initializable {
 
+	/**
+	 * TextArea of TextAreaField
+	 */
 	@FXML
 	private TextArea TextAreaField;
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
+	/**
+	 * ObservableList for order
+	 */
+	
 	private ObservableList<Order> order;
 	@FXML
+	/**
+	 * Label For Message For The User 
+	 */
 	private Label ErrorLabel;
 	@FXML
-	private Complaint complaint;
 
+	private Complaint complaint;
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		complaint = WorkerInsertComplaintChooseOrder.complaint;
 	}
 
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackButton(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -60,6 +94,14 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 		primaryStage.show();
 	}
 
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -69,6 +111,13 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 		System.exit(0);
 	}
 
+	/**
+	 * After Clicking On Finish Button 
+	 * The Function Get The Text Field Contents
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void FinishButton(ActionEvent event) throws IOException {
 
@@ -97,6 +146,10 @@ public class WriteComplaintForCustomerController extends UsersController impleme
 		}
 	}
 
+	/**
+	 * The Function Display's The Message On The Label
+	 * @param message
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {

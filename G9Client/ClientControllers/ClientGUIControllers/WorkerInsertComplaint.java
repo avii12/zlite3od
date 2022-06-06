@@ -1,6 +1,7 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -32,23 +33,60 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class WorkerInsertComplaint extends UsersController implements Initializable {
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the  Worker Insert Worker Insert Complaint
+ *  
+ *@author Obied haddad
+ *
+ */
 
+public class WorkerInsertComplaint extends UsersController implements Initializable {
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
+	
 	public static Complaint complaint = new Complaint(0, 0, null, 0, null, null, null, 0);
+	/**
+	 * Array List of Customers
+	 */
 	public static ArrayList<Users> ArrayForCustomers = new ArrayList<>();
+	/**
+	 * Observable List of Customers
+	 */
 	public ObservableList<Users> customers = FXCollections.observableArrayList();
+	/**
+	 * Observable List of Users
+	 */
 	public static ObservableList<Users> selectedcustomer;
 	@FXML
+	/**
+	 * Label For Message For The User 
+	 */
 	private Label ErrorLabel;
 	@FXML
+	/**
+	 *  Table Displays The Users 
+	 */
 	private TableView<Users> CustomerTable;
 	@FXML
+	/**
+	 * Column That Contains The User Id
+	 */
 	private TableColumn<Users, String> UserIDCol;
+	/**
+	 * Column That Contains The User First Name
+	 */
 	@FXML
 	private TableColumn<Users, String> FirstNameCol;
 
 	@Override
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	public void initialize(URL location, ResourceBundle resources) {
 
 		int complaintnum = 0;
@@ -99,7 +137,14 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 		}
 
 	}
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackButton(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -116,7 +161,13 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -125,7 +176,12 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	/**
+     * 
+	 * The Function Choose Customer To Insert Complaint
+     * @param event
+     * @throws IOException
+     */
 	@FXML
 	public void ChooseCustomer(ActionEvent event) throws IOException {
 
@@ -154,7 +210,10 @@ public class WorkerInsertComplaint extends UsersController implements Initializa
 		}
 
 	}
-
+	/**
+	 * The Function Display's The Message On The Label
+	 * @param message
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {

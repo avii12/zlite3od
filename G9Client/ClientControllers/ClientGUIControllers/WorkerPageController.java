@@ -15,10 +15,12 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 /**
- * 
- * @author Obied
+ * Class description: 
+ * This is a class for 
+ * controlling the Worker Page 
+ *  
+ *@author Obied haddad
  *
  */
 public class WorkerPageController extends UsersController {

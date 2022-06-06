@@ -1,6 +1,7 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -35,27 +36,69 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the  Worker Insert Complaint Choose Order 
+ *  
+ *@author Obied haddad
+ *
+ */
 public class WorkerInsertComplaintChooseOrder extends UsersController implements Initializable {
-
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
+	
 	public static Complaint complaint;
+	/**
+	 * Array list for order
+	 */
 	public static ArrayList<Order> OrderFromDB = new ArrayList<>();
+	/**
+	 * Observable List for customers
+	 */
 	public ObservableList<Order> customers = FXCollections.observableArrayList();
+	/**
+	 * Observable List for Order
+	 */
 	public static ObservableList<Order> selectedorder;
 	@FXML
+	/**
+	 *  Table Displays The Orders 
+	 */
 	private TableView<Order> OrderTable;
 	@FXML
+	/**
+	 * Column That Contains The Order Number
+	 */
 	private TableColumn<Order, String> OrderNumberCol;
 	@FXML
+	/**
+	 * Column That Contains The Order Date
+	 */
 	private TableColumn<Order, Timestamp> DateCol;
 	@FXML
+	/**
+	 * Column That Contains The Order Branch
+	 */
 	private TableColumn<Order, Branch> BranchCol;
 	@FXML
+	/**
+	 * Column That Contains The Order All Items 
+	 */
 	private TableColumn<Order, String> AllItemsCol;
 	@FXML
+	/**
+	 * Label For Message For The User 
+	 */
 	private Label ErrorLabel;
 
 	@Override
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	public void initialize(URL location, ResourceBundle resources) {
 
 		complaint = WorkerInsertComplaint.complaint;
@@ -86,6 +129,13 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 	}
 
 	@FXML
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 */
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
@@ -93,7 +143,12 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-	
+	 /**
+     * 
+	 * The Function Choose Order To Insert Complaint
+     * @param event
+     * @throws IOException
+     */
 	@FXML
 	public void ChooseOrder(ActionEvent event) throws IOException {
 
@@ -126,6 +181,14 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 	}
 
 	@FXML
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
@@ -141,7 +204,10 @@ public class WorkerInsertComplaintChooseOrder extends UsersController implements
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 * The Function Display's The Message On The Label
+	 * @param message
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {
