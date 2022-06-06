@@ -1,9 +1,5 @@
 
 package ClientGUIControllers;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-=======
-
->>>>>>> bf242e9 dd
 import java.net.URL;
 import java.util.ResourceBundle;
 import RequestsAndResponses.FullMessage;
