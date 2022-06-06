@@ -13,7 +13,7 @@ import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
 import Survey.SurveyAnswers;
 import Survey.survey;
-import ZliClient.PopUpMessage;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -255,7 +255,7 @@ public class FillSurveyController extends UsersController implements Initializab
 
 			InsertAnswersSurveyController.ArrayForSurveyAnswers = ArrayForSurveyAnswers;
 			
-			Optional<ButtonType> Option=PopUpMessage.ConfirmationForUser("Thank you, have a nice day.");
+			Optional<ButtonType> Option=PopUpMsg.ConfirmationForUser("Thank you, have a nice day.");
 			if(Option.get()== ButtonType.OK) {
 				answer1.setValue("answer1*");
 				answer2.setValue("answer2*");

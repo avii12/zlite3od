@@ -12,7 +12,6 @@ import Orders.TypeOfSupply;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
-import ZliClient.PopUpMessage;
 import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.application.Platform;
@@ -194,7 +193,7 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 			StatusCol.setOnEditCommit(event -> {
 				Order order = event.getRowValue();
 				order.setOrderstatus(event.getNewValue());
-				Optional<ButtonType> Option = PopUpMessage.ConfirmationForUser("Are You Sure You Want To Continue");
+				Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser("Are You Sure You Want To Continue");
 				if (Option.get() == ButtonType.OK) {
 					if (order.getOrderstatus() == OrderStatus.COMPLETED) {
 						errorControl("Thank you For Your Service");

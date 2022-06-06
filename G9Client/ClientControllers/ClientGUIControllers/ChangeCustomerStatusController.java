@@ -12,7 +12,7 @@ import Report.customer;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
-import ZliClient.PopUpMessage;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -163,7 +163,7 @@ public class ChangeCustomerStatusController extends UsersController implements I
 		CustomerTable.setEditable(true);
 		Statuscol.setOnEditCommit(event -> {
 			customer selectedUser = CustomerTable.getSelectionModel().getSelectedItem();
-			Optional<ButtonType> Option=PopUpMessage.ConfirmationForUser("Edit this customer?");
+			Optional<ButtonType> Option=PopUpMsg.ConfirmationForUser("Edit this customer?");
 			if(Option.get()== ButtonType.OK) {
 			customer msgToServer = event.getRowValue();
 			msgToServer.setStatus(event.getNewValue());

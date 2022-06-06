@@ -9,7 +9,7 @@ import AllUsers.Users;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
-import ZliClient.PopUpMessage;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -133,7 +133,12 @@ public class ChangeUserPermissionController extends UsersController implements I
 		UsersTable.setEditable(true);
 		
 		Typecol.setOnEditCommit(event -> {
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 			Optional<ButtonType> Option=PopUpMessage.ConfirmationForUser("Edit this User?");
+=======
+			Users selectedUser = UsersTable.getSelectionModel().getSelectedItem();
+			Optional<ButtonType> Option=PopUpMsg.ConfirmationForUser("Edit this User?");
+>>>>>>> 225ef9c dd
 			if(Option.get()== ButtonType.OK) {
 			Users user=event.getRowValue();
 			user.setEmail(user.getUserType());//old type
@@ -143,10 +148,10 @@ public class ChangeUserPermissionController extends UsersController implements I
 		message = new FullMessage(Request.UPDATE_TYPE_USER, Response.Wait, user);
 			ZliClientUI.ZliClientController.accept(message);
 			if ((message.getResponse().equals(Response.USER_UPDATED))) {
-				Option=PopUpMessage.ConfirmationForUser("The Permission is updated");
+				Option=PopUpMsg.ConfirmationForUser("The Permission is updated");
 			}
 			else {
-				Option=PopUpMessage.ConfirmationForUser("Try again!!");
+				Option=PopUpMsg.ConfirmationForUser("Try again!!");
 			}
 			}
 		});

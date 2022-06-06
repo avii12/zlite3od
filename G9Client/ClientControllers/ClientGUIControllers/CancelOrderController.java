@@ -2,7 +2,7 @@ package ClientGUIControllers;
 
 import java.io.IOException;
 
-
+import ZliClient.PopUpMsg;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import Orders.OrderStatus;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
-import ZliClient.PopUpMessage;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -176,7 +176,7 @@ public class CancelOrderController extends UsersController implements Initializa
 			StatusColCancel.setOnEditCommit(event -> {
 				Order order = event.getRowValue();
 				order.setOrderstatus(event.getNewValue());
-				Optional<ButtonType> Option = PopUpMessage.ConfirmationForUser("Are You Sure You Want To Continue");
+				Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser("Are You Sure You Want To Continue");
 				if (Option.get() == ButtonType.OK) {
 					if (event.getNewValue() == OrderStatus.CANCEL) {
 						errorControl("Please Wait Until The Approvel Of The BranchManger");

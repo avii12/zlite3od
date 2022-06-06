@@ -12,7 +12,7 @@ import Orders.OrderStatus;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
-import ZliClient.PopUpMessage;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -171,7 +171,7 @@ public class AcceptCancelOrderController extends UsersController implements Init
             //Initializing The ComboBox 
 			//Get The Current Event 
 			StatusCancelCol.setOnEditCommit(event -> {
-				Optional<ButtonType> Option = PopUpMessage.ConfirmationForUser("Are You Sure You Want To Continue");
+				Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser("Are You Sure You Want To Continue");
 				if (Option.get() == ButtonType.OK) {
 					Order order = event.getRowValue();
 					order.setOrderstatus(event.getNewValue());
