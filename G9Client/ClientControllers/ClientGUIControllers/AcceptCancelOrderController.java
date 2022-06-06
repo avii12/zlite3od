@@ -180,8 +180,9 @@ public class AcceptCancelOrderController extends UsersController implements Init
 					if (event.getNewValue() == OrderStatus.APPROVED_CANCEL) {
 						ArrayList<String> ArrayForMessageObject = new ArrayList<>();
 						String EstimaitedTime = order.getEstimatedDate().toString();
+					
 						
-						if(order.getOrderDate()==null) {
+						if(order.getActualDate()==null) {
 							Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 							 Actual=timestamp.toString();
 							}else {
