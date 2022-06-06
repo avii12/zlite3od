@@ -36,15 +36,27 @@ public class Users implements Serializable {
 	 * 
 	 */
 	public String UserType;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+=======
+
+>>>>>>> 6e74f03 qq
 	/**
 	 * check if the user is currently logged in
 	 * 
 	 */
 	public String LogInStatus;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+=======
+
+>>>>>>> 6e74f03 qq
 	/**
 	 * 
 	 * this is the state of the user if confirmed he can use the system
 	 */
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+=======
+
+>>>>>>> 6e74f03 qq
 	public ConfirmationStatus Confirmationstatus;
 
 	/**
@@ -87,6 +99,10 @@ public class Users implements Serializable {
 	}
 
 	public void setLogInStatus(String logInStatus) {
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+=======
+
+>>>>>>> 6e74f03 qq
 		LogInStatus = logInStatus;
 	}
 
