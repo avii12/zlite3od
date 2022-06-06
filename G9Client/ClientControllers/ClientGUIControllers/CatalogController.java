@@ -55,11 +55,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 /**
- *Class description:  
- *Controlling The Catalog  
+ * Class description: Controlling The Catalog
  *
- *@author obied haddad
+ * @author obied haddad
  *
  */
 public class CatalogController extends UsersController implements Initializable {
@@ -72,115 +72,115 @@ public class CatalogController extends UsersController implements Initializable 
 	 */
 	private static double PriceOfItemsInCart = 0;
 	/**
-	 * Array list for ID 
+	 * Array list for ID
 	 */
 	public static ArrayList<String> ListOfID = new ArrayList<>();
 	/**
-	 *  variable status -for save status
+	 * variable status -for save status
 	 */
 	private ConfirmationStatus status = CustomerPageController.status;
 	/**
-	 *  Image view for cart 
+	 * Image view for cart
 	 */
 	@FXML
 	private ImageView CartButton;
 	/**
-	 *  Button for add 
+	 * Button for add
 	 */
 	@FXML
 	private Button AddButton;
 	/**
-	 *  Image view for cart 
+	 * Image view for cart
 	 */
 	@FXML
 	private Button Refresh;
 	/**
-	 *  ComboBox for color
+	 * ComboBox for color
 	 */
 	@FXML
 	private ComboBox<FlowerColor> ColorComboBox;
 	/**
-	 *  ComboBox for type
+	 * ComboBox for type
 	 */
 	@FXML
 	private ComboBox<ItemType> TypeComboBox;
 	/**
-	 *  ComboBox for price
+	 * ComboBox for price
 	 */
 	@FXML
 	private ComboBox<PriceRange> PriceComboBox;
 	/**
-	 *  Error label
+	 * Error label
 	 */
 	@FXML
 	private Label ErrorLabel;
 	/**
-	 *  Sales label
+	 * Sales label
 	 */
 	@FXML
 	private Label SalesLabel;
 	/**
-	 *  Table View for products
+	 * Table View for products
 	 */
 	@FXML
 	private TableView<ItemsForTableView> ProductsTable;
 	/**
-	 *  Table Column for products
+	 * Table Column for products
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, ImageView> ProductPicCol;
 	/**
-	 *  Table Column for products name
+	 * Table Column for products name
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ProductNameCol;
 	/**
-	 *  Table Column for products price
+	 * Table Column for products price
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, Double> ProductPriceCol;
 	/**
-	 *  Table Column for products type
+	 * Table Column for products type
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ProductTypeCol;
 	/**
-	 *  Table Column for Product Dominant Color
+	 * Table Column for Product Dominant Color
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ProductDominantColorCol;
 	/**
-	 *  Table View for Items
+	 * Table View for Items
 	 */
 	@FXML
 	private TableView<ItemsForTableView> ItemTable;
 	/**
-	 *  Table Column for Items picture
+	 * Table Column for Items picture
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, ImageView> ItemPicCol;
 	/**
-	 *  Table Column for Items name
+	 * Table Column for Items name
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ItemNameCol;
 	/**
-	 *  Table Column for Items price
+	 * Table Column for Items price
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, Double> ItemPriceCol;
 	/**
-	 *  Table Column for Items type
+	 * Table Column for Items type
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ItemTypeCol;
 	/**
-	 *  Table Column for Item Dominant Color
+	 * Table Column for Item Dominant Color
 	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ItemDominantColorCol;
 	/**
-	 *  Error frozen label
+	 * Error frozen label
 	 */
 	@FXML
 	private Label ErrorFrozenLabel;
@@ -196,12 +196,18 @@ public class CatalogController extends UsersController implements Initializable 
 	 * static variable for branch
 	 */
 	public static String branch;
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 
 	private int selectedIndex;
+=======
+>>>>>>> bff3c74 ssff
 	/**
 	 * Observable List Item in cart
 	 */
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
 
+=======
+>>>>>>> bff3c74 ssff
 	public static ObservableList<ItemsForCartView> ItemsIncart = FXCollections.observableArrayList();
 	/**
 	 * static variable for Total Price
@@ -236,7 +242,7 @@ public class CatalogController extends UsersController implements Initializable 
 	 * variable for Bouquet
 	 */
 	public static int Bouque = 1;
-	
+
 	public static Order order = new Order(null, CurrentUser.getID(), null, OrderStatus.PENDING, null, null, null, null,
 			PriceOfItemsInCart, null, null, 0.0, null, null, null);
 	/**
@@ -252,11 +258,10 @@ public class CatalogController extends UsersController implements Initializable 
 	 */
 	public static ArrayList<String> branch1 = new ArrayList<>();
 
-
 	/**
 	 *
-	 *Initializing The List After Getting All The Relevant Data
-	 *Send To The Server Message That Contains All the Relevent Data 
+	 * Initializing The List After Getting All The Relevant Data Send To The Server
+	 * Message That Contains All the Relevent Data
 	 *
 	 */
 	@Override
@@ -391,7 +396,7 @@ public class CatalogController extends UsersController implements Initializable 
 	 * Function for clear lists
 	 */
 	public void ClearLists() {
-		
+
 		if (branch1.size() != 0)
 			branch1.clear();
 		if (IsSaleOn1.size() != 0)
@@ -401,8 +406,8 @@ public class CatalogController extends UsersController implements Initializable 
 	}
 
 	/**
-	 * Function gets String
-	 * Remove Duplicate 
+	 * Function gets String Remove Duplicate
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -424,6 +429,7 @@ public class CatalogController extends UsersController implements Initializable 
 
 	/**
 	 * Function that add item to list
+	 * 
 	 * @param items
 	 */
 	public void AddItemToListForCart(ObservableList<ItemsForTableView> items) {
@@ -460,7 +466,9 @@ public class CatalogController extends UsersController implements Initializable 
 	}
 
 	/**
-	 * After clicking add button the function gets the selection item and add to list for cart
+	 * After clicking add button the function gets the selection item and add to
+	 * list for cart
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -476,8 +484,9 @@ public class CatalogController extends UsersController implements Initializable 
 	}
 
 	/**
-	 * After Clicking Compose Button gets the selection items and add to list for cart 
-	 * with adding number for bouquet 
+	 * After Clicking Compose Button gets the selection items and add to list for
+	 * cart with adding number for bouquet
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -491,18 +500,16 @@ public class CatalogController extends UsersController implements Initializable 
 		AddItemToListForCart(selectedProducts);
 	}
 
-
 	/**
-	 * After Clicking On Back Button 
-	 * The Function Hide The Current Window 
-	 * And Load The previous Window 
-	 * And We Can Drag the Window How Ever We Want
+	 * After Clicking On Back Button The Function Hide The Current Window And Load
+	 * The previous Window And We Can Drag the Window How Ever We Want
+	 * 
 	 * @param event
 	 * @throws IOException
 	 */
 	@FXML
 	public void BackBtn(MouseEvent event) throws Exception {
-		
+
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/CustomerPage.fxml"));
@@ -519,9 +526,9 @@ public class CatalogController extends UsersController implements Initializable 
 	}
 
 	/**
-	 * After Clicking Cart Button
-	 * The Function Hide The Current Window  
-	 * And Load The Cart Window 
+	 * After Clicking Cart Button The Function Hide The Current Window And Load The
+	 * Cart Window
+	 * 
 	 * @param event
 	 * @throws IOException
 	 */
@@ -568,10 +575,9 @@ public class CatalogController extends UsersController implements Initializable 
 	}
 
 	/**
-	 * After Clicking On Exit Button
-	 * The Function Send A Message To The Server 
-	 * The Function LogOut The Account 
-	 * And Disconnect From The Server  
+	 * After Clicking On Exit Button The Function Send A Message To The Server The
+	 * Function LogOut The Account And Disconnect From The Server
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -584,8 +590,9 @@ public class CatalogController extends UsersController implements Initializable 
 	}
 
 	/**
-	 * After Clicking on get price
-	 * Function show the products that in the wanted range
+	 * After Clicking on get price Function show the products that in the wanted
+	 * range
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -640,9 +647,11 @@ public class CatalogController extends UsersController implements Initializable 
 		}
 
 	}
+
 	/**
-	 * After Clicking on get price
-	 * Function show the products that in the wanted type
+	 * After Clicking on get price Function show the products that in the wanted
+	 * type
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -675,9 +684,11 @@ public class CatalogController extends UsersController implements Initializable 
 		}
 
 	}
+
 	/**
-	 * After Clicking on get price
-	 * Function show the products that in the wanted color
+	 * After Clicking on get price Function show the products that in the wanted
+	 * color
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -731,9 +742,10 @@ public class CatalogController extends UsersController implements Initializable 
 			ItemTable.setItems(items);
 		}
 	}
+
 	/**
-	 * This function gets String message
-	 * put the message on error label
+	 * This function gets String message put the message on error label
+	 * 
 	 * @param msg
 	 */
 	private void errorControl(String message) {
@@ -749,9 +761,10 @@ public class CatalogController extends UsersController implements Initializable 
 
 		});
 	}
+
 	/**
-	 * This function gets String message
-	 * put the message on error label
+	 * This function gets String message put the message on error label
+	 * 
 	 * @param msg
 	 */
 	private void LabelControl(String message) {
