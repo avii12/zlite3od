@@ -675,25 +675,36 @@ public class ReadMessageFromServer {
 				break;
 
 			case GET_ORDER_REPORT_FROM_DB:
+				
 				ViewReportForBranchManager.message.setResponse(MessageFromServer.getResponse());
 				ViewReportForBranchManager.OrdersReport = (ArrayList<String>) MessageFromServer.getObject();
 				break;
 
 			case GET_NUM_OF_COMPLAINT:
+
 				GraphController.message.setObject(MessageFromServer.getObject());
 				break;
 
 			case GET_REPORT_FOR_TWO_QUARTERLY:
+				/**
+				 * set response from server to the controller ViewTwoReportsForOneBranch
+				 *set object from server to the controller ViewTwoReportsForOneBranch 
+			     */
 				ViewTwoReportsForOneBranchController.message.setResponse(MessageFromServer.getResponse());
 				ViewTwoReportsForOneBranchController.message.setObject(MessageFromServer.getObject());
 				break;
 			case GET_REPORT_FOR_TWO_BRANCHES:
-
+				/**
+				 * set object from server to the controller ViewTwoReportsForTwoBranches
+				 *set response from server to the controller ViewTwoReportsForTwoBranches 
+			     */
 				ViewTwoReportsForTwoBranchesController.message.setObject(MessageFromServer.getObject());
 				ViewTwoReportsForTwoBranchesController.message.setResponse(MessageFromServer.getResponse());
 				break;
 			case GET_CUSTOMER_FROM_DB:
-				
+				/**
+				 *set object from server to the controller arrayList
+			     */
 				ChangeCustomerStatusController.ArrayForChangedStatus = (ArrayList<customer>) (MessageFromServer
 						.getObject());
 				break;
