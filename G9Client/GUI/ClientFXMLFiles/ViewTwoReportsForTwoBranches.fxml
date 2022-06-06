@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="551.0" prefWidth="842.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ViewTwoReportsForTwoBranchesController">
+<AnchorPane prefHeight="551.0" prefWidth="842.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ViewTwoReportsForTwoBranchesController">
    <children>
       <Text layoutX="163.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Two Reports For Two Branches" wrappingWidth="541.000013962388">
          <font>
@@ -24,7 +24,7 @@
             <Font name="System Italic" size="18.0" />
          </font>
       </Text>
-      <Pane layoutX="199.0" layoutY="159.0" prefHeight="268.0" prefWidth="450.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
+      <Pane layoutX="209.0" layoutY="166.0" prefHeight="268.0" prefWidth="450.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
          <children>
             <Text layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select First branch:*  ">
                <font>
@@ -60,31 +60,31 @@
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="132.0" layoutY="111.0" stroke="#edf1f2" strokeType="INSIDE" width="603.0" />
       <ImageView fitHeight="219.0" fitWidth="101.0" layoutX="735.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="3.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
-      <Label fx:id="ErrorLabel" layoutX="282.0" layoutY="497.0" prefHeight="26.0" prefWidth="304.0" textFill="RED">
+      <Label fx:id="ErrorLabel" layoutX="266.0" layoutY="508.0" prefHeight="26.0" prefWidth="304.0" textFill="RED">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Button layoutX="341.0" layoutY="437.0" mnemonicParsing="false" onAction="#ViewReportsDistributionBtn" prefHeight="46.0" prefWidth="186.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="View Reports Distribution" textFill="WHITE">
+      <Button layoutX="319.0" layoutY="448.0" mnemonicParsing="false" onAction="#ViewReportsDistributionBtn" prefHeight="37.0" prefWidth="210.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="View Reports Distribution" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font size="16.0" />
          </font>
       </Button>
       <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="9.0" layoutY="497.0" onMouseClicked="#BackBtn" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
          </image>
       </ImageView>
       <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="773.0" layoutY="7.0" onMouseClicked="#exitButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/Cancel.png" />
+            <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
          </image>
       </ImageView>
    </children>

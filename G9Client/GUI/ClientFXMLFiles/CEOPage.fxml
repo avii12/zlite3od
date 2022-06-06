@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="607.0" prefWidth="1029.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CEOZliPageController">
    <children>
-      <Text layoutX="377.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CEO Page" wrappingWidth="169.71484375">
+      <Text layoutX="430.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CEO Page" wrappingWidth="169.71484375">
          <font>
             <Font name="System Bold Italic" size="32.0" />
          </font>
@@ -29,7 +29,7 @@
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="128.0" layoutY="110.0" stroke="#edf1f2" strokeType="INSIDE" width="774.0" />
       <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="930.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
       <Line endX="804.9998779296875" endY="582.7573852539062" layoutX="222.0" layoutY="16.0" startX="804.9998779296875" startY="-13.75735092163086" stroke="#111411" strokeWidth="6.0" />
@@ -52,7 +52,7 @@
             </Label>
             <ImageView fitHeight="105.0" fitWidth="104.0" layoutX="47.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" y="-20.0">
                <image>
-                  <Image url="@../../../G9Common/Pic/UserPortalLogo.png" />
+                  <Image url="@../../../../../../../ZerliDesign/user%20portal.jpg" />
                </image>
             </ImageView>
             <Label fx:id="TypeLabel" layoutX="47.0" layoutY="248.0" prefHeight="48.0" prefWidth="162.0">
@@ -75,7 +75,7 @@
             </Button>
             <ImageView fitHeight="122.0" fitWidth="132.0" layoutX="44.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../git/ZliProj/G9Common/Pic/reports.jpg" />
+                  <Image url="@../../../../../../../ZerliDesign/reports.jpg" />
                </image>
             </ImageView>
          </children>
@@ -89,7 +89,7 @@
             </Button>
             <ImageView fitHeight="122.0" fitWidth="122.0" layoutX="50.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../git/ZliProj/G9Common/Pic/reportforonebranch.jpg" />
+                  <Image url="@../../../../../../../ZerliDesign/reportforonebranch.jpg" />
                </image>
             </ImageView>
          </children>
@@ -103,7 +103,7 @@
             </Button>
             <ImageView fitHeight="122.0" fitWidth="122.0" layoutX="50.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../git/ZliProj/G9Common/Pic/Report.png" />
+                  <Image url="@../../../../../../../ZerliDesign/Report.png" />
                </image>
             </ImageView>
          </children>
@@ -115,7 +115,7 @@
       </ImageView>
       <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
    </children>

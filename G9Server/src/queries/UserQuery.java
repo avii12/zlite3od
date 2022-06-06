@@ -1,11 +1,9 @@
 package queries;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
 import AllUsers.ConfirmationStatus;
 import AllUsers.Customer;
 import AllUsers.User;
@@ -127,8 +125,28 @@ public class UserQuery {
 		user = (Users) NewMsg.getObject();
 		String NewType = MsgFromClient.getUserType();
 		// insert
-		InserToNewTable(NewType, user);
+
+		try {
+			InserToNewTable(NewType, user);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		mainQuery.DeleteRowFromDB(TableName, condition2);
+		try {
+			InserToNewTable(NewType, user);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mainQuery.DeleteRowFromDB1(TableName, condition2);
+
 		condition2 = "UserID=" + MsgFromClient.getUserID();
 		mainQuery.updateTuple("login", condition1, condition2);// update to new type
 		messageFromClient.setResponse(Response.USER_UPDATED);
@@ -136,49 +154,29 @@ public class UserQuery {
 
 	}
 
-	public static void InserToNewTable(String NewTable, Users user) throws SQLException {
+	public static void InserToNewTable(String NewTable, Users user) throws SQLException, ParseException {
 
 		switch (NewTable) {
 		case "worker":
-			try {
-				mainQuery.InsertOneRowIntoWorkerTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoWorkerTable(user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus(),"0");
 
 			break;
 		case "servicespecialist":
-			try {
-				mainQuery.InsertOneRowIntoServicesTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoCeoZliAndServiceSpAndCustomerServiceTable("servicespecialist",user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus());
 			break;
 		case "deliveryperson":
-			try {
-				mainQuery.InsertOneRowIntoDeliveryPersonTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoBranchManagerAndDeliveryTable("deliveryperson",user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus(),Branch.BeautifulBlossoms);
 			break;
 		case "customerserviceworker":
-			try {
-				mainQuery.InsertOneRowIntoCostomerServicesTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoCeoZliAndServiceSpAndCustomerServiceTable("customerserviceworker",user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus());
 			break;
 		case "customer":
-			try {
-				mainQuery.InsertOneRowIntoCustomerTable(user);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mainQuery.insertOneRowIntoCustomerTable(user.getUserID(),user.getFirstName(),user.getLastName()
+					,user.getEmail(),user.getPhoneNumber(),user.getUserType(),user.isLogInStatus(),user.getConfirmationstatus(),"401",(double)1000);
 			break;
 		}
 
@@ -216,14 +214,13 @@ public class UserQuery {
 	private static Users convertToUser(ResultSet rs) {
 		Users user = null;
 		try {
-			int id = rs.getInt(1);
-
+			String id = rs.getString(1);
 			String firstname = rs.getString(2);
 			String lastname = rs.getString(3);
 			String email = rs.getString(4);
 			String PhoneNumber = rs.getString(5);
 			String Type = rs.getString(6);
-			boolean isLogin = rs.getBoolean(7);
+			String isLogin = rs.getString(7);
 			ConfirmationStatus confirmation = ConfirmationStatus.valueOf(rs.getString(8));
 			return new Users(id, firstname, lastname, email, PhoneNumber, Type, isLogin, confirmation);
 
@@ -237,7 +234,7 @@ public class UserQuery {
 
 	private static Users convertToUsers(ResultSet rs) {
 		try {
-			int id = rs.getInt(1);
+			String id = rs.getString(1);
 			String firstname = rs.getString(2);
 			String lastname = rs.getString(3);
 			String email = rs.getString(4);
@@ -336,7 +333,7 @@ public class UserQuery {
 		String CustomerId = list.get(1);
 		double Balance = 0.0;
 
-		ResultSet rs = mainQuery.getRowFromDB("customer", "ID='" + CustomerId + "'");
+		ResultSet rs = mainQuery.getTuple("customer", "ID='" + CustomerId + "'");
 		if (rs.next()) {
 			Balance = rs.getDouble(10);
 		}
@@ -344,7 +341,7 @@ public class UserQuery {
 
 		double TotalPrice = 0.0;
 		double BalanceBeforePurchasing = 0.0;
-		ResultSet rs1 = mainQuery.getRowFromDB("orders", "OrderNumber='" + OrderNumber + "'");
+		ResultSet rs1 = mainQuery.getTuple("orders", "OrderNumber='" + OrderNumber + "'");
 		if (rs1.next()) {
 			TotalPrice = rs1.getDouble(9);
 		}
@@ -366,7 +363,7 @@ public class UserQuery {
 		Double balance = 0.0;
 		Double totalprice = 0.0;
 		Double priceAfterRefund = 0.0;
-		ResultSet rs = mainQuery.getRowFromDB("orders", "OrderNumber='" + ordernum + "'");
+		ResultSet rs = mainQuery.getTuple("orders", "OrderNumber='" + ordernum + "'");
 		if (rs.next())
 			totalprice = rs.getDouble(9);
 		else
@@ -374,7 +371,7 @@ public class UserQuery {
 
 		rs.close();
 		
-		ResultSet rs1 = mainQuery.getRowFromDB("customer", "ID='" + customerId + "'");
+		ResultSet rs1 = mainQuery.getTuple("customer", "ID='" + customerId + "'");
 		if (rs1.next()) 
 			balance = rs1.getDouble(10);
 		else
@@ -400,7 +397,6 @@ public class UserQuery {
 		Branch branch = null;
 
 		if (rs.next()) {
-
 			branch = Branch.valueOf(rs.getString(10));
 		}
 		returnMessageToClient.setObject(branch);

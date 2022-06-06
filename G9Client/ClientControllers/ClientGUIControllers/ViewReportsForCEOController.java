@@ -8,8 +8,6 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
-
-import Orders.Branch;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -26,15 +24,30 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling Graph for CEO
+ *  
+ * @author mario rohana
+ *
+ */
 public class ViewReportsForCEOController extends UsersController implements Initializable {
+	/**
+	 *static parameter message of full message
+	 */
 	public static FullMessage message;
+	/**
+	 *array list for income report
+	 */
 	public static ArrayList<String> IncomeReport = new ArrayList<>();
+	/**
+	 *array list for orders report
+	 */
 	public static ArrayList<String> OrdersReport = new ArrayList<>();
 	@FXML
 	/**
@@ -53,19 +66,35 @@ public class ViewReportsForCEOController extends UsersController implements Init
 	private ComboBox<String> ReportType;
 	@FXML
 	/**
-	 * ComboBox of Type.
+	 * ComboBox of branch name.
 	 */
 	private ComboBox<String> BranchName;
+	/**
+	 * ComboBox of quarterly.
+	 */
 	@FXML
 	private ComboBox<String> Quarterly;
-
+	/**
+	 * ComboBox of quarterly year.
+	 */
 	@FXML
 	private ComboBox<String> ReportYear1;
+	/**
+	 * Error label
+	 */
 	@FXML
 	private Label ErrorLabel;
+	/**
+	 * Text area to show reports
+	 */
 	@FXML
 	private TextArea TextAreaReport;
-
+	/**
+	 * After Clicking On find report Button 
+	 * And We Can show the wanted report in area text
+	 * @param event
+	 * @throws IOException
+	 */
 	public void FindReportBtn(ActionEvent event) throws Exception {
 		TextAreaReport.clear();
 		DisplayMessageForUser("");
@@ -153,7 +182,6 @@ public class ViewReportsForCEOController extends UsersController implements Init
 								DisplayMessageToTextAreaIncome(" Num Of Late Orders: " + OrdersReport.get(3).toString());
 								DisplayMessageToTextAreaIncome(".........................");
 								
-							
 							}
 							break;
 
@@ -167,7 +195,14 @@ public class ViewReportsForCEOController extends UsersController implements Init
 	
 		}
 	}
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackBtn(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
@@ -183,7 +218,14 @@ public class ViewReportsForCEOController extends UsersController implements Init
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void exitButton(MouseEvent event) throws IOException {
 
@@ -193,7 +235,10 @@ public class ViewReportsForCEOController extends UsersController implements Init
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ObservableList<String> BranchList = FXCollections.observableArrayList("TheSecretGarden", "YourNeighborhoodFlorist", "BeautifulBlossoms");
@@ -211,11 +256,17 @@ public class ViewReportsForCEOController extends UsersController implements Init
 		ReportYear1.setDisable(true);
 		Quarterly.setDisable(true);
 		ReportType.setEditable(true);
-		
 	}
 
+	/**
+	 * After Clicking On continue Button
+	 * The Function get type value and show the relevant comboBox 
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	void continueBtn(ActionEvent event) throws Exception {
+		
 		ObservableList<String> quarterly = FXCollections.observableArrayList("1-3", "4-6", "7-9", "10-12");
 		Year y = java.time.Year.now();
 		if (ReportType.getValue().equals("Complaint")) {
@@ -245,16 +296,22 @@ public class ViewReportsForCEOController extends UsersController implements Init
 		}
 	}
 
-	
-	
-	
+	/**
+	 * This function gets String message
+	 * put the message on error label
+	 * @param msg
+	 */
 	public void DisplayMessageForUser(String message) {
 		Platform.runLater(() -> {
 			ErrorLabel.setText(message);
 		});
 
 	}
-
+	/**
+	 * This function gets String message
+	 * put the message on text area
+	 * @param msg
+	 */
 	public void DisplayMessageToTextAreaIncome(String msg) {
 		Platform.runLater(() -> {
 			String Message = TextAreaReport.getText();

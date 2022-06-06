@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.Year;
 import java.util.ResourceBundle;
-
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -61,6 +60,7 @@ public class ComplaintReportController extends UsersController implements Initia
 	 * The Function LogOut The Account 
 	 * And Disconnect From The Server  
 	 * @param event
+	 * @throws IOException
 	 */
 	public void ExitButton(MouseEvent event) throws IOException {
 

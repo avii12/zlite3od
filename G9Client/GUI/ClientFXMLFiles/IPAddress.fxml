@@ -21,7 +21,7 @@
       </Text>
       <ImageView fitHeight="134.0" fitWidth="129.0" layoutX="-4.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
       <Pane layoutX="157.0" layoutY="209.0" prefHeight="94.0" prefWidth="441.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
@@ -36,7 +36,7 @@
       </Pane>
       <ImageView fitHeight="53.0" fitWidth="57.0" layoutX="11.0" layoutY="361.0" onMouseClicked="#ExitBtn" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/exit.png" />
+            <Image url="@../../../../../../../ZerliDesign/exit.png" />
          </image>
       </ImageView>
       <Text layoutX="286.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please insert IP Address">
@@ -46,7 +46,7 @@
       </Text>
       <ImageView fitHeight="72.0" fitWidth="64.0" layoutX="672.0" layoutY="356.0" onMouseClicked="#ConnectBtn" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/circled-chevron-right.png" />
+            <Image url="@../../../../../../../ZerliDesign/circled-chevron-right.png" />
          </image>
       </ImageView>
       <Line endX="512.0" endY="-11.0" layoutX="227.0" layoutY="13.0" startX="-226.0" startY="-11.0" stroke="#111411" strokeWidth="6.0" />
@@ -55,7 +55,7 @@
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="158.0" layoutY="103.0" stroke="#edf1f2" strokeType="INSIDE" width="441.0" />
       <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="640.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
       <Line endX="495.0" endY="402.0" layoutX="242.0" layoutY="23.0" startX="-235.0" startY="402.0" stroke="#111411" strokeWidth="6.0" />

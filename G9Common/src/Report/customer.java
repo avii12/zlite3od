@@ -3,7 +3,6 @@ package Report;
 import java.io.Serializable;
 
 import AllUsers.ConfirmationStatus;
-import Survey.SurveyAnswers;
 
 
 
@@ -20,9 +19,16 @@ import Survey.SurveyAnswers;
  */
 public class customer  implements Serializable {
 
+<<<<<<< HEAD
 	/*
 	 * customer id
 	 */
+=======
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 	public String CustomerID;
 	/**
 	 * customer first name

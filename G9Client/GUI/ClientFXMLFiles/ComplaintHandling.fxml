@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="482.0" prefWidth="841.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ComplaintHandelingController">
+<AnchorPane prefHeight="493.0" prefWidth="856.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.ComplaintHandelingController">
    <children>
-      <Text layoutX="264.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complaint Handling">
+      <Text layoutX="275.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complaint Handling">
          <font>
             <Font name="System Bold Italic" size="32.0" />
          </font>
@@ -23,17 +23,20 @@
             <Font name="System Italic" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="Continue" layoutX="137.0" layoutY="403.0" mnemonicParsing="false" onAction="#ShowCustomerComplaint" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Continue" textFill="WHITE">
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+      <Button fx:id="Continue" layoutX="137.0" layoutY="403.0" mnemonicParsing="false" onAction="#ShowCustomerComplaint" prefHeight="40.0" prefWidth="171.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Choose Complaint" textFill="WHITE">
+=======
+      <Button fx:id="Continue" layoutX="137.0" layoutY="454.0" mnemonicParsing="false" onAction="#ShowCustomerComplaint" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Continue" textFill="WHITE">
+>>>>>>> 4862a0e cxzc
          <font>
             <Font name="System Italic" size="16.0" />
          </font>
       </Button>
-      <Line endX="623.0" endY="-10.0" layoutX="227.0" layoutY="13.0" startX="-234.0" startY="-10.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="626.0" endY="-10.0" layoutX="227.0" layoutY="13.0" startX="626.0" startY="463.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="626.0" endY="466.0" layoutX="227.0" layoutY="13.0" startX="-224.0" startY="466.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="-225.0" endY="463.0" layoutX="227.0" layoutY="13.0" startX="-225.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
-      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="127.0" layoutY="89.0" stroke="#edf1f2" strokeType="INSIDE" width="581.0" />
-      <TableView fx:id="complaintTable" layoutX="137.0" layoutY="106.0" prefHeight="271.0" prefWidth="570.0">
+      <Line endX="623.0" endY="-10.0" layoutX="230.0" layoutY="13.0" startX="-234.0" startY="-10.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="626.0" endY="-10.0" layoutX="227.0" layoutY="14.0" startX="626.0" startY="495.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="-225.0" endY="496.0" layoutX="227.0" layoutY="13.0" startX="-225.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
+      <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="132.0" layoutY="120.0" stroke="#edf1f2" strokeType="INSIDE" width="581.0" />
+      <TableView fx:id="complaintTable" layoutX="137.0" layoutY="174.0" prefHeight="271.0" prefWidth="570.0">
         <columns>
           <TableColumn fx:id="complaintNumberCol" prefWidth="154.0" text="complaintNum" />
           <TableColumn fx:id="orderNumberCol" editable="false" prefWidth="96.0" sortable="false" text="OrderNumber" />
@@ -42,31 +45,32 @@
             <TableColumn fx:id="branchNameCol" prefWidth="121.0" text="branchName" />
         </columns>
       </TableView>
-      <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="5.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
-      <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="7.0" layoutY="411.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="5.0" layoutY="443.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="751.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="789.0" layoutY="7.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/Cancel.png" />
+            <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
          </image>
       </ImageView>
       <Text fx:id="errorText" layoutX="313.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="217.13671875" />
-      <Button fx:id="Continue1" layoutX="570.0" layoutY="403.0" mnemonicParsing="false" onAction="#InsertComplaint" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Insert Complaint" textFill="WHITE">
+      <Button fx:id="Continue1" layoutX="570.0" layoutY="454.0" mnemonicParsing="false" onAction="#InsertComplaint" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Insert Complaint" textFill="WHITE">
          <font>
             <Font name="System Italic" size="16.0" />
          </font>
       </Button>
+      <Line endX="-238.0" endY="487.0" layoutX="239.0" layoutY="23.0" startX="614.0" startY="487.0" stroke="#111411" strokeWidth="6.0" />
    </children>
 </AnchorPane>

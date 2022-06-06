@@ -3,7 +3,6 @@ package ClientGUIControllers;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -15,25 +14,53 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling Graph for branch manager 
+ *  
+ *@author shorok heib
+ *
+ */
 public class GraphController extends UsersController implements Initializable {
+	/**
+	 * Array list for branch manager
+	 */
 	public static ArrayList<String> BranchForManager = new ArrayList<>();
+	/**
+	 *static parameter message of full message
+	 */
 	public static FullMessage message;
+	/**
+	 * BarChart for complaint report
+	 */
 	@FXML
     private BarChart<?, ?> ComplaintReport;
-
+	/**
+	 * Category Axis for x
+	 */
     @FXML
     private CategoryAxis x;
-
+    /**
+	 * Category Axis for y
+	 */
     @FXML
     private NumberAxis y;
-
+    /**
+	 * Error label
+	 */
     @FXML
     private Label ErrorLabel;
 
-	
+    /**
+	 * Array String for quarterly
+	 */
 	public String[] quarterly = new String[3];
-			
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 *
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		String managerID=CurrentUser.getID();
@@ -49,11 +76,9 @@ public class GraphController extends UsersController implements Initializable {
 			ErrorLabel.setText("No Complaint Report!");
 		}
 		else{
-		
-		
 		XYChart.Series set1= new XYChart.Series<>();
 		set1.getData().add(new XYChart.Data("month 1",NumOfComlaint[0]));
-	set1.getData().add(new XYChart.Data("month 2",NumOfComlaint[1]));
+		set1.getData().add(new XYChart.Data("month 2",NumOfComlaint[1]));
 		set1.getData().add(new XYChart.Data("month 3",NumOfComlaint[2]));
 	    ComplaintReport.getData().addAll(set1);
 	}

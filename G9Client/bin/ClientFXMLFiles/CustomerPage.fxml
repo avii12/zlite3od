@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1037.0" style="-fx-background-color: WHITE; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CustomerPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1037.0" style="-fx-background-color: WHITE; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CustomerPageController">
    <children>
       <Text fontSmoothingType="LCD" layoutX="367.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Page" wrappingWidth="231.83409118652344">
          <font>
@@ -30,7 +30,7 @@
          <children>
             <ImageView fitHeight="129.0" fitWidth="129.0" layoutX="32.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../G9Common/Pic/survey.jpg" />
+                  <Image url="@../../../../../../../ZerliDesign/survey.jpg" />
                </image>
             </ImageView>
             <Button fx:id="ShowSurveyBtn" layoutX="44.0" layoutY="202.0" mnemonicParsing="false" onAction="#ShowSurveyBtn" prefHeight="37.0" prefWidth="104.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Show Survey" textFill="WHITE">
@@ -44,7 +44,7 @@
          <children>
             <ImageView fitHeight="129.0" fitWidth="129.0" layoutX="32.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+                  <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
                </image>
             </ImageView>
             <Button layoutX="41.0" layoutY="203.0" mnemonicParsing="false" onAction="#ViewCatalogBtn" prefHeight="37.0" prefWidth="111.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="View Catalog" textFill="WHITE">
@@ -58,7 +58,7 @@
          <children>
             <ImageView fitHeight="129.0" fitWidth="129.0" layoutX="31.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../G9Common/Pic/Cancel.png" />
+                  <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
                </image>
             </ImageView>
             <Button fx:id="CancelOrderBtn" layoutX="40.0" layoutY="202.0" mnemonicParsing="false" onAction="#CancelOrderBtn" prefHeight="37.0" prefWidth="111.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Cancel Order" textFill="WHITE">
@@ -70,7 +70,7 @@
       </Pane>
       <ImageView fitHeight="130.0" fitWidth="129.0" layoutX="-4.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
       <Pane layoutX="709.0" layoutY="137.0" prefHeight="439.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
@@ -92,7 +92,7 @@
             </Label>
             <ImageView fitHeight="105.0" fitWidth="104.0" layoutX="47.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" y="-20.0">
                <image>
-                  <Image url="@../../../G9Common/Pic/UserPortalLogo.png" />
+                  <Image url="@../../../../../../../ZerliDesign/user%20portal.jpg" />
                </image>
             </ImageView>
             <Label fx:id="TypeLabel" layoutX="47.0" layoutY="248.0" prefHeight="48.0" prefWidth="162.0">
@@ -101,20 +101,15 @@
                </font></Label>
          </children>
       </Pane>
-      <Line endX="809.2720947265625" endY="-12.000015258789062" layoutX="227.0" layoutY="13.0" startX="-223.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="-227.48526000976562" endY="614.0" layoutX="227.0" layoutY="13.0" startX="-227.24264526367188" startY="-12.5" stroke="#111411" strokeWidth="6.0" />
-      <Line endX="811.2720947265625" endY="614.0" layoutX="227.0" layoutY="13.0" startX="-224.48529052734375" startY="614.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="809.2720947265625" endY="-12.000015258789062" layoutX="226.0" layoutY="13.0" startX="-223.0" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
+      <Line endX="811.2720947265625" endY="614.0" layoutX="226.0" layoutY="13.0" startX="-224.48529052734375" startY="614.0" stroke="#111411" strokeWidth="6.0" />
       <Line endX="814.2720947265625" endY="614.0" layoutX="227.0" layoutY="13.0" startX="813.5146484375" startY="-12.0" stroke="#111411" strokeWidth="6.0" />
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="110.0" layoutY="105.0" stroke="#edf1f2" strokeType="INSIDE" width="796.0" />
       <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="938.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="972.0" layoutY="8.0" onMouseClicked="#exitButton" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../G9Common/Pic/Cancel.png" />
-         </image>
-      </ImageView>
+      <Line endX="-232.51461791992188" endY="601.0" layoutX="236.0" layoutY="23.0" startX="-232.5146484375" startY="-19.0" stroke="#111411" strokeWidth="6.0" />
    </children>
 </Pane>

@@ -47,7 +47,7 @@ public class ServerGuiController implements Initializable {
 	 * DBPassword variable contains Database Password.
 	 */
 
-	final public static String DBPassword = "Ebrahemenb123";
+	final public static String DBPassword = "Ebedhaddad123_";
 
 	/**
 	 * DBpath variable contains Database Path.
@@ -63,6 +63,9 @@ public class ServerGuiController implements Initializable {
 	 */
 	final public static String DBPort = "5555";
 
+	/**
+	 * mySqlConnection instance to save the SQl connection of the server.
+	 */
 	public static mysqlConnection connectionToExternalDB;
 
 	/**
@@ -220,6 +223,14 @@ public class ServerGuiController implements Initializable {
 
 	}
 
+	/**
+	 * After clicking on import button , we get all the data from the external db
+	 * After making a new connection to the external DB.
+	 * 
+	 * @param event
+	 * @throws Exception
+	 */
+	@FXML
 	public void ImportButton(ActionEvent event) throws Exception {
 		if (BtnConnect.isDisable() == false) {
 			DisplayMessageToTextAreaConsole("You Should Connect First");
@@ -314,6 +325,15 @@ public class ServerGuiController implements Initializable {
 		list.add(new ClientStatus(null, null, null));
 	}
 
+	/**
+	 * This function for adding a new Client 
+	 * and Display it in the table
+	 * and change the status to connected
+	 * 
+	 * @param IP
+	 * @param Host
+	 * @param Status
+	 */
 	public void AddNewClient(String IP, String Host, String Status) {
 
 		AddNewClientStatus();
@@ -326,6 +346,13 @@ public class ServerGuiController implements Initializable {
 		IndexOflClients++;
 	}
 
+	/**
+	 * This function for seting the status of the current 
+	 * client in the table connected 
+	 * 
+	 * @param CurrentIPAddress
+	 * @return
+	 */
 	public boolean CheckIfClientIsInListAndSetStatusToConnect(String CurrentIPAddress) {
 
 		for (int i = 0; i < list.size(); i++) {
@@ -344,6 +371,12 @@ public class ServerGuiController implements Initializable {
 
 	}
 
+	/**
+	 * This function for seting the status of the current 
+	 * client in the table  disconnected 
+	 * @param CurrentClientIP
+	 * @param Status
+	 */
 	public void SetClientStatusToDisconnect(String CurrentClientIP, String Status) {
 
 		for (int i = 0; i < list.size(); i++) {

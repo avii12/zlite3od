@@ -16,20 +16,20 @@
 <AnchorPane prefHeight="330.0" prefWidth="601.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.LoginController">
    <children>
       <Pane layoutX="36.0" layoutY="-11.0" prefHeight="54.0" prefWidth="102.0" />
-      <Text layoutX="329.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+      <Text layoutX="329.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
          <font>
             <Font name="System Bold Italic" size="32.0" />
          </font>
       </Text>
       <ImageView fitHeight="148.0" fitWidth="137.0" layoutX="-6.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
       <Pane fx:id="Password" layoutX="180.0" layoutY="131.0" prefHeight="202.0" prefWidth="383.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 15;">
          <children>
             <TextField fx:id="username" layoutX="160.0" layoutY="26.0" style="-fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;" />
-            <Text layoutX="25.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password*:">
+            <Text layoutX="21.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password*:">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Text>
-            <Button fx:id="LoginButton" layoutX="130.0" layoutY="132.0" mnemonicParsing="false" onAction="#LoginButton" prefHeight="54.0" prefWidth="124.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Login" textFill="WHITE">
+            <Button fx:id="LoginButton" layoutX="130.0" layoutY="137.0" mnemonicParsing="false" onAction="#LoginButton" prefHeight="43.0" prefWidth="124.0" style="-fx-background-color: black; -fx-background-radius: 15;" text="Login" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -54,20 +54,20 @@
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="122.0" layoutY="104.0" stroke="#edf1f2" strokeType="INSIDE" width="498.0" />
       <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="629.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="7.0" layoutY="320.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
          </image>
       </ImageView>
       <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="666.0" layoutY="7.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/Cancel.png" />
+            <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
          </image>
       </ImageView>
-      <Label fx:id="errorLabel" layoutX="264.0" layoutY="345.0" prefHeight="17.0" prefWidth="208.0" textFill="RED">
+      <Label fx:id="errorLabel" layoutX="268.0" layoutY="345.0" prefHeight="17.0" prefWidth="208.0" textFill="RED">
          <font>
             <Font size="16.0" />
          </font>

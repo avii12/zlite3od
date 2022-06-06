@@ -40,7 +40,7 @@ import javafx.util.StringConverter;
  *Controlling The UI Of Branch Manager For Accepting 
  *Pending Orders that belongs To His Branch 
  *
- *@author obied haddad
+ *@author maisalon safory
  *
  */
 public class AcceptOrderController extends UsersController implements Initializable {

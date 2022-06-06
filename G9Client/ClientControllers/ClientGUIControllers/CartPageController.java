@@ -29,33 +29,74 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ *Class description:  
+ *Controlling The Cart page for customer
+ *For The Orders That Belongs To His Branch 
+ *
+ *@author shorok heib
+ *
+ */
 public class CartPageController extends UsersController implements Initializable {
-
+	/**
+	 *Observable List for items on cart
+	 */
 	private ObservableList<ItemsForCartView> ItemsIncart = FXCollections.observableArrayList();
-
+	/**
+	 *static parameter message of full message
+	 */
 	public static FullMessage message;
-
+	/**
+	 *double total price
+	 */
 	@FXML
 	private double TotalPrice = 0;
-
+	/**
+	 * Text 'text price' 
+	 */
 	@FXML
 	private Text TextPrice;
+	/**
+	 *Error label
+	 */
 	@FXML
 	private Label ErrorLabel;
+	/**
+	 *Table view for cart
+	 */
 	@FXML
 	private TableView<ItemsForCartView> CartTable;
+	/**
+	 *Table column for name
+	 */
 	@FXML
 	public TableColumn<ItemsForCartView, String> CartNameCol;
+	/**
+	 *Table column for product type.
+	 */
 	@FXML
 	public TableColumn<ItemsForCartView, ItemType> CartTypeCol;
+	/**
+	 *Table column for Cart price
+	 */
 	@FXML
 	public TableColumn<ItemsForCartView, String> CartPriceCol;
+	/**
+	 *Table column for Cart Bouquet.
+	 */
 	@FXML
 	private TableColumn<ItemsForCartView, Integer> CartBouqueCol;
+	/**
+	 *variable for order
+	 */
 	@FXML
 	public static Order order;
-
+	/**
+	 *
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevent Data 
+	 *
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -71,7 +112,11 @@ public class CartPageController extends UsersController implements Initializable
 		TextPrice.setText(String.valueOf(TotalPrice));
 
 	}
-
+	/**
+	 * After Clicking On Remove Button 
+	 * And We Can show the table without the selected item
+	 * @param event
+	 */
 	@FXML
 	public void RemoveButton(ActionEvent event) {
 
@@ -97,25 +142,16 @@ public class CartPageController extends UsersController implements Initializable
 			}
 		}
 	}
-
-	@FXML
-	public void PaymentButton(MouseEvent event) throws IOException {
-		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
-		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/OrderDetails.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.initStyle(StageStyle.UNDECORATED);
-		scene.setOnMousePressed(pressEvent -> {
-			scene.setOnMouseDragged(dragEvent -> {
-				primaryStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-				primaryStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
-			});
-		});
-		primaryStage.setScene(scene);
-		primaryStage.show();
-
-	}
-
+	
+	
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackButton(MouseEvent event) throws IOException {
 
@@ -134,7 +170,11 @@ public class CartPageController extends UsersController implements Initializable
 		primaryStage.show();
 
 	}
-
+	/**
+	 * This function gets String message
+	 * put the message on error label
+	 * @param msg
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {
@@ -148,7 +188,13 @@ public class CartPageController extends UsersController implements Initializable
 
 		});
 	}
-
+	/**
+	 * After Clicking On Order Details Button 
+	 * The Function Hide The Current Window . 
+	 * Load The Order Details Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 */
 	@FXML
 	public void OrderDetailsButton(MouseEvent event) throws IOException {
 		if (ItemsIncart.size() == 0) {
@@ -174,6 +220,11 @@ public class CartPageController extends UsersController implements Initializable
 		}
 	}
 
+	/**
+	 * This function Sorting the products into two types
+	 * return name
+	 * @return
+	 */
 	public String ConvertToBouquets() {
 
 		int bouqueNumber = 1;

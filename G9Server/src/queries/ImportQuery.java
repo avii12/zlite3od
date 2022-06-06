@@ -1,14 +1,28 @@
 package queries;
 
-import java.sql.ResultSet;
+import java.sql.ResultSet; 
 import java.sql.SQLException;
-
 import AllUsers.ConfirmationStatus;
 import Orders.Branch;
 import ServerGUIControllers.ServerGuiController;
 
+/**
+ * 
+ * Class description: 
+ * In this class we have all the methods that belong to
+ * the import action .
+ * @author obied
+ *
+ */
 public class ImportQuery {
+
+
 	private static ServerGuiController serverGuiController = ServerGuiController.getLoader().getController();
+	
+	/**
+	 * this function get from externalDB All that data we need
+	 * than insert into our DB to specific table 
+	 */
 	public static void getFromExternalDB() {
 		ResultSet rs=mainQuery.getExternalDBData();
 		

@@ -13,6 +13,7 @@ import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
 import ZliClient.PopUpMessage;
+import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -37,10 +38,10 @@ import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
 
 /**
- * Class description: Controlling The UI Of Delivery Person For Comlpeting
+ * Class description: Controlling The UI Of Delivery Person For Completing
  * Orders that belongs To the Same Branch He work with
  *
- * @author obied haddad
+ * @author seren hanany
  *
  */
 public class DeliveryPersonPageController extends UsersController implements Initializable {
@@ -146,7 +147,7 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 	/**
 	 *
 	 * Initializing The List After Getting All The Relevant Data Send To The Server
-	 * Message That Contains All the Relevent Data
+	 * Message That Contains All the Relevant Data
 	 *
 	 */
 	@Override
@@ -197,6 +198,8 @@ public class DeliveryPersonPageController extends UsersController implements Ini
 				if (Option.get() == ButtonType.OK) {
 					if (order.getOrderstatus() == OrderStatus.COMPLETED) {
 						errorControl("Thank you For Your Service");
+						PopUpMsg.AlertForUser(
+								"**An email has been sent to" + "||" + order.getCustomerName() + "||" + "**");
 						ArrayList<String> ArrayForMessageObject = new ArrayList<>();
 						String EstimaitedTime = order.getEstimatedDate().toString();
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());

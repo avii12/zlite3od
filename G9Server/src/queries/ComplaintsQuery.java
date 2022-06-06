@@ -1,23 +1,33 @@
 package queries;
 
 import java.sql.ResultSet;
-
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
 import Orders.Branch;
-import Orders.Order;
-import Orders.OrderStatus;
-import Orders.TypeOfSupply;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Response;
 import customerService.Complaint;
 
+/**
+ * Class description:
+ * Controlling the Complaints Queries
+ * @author Ebrahem Enbtawe
+ * @author Mario Rohanna
+ *
+ */
 public class ComplaintsQuery {
 
+
+	
+	/**
+	 * This function checks if the complaint exists, then returns it to client
+	 * @param messageFromClient
+	 * @return FullMessage
+	 * @throws SQLException
+	 */
 	public static FullMessage showComplaintsForUser(FullMessage messageFromClient) throws SQLException {
 
 		FullMessage returnMessageToClient = messageFromClient;
@@ -49,6 +59,11 @@ public class ComplaintsQuery {
 		return returnMessageToClient;
 	}
 
+	/**
+	 * This function takes the details of complaints from database and makes new object of Complaint
+	 * @param rs
+	 * @return Complaint
+	 */
 	private static Complaint convertToComplaint(ResultSet rs) {
 		try {
 			int complaintID = rs.getInt(1);
@@ -68,6 +83,13 @@ public class ComplaintsQuery {
 		return null;
 	}
 
+	/**
+	 * This function adds new complaint to Database
+	 * @param messageFromClient
+	 * @return FullMessage
+	 * @throws SQLException
+	 * @throws ParseException
+	 */
 	public static FullMessage AddComplaintToDB(FullMessage messageFromClient) throws SQLException, ParseException {
 
 		Complaint complaint = (Complaint) messageFromClient.getObject();
@@ -85,5 +107,36 @@ public class ComplaintsQuery {
 
 		return returnMessageToClient;
 
+	}
+	
+	/**
+	 * this function checks if there is complaints in Database
+	 * @param messageFromClient
+	 * @return FullMessage
+	 * @throws SQLException
+	 */
+	public static FullMessage CheckIfFirstComplaint(FullMessage messageFromClient) throws SQLException {
+
+		FullMessage returnMessageToClient = messageFromClient;
+		ResultSet rs = mainQuery.SelectAllFromDB("complaint");
+		int c = 0;
+		try {
+			// If the row doesn't exist in login Table
+			if (!rs.isBeforeFirst()) {
+				returnMessageToClient.setResponse(Response.NO_COMPLAINT_FOUND);
+				return returnMessageToClient;
+			}
+
+			while (rs.next()) {
+				c++;
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		returnMessageToClient.setObject(c);
+		returnMessageToClient.setResponse(Response.NOT_FIRST_COMPLAINT);
+		return returnMessageToClient;
 	}
 }

@@ -32,33 +32,81 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the CatalogManagement
+ *  
+ *@author shorok heib
+ *
+ */
 public class CatalogManagement extends UsersController implements Initializable {
-
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
-
+	/**
+	 * Array list for item list from DB
+	 */
 	public static ArrayList<Item> ItemListFromDB = new ArrayList<>();
-
+	/**
+	 * Table View for catalog table
+	 */
 	@FXML
 	private TableView<ItemsForTableView> CatalogTable;
+	/**
+	 * Table Column for Catalog Picture
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, ImageView> CatalogPictureCol;
+	/**
+	 * Table Column for Catalog Name
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> CatalogNameCol;
+	/**
+	 * Table Column for CatalogCategory
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, ItemCategory> CatalogCategoryCol;
 
+	/**
+	 * variable for Picture Path
+	 */
 	public static String PicturePath;
+	/**
+	 * variable for Item Name
+	 */
 	public static String ItemName;
+	/**
+	 * variable for Item Category
+	 */
 	public static ItemCategory ItemCategory;
+	/**
+	 * variable for Item type
+	 */
 	public static Orders.ItemType ItemType;
+	/**
+	 * variable for Item price
+	 */
 	public static double ItemPrice;
+	/**
+	 * variable for amount
+	 */
 	public static int Amount;
+	/**
+	 * variable for ID
+	 */
 	public static String ID;
-
+	/**
+	 * Error label
+	 */
 	@FXML
 	private Label ErrorLabel;
-
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -66,6 +114,9 @@ public class CatalogManagement extends UsersController implements Initializable 
 
 	}
 
+	/**
+	 * This function gets the catalog for DB to users
+	 */
 	public void GetCatalogForUser() {
 
 		CatalogPictureCol.setCellValueFactory(new PropertyValueFactory<ItemsForTableView, ImageView>("Picture"));
@@ -95,6 +146,11 @@ public class CatalogManagement extends UsersController implements Initializable 
 		}
 	}
 
+	/**
+	 * After Clicking on remove button 
+	 * Function will delete the selected row
+	 * @param event
+	 */
 	@FXML
 	public void RemoveButton(ActionEvent event) {
 
@@ -131,6 +187,14 @@ public class CatalogManagement extends UsersController implements Initializable 
 
 	}
 
+	/**
+	 * After Clicking on add button
+	 * The Function Hide The Current Window  
+	 * And Load The Catalog Add  Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void AddButton(ActionEvent event) throws IOException {
 
@@ -150,6 +214,14 @@ public class CatalogManagement extends UsersController implements Initializable 
 		primaryStage.show();
 	}
 
+	/**
+	 * After Clicking on Edit button
+	 * The Function Hide The Current Window  
+	 * And Load The Catalog Edit Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void EditButton(ActionEvent event) throws IOException {
 
@@ -185,7 +257,12 @@ public class CatalogManagement extends UsersController implements Initializable 
 		}
 
 	}
-
+	/**
+	 * After Clicking On Exit Button 
+	 * The Function Send A Message To The Server The
+	 * Function LogOut The Account And Disconnect From The Server
+	 * @param event
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -195,6 +272,14 @@ public class CatalogManagement extends UsersController implements Initializable 
 		System.exit(0);
 	}
 
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackButton(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -211,7 +296,11 @@ public class CatalogManagement extends UsersController implements Initializable 
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 * This function gets String message
+	 * put the message on error label
+	 * @param msg
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {

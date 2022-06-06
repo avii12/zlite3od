@@ -1,7 +1,6 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
-
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -16,11 +15,26 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Class description: Controlling The Customer Service worker page
+ *
+ * @author shorok heib
+ *
+ */
 public class CustomerServiceWorkerPageController extends UsersController {
-	
-public static FullMessage message;
-	
-   @FXML
+	/**
+	 * message type of FullMessage
+	 */
+	public static FullMessage message;
+
+	/**
+	 * After Clicking On Logout Button The Function Hide The Current Window and
+	 * logout. Load The Login Window And We Can Drag the Window How Ever We Want
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
 	public void LogoutButton(ActionEvent event) throws IOException {
 
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -46,12 +60,18 @@ public static FullMessage message;
 			break;
 		}
 	}
-	
-   
-   @FXML
-   public void InsertAnswersSurvey(ActionEvent event) throws IOException{
-	   
-	   ((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
+
+	/**
+	 * After Clicking on insert answer survey Button The Function Hide The Current
+	 * Window Insert Answers Survey And Load The previous Window
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML
+	public void InsertAnswersSurvey(ActionEvent event) throws IOException {
+
+		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/InserAnswersSurvey.fxml"));
 		Scene scene = new Scene(root);
@@ -64,10 +84,16 @@ public static FullMessage message;
 		});
 		primaryStage.setScene(scene);
 		primaryStage.show();
-	   
 
-   }
-   @FXML
+	}
+
+	/**
+	 * After Clicking On Exit Button The Function Send A Message To The Server The
+	 * Function LogOut The Account And Disconnect From The Server
+	 * 
+	 * @param event
+	 */
+	@FXML
 	public void ExitButton(MouseEvent event) throws IOException {
 
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -76,8 +102,16 @@ public static FullMessage message;
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-   
-   public void complaintHandelingButton(ActionEvent event) throws Exception {
+
+	/**
+	 * The Function Hide The Current Window 
+	 * Insert Answers Survey And Load The
+	 * Complaint Handling Window
+	 * @param event
+	 * @throws Exception
+	 */
+	public void complaintHandelingButton(ActionEvent event) throws Exception {
+
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/ComplaintHandling.fxml"));
@@ -91,8 +125,7 @@ public static FullMessage message;
 		});
 		primaryStage.setScene(scene);
 		primaryStage.show();
-	   
-        }
-   
+
+	}
 
 }

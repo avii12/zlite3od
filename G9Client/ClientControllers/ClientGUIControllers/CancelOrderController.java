@@ -5,17 +5,15 @@ import java.io.IOException;
 
 import java.net.URL;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 import Orders.Order;
 import Orders.OrderStatus;
-import Orders.TypeOfSupply;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -47,7 +45,7 @@ import javafx.util.StringConverter;
  *Controlling The UI Of Customer Cancel Order
  *TO His Orders 
  *
- *@author obied haddad
+ *@author seren hanany
  *
  */
 public class CancelOrderController extends UsersController implements Initializable {

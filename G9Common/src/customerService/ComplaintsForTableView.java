@@ -68,10 +68,16 @@ public class ComplaintsForTableView {
 		this.complaintNum = complaint.getComplaintNum();
 
 	}
+<<<<<<< HEAD
     
 	/*
 	 * these are the setters and getters of the complaint table
 	 */
+=======
+	
+	
+
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 	public Complaint getComplaint() {
 		return complaint;
 	}

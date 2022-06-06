@@ -5,16 +5,37 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import jdbc.mysqlConnection;
 
+/**
+ * Class description: 
+ * This Is A Class That Works As An
+ * UI For The Server
+ * @author Obied
+ *
+ */
 public class ZliServerUI extends Application {
-
+	/**
+	 * ZliServerChat instance to start to have a communication channel between the serverUI to the server.
+	 */
 	public static ZliServerChat Server;
+	/**
+	 * ServerGuiController instance of the server controller 
+	 */
 	public static ServerGuiController serverGuiController;
+	/**
+	 * mySqlConnection instance to save the SQl connection of the server.
+	 */
 	public static mysqlConnection connectionToDB;
-
+	/**
+     * This is the main function of the class
+     */
 	public static void main(String args[]) throws Exception {
 		launch(args);
 	} // end main
 
+	/**
+	 *This method create new instance of server controller
+	 *send to The controller Primarystage
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		serverGuiController= new ServerGuiController(); // create server controller

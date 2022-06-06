@@ -1,15 +1,5 @@
 package ClientGUIControllers;
 
-/**
- * class description:
- * this class is for the Catalog screen 
- * functionality of the Catalog
- * 
- * @author Seren Hanany
- * 
- * @version 11/05/2022
- *
- */
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
-
 import AllUsers.ConfirmationStatus;
 import Orders.DominantColor;
 import Orders.FlowerColor;
@@ -29,7 +18,6 @@ import Orders.ItemsForTableView;
 import Orders.Order;
 import Orders.OrderStatus;
 import Orders.PriceRange;
-import Orders.RefundStatus;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -58,102 +46,214 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling the Catalog
+ *  
+ *@author Obied haddad
+ *@author ibrahem enbtawe
+ */
 public class CatalogController extends UsersController implements Initializable {
-
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
+	/**
+	 * variable for Price Of Items In Cart
+	 */
 	private static double PriceOfItemsInCart = 0;
+	/**
+	 * Array list for ID
+	 */
 	public static ArrayList<String> ListOfID = new ArrayList<>();
+	/**
+	 * variable status -for save status
+	 */
 	private ConfirmationStatus status = CustomerPageController.status;
-
+	/**
+	 * Image view for cart
+	 */
 	@FXML
 	private ImageView CartButton;
+	/**
+	 * Button for add
+	 */
 	@FXML
 	private Button AddButton;
+	/**
+	 * Image view for cart
+	 */
 	@FXML
 	private Button Refresh;
+	/**
+	 * ComboBox for color
+	 */
 	@FXML
 	private ComboBox<FlowerColor> ColorComboBox;
+	/**
+	 * ComboBox for type
+	 */
 	@FXML
 	private ComboBox<ItemType> TypeComboBox;
+	/**
+	 * ComboBox for price
+	 */
 	@FXML
 	private ComboBox<PriceRange> PriceComboBox;
+	/**
+	 * Error label
+	 */
 	@FXML
 	private Label ErrorLabel;
+	/**
+	 * Sales label
+	 */
 	@FXML
 	private Label SalesLabel;
+	/**
+	 * Table View for products
+	 */
 	@FXML
 	private TableView<ItemsForTableView> ProductsTable;
+	/**
+	 * Table Column for products
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, ImageView> ProductPicCol;
+	/**
+	 * Table Column for products name
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ProductNameCol;
+	/**
+	 * Table Column for products price
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, Double> ProductPriceCol;
+	/**
+	 * Table Column for products type
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ProductTypeCol;
+	/**
+	 * Table Column for Product Dominant Color
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ProductDominantColorCol;
-
+	/**
+	 * Table View for Items
+	 */
 	@FXML
 	private TableView<ItemsForTableView> ItemTable;
+	/**
+	 * Table Column for Items picture
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, ImageView> ItemPicCol;
+	/**
+	 * Table Column for Items name
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ItemNameCol;
+	/**
+	 * Table Column for Items price
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, Double> ItemPriceCol;
+	/**
+	 * Table Column for Items type
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ItemTypeCol;
+	/**
+	 * Table Column for Item Dominant Color
+	 */
 	@FXML
 	private TableColumn<ItemsForTableView, String> ItemDominantColorCol;
+	/**
+	 * Error frozen label
+	 */
 	@FXML
 	private Label ErrorFrozenLabel;
+	/**
+	 * static variable for sale on
+	 */
 	public static String IsSaleOn;
+	/**
+	 * static variable for percent
+	 */
 	public static String percent;
+	/**
+	 * static variable for branch
+	 */
 	public static String branch;
 
-	public static ObservableList<ItemsForCartView> ItemsIncart = FXCollections.observableArrayList();
-	public static double TotalPrice = 0;
 
+	private int selectedIndex;
+
+	/**
+	 * Observable List Item in cart
+	 */
+	public static ObservableList<ItemsForCartView> ItemsIncart = FXCollections.observableArrayList();
+	/**
+	 * static variable for Total Price
+	 */
+	public static double TotalPrice = 0;
+	/**
+	 * Button Compose
+	 */
 	@FXML
 	private Button ComposeButton;
 
 	/**
-	 * Button for Back Button.
+	 * Image View
 	 */
 	@FXML
 	private ImageView Back;
 	/**
-	 * Button for ShowItem Button.
+	 * Button for ShowItem.
 	 */
 	@FXML
 	private Button ShowItem;
 	/**
-	 * Button for ShowProducts Button.
+	 * Button for Show Products.
 	 */
 	@FXML
 	private Button ShowProducts;
-
+	/**
+	 * Array list for items from DB
+	 */
 	public static ArrayList<Item> ItemListFromDB = new ArrayList<>();
+	/**
+	 * variable for Bouquet
+	 */
 	public static int Bouque = 1;
+
 	public static Order order = new Order(null, CurrentUser.getID(), null, OrderStatus.PENDING, null, null, null, null,
 			PriceOfItemsInCart, null, null, 0.0, null, null, null);
-
+	/**
+	 * Array list for Is Sale On
+	 */
 	public static ArrayList<String> IsSaleOn1 = new ArrayList<>();
+	/**
+	 * Array list for percent
+	 */
 	public static ArrayList<String> percent1 = new ArrayList<>();
+	/**
+	 * Array list for branch
+	 */
 	public static ArrayList<String> branch1 = new ArrayList<>();
 
 	/**
-	 * 
-	 * This method return the user to the previous page
-	 * 
-	 * @param event
-	 * @throws Exception
+	 *
+	 * Initializing The List After Getting All The Relevant Data Send To The Server
+	 * Message That Contains All the Relevent Data
+	 *
 	 */
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		ClearLists();
 
 		if (status.equals(ConfirmationStatus.FROZEN)) {
@@ -206,8 +306,8 @@ public class CatalogController extends UsersController implements Initializable 
 			break;
 
 		case "2":
-			String percent = percent1.get(0) + "%";
-			for (int i = 1; i < percent1.size(); i++) {
+			String percent = "";
+			for (int i = 0; i < percent1.size(); i++) {
 				if (percent1.get(i).equals("0")) {
 
 				} else
@@ -215,9 +315,10 @@ public class CatalogController extends UsersController implements Initializable 
 			}
 			percent = RemoveDuplicate(percent);
 
-			String name = branch1.get(0);
+			String name = "";
+			;
 
-			for (int i = 1; i < branch1.size(); i++) {
+			for (int i = 0; i < branch1.size(); i++) {
 				if (branch1.get(i).equals("0")) {
 
 				} else
@@ -278,7 +379,11 @@ public class CatalogController extends UsersController implements Initializable 
 		ItemTable.refresh();
 	}
 
+	/**
+	 * Function for clear lists
+	 */
 	public void ClearLists() {
+
 		if (branch1.size() != 0)
 			branch1.clear();
 		if (IsSaleOn1.size() != 0)
@@ -287,6 +392,12 @@ public class CatalogController extends UsersController implements Initializable 
 			percent1.clear();
 	}
 
+	/**
+	 * Function gets String Remove Duplicate
+	 * 
+	 * @param name
+	 * @return
+	 */
 	public String RemoveDuplicate(String name) {
 
 		String[] words = name.split("\\W+");
@@ -303,6 +414,11 @@ public class CatalogController extends UsersController implements Initializable 
 		return nonDuplicateString;
 	}
 
+	/**
+	 * Function that add item to list
+	 * 
+	 * @param items
+	 */
 	public void AddItemToListForCart(ObservableList<ItemsForTableView> items) {
 
 		String name = null;
@@ -336,6 +452,12 @@ public class CatalogController extends UsersController implements Initializable 
 		Bouque++;
 	}
 
+	/**
+	 * After clicking add button the function gets the selection item and add to
+	 * list for cart
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void AddButton(ActionEvent event) {
 
@@ -348,6 +470,12 @@ public class CatalogController extends UsersController implements Initializable 
 
 	}
 
+	/**
+	 * After Clicking Compose Button gets the selection items and add to list for
+	 * cart with adding number for bouquet
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void ComposeButton(ActionEvent event) {
 
@@ -359,8 +487,16 @@ public class CatalogController extends UsersController implements Initializable 
 		AddItemToListForCart(selectedProducts);
 	}
 
+	/**
+	 * After Clicking On Back Button The Function Hide The Current Window And Load
+	 * The previous Window And We Can Drag the Window How Ever We Want
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackBtn(MouseEvent event) throws Exception {
+
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/CustomerPage.fxml"));
@@ -377,52 +513,13 @@ public class CatalogController extends UsersController implements Initializable 
 	}
 
 	/**
-	 * This method Move to Items List page
+	 * After Clicking Cart Button The Function Hide The Current Window And Load The
+	 * Cart Window
 	 * 
 	 * @param event
-	 * @throws Exception
+	 * @throws IOException
 	 */
-
 	@FXML
-	public void ShowItemBtn(ActionEvent event) throws Exception {
-		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
-		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/ItemsList.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.initStyle(StageStyle.UNDECORATED);
-		scene.setOnMousePressed(pressEvent -> {
-			scene.setOnMouseDragged(dragEvent -> {
-				primaryStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-				primaryStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
-			});
-		});
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-
-	/**
-	 * This method Move to Bouquet Page
-	 * 
-	 * @param event
-	 * @throws Exception
-	 */
-	//
-	public void ShowProductsBtn(ActionEvent event) throws Exception {
-		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
-		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/BouquetPage.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.initStyle(StageStyle.UNDECORATED);
-		scene.setOnMousePressed(pressEvent -> {
-			scene.setOnMouseDragged(dragEvent -> {
-				primaryStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-				primaryStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
-			});
-		});
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-
 	public void CartButton(MouseEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -441,6 +538,9 @@ public class CatalogController extends UsersController implements Initializable 
 
 	}
 
+	/**
+	 * This function reload the catalog from DB
+	 */
 	@FXML
 	public void ReloadCatalog() {
 
@@ -461,6 +561,12 @@ public class CatalogController extends UsersController implements Initializable 
 
 	}
 
+	/**
+	 * After Clicking On Exit Button The Function Send A Message To The Server The
+	 * Function LogOut The Account And Disconnect From The Server
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -470,6 +576,12 @@ public class CatalogController extends UsersController implements Initializable 
 		System.exit(0);
 	}
 
+	/**
+	 * After Clicking on get price Function show the products that in the wanted
+	 * range
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void GetPrice(ActionEvent event) {
 
@@ -523,6 +635,12 @@ public class CatalogController extends UsersController implements Initializable 
 
 	}
 
+	/**
+	 * After Clicking on get price Function show the products that in the wanted
+	 * type
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void GetType(ActionEvent event) {
 
@@ -554,6 +672,12 @@ public class CatalogController extends UsersController implements Initializable 
 
 	}
 
+	/**
+	 * After Clicking on get price Function show the products that in the wanted
+	 * color
+	 * 
+	 * @param event
+	 */
 	@FXML
 	public void GetColor(ActionEvent event) {
 
@@ -606,6 +730,11 @@ public class CatalogController extends UsersController implements Initializable 
 		}
 	}
 
+	/**
+	 * This function gets String message put the message on error label
+	 * 
+	 * @param msg
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {
@@ -620,6 +749,11 @@ public class CatalogController extends UsersController implements Initializable 
 		});
 	}
 
+	/**
+	 * This function gets String message put the message on error label
+	 * 
+	 * @param msg
+	 */
 	private void LabelControl(String message) {
 
 		Platform.runLater(new Runnable() {

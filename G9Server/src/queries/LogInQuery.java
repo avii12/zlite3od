@@ -19,8 +19,20 @@ import java.sql.SQLException;
 
 import AllUsers.Login;
 
+/**
+ * Class description:
+ * Controlling the LogInQueries
+ * @author Mario Rohanna
+ *
+ */
 public class LogInQuery {
 
+	/**
+	 * This function is responsible for the LogIn of user
+	 * @param message
+	 * @return FullMessage
+	 * @throws SQLException
+	 */
 	public static FullMessage serverLogIn(FullMessage message) throws SQLException {
 
 		ResultSet rs;
@@ -53,7 +65,11 @@ public class LogInQuery {
 
 	}
 
+	/**This function is responsible for the Log Out of User
+	 * @param message
+	 */
 	public static void LogOut(FullMessage message) {
+		
 		if (message.getObject() instanceof Customer)
 			mainQuery.updateTuple("customer", "LogInStatus" + "=" + "0",
 					"ID=" + ((User) (message.getObject())).getID());
@@ -76,11 +92,18 @@ public class LogInQuery {
 
 	}
 
+	/**
+	 * This function is responsible for checking the Type of the user that logged in
+	 * @param rs
+	 * @param userType
+	 * @param message
+	 * @return FullMessage
+	 */
 	public static FullMessage checkType(ResultSet rs, String userType, FullMessage message) {
 
 		switch (userType) {
 
-		case "customer":
+		case "customer": //if user is customer
 			Customer customer = null;
 			try {
 				if (rs.next()) {
@@ -104,7 +127,7 @@ public class LogInQuery {
 			message = updateMessage(customer, message, "customer", userType);
 			break;
 
-		case "branchmanager":
+		case "branchmanager": //if user is branchmanager
 			BranchManager branchManager = null;
 			try {
 				if (rs.next()) {
@@ -120,7 +143,7 @@ public class LogInQuery {
 			message = updateMessage(branchManager, message, "branchmanager", userType);
 			break;
 
-		case "ceozli":
+		case "ceozli": //if user is ceozli
 			CEOZli ceo = null;
 			try {
 				if (rs.next()) {
@@ -136,7 +159,7 @@ public class LogInQuery {
 			message = updateMessage(ceo, message, "ceozli", userType);
 			break;
 
-		case "customerserviceworker":
+		case "customerserviceworker": //if user is customerserviceworker
 			CustomerServiceWorker cs_worker = null;
 			try {
 				if (rs.next()) {
@@ -158,7 +181,7 @@ public class LogInQuery {
 			message = updateMessage(cs_worker, message, "customerserviceworker", userType);
 			break;
 
-		case "servicespecialist":
+		case "servicespecialist": //if user is servicespecialist
 			ServiceExpert serviceSpecialist = null;
 			try {
 				if (rs.next()) {
@@ -180,7 +203,7 @@ public class LogInQuery {
 			message = updateMessage(serviceSpecialist, message, "servicespecialist", userType);
 			break;
 
-		case "worker":
+		case "worker": //if user is worker
 			Worker worker = null;
 			try {
 				if (rs.next()) {
@@ -201,7 +224,7 @@ public class LogInQuery {
 			message = updateMessage(worker, message, "worker", userType);// update the message
 			break;
 
-		case "deliveryperson":
+		case "deliveryperson": //if user is deliveryperson
 			DeliveryPerson deliveryperson = null;
 			try {
 				if (rs.next()) {
@@ -228,6 +251,16 @@ public class LogInQuery {
 
 	}
 
+	/**
+	 * This is the last function in the LogIn Process
+	 * Checks if the User is logged in or not
+	 * Checks which portal should be opened according to type
+	 * @param user
+	 * @param message
+	 * @param tableName
+	 * @param type
+	 * @return
+	 */
 	public static FullMessage updateMessage(User user, FullMessage message, String tableName, String type) {
 
 		if (user.isLogInStatus()) {

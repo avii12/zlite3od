@@ -1,9 +1,9 @@
 package ClientGUIControllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -25,26 +25,58 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Class description: Controlling The Customer Service worker page
+ *
+ * @author obied haddad
+ *
+ */
 public class EditCatalogController extends UsersController implements Initializable {
-
+	/**
+	 * Error label
+	 */
 	@FXML
 	private Label ErrorLabel;
+	/**
+	 * Image View for product picture
+	 */
 	@FXML
 	private ImageView Picture;
+	/**
+	 * Text Field for name
+	 */
 	@FXML
 	private TextField TextFieldName;
+	/**
+	 * Text Field for category
+	 */
 	@FXML
 	private TextField TextFieldCategory;
+	/**
+	 * Text Field for type
+	 */
 	@FXML
 	private TextField TextFieldType;
+	/**
+	 * Text Field for price
+	 */
 	@FXML
 	private TextField TextFieldPrice;
+	/**
+	 * Text Field for amount
+	 */
 	@FXML
 	private TextField TextFieldAmount;
-
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
-
+	/**
+	 *
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 *
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -60,6 +92,11 @@ public class EditCatalogController extends UsersController implements Initializa
 
 	}
 
+	/**
+	 * After clicking on save Button
+	 * The Function send all the information to server
+	 * @param event
+	 */
 	@FXML
 	public void SaveButton(ActionEvent event) {
 
@@ -87,7 +124,14 @@ public class EditCatalogController extends UsersController implements Initializa
 
 		}
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
@@ -96,7 +140,14 @@ public class EditCatalogController extends UsersController implements Initializa
 		ZliClientUI.ZliClientController.accept(message);
 		System.exit(0);
 	}
-
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackButton(MouseEvent event) throws Exception {
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -114,7 +165,13 @@ public class EditCatalogController extends UsersController implements Initializa
 		primaryStage.show();
 	}
 
+	/**
+	 * Boolean function to check if the text contain numbers
+	 * @param strNum
+	 * @return
+	 */
 	public static boolean isNumeric(String strNum) {
+		
 		if (strNum == null) {
 			return false;
 		}
@@ -125,7 +182,11 @@ public class EditCatalogController extends UsersController implements Initializa
 		}
 		return true;
 	}
-
+	/**
+	 * This function gets String message
+	 * put the message on error label
+	 * @param msg
+	 */
 	private void errorControl(String message) {
 
 		Platform.runLater(new Runnable() {

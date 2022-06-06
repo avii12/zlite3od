@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 
 public class Users implements Serializable{
+<<<<<<< HEAD
 	/**
 	 * the Pk of the user is the id 
 	 */
@@ -20,6 +21,9 @@ public class Users implements Serializable{
 	 *first name
 	 */
 	
+=======
+	public String UserID;
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 	public String FirstName;
 	/**
 	 * user last name
@@ -38,6 +42,7 @@ public class Users implements Serializable{
 	 * 
 	 */
 	public String UserType;
+<<<<<<< HEAD
 	/**
 	 * check if the user is currently logged in 
 	 * 
@@ -48,9 +53,13 @@ public class Users implements Serializable{
 	 * 
 	 * this is the state of the user if confirmed he can use the system
 	 */
+=======
+	public String LogInStatus;
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 	public ConfirmationStatus Confirmationstatus;
 	
 	
+<<<<<<< HEAD
 	/**
 	 * @param userID
 	 * @param firstName
@@ -63,6 +72,10 @@ public class Users implements Serializable{
 	 */
 	public Users(int userID, String firstName, String lastName, String email, String phoneNumber, String userType,
 			boolean logInStatus, ConfirmationStatus confirmationstatus) {
+=======
+	public Users(String userID, String firstName, String lastName, String email, String phoneNumber, String userType,
+			String logInStatus, ConfirmationStatus confirmationstatus) {
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 		super();
 		UserID = userID;
 		FirstName = firstName;
@@ -87,10 +100,14 @@ public class Users implements Serializable{
 	public void setPhoneNumber(String phoneNumber) {
 		PhoneNumber = phoneNumber;
 	}
-	public boolean isLogInStatus() {
+	public String isLogInStatus() {
 		return LogInStatus;
 	}
+<<<<<<< HEAD
 		public void setLogInStatus(boolean logInStatus) {
+=======
+	public void setLogInStatus(String logInStatus) {
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
 		LogInStatus = logInStatus;
 	}
 	public ConfirmationStatus getConfirmationstatus() {
@@ -99,7 +116,7 @@ public class Users implements Serializable{
 	public void setConfirmationstatus(ConfirmationStatus confirmationstatus) {
 		Confirmationstatus = confirmationstatus;
 	}
-	public Users(int userID, String firstName, String lastName, String email, String userType) {
+	public Users(String userID, String firstName, String lastName, String email, String userType) {
 		super();
 		UserID = userID;
 		FirstName = firstName;
@@ -114,10 +131,10 @@ public class Users implements Serializable{
 		this.Email = users.getEmail();
 		this.UserType = users.getUserType();
 	}
-	public int getUserID() {
+	public String getUserID() {
 		return UserID;
 	}
-	public void setUserID(int userID) {
+	public void setUserID(String userID) {
 		UserID = userID;
 	}
 	public String getFirstName() {

@@ -3,7 +3,6 @@ package ClientGUIControllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import AllUsers.ConfirmationStatus;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
@@ -18,28 +17,59 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Class description: Controlling The Customer page
+ *
+ * @author ibrahem enbtawe
+ *
+ */
 public class CustomerPageController extends UsersController implements Initializable {
-
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
-
+	/**
+	 * variable for status
+	 */
 	@FXML
 	public static ConfirmationStatus status;
+	/**
+	 * label for welcome
+	 */
 	@FXML
 	private Label WelcomeLabel;
+	/**
+	 * label for welcome
+	 */
 	@FXML
 	private Label StatusLabel;
+	/**
+	 * label for type
+	 */
 	@FXML
 	private Label TypeLabel;
+	/**
+	 * Cancel order button
+	 */
 	@FXML
 	private Button CancelOrderBtn;
+	/**
+	 * Show Survey button
+	 */
 	@FXML
 	private Button ShowSurveyBtn;
 
+	/**
+	 * After Clicking On Logout Button The Function Hide The Current Window and
+	 * logout. Load The Login Window And We Can Drag the Window How Ever We Want
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void LogoutButton(ActionEvent event) throws IOException {
 
@@ -68,6 +98,13 @@ public class CustomerPageController extends UsersController implements Initializ
 		}
 	}
 
+	/**
+	 * After Clicking On Exit Button The Function Send A Message To The Server The
+	 * Function LogOut The Account And Disconnect From The Server
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void exitButton(MouseEvent event) throws IOException {
 
@@ -78,7 +115,15 @@ public class CustomerPageController extends UsersController implements Initializ
 		System.exit(0);
 	}
 
+	/**
+	 * After clicking on show survey button The Function Hide The Current Window And
+	 * Load The Survey Window
+	 * 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void ShowSurveyBtn(ActionEvent event) throws Exception {
+
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/Survey.fxml"));
@@ -94,8 +139,15 @@ public class CustomerPageController extends UsersController implements Initializ
 		primaryStage.show();
 	}
 
+	/**
+	 * After clicking on show survey button The Function Hide The Current Window And
+	 * Load The Catalog Window
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void ViewCatalogBtn(ActionEvent event) throws Exception {
+
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/CatalogPage.fxml"));
@@ -111,8 +163,15 @@ public class CustomerPageController extends UsersController implements Initializ
 		primaryStage.show();
 	}
 
+	/**
+	 *  After clicking on show survey button The Function Hide The Current Window And
+	 * Load The Cancel Order Window
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void CancelOrderBtn(ActionEvent event) throws Exception {
+		
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/CancelOrderPage.fxml"));
@@ -128,9 +187,15 @@ public class CustomerPageController extends UsersController implements Initializ
 		primaryStage.show();
 	}
 
+	/**
+	 * After clicking on show survey button The Function Hide The Current Window And
+	 * Load The Make Complaint For Customer Window
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void MakeComplaint(ActionEvent event) throws Exception {
-		
+
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/MakeComplaintForCustomer.fxml"));
@@ -145,7 +210,10 @@ public class CustomerPageController extends UsersController implements Initializ
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 

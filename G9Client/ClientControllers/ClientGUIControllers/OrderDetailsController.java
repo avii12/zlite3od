@@ -5,16 +5,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
-
 import Orders.Branch;
 import Orders.Order;
 import Orders.TypeOfSupply;
@@ -25,13 +21,13 @@ import Util.Constants;
 import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -45,43 +41,81 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 /**
- * Class description: This class is for choosing the branch, the supply method,
- * date and time We add all the details to the order
- * 
- * @author Mario, Rohana.
+ * Class description: 
+ * This is a class for 
+ * controlling the Start Sales 
+ *  
+ *@author maisalon safory
+ *
  */
 
 public class OrderDetailsController extends UsersController implements Initializable {
 
 	@FXML
+	/**
+	 * Label For Message For The User 
+	 */
 	private Label ErrorLabel;
 	@FXML
+	/**
+	 * ComboBox for Branches
+	 */
 	private ComboBox<Branch> selectBranchComboBox;
 
 	@FXML
+	/**
+	 * ComboBox for Times
+	 */
 	private ComboBox<String> Time;
 
 	@FXML
+	/**
+	 * DatePicker for Dates
+	 */
 	private DatePicker Date;
 
 	@FXML
+	/**
+	 * Text Field for Card Number
+	 */
 	private TextField TextFieldCard;
-
+	/**
+	 * variable of Order
+	 */
 	public static Order order;
 
 	@FXML
+	/**
+	 * Text for Error text for user
+	 */
 	private Text errorText;
 
-	private static OrderDetailsController orderDetailsController;
-
+	
+	/**
+	 * message type of FullMessage
+	 */
 	public static FullMessage message;
-
+	/**
+	 * Array List of percent
+	 */
 	ArrayList<String> percent1 = new ArrayList<>();
+	/**
+	 * Array List of Branch
+	 */
 	ArrayList<String> branch1 = new ArrayList<>();
+
 	private String branch;
 	private String percent;
 
 	@FXML
+	/**
+	 * After Clicking On Back Button 
+	 * The Function Hide The Current Window 
+	 * And Load The previous Window 
+	 * And We Can Drag the Window How Ever We Want
+	 * @param event
+	 * @throws IOException
+	 */
 	public void BackButton(MouseEvent event) throws IOException {
 
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
@@ -111,6 +145,7 @@ public class OrderDetailsController extends UsersController implements Initializ
 	@FXML
 	public void TAButton(MouseEvent event) throws IOException, ParseException {
 
+		boolean checkContinue = false;
 		if (isInvalid()) {
 			errorText.setText("Please fill the empty fields!");
 			errorText.setFill(Color.RED);
@@ -119,25 +154,27 @@ public class OrderDetailsController extends UsersController implements Initializ
 			order.setSupplyType(TypeOfSupply.TAKE_AWAY);
 			order.setDeliveryCost(Constants.NoDeliveryCost);
 			order.setTotalPrice(CatalogController.TotalPrice);
-			CheckIfCustomerHaveDiscount();
-			addDetails();
+			checkContinue = CheckIfCustomerHaveDiscount();
+			if (checkContinue) {
+				addDetails();
 
-			((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
-			Stage primaryStage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/Payment.fxml"));
-			Scene scene = new Scene(root);
-			primaryStage.initStyle(StageStyle.UNDECORATED);
-			scene.setOnMousePressed(pressEvent -> {
-				scene.setOnMouseDragged(dragEvent -> {
-					primaryStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-					primaryStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+				((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
+				Stage primaryStage = new Stage();
+				Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/Payment.fxml"));
+				Scene scene = new Scene(root);
+				primaryStage.initStyle(StageStyle.UNDECORATED);
+				scene.setOnMousePressed(pressEvent -> {
+					scene.setOnMouseDragged(dragEvent -> {
+						primaryStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+						primaryStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+					});
 				});
-			});
-			primaryStage.setScene(scene);
-			primaryStage.show();
+				primaryStage.setScene(scene);
+				primaryStage.show();
 
-			// init for the payment
+				// init for the payment
 
+			}
 		}
 	}
 
@@ -151,6 +188,8 @@ public class OrderDetailsController extends UsersController implements Initializ
 
 	public void DeliveryButton(MouseEvent event) throws IOException, ParseException {
 
+		boolean checkContinue = false;
+
 		if (isInvalid()) {
 			errorText.setText("Please fill the empty fields!");
 			errorText.setFill(Color.RED);
@@ -159,30 +198,39 @@ public class OrderDetailsController extends UsersController implements Initializ
 			order.setSupplyType(TypeOfSupply.DELIVERY);
 			order.setTotalPrice(CatalogController.TotalPrice);
 			order.setDeliveryCost(Constants.DeliveryCost);
-			CheckIfCustomerHaveDiscount();
-			addDetails();
+			checkContinue = CheckIfCustomerHaveDiscount();
+			if (checkContinue) {
+				addDetails();
 
-			((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
-			Stage primaryStage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/DeliveryDetails.fxml"));
-			Scene scene = new Scene(root);
-			primaryStage.initStyle(StageStyle.UNDECORATED);
-			scene.setOnMousePressed(pressEvent -> {
-				scene.setOnMouseDragged(dragEvent -> {
-					primaryStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
-					primaryStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+				((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
+				Stage primaryStage = new Stage();
+				Parent root = FXMLLoader.load(getClass().getResource("/ClientFXMLFiles/DeliveryDetails.fxml"));
+				Scene scene = new Scene(root);
+				primaryStage.initStyle(StageStyle.UNDECORATED);
+				scene.setOnMousePressed(pressEvent -> {
+					scene.setOnMouseDragged(dragEvent -> {
+						primaryStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+						primaryStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+					});
 				});
-			});
-			primaryStage.setScene(scene);
-			primaryStage.show();
+				primaryStage.setScene(scene);
+				primaryStage.show();
 
-			// DeliveryDetailsController deliveryDetailsController = new
-			// DeliveryDetailsController();
-			// deliveryDetailsController.initDeliveryScreen(order);
+				// DeliveryDetailsController deliveryDetailsController = new
+				// DeliveryDetailsController();
+				// deliveryDetailsController.initDeliveryScreen(order);
 
+			}
 		}
 	}
-
+	/**
+	 * After Clicking On Exit Button
+	 * The Function Send A Message To The Server 
+	 * The Function LogOut The Account 
+	 * And Disconnect From The Server  
+	 * @param event
+	 * @throws IOException
+	 */
 	public void ExitButton(MouseEvent event) {
 		message = new FullMessage(Request.LOGOUT, Response.Wait, CurrentUser);
 		ZliClientUI.ZliClientController.accept(message);
@@ -204,19 +252,28 @@ public class OrderDetailsController extends UsersController implements Initializ
 	 * @return
 	 */
 
-	public void CheckIfCustomerHaveDiscount() {
-		
+	public boolean CheckIfCustomerHaveDiscount() {
 
 		switch (CatalogController.IsSaleOn) {
 		case "0":
 			if (order.getSupplyType().equals(TypeOfSupply.DELIVERY)) {
 				order.setTotalPrice((order.getTotalPrice() + Constants.DeliveryCost));
-				PopUpMsg.AlertForUser("Price Of Delivery is: " + Constants.DeliveryCost + "\n" + "The Final price is "
-						+ order.getTotalPrice());
+				Optional<ButtonType> Option = PopUpMsg
+						.ConfirmationForUser("Price Of Delivery is: " + Constants.DeliveryCost + "\n"
+								+ "The Final price is " + order.getTotalPrice() + "\n" + "Do you want to continue?");
+				if (Option.get() == ButtonType.OK) {
+					return true;
+				} else
+					return false;
+
 			} else {
-				PopUpMsg.AlertForUser("The Final price is " + order.getTotalPrice());
+				Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser(
+						"The Final price is " + order.getTotalPrice() + "\n" + "Do you want to continue");
+				if (Option.get() == ButtonType.OK) {
+					return true;
+				} else
+					return false;
 			}
-			break;
 		case "1":
 			double discount = Double.parseDouble(percent1.get(0));
 			discount = Double.parseDouble(percent1.get(0));
@@ -224,47 +281,83 @@ public class OrderDetailsController extends UsersController implements Initializ
 			discount = discount / 100.0;
 			if (order.getSupplyType().equals(TypeOfSupply.DELIVERY)) {
 				order.setTotalPrice((order.getTotalPrice() * discount) + Constants.DeliveryCost);
-				PopUpMsg.AlertForUser("You have a discount of " + percent1.get(0) + "%" + "\n" + "Price Of Delivery is: "
-						+ Constants.DeliveryCost + "\n" + "The Final price is " + order.getTotalPrice());
+				Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser("You have a discount of " + percent1.get(0)
+						+ "%" + "\n" + "Price Of Delivery is: " + Constants.DeliveryCost + "\n" + "The Final price is "
+						+ order.getTotalPrice() + "\n" + "Do you want to continue?");
+				if (Option.get() == ButtonType.OK) {
+					return true;
+				} else
+					return false;
+
 			} else {
 				order.setTotalPrice(order.getTotalPrice() * discount);
-				PopUpMsg.AlertForUser("You have a discount of " + percent1.get(0) + "%" + "\n" + "The Final price is "
-						+ order.getTotalPrice());
+				Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser("You have a discount of " + percent1.get(0)
+						+ "%" + "\n" + "The Final price is " + order.getTotalPrice());
+				if (Option.get() == ButtonType.OK) {
+					return true;
+				} else
+					return false;
+
 			}
-			break;
 		case "2":
 			String branchValue = selectBranchComboBox.getValue().toString();
 			if (branch1.contains(branchValue)) {
-				int index=branch1.indexOf(branchValue);
-			    discount = Double.parseDouble(percent1.get(index));
+				int index = branch1.indexOf(branchValue);
+				discount = Double.parseDouble(percent1.get(index));
 				discount = 100.0 - discount;
 				discount = discount / 100.0;
 				if (order.getSupplyType().equals(TypeOfSupply.DELIVERY)) {
 					order.setTotalPrice((order.getTotalPrice() * discount) + Constants.DeliveryCost);
-					PopUpMsg.AlertForUser("You have a discount of " + percent1.get(index) + "%" + "\n" + "Price Of Delivery is: "
-							+ Constants.DeliveryCost + "\n" + "The Final price is " + order.getTotalPrice());
+					Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser(
+							"You have a discount of " + percent1.get(index) + "%" + "\n" + "Price Of Delivery is: "
+									+ Constants.DeliveryCost + "\n" + "The Final price is " + order.getTotalPrice());
+					if (Option.get() == ButtonType.OK) {
+						return true;
+					} else
+						return false;
+
 				} else {
 					order.setTotalPrice((order.getTotalPrice() * discount));
-					PopUpMsg.AlertForUser("You have a discount of " + percent1.get(index) + "%" + "\n" + "The Final price is: "
-							+ order.getTotalPrice());
+					Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser("You have a discount of "
+							+ percent1.get(index) + "%" + "\n" + "The Final price is: " + order.getTotalPrice());
+					if (Option.get() == ButtonType.OK) {
+						return true;
+					} else
+						return false;
 				}
 			} else {
 				if (order.getSupplyType().equals(TypeOfSupply.DELIVERY)) {
 					order.setTotalPrice(order.getTotalPrice() + Constants.DeliveryCost);
-					PopUpMsg.AlertForUser("Price Of Delivery is: " + Constants.DeliveryCost + "\n"
-							+ "The Final price is " + order.getTotalPrice());
+					Optional<ButtonType> Option = PopUpMsg.ConfirmationForUser("Price Of Delivery is: "
+							+ Constants.DeliveryCost + "\n" + "The Final price is " + order.getTotalPrice());
+					if (Option.get() == ButtonType.OK) {
+						return true;
+					} else
+						return false;
+
 				} else {
-					PopUpMsg.AlertForUser("The Final price is: " + order.getTotalPrice());
+					Optional<ButtonType> Option = PopUpMsg
+							.ConfirmationForUser("The Final price is: " + order.getTotalPrice());
+					if (Option.get() == ButtonType.OK) {
+						return true;
+					} else
+						return false;
+
 				}
 
 			}
 
-			break;
 		}
+		return false;
 
 	}
-
+	/**
+	this function check if the ComboBox is null
+	 * @return
+	 */
 	private boolean isInvalid() {
+		
+		
 		boolean check = false;
 
 		if (selectBranchComboBox.getValue() == null) {
@@ -284,8 +377,14 @@ public class OrderDetailsController extends UsersController implements Initializ
 		}
 		return check;
 	}
+	/**
+	 * this function makes date to insert to DB
 
+	 * @throws ParseException
+	 */
 	public void MakeDateForDB() throws ParseException {
+		
+		
 
 		String time = Time.getValue();
 		time = time + ":00";
@@ -318,6 +417,10 @@ public class OrderDetailsController extends UsersController implements Initializ
 	 */
 
 	@Override
+	/**
+	 *Initializing The List After Getting All The Relevant Data
+	 *Send To The Server Message That Contains All the Relevant Data 
+	 */
 	public void initialize(URL location, ResourceBundle resources) {
 		OrderDetailsController.order = CartPageController.order;
 		branch = CatalogController.branch;

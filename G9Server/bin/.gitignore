@@ -2,6 +2,18 @@
 /ReadMessage/
 /ServerFXMLFiles/
 /ServerGUIControllers/
+<<<<<<< HEAD
 /ZliServer/
 /jdbc/
 /queries/
+=======
+<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git
+/jdbc/
+/ZliServer/
+=======
+/ZliServer/
+/jdbc/
+/queries/
+>>>>>>> 4862a0e cxzc
+>>>>>>> branch 'master' of https://github.com/avii12/zlite3od.git

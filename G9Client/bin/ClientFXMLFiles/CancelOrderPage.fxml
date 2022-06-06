@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="626.0" prefWidth="885.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CancelOrderController">
+<AnchorPane prefHeight="626.0" prefWidth="885.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientGUIControllers.CancelOrderController">
    <children>
       <Pane layoutX="56.0" layoutY="8.0" prefHeight="22.0" prefWidth="18.0" />
       <Text layoutX="344.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel Order">
@@ -37,36 +37,36 @@
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" layoutX="143.0" layoutY="113.0" stroke="#edf1f2" strokeType="INSIDE" width="439.0" />
       <ImageView fitHeight="288.0" fitWidth="99.0" layoutX="783.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/background.jpg" />
+            <Image url="@../../../../../../../ZerliDesign/background.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="58.0" fitWidth="42.0" layoutX="831.0" layoutY="559.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../ZliProj/G9Common/Pic/Delete1.png" />
+            <Image url="@../../../../../../../ZerliDesign/Delete1.png" />
          </image>
       </ImageView>
       <Line endX="644.0" endY="-20.99999237060547" layoutX="237.0" layoutY="23.0" startX="-237.0" startY="-23.0" stroke="#111411" strokeWidth="6.0" />
       <Line endX="-237.0" endY="596.7573852539062" layoutX="237.0" layoutY="23.0" startX="-237.0" startY="-22.999996185302734" stroke="#111411" strokeWidth="6.0" />
       <Line endX="647.0" endY="-22.999996185302734" layoutX="237.0" layoutY="23.0" startX="647.0" startY="596.7573852539062" stroke="#111411" strokeWidth="6.0" />
       <Line endX="647.0" endY="599.7573852539062" layoutX="237.0" layoutY="23.0" startX="-233.99996948242188" startY="599.7573852539062" stroke="#111411" strokeWidth="6.0" />
-      <Label fx:id="ErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="559.0" prefHeight="26.0" prefWidth="402.0" textAlignment="CENTER" textFill="RED" textOverrun="WORD_ELLIPSIS">
+      <Label fx:id="ErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="231.0" layoutY="567.0" prefHeight="26.0" prefWidth="402.0" textAlignment="CENTER" textFill="RED" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font size="16.0" />
          </font></Label>
       <Rectangle arcHeight="10.0" arcWidth="100.0" fill="#d3a8dd" height="6.0" layoutX="145.0" layoutY="122.0" stroke="#edf1f2" strokeType="INSIDE" width="574.0" />
       <ImageView fx:id="Backbtn" fitHeight="61.0" fitWidth="61.0" layoutX="8.0" layoutY="553.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/go-back-2.png" />
+            <Image url="@../../../../../../../ZerliDesign/go-back-2.png" />
          </image>
       </ImageView>
       <ImageView fx:id="Exitbtn" fitHeight="61.0" fitWidth="65.0" layoutX="816.0" layoutY="7.0" onMouseClicked="#ExitButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/Cancel.png" />
+            <Image url="@../../../../../../../ZerliDesign/Cancel.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="133.0" fitWidth="157.0" layoutX="9.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../G9Common/Pic/LOGO.jpeg" />
+            <Image url="@../../../../../../../ZerliDesign/LOGO.jpeg" />
          </image>
       </ImageView>
    </children>
