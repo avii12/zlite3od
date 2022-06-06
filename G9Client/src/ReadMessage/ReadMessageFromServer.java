@@ -54,6 +54,13 @@ import customerService.Complaint;
 
 public class ReadMessageFromServer {
 
+	/**
+	 * Class description:
+     * This is a class which is a Wrapper for handling
+     * all messages from the server.
+	 * @param message
+	 * @throws IOException
+	 */
 	@SuppressWarnings({ "incomplete-switch", "unchecked" })
 	public static void readMessageFromServer(Object message) throws IOException {
 
