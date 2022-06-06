@@ -28,7 +28,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling Graph for CEO
+ *  
+ * @author Seren Hanany
+ *
+ */
 public class ViewReportsForCEOController extends UsersController implements Initializable {
 	/**
 	 *static parameter message of full message

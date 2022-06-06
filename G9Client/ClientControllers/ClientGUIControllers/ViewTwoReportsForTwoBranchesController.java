@@ -3,10 +3,7 @@ package ClientGUIControllers;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Year;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import Orders.Branch;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
@@ -26,7 +23,14 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * Class description: 
+ * This is a class for 
+ * controlling Graph for CEO
+ *  
+ * @author Seren Hanany
+ *
+ */
 public class ViewTwoReportsForTwoBranchesController extends UsersController implements Initializable {
 	/**
 	 *static parameter message of full message
