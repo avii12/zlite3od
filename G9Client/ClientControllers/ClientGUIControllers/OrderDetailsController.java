@@ -1,6 +1,7 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -21,7 +22,6 @@ import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
 import Util.Constants;
-import Utils.OrganizeDate;
 import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.application.Platform;

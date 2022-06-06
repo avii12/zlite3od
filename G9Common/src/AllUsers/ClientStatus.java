@@ -1,5 +1,12 @@
 package AllUsers;
 
+/**
+ * class description:
+ * this class is for the server table
+ * 
+ * @author maisalon ,safory.
+ *
+ */
 public class ClientStatus {
 
 	private String Host;
@@ -7,6 +14,11 @@ public class ClientStatus {
 	private String Status;
 
 
+	/**
+	 * @param host
+	 * @param iP
+	 * @param status
+	 */
 	public ClientStatus(String host, String iP, String status) {
 		super();
 		Host = host;
@@ -14,6 +26,10 @@ public class ClientStatus {
 		Status = status;
 	}
 	
+	
+	/**
+	 * setters and getters
+	 */
 	public String getHost() {
 		return Host;
 	}

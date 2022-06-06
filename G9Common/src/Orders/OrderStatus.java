@@ -1,5 +1,12 @@
 package Orders;
 
+/**
+
+ * order status enum 
+ * 
+ * @author Obied ,Haddad.
+
+ */
 public enum OrderStatus {
 	PENDING {
 		@Override

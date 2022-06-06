@@ -4,18 +4,58 @@ import java.sql.Timestamp;
 
 import Orders.Branch;
 
+
+/**
+ * class description:
+ * this class is for inserting the complaint in for in the complaint table
+ * 
+ * @author Ebrahem, Enbtawe
+ * @author Mario ,Rohana.
+ * @authoe sere, hanany.
+ *
+ */
 public class ComplaintsForTableView {
 
+	/**
+	 * the complaint from the complaint class 
+	 */
 	private Complaint complaint;
+	/**
+	 * complaint ID
+	 */
 	private int complaintID;
+	/**
+	 *  the complaint number   
+	 */
 	private int complaintNum;
+	/**
+	 * customer ID
+	 */
 	private String customerId;
+	/**
+	 * order number
+	 */
 	private int OrderNumber;
+	/**
+	 * complaint date
+	 */
 	private Timestamp complaintDate;
+	/**
+	 * branch name
+	 */
 	private Branch branchName;
+	/**
+	 * text of the complaint that the user customer type
+	 */
 	private String text;
+	/**
+	 * the price of the order of the complaint
+	 */
 	private double totalPrice;
 
+	/**
+	 * @param complaint
+	 */
 	public ComplaintsForTableView(Complaint complaint) {
 		this.complaint = complaint;
 		this.complaintID = complaint.getComplaintID();
@@ -28,7 +68,10 @@ public class ComplaintsForTableView {
 		this.complaintNum = complaint.getComplaintNum();
 
 	}
-
+    
+	/*
+	 * these are the setters and getters of the complaint table
+	 */
 	public Complaint getComplaint() {
 		return complaint;
 	}

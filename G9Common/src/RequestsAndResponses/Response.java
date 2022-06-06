@@ -1,5 +1,19 @@
 package RequestsAndResponses;
 
+/**
+ * 
+ * Class description:
+ * this enum is for all the responses we get from the server 
+ * 
+ * 
+ * @author Obied, Haddad
+ * @author Maisalon, Safory
+ * @author Ebrahem, Enbtawe
+ * @author Mario, Rohana
+ * @author Seren ,Hanany.
+ * @author Shoroq ,Heib.
+ *
+ */
 public enum Response {
 
 	Wait, Succeed, NO_SUCH_USER, ALREADY_LOGGED_IN, Create_CUSTOMER_PORTAL, Create_BRANCHMANAGER_PORTAL,

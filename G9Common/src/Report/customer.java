@@ -5,13 +5,46 @@ import java.io.Serializable;
 import AllUsers.ConfirmationStatus;
 import Survey.SurveyAnswers;
 
+
+
+/**
+ * 
+ * Class description:
+
+ * customer class for the reports
+ * 
+ * @author Maisalon, Safory
+ * @author Seren ,Hanany.
+ * @author Shoroq ,Heib.
+ *
+ */
 public class customer  implements Serializable {
 
+	/*
+	 * customer id
+	 */
 	public String CustomerID;
+	/**
+	 * customer first name
+	 */
 	public String FirstName;
+	/**
+	 * last name
+	 */
 	public String LastName;
+	/**
+	 * customer email
+	 */
 	public String Email;
+	/**
+	 * customer status
+	 */
 	public ConfirmationStatus Status;
+	
+	
+	/**
+	 * @param cu
+	 */
 	public customer (customer cu) {
 		this.CustomerID=cu.getCustomerID();
 		this.FirstName=cu.getFirstName();
@@ -24,6 +57,13 @@ public class customer  implements Serializable {
 		return "customer [CustomerID=" + CustomerID + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Email="
 				+ Email + ", Status=" + Status + "]";
 	}
+	/**
+	 * @param customerID
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param status
+	 */
 	public customer(String customerID, String firstName, String lastName, String email, ConfirmationStatus status) {
 		super();
 		CustomerID = customerID;
@@ -33,6 +73,10 @@ public class customer  implements Serializable {
 		Status = status;
 	}
 	
+	
+	/**
+	 * setters and getters
+	 */
 	public String getCustomerID() {
 		return CustomerID;
 	}

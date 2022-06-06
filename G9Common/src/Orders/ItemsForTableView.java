@@ -3,21 +3,65 @@ package Orders;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * class description:
+ * class to insert the items in the item table 
+ *
+ * 
+ * @author Ebrahem ,Enbtawe
+ */
+
 public class ItemsForTableView {
 
+	/**
+	 * the item
+	 */
 	private Item item;
+	/**
+	 * the picture of the item
+	 */
 	private ImageView Picture;
+	/**
+	 * the item name
+	 */
 	public String ItemName;
+	/**
+	 * the color of the flower
+	 */
 	public FlowerColor Color;
+	/**
+	 * the price of the item 
+	 */
 	public double Price;
+	/**
+	 * the picture path
+	 */
 	public String PicturePath;
+	/**
+	 * the type of the item
+	 */
 	public ItemType type;
+	/**
+	 * the dominant color of the item
+	 */
 	public DominantColor dominantColor;
+	/**
+	 * the amount 
+	 */
 	public int amount;
+	/**
+	 * the Id of the item
+	 */
 	public String ID;
+	/**
+	 * item category
+	 */
 	public ItemCategory Category;
 
 	
+	/**
+	 * @param item
+	 */
 	public ItemsForTableView(Item item) {
 		this.item = item;
 	    this.Picture = new ImageView(new Image(item.getPicturePath(),64,64,false,true));
@@ -33,7 +77,9 @@ public class ItemsForTableView {
 		
 	}
 	
-	
+	/*
+	 * getters and setters
+	 */
 
 	public ItemCategory getCategory() {
 		return Category;
@@ -103,6 +149,9 @@ public class ItemsForTableView {
 
 
 
+	/**
+	 * @param dominantColor
+	 */
 	public void setDominantColor(DominantColor dominantColor) {
 		this.dominantColor = dominantColor;
 		item.setDominantColor(dominantColor);
@@ -153,11 +202,15 @@ public class ItemsForTableView {
 		return PicturePath;
 	}
 
+	/**
+	 * @param picturePath
+	 */
 	public void setPicturePath(String picturePath) {
 		PicturePath = picturePath;
 		item.setPicturePath(PicturePath);
 	}
 
+	
 	public boolean equals(Object obj) {
 		ItemsForTableView o = (ItemsForTableView) obj;
 		return item.equals(o.getItem());

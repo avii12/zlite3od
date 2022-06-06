@@ -2,18 +2,40 @@ package Survey;
 
 import java.io.Serializable;
 
+
+
+/**
+ * 
+ * class description:
+ * this class is the survey answer class contains all the survey answers
+ *  
+ * @author Seren ,Hanany.
+ * @author Shoroq ,Heib.
+ * @author maisalon ,safory. 
+ *
+ */
+
 public class SurveyAnswers implements Serializable {
 	public String SurveyID;
 	public String CustomerID;
 	public String QuestionNumber;
 	public String QuestionAnswer;
 
+	/**
+	 * return the details in string
+	 */
 	@Override
 	public String toString() {
 		return "SurveyAnswers [SurveyID=" + SurveyID + ", CustomerID=" + CustomerID + ", QuestionNumber="
 				+ QuestionNumber + ", QuestionAnswer=" + QuestionAnswer + "]";
 	}
 
+	/**
+	 * @param surveyID
+	 * @param customerID
+	 * @param questionNumber
+	 * @param questionAnswer
+	 */
 	public SurveyAnswers(String surveyID, String customerID, String questionNumber, String questionAnswer) {
 		super();
 		SurveyID = surveyID;
@@ -22,13 +44,23 @@ public class SurveyAnswers implements Serializable {
 		QuestionAnswer = questionAnswer;
 	}
 
+	/**
+	 * @param surveyAnswers
+	 */
 	public SurveyAnswers(SurveyAnswers surveyAnswers) {
 		this.SurveyID = surveyAnswers.getSurveyID();
 		this.CustomerID = surveyAnswers.getCustomerID();
 		this.QuestionNumber = surveyAnswers.getQuestionNumber();
 		this.QuestionAnswer = surveyAnswers.getQuestionAnswer();
 	}
+	
+	
 
+	/**
+	 * setters and getters of the survey answers
+	 */
+	
+	
 	public String getSurveyID() {
 		return SurveyID;
 	}

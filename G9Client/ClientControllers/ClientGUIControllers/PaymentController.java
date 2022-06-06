@@ -1,6 +1,7 @@
 package ClientGUIControllers;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +21,6 @@ import Orders.TypeOfSupply;
 import RequestsAndResponses.FullMessage;
 import RequestsAndResponses.Request;
 import RequestsAndResponses.Response;
-import Utils.OrganizeDate;
 import ZliClient.PopUpMsg;
 import ZliClient.ZliClientUI;
 import javafx.event.ActionEvent;

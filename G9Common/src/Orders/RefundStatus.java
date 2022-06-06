@@ -1,5 +1,12 @@
 package Orders;
+/**
 
+ *Refund status enum for the refund answer
+ * 
+ * 
+ * @author Obied ,Haddad.
+
+ */
 public enum RefundStatus {
 	
 	FULL_REFUND {

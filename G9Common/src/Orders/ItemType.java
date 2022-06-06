@@ -1,5 +1,14 @@
 package Orders;
 
+/**
+
+ * Item type enum 
+ * the flowers type in the item category
+ * 
+ * @author Obied ,Haddad.
+
+ */
+
 public enum ItemType {
 	FLORABLOOM {
 		@Override

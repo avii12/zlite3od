@@ -1,5 +1,11 @@
 package Orders;
 
+/**
+ * 
+ * enum for the dominant color
+ * 
+ * @author Ebrahem ,Enbtawe
+ */
 public enum DominantColor {
 	RED {
 		@Override

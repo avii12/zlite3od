@@ -1,6 +1,7 @@
 package queries;
 
 import java.sql.ResultSet;
+
 import java.sql.SQLException;//github.com/avii12/ZliRepository.git
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -20,7 +21,6 @@ import AllUsers.ConfirmationStatus;
 import AllUsers.Customer;
 import AllUsers.User;
 import Orders.Branch;
-import Orders.DateTimeConvert;
 import Orders.DominantColor;
 import Orders.FlowerColor;
 import Orders.Item;
