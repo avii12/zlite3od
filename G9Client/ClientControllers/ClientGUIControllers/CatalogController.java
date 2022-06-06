@@ -196,14 +196,12 @@ public class CatalogController extends UsersController implements Initializable 
 	 * static variable for branch
 	 */
 	public static String branch;
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-	private int selectedIndex;
 
-=======
+	private int selectedIndex;
 	/**
 	 * Observable List Item in cart
 	 */
->>>>>>> 811848f hh
+
 	public static ObservableList<ItemsForCartView> ItemsIncart = FXCollections.observableArrayList();
 	/**
 	 * static variable for Total Price

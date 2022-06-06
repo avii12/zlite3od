@@ -126,8 +126,6 @@ public class mainQuery {
 		}
 	}
 
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-
 	/**
 	 * Method For inserting into customer table
 	 * 
@@ -143,13 +141,13 @@ public class mainQuery {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, user.getUserID());
+			pstmt.setString(1, user.getUserID());
 			pstmt.setString(2, user.getFirstName());
 			pstmt.setString(3, user.getLastName());
 			pstmt.setString(4, user.getEmail());
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
-			pstmt.setBoolean(7, user.isLogInStatus());
+			pstmt.setString(7, user.isLogInStatus());
 
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
@@ -179,13 +177,13 @@ public class mainQuery {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, user.getUserID());
+			pstmt.setString(1, user.getUserID());
 			pstmt.setString(2, user.getFirstName());
 			pstmt.setString(3, user.getLastName());
 			pstmt.setString(4, user.getEmail());
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
-			pstmt.setBoolean(7, user.isLogInStatus());
+			pstmt.setString(7, user.isLogInStatus());
 
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
@@ -214,13 +212,13 @@ public class mainQuery {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, user.getUserID());
+			pstmt.setString(1, user.getUserID());
 			pstmt.setString(2, user.getFirstName());
 			pstmt.setString(3, user.getLastName());
 			pstmt.setString(4, user.getEmail());
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
-			pstmt.setBoolean(7, user.isLogInStatus());
+			pstmt.setString(7, user.isLogInStatus());
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -243,13 +241,13 @@ public class mainQuery {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, user.getUserID());
+			pstmt.setString(1, user.getUserID());
 			pstmt.setString(2, user.getFirstName());
 			pstmt.setString(3, user.getLastName());
 			pstmt.setString(4, user.getEmail());
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
-			pstmt.setBoolean(7, user.isLogInStatus());
+			pstmt.setString(7, user.isLogInStatus());
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -266,13 +264,13 @@ public class mainQuery {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, user.getUserID());
+			pstmt.setString(1, user.getUserID());
 			pstmt.setString(2, user.getFirstName());
 			pstmt.setString(3, user.getLastName());
 			pstmt.setString(4, user.getEmail());
 			pstmt.setString(5, user.getPhoneNumber());
 			pstmt.setString(6, user.getUserType());
-			pstmt.setBoolean(7, user.isLogInStatus());
+			pstmt.setString(7, user.isLogInStatus());
 
 			pstmt.setString(8, String.valueOf(user.getConfirmationstatus()));
 			pstmt.setString(9, "");
@@ -285,8 +283,6 @@ public class mainQuery {
 			e.printStackTrace();
 		}
 	}
-
-=======
 	public static void DeleteRowFromDB1(String TableName, String condition) {
 		String query = "DELETE FROM zli_db." + TableName + " WHERE (" + condition + ")";
 		PreparedStatement pstmt = null;
@@ -298,7 +294,6 @@ public class mainQuery {
 		}
 	}
 	
->>>>>>> 811848f hh
 	public static void insertOneRowIntoCustomerTable(String id, String FirstName, String LastName, String Email,
 			String PhoneNumber, String UserType, String LogInStatus, ConfirmationStatus Status, String CreditCard,
 			Double Balance) {

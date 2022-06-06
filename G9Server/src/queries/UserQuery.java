@@ -127,10 +127,17 @@ public class UserQuery {
 		user = (Users) NewMsg.getObject();
 		String NewType = MsgFromClient.getUserType();
 		// insert
-<<<<<<< Upstream, based on branch 'master' of https://github.com/avii12/zlite3od.git
-		InserToNewTable(NewType, user);
+
+		try {
+			InserToNewTable(NewType, user);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		mainQuery.DeleteRowFromDB(TableName, condition2);
-=======
 		try {
 			InserToNewTable(NewType, user);
 		} catch (SQLException e) {
@@ -141,7 +148,7 @@ public class UserQuery {
 			e.printStackTrace();
 		}
 		mainQuery.DeleteRowFromDB1(TableName, condition2);
->>>>>>> 811848f hh
+
 		condition2 = "UserID=" + MsgFromClient.getUserID();
 		mainQuery.updateTuple("login", condition1, condition2);// update to new type
 		messageFromClient.setResponse(Response.USER_UPDATED);
